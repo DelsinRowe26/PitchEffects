@@ -7,6 +7,7 @@ using CSCore.SoundOut;//Выход звука
 using CSCore.CoreAudioAPI;
 using CSCore.Streams;
 using CSCore.Codecs;
+using System.Speech.Synthesis;
 
 namespace PitchShifter
 {
@@ -17,6 +18,7 @@ namespace PitchShifter
         private WasapiCapture mSoundIn;
         private WasapiOut mSoundOut;
         private SampleDSP mDsp;
+        //private VolumeSource vSab;
         private SimpleMixer mMixer;
         private ISampleSource mMp3;
 
@@ -53,7 +55,7 @@ namespace PitchShifter
             try
             {
                 //Запускает устройство захвата звука с задержкой 5 мс.
-                mSoundIn = new WasapiCapture(false, AudioClientShareMode.Exclusive, 5);
+                mSoundIn = new WasapiCapture(false, AudioClientShareMode.Exclusive, 1);
                 mSoundIn.Device = mInputDevices[cmbInput.SelectedIndex]; 
                 mSoundIn.Initialize();
                 mSoundIn.Start();
@@ -76,7 +78,7 @@ namespace PitchShifter
                 mMixer.AddSource(mDsp.ChangeSampleRate(mMixer.WaveFormat.SampleRate));
 
                 //Запускает устройство воспроизведения звука с задержкой 5 мс.
-                mSoundOut = new WasapiOut(false, AudioClientShareMode.Exclusive, 5);
+                mSoundOut = new WasapiOut(false, AudioClientShareMode.Exclusive, 1);
                 mSoundOut.Device = mOutputDevices[cmbOutput.SelectedIndex];
                 mSoundOut.Initialize(mMixer.ToWaveSource(16));
                 
@@ -113,7 +115,7 @@ namespace PitchShifter
 
         private void SetPitchShiftValue()
         {
-            mDsp.PitchShift = (float)Math.Pow(2.0F, trackPitch.Value / 12.0F);
+            mDsp.PitchShift = (float)Math.Pow(4.0F, trackPitch.Value / 13.5F);
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)

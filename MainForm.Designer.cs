@@ -46,9 +46,10 @@
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(154, 147);
+            this.btnStart.Location = new System.Drawing.Point(204, 182);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(101, 23);
+            this.btnStart.Size = new System.Drawing.Size(135, 28);
             this.btnStart.TabIndex = 2;
             this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -57,9 +58,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 73);
+            this.label2.Location = new System.Drawing.Point(16, 90);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 13);
+            this.label2.Size = new System.Drawing.Size(39, 17);
             this.label2.TabIndex = 6;
             this.label2.Text = "Pitch";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -67,10 +69,11 @@
             // trackPitch
             // 
             this.trackPitch.Enabled = false;
-            this.trackPitch.Location = new System.Drawing.Point(94, 65);
+            this.trackPitch.Location = new System.Drawing.Point(125, 80);
+            this.trackPitch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.trackPitch.Minimum = -10;
             this.trackPitch.Name = "trackPitch";
-            this.trackPitch.Size = new System.Drawing.Size(300, 45);
+            this.trackPitch.Size = new System.Drawing.Size(400, 56);
             this.trackPitch.TabIndex = 5;
             this.trackPitch.Scroll += new System.EventHandler(this.trackPitch_Scroll);
             this.trackPitch.ValueChanged += new System.EventHandler(this.trackPitch_ValueChanged);
@@ -78,25 +81,28 @@
             // cmbInput
             // 
             this.cmbInput.FormattingEnabled = true;
-            this.cmbInput.Location = new System.Drawing.Point(99, 11);
+            this.cmbInput.Location = new System.Drawing.Point(132, 14);
+            this.cmbInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbInput.Name = "cmbInput";
-            this.cmbInput.Size = new System.Drawing.Size(290, 21);
+            this.cmbInput.Size = new System.Drawing.Size(385, 24);
             this.cmbInput.TabIndex = 7;
             // 
             // cmbOutput
             // 
             this.cmbOutput.FormattingEnabled = true;
-            this.cmbOutput.Location = new System.Drawing.Point(99, 38);
+            this.cmbOutput.Location = new System.Drawing.Point(132, 47);
+            this.cmbOutput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbOutput.Name = "cmbOutput";
-            this.cmbOutput.Size = new System.Drawing.Size(290, 21);
+            this.cmbOutput.Size = new System.Drawing.Size(385, 24);
             this.cmbOutput.TabIndex = 8;
             // 
             // lblMic
             // 
             this.lblMic.AutoSize = true;
-            this.lblMic.Location = new System.Drawing.Point(12, 14);
+            this.lblMic.Location = new System.Drawing.Point(16, 17);
+            this.lblMic.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMic.Name = "lblMic";
-            this.lblMic.Size = new System.Drawing.Size(63, 13);
+            this.lblMic.Size = new System.Drawing.Size(82, 17);
             this.lblMic.TabIndex = 9;
             this.lblMic.Text = "Microphone";
             this.lblMic.Click += new System.EventHandler(this.lblMic_Click);
@@ -104,9 +110,10 @@
             // lblSpeaker
             // 
             this.lblSpeaker.AutoSize = true;
-            this.lblSpeaker.Location = new System.Drawing.Point(12, 41);
+            this.lblSpeaker.Location = new System.Drawing.Point(16, 50);
+            this.lblSpeaker.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSpeaker.Name = "lblSpeaker";
-            this.lblSpeaker.Size = new System.Drawing.Size(47, 13);
+            this.lblSpeaker.Size = new System.Drawing.Size(61, 17);
             this.lblSpeaker.TabIndex = 10;
             this.lblSpeaker.Text = "Speaker";
             // 
@@ -117,9 +124,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 106);
+            this.label1.Location = new System.Drawing.Point(19, 130);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.Size = new System.Drawing.Size(38, 17);
             this.label1.TabIndex = 12;
             this.label1.Text = "Gain";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -127,10 +135,11 @@
             // trackGain
             // 
             this.trackGain.Enabled = false;
-            this.trackGain.Location = new System.Drawing.Point(93, 96);
+            this.trackGain.Location = new System.Drawing.Point(124, 118);
+            this.trackGain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.trackGain.Maximum = 30;
             this.trackGain.Name = "trackGain";
-            this.trackGain.Size = new System.Drawing.Size(300, 45);
+            this.trackGain.Size = new System.Drawing.Size(400, 56);
             this.trackGain.TabIndex = 11;
             this.trackGain.Scroll += new System.EventHandler(this.trackGain_Scroll);
             this.trackGain.ValueChanged += new System.EventHandler(this.trackGain_ValueChanged);
@@ -139,9 +148,10 @@
             // 
             this.chkAddMp3.AutoSize = true;
             this.chkAddMp3.Enabled = false;
-            this.chkAddMp3.Location = new System.Drawing.Point(17, 150);
+            this.chkAddMp3.Location = new System.Drawing.Point(19, 187);
+            this.chkAddMp3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkAddMp3.Name = "chkAddMp3";
-            this.chkAddMp3.Size = new System.Drawing.Size(107, 17);
+            this.chkAddMp3.Size = new System.Drawing.Size(137, 21);
             this.chkAddMp3.TabIndex = 13;
             this.chkAddMp3.Text = "Add Sample Mp3";
             this.chkAddMp3.UseVisualStyleBackColor = true;
@@ -149,9 +159,9 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(401, 181);
+            this.ClientSize = new System.Drawing.Size(535, 224);
             this.Controls.Add(this.chkAddMp3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.trackGain);
@@ -163,6 +173,7 @@
             this.Controls.Add(this.trackPitch);
             this.Controls.Add(this.btnStart);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
