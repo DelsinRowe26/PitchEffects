@@ -40,14 +40,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.trackGain = new System.Windows.Forms.TrackBar();
             this.chkAddMp3 = new System.Windows.Forms.CheckBox();
+            this.bTnPlus = new System.Windows.Forms.Button();
+            this.bTnMinus = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackPitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackGain)).BeginInit();
             this.SuspendLayout();
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(204, 182);
-            this.btnStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnStart.Location = new System.Drawing.Point(199, 366);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(4);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(135, 28);
             this.btnStart.TabIndex = 2;
@@ -58,7 +60,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 90);
+            this.label2.Location = new System.Drawing.Point(16, 238);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 17);
@@ -69,8 +71,8 @@
             // trackPitch
             // 
             this.trackPitch.Enabled = false;
-            this.trackPitch.Location = new System.Drawing.Point(125, 80);
-            this.trackPitch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.trackPitch.Location = new System.Drawing.Point(117, 238);
+            this.trackPitch.Margin = new System.Windows.Forms.Padding(4);
             this.trackPitch.Minimum = -10;
             this.trackPitch.Name = "trackPitch";
             this.trackPitch.Size = new System.Drawing.Size(400, 56);
@@ -82,7 +84,7 @@
             // 
             this.cmbInput.FormattingEnabled = true;
             this.cmbInput.Location = new System.Drawing.Point(132, 14);
-            this.cmbInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbInput.Margin = new System.Windows.Forms.Padding(4);
             this.cmbInput.Name = "cmbInput";
             this.cmbInput.Size = new System.Drawing.Size(385, 24);
             this.cmbInput.TabIndex = 7;
@@ -91,7 +93,7 @@
             // 
             this.cmbOutput.FormattingEnabled = true;
             this.cmbOutput.Location = new System.Drawing.Point(132, 47);
-            this.cmbOutput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbOutput.Margin = new System.Windows.Forms.Padding(4);
             this.cmbOutput.Name = "cmbOutput";
             this.cmbOutput.Size = new System.Drawing.Size(385, 24);
             this.cmbOutput.TabIndex = 8;
@@ -124,7 +126,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 130);
+            this.label1.Location = new System.Drawing.Point(16, 302);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 17);
@@ -135,8 +137,8 @@
             // trackGain
             // 
             this.trackGain.Enabled = false;
-            this.trackGain.Location = new System.Drawing.Point(124, 118);
-            this.trackGain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.trackGain.Location = new System.Drawing.Point(117, 302);
+            this.trackGain.Margin = new System.Windows.Forms.Padding(4);
             this.trackGain.Maximum = 30;
             this.trackGain.Name = "trackGain";
             this.trackGain.Size = new System.Drawing.Size(400, 56);
@@ -148,8 +150,8 @@
             // 
             this.chkAddMp3.AutoSize = true;
             this.chkAddMp3.Enabled = false;
-            this.chkAddMp3.Location = new System.Drawing.Point(19, 187);
-            this.chkAddMp3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkAddMp3.Location = new System.Drawing.Point(13, 371);
+            this.chkAddMp3.Margin = new System.Windows.Forms.Padding(4);
             this.chkAddMp3.Name = "chkAddMp3";
             this.chkAddMp3.Size = new System.Drawing.Size(137, 21);
             this.chkAddMp3.TabIndex = 13;
@@ -157,11 +159,33 @@
             this.chkAddMp3.UseVisualStyleBackColor = true;
             this.chkAddMp3.CheckedChanged += new System.EventHandler(this.chkAddMp3_CheckedChanged);
             // 
+            // bTnPlus
+            // 
+            this.bTnPlus.Location = new System.Drawing.Point(483, 179);
+            this.bTnPlus.Name = "bTnPlus";
+            this.bTnPlus.Size = new System.Drawing.Size(34, 23);
+            this.bTnPlus.TabIndex = 14;
+            this.bTnPlus.Text = "+";
+            this.bTnPlus.UseVisualStyleBackColor = true;
+            this.bTnPlus.Click += new System.EventHandler(this.bTnPlus_Click);
+            // 
+            // bTnMinus
+            // 
+            this.bTnMinus.Location = new System.Drawing.Point(483, 208);
+            this.bTnMinus.Name = "bTnMinus";
+            this.bTnMinus.Size = new System.Drawing.Size(34, 23);
+            this.bTnMinus.TabIndex = 15;
+            this.bTnMinus.Text = "-";
+            this.bTnMinus.UseVisualStyleBackColor = true;
+            this.bTnMinus.Click += new System.EventHandler(this.bTnMinus_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(535, 224);
+            this.ClientSize = new System.Drawing.Size(535, 407);
+            this.Controls.Add(this.bTnMinus);
+            this.Controls.Add(this.bTnPlus);
             this.Controls.Add(this.chkAddMp3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.trackGain);
@@ -173,7 +197,7 @@
             this.Controls.Add(this.trackPitch);
             this.Controls.Add(this.btnStart);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -200,6 +224,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TrackBar trackGain;
         private System.Windows.Forms.CheckBox chkAddMp3;
+        private System.Windows.Forms.Button bTnPlus;
+        private System.Windows.Forms.Button bTnMinus;
     }
 }
 
