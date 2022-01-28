@@ -42,8 +42,14 @@
             this.chkAddMp3 = new System.Windows.Forms.CheckBox();
             this.bTnPlus = new System.Windows.Forms.Button();
             this.bTnMinus = new System.Windows.Forms.Button();
+            this.tbContr = new System.Windows.Forms.TabControl();
+            this.tbPgDiap = new System.Windows.Forms.TabPage();
+            this.tbPg = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.trackPitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackGain)).BeginInit();
+            this.tbContr.SuspendLayout();
+            this.tbPgDiap.SuspendLayout();
+            this.tbPg.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnStart
@@ -83,7 +89,7 @@
             // cmbInput
             // 
             this.cmbInput.FormattingEnabled = true;
-            this.cmbInput.Location = new System.Drawing.Point(132, 14);
+            this.cmbInput.Location = new System.Drawing.Point(97, 17);
             this.cmbInput.Margin = new System.Windows.Forms.Padding(4);
             this.cmbInput.Name = "cmbInput";
             this.cmbInput.Size = new System.Drawing.Size(385, 24);
@@ -92,7 +98,7 @@
             // cmbOutput
             // 
             this.cmbOutput.FormattingEnabled = true;
-            this.cmbOutput.Location = new System.Drawing.Point(132, 47);
+            this.cmbOutput.Location = new System.Drawing.Point(97, 48);
             this.cmbOutput.Margin = new System.Windows.Forms.Padding(4);
             this.cmbOutput.Name = "cmbOutput";
             this.cmbOutput.Size = new System.Drawing.Size(385, 24);
@@ -101,7 +107,7 @@
             // lblMic
             // 
             this.lblMic.AutoSize = true;
-            this.lblMic.Location = new System.Drawing.Point(16, 17);
+            this.lblMic.Location = new System.Drawing.Point(7, 17);
             this.lblMic.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMic.Name = "lblMic";
             this.lblMic.Size = new System.Drawing.Size(82, 17);
@@ -112,7 +118,7 @@
             // lblSpeaker
             // 
             this.lblSpeaker.AutoSize = true;
-            this.lblSpeaker.Location = new System.Drawing.Point(16, 50);
+            this.lblSpeaker.Location = new System.Drawing.Point(7, 51);
             this.lblSpeaker.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSpeaker.Name = "lblSpeaker";
             this.lblSpeaker.Size = new System.Drawing.Size(61, 17);
@@ -161,7 +167,7 @@
             // 
             // bTnPlus
             // 
-            this.bTnPlus.Location = new System.Drawing.Point(483, 179);
+            this.bTnPlus.Location = new System.Drawing.Point(463, 132);
             this.bTnPlus.Name = "bTnPlus";
             this.bTnPlus.Size = new System.Drawing.Size(34, 23);
             this.bTnPlus.TabIndex = 14;
@@ -171,7 +177,7 @@
             // 
             // bTnMinus
             // 
-            this.bTnMinus.Location = new System.Drawing.Point(483, 208);
+            this.bTnMinus.Location = new System.Drawing.Point(463, 161);
             this.bTnMinus.Name = "bTnMinus";
             this.bTnMinus.Size = new System.Drawing.Size(34, 23);
             this.bTnMinus.TabIndex = 15;
@@ -179,20 +185,57 @@
             this.bTnMinus.UseVisualStyleBackColor = true;
             this.bTnMinus.Click += new System.EventHandler(this.bTnMinus_Click);
             // 
+            // tbContr
+            // 
+            this.tbContr.Controls.Add(this.tbPgDiap);
+            this.tbContr.Controls.Add(this.tbPg);
+            this.tbContr.Location = new System.Drawing.Point(12, 12);
+            this.tbContr.Name = "tbContr";
+            this.tbContr.SelectedIndex = 0;
+            this.tbContr.Size = new System.Drawing.Size(511, 219);
+            this.tbContr.TabIndex = 16;
+            this.tbContr.BindingContextChanged += new System.EventHandler(this.bTnPlus_Click);
+            // 
+            // tbPgDiap
+            // 
+            this.tbPgDiap.AutoScroll = true;
+            this.tbPgDiap.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbPgDiap.Controls.Add(this.bTnMinus);
+            this.tbPgDiap.Controls.Add(this.bTnPlus);
+            this.tbPgDiap.Location = new System.Drawing.Point(4, 25);
+            this.tbPgDiap.Name = "tbPgDiap";
+            this.tbPgDiap.Padding = new System.Windows.Forms.Padding(3);
+            this.tbPgDiap.Size = new System.Drawing.Size(503, 190);
+            this.tbPgDiap.TabIndex = 1;
+            this.tbPgDiap.Text = "Ranges";
+            this.tbPgDiap.UseVisualStyleBackColor = true;
+            this.tbPgDiap.BindingContextChanged += new System.EventHandler(this.bTnPlus_Click);
+            this.tbPgDiap.Click += new System.EventHandler(this.tbPgDiap_Click);
+            // 
+            // tbPg
+            // 
+            this.tbPg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbPg.Controls.Add(this.lblSpeaker);
+            this.tbPg.Controls.Add(this.lblMic);
+            this.tbPg.Controls.Add(this.cmbInput);
+            this.tbPg.Controls.Add(this.cmbOutput);
+            this.tbPg.Location = new System.Drawing.Point(4, 25);
+            this.tbPg.Name = "tbPg";
+            this.tbPg.Padding = new System.Windows.Forms.Padding(3);
+            this.tbPg.Size = new System.Drawing.Size(503, 190);
+            this.tbPg.TabIndex = 0;
+            this.tbPg.Text = "Settings";
+            this.tbPg.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(535, 407);
-            this.Controls.Add(this.bTnMinus);
-            this.Controls.Add(this.bTnPlus);
+            this.ClientSize = new System.Drawing.Size(535, 424);
+            this.Controls.Add(this.tbContr);
             this.Controls.Add(this.chkAddMp3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.trackGain);
-            this.Controls.Add(this.lblSpeaker);
-            this.Controls.Add(this.lblMic);
-            this.Controls.Add(this.cmbOutput);
-            this.Controls.Add(this.cmbInput);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.trackPitch);
             this.Controls.Add(this.btnStart);
@@ -206,6 +249,10 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.trackPitch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackGain)).EndInit();
+            this.tbContr.ResumeLayout(false);
+            this.tbPgDiap.ResumeLayout(false);
+            this.tbPg.ResumeLayout(false);
+            this.tbPg.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -226,6 +273,9 @@
         private System.Windows.Forms.CheckBox chkAddMp3;
         private System.Windows.Forms.Button bTnPlus;
         private System.Windows.Forms.Button bTnMinus;
+        private System.Windows.Forms.TabControl tbContr;
+        private System.Windows.Forms.TabPage tbPg;
+        private System.Windows.Forms.TabPage tbPgDiap;
     }
 }
 
