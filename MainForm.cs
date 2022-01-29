@@ -20,6 +20,7 @@ namespace PitchShifter
         int plusclick = 0;
         public static List<TextBox> TextBoxes = new List<TextBox>();
         public static List<Label> labels = new List<Label>();
+        public static List<Label> nums = new List<Label>();
         private MMDeviceCollection mInputDevices;
         private MMDeviceCollection mOutputDevices;
         private WasapiCapture mSoundIn;
@@ -200,11 +201,10 @@ namespace PitchShifter
         }
         private void Diap()
         {
+            Label num = new Label();
+            Label lastnum = nums.LastOrDefault();
             Label label = new Label();
             Label label2 = new Label();
-
-            //label.Parent = tbContr.tbPgDiap;//!!!!!!
-
             Label lastLabel = labels.LastOrDefault();
             Label lastLabel2 = labels.LastOrDefault();
             TextBox newTextBox = new TextBox();
@@ -213,12 +213,15 @@ namespace PitchShifter
             TextBox lastOldTextBox2 = TextBoxes.LastOrDefault();
             label.AutoSize = true;
             label2.AutoSize = true;
-            if (lastOldTextBox == null && lastOldTextBox2 == null && lastLabel == null && lastLabel2 == null)
+            num.AutoSize = true;
+            if (lastOldTextBox == null && lastOldTextBox2 == null && lastLabel == null && lastLabel2 == null && lastnum == null)
             {
                 newTextBox.Location = new Point(100, 70);
                 newTextBox2.Location = new Point(250, 70);
                 label.Location = new Point(70, 70);
                 label2.Location = new Point(220, 70);
+                num.Location = new Point(50, 70);
+                num.Text = "1.";
                 label.Text = "from";
                 label2.Text = "to";
             }
@@ -230,9 +233,12 @@ namespace PitchShifter
                 label2.Location = new Point(lastLabel2.Location.X, lastLabel2.Location.Y + 30);
                 label.Text = "from";
                 label2.Text = "to";
+                num.Location = new Point(lastnum.Location.X - 170, lastnum.Location.Y + 30);
+                num.Text = $"{nums.Count}.";
             }
             //tbContr.SelectedIndex[0].Add(label);
-
+            nums.Add(num);
+            this.Controls.Add(num);
             labels.Add(label);
             this.Controls.Add(label);
             labels.Add(label2);
