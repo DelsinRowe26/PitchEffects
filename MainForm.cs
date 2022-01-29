@@ -16,6 +16,8 @@ namespace PitchShifter
 {
     public partial class MainForm : Form
     {
+        //Глобальные переменные
+        int plusclick = 0;
         public static List<TextBox> TextBoxes = new List<TextBox>();
         public static List<Label> labels = new List<Label>();
         private MMDeviceCollection mInputDevices;
@@ -26,7 +28,7 @@ namespace PitchShifter
         //private VolumeSource vSab;
         private SimpleMixer mMixer;
         private ISampleSource mMp3;
-
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         public MainForm()
         {
             InitializeComponent();
@@ -179,55 +181,67 @@ namespace PitchShifter
 
         }
 
-        private void bTnPlus_Click(object sender, EventArgs e)
+        private void bTnPlus_Click(object sender, EventArgs e)// Создание диапазонов
         {
-                Label label = new Label();
-                Label label2 = new Label();
-                Label lastLabel = labels.LastOrDefault();
-                Label lastLabel2 = labels.LastOrDefault();
-                TextBox newTextBox = new TextBox();
-                TextBox newTextBox2 = new TextBox();
-                TextBox lastOldTextBox = TextBoxes.LastOrDefault();
-                TextBox lastOldTextBox2 = TextBoxes.LastOrDefault();
-                label.AutoSize = true;
-                label2.AutoSize = true;
-                if (lastOldTextBox == null && lastOldTextBox2 == null && lastLabel == null && lastLabel2 == null)
-                {
-                    newTextBox.Location = new Point(100, 70);
-                    newTextBox2.Location = new Point(250, 70);
-                    label.Location = new Point(70, 70);
-                    label2.Location = new Point(220, 70);
-                    label.Text = "from";
-                    label2.Text = "to";
-                }
-                else
-                {
-                    newTextBox.Location = new Point(lastOldTextBox.Location.X - 150, lastOldTextBox.Location.Y + 30);
-                    newTextBox2.Location = new Point(lastOldTextBox2.Location.X, lastOldTextBox2.Location.Y + 30);
-                    label.Location = new Point(lastLabel.Location.X - 150, lastLabel.Location.Y + 30);
-                    label2.Location = new Point(lastLabel2.Location.X, lastLabel2.Location.Y + 30);
-                    label.Text = "from";
-                    label2.Text = "to";
-                }
-                labels.Add(label);
-                this.Controls.Add(label);
-                labels.Add(label2);
-                this.Controls.Add(label2);
-                TextBoxes.Add(newTextBox);
-                Control.ControlCollection controls = this.Controls;
-                controls.Add(newTextBox);
-                TextBoxes.Add(newTextBox2);
-                controls.Add(newTextBox2);
+            if (plusclick < 10)
+            {
+                Diap();
+                plusclick++;
+            }
+            else
+            {
+                bTnPlus.Enabled = false;
+            }
         }
 
         private void bTnMinus_Click(object sender, EventArgs e)
         {
             
         }
-
-        private void tbPgDiap_Click(object sender, EventArgs e)
+        private void Diap()
         {
-            
+            Label label = new Label();
+            Label label2 = new Label();
+
+            //label.Parent = tbContr.tbPgDiap;//!!!!!!
+
+            Label lastLabel = labels.LastOrDefault();
+            Label lastLabel2 = labels.LastOrDefault();
+            TextBox newTextBox = new TextBox();
+            TextBox newTextBox2 = new TextBox();
+            TextBox lastOldTextBox = TextBoxes.LastOrDefault();
+            TextBox lastOldTextBox2 = TextBoxes.LastOrDefault();
+            label.AutoSize = true;
+            label2.AutoSize = true;
+            if (lastOldTextBox == null && lastOldTextBox2 == null && lastLabel == null && lastLabel2 == null)
+            {
+                newTextBox.Location = new Point(100, 70);
+                newTextBox2.Location = new Point(250, 70);
+                label.Location = new Point(70, 70);
+                label2.Location = new Point(220, 70);
+                label.Text = "from";
+                label2.Text = "to";
+            }
+            else
+            {
+                newTextBox.Location = new Point(lastOldTextBox.Location.X - 150, lastOldTextBox.Location.Y + 30);
+                newTextBox2.Location = new Point(lastOldTextBox2.Location.X, lastOldTextBox2.Location.Y + 30);
+                label.Location = new Point(lastLabel.Location.X - 150, lastLabel.Location.Y + 30);
+                label2.Location = new Point(lastLabel2.Location.X, lastLabel2.Location.Y + 30);
+                label.Text = "from";
+                label2.Text = "to";
+            }
+            //tbContr.SelectedIndex[0].Add(label);
+
+            labels.Add(label);
+            this.Controls.Add(label);
+            labels.Add(label2);
+            this.Controls.Add(label2);
+            TextBoxes.Add(newTextBox);
+            Control.ControlCollection controls = this.Controls;
+            controls.Add(newTextBox);
+            TextBoxes.Add(newTextBox2);
+            controls.Add(newTextBox2);
         }
     }
 }
