@@ -17,6 +17,8 @@ namespace PitchShifter
     public partial class MainForm : Form
     {
         //Глобальные переменные
+        int[] min = new int[10];
+        int[] max = new int[10];
         int plusclick = 0;
         public static List<TextBox> TextBoxes = new List<TextBox>();
         public static List<Label> labels = new List<Label>();
@@ -184,22 +186,14 @@ namespace PitchShifter
 
         private void bTnPlus_Click(object sender, EventArgs e)// Создание диапазонов
         {
-            if (plusclick < 10)
-            {
-                Diap();
-                plusclick++;
-            }
-            else
-            {
-                bTnPlus.Enabled = false;
-            }
+            tbDiapPlus();
         }
 
         private void bTnMinus_Click(object sender, EventArgs e)
         {
-            
+            tbDiapMinus();
         }
-        private void Diap()
+        /*private void Diap()
         {
             Label num = new Label();
             Label lastnum = nums.LastOrDefault();
@@ -248,6 +242,184 @@ namespace PitchShifter
             controls.Add(newTextBox);
             TextBoxes.Add(newTextBox2);
             controls.Add(newTextBox2);
+        }*/
+        private void tbDiapPlus()
+        {
+            if (plusclick == 0)
+            {
+                bTnMinus.Enabled = true;
+                tBxfrom1.Visible = true;
+                tBxto1.Visible = true;
+                lbFrom1.Visible = true;
+                lbTo1.Visible = true;
+                plusclick++;
+            }
+            else if (plusclick == 1)
+            {
+                lbFrom2.Visible = true;
+                tBxfrom2.Visible = true;
+                tBxto2.Visible = true;
+                lbTo2.Visible = true;
+                plusclick++;
+            }
+            else if (plusclick == 2)
+            {
+                lbFrom3.Visible = true;
+                tBxfrom3.Visible = true;
+                tBxto3.Visible = true;
+                lbTo3.Visible = true;
+                plusclick++;
+            }
+            else if (plusclick == 3)
+            {
+                lbFrom4.Visible = true;
+                tBxfrom4.Visible = true;
+                tBxto4.Visible = true;
+                lbTo4.Visible = true;
+                plusclick++;
+            }
+            else if (plusclick == 4)
+            {
+                lbFrom5.Visible = true;
+                tBxfrom5.Visible = true;
+                tBxto5.Visible = true;
+                lbTo5.Visible = true;
+                plusclick++;
+            }
+            else if (plusclick == 5)
+            {
+                lbFrom6.Visible = true;
+                tBxfrom6.Visible = true;
+                tBxto6.Visible = true;
+                lbTo6.Visible = true;
+                plusclick++;
+            }
+            else if (plusclick == 6)
+            {
+                lbFrom7.Visible = true;
+                tBxfrom7.Visible = true;
+                tBxto7.Visible = true;
+                lbTo7.Visible = true;
+                plusclick++;
+            }
+            else if (plusclick == 7)
+            {
+                lbFrom8.Visible = true;
+                tBxfrom8.Visible = true;
+                tBxto8.Visible = true;
+                lbTo8.Visible = true;
+                plusclick++;
+            }
+            else if (plusclick == 8)
+            {
+                lbFrom9.Visible = true;
+                tBxfrom9.Visible = true;
+                tBxto9.Visible = true;
+                lbTo9.Visible = true;
+                plusclick++;
+            }
+            else if (plusclick == 9)
+            {
+                lbFrom10.Visible = true;
+                tBxfrom10.Visible = true;
+                tBxto10.Visible = true;
+                lbTo10.Visible = true;
+                bTnPlus.Enabled = false;
+            }
+        }
+
+        private void btnFix_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void tbDiapMinus()
+        {
+            if (plusclick == 9)
+            {
+                lbFrom10.Visible = false;
+                tBxfrom10.Visible = false;
+                tBxto10.Visible = false;
+                lbTo10.Visible = false;
+                bTnPlus.Enabled = true;
+                plusclick--;
+            }
+            else if(plusclick == 8)
+            {
+                lbFrom9.Visible = false;
+                tBxfrom9.Visible = false;
+                tBxto9.Visible = false;
+                lbTo9.Visible = false;
+                plusclick--;
+            }
+            else if (plusclick == 7)
+            {
+                lbFrom8.Visible = false;
+                tBxfrom8.Visible = false;
+                tBxto8.Visible = false;
+                lbTo8.Visible = false;
+                plusclick--;
+            }
+            else if (plusclick == 6)
+            {
+                lbFrom7.Visible = false;
+                tBxfrom7.Visible = false;
+                tBxto7.Visible = false;
+                lbTo7.Visible = false;
+                plusclick--;
+            }
+            else if (plusclick == 5)
+            {
+                lbFrom6.Visible = false;
+                tBxfrom6.Visible = false;
+                tBxto6.Visible = false;
+                lbTo6.Visible = false;
+                plusclick--;
+            }
+            else if (plusclick == 4)
+            {
+                lbFrom5.Visible = false;
+                tBxfrom5.Visible = false;
+                tBxto5.Visible = false;
+                lbTo5.Visible = false;
+                plusclick--;
+            }
+            else if (plusclick == 3)
+            {
+                lbFrom4.Visible = false;
+                tBxfrom4.Visible = false;
+                tBxto4.Visible = false;
+                lbTo4.Visible = false;
+                plusclick--;
+            }
+            else if (plusclick == 2)
+            {
+                lbFrom3.Visible = false;
+                tBxfrom3.Visible = false;
+                tBxto3.Visible = false;
+                lbTo3.Visible = false;
+                plusclick--;
+            }
+            else if (plusclick == 1)
+            {
+                lbFrom2.Visible = false;
+                tBxfrom2.Visible = false;
+                tBxto2.Visible = false;
+                lbTo2.Visible = false;
+                plusclick--;
+            }
+            else if (plusclick == 0)
+            {
+                lbFrom1.Visible = false;
+                tBxfrom1.Visible = false;
+                tBxto1.Visible = false;
+                lbTo1.Visible = false;
+                bTnMinus.Enabled = false;
+            }
         }
     }
 }
