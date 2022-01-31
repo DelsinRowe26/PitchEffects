@@ -17,9 +17,11 @@ namespace PitchShifter
     public partial class MainForm : Form
     {
         //Глобальные переменные
+        float[] Pitch = new float[10];
+        float[] Gain = new float[10];
         int[] min = new int[10];
         int[] max = new int[10];
-        int plusclick = 0;
+        int plusclick = 0, plus = 0;
         public static List<TextBox> TextBoxes = new List<TextBox>();
         public static List<Label> labels = new List<Label>();
         public static List<Label> nums = new List<Label>();
@@ -64,7 +66,7 @@ namespace PitchShifter
         {
             try
             {
-                //Запускает устройство захвата звука с задержкой 5 мс.
+                //Запускает устройство захвата звука с задержкой 1 мс.
                 mSoundIn = new WasapiCapture(false, AudioClientShareMode.Exclusive, 1);
                 mSoundIn.Device = mInputDevices[cmbInput.SelectedIndex]; 
                 mSoundIn.Initialize();
@@ -87,7 +89,7 @@ namespace PitchShifter
                 //Добавляем наш источник звука в микшер
                 mMixer.AddSource(mDsp.ChangeSampleRate(mMixer.WaveFormat.SampleRate));
 
-                //Запускает устройство воспроизведения звука с задержкой 5 мс.
+                //Запускает устройство воспроизведения звука с задержкой 1 мс.
                 mSoundOut = new WasapiOut(false, AudioClientShareMode.Exclusive, 1);
                 mSoundOut.Device = mOutputDevices[cmbOutput.SelectedIndex];
                 mSoundOut.Initialize(mMixer.ToWaveSource(16));
@@ -252,6 +254,11 @@ namespace PitchShifter
                 tBxto1.Visible = true;
                 lbFrom1.Visible = true;
                 lbTo1.Visible = true;
+                lbPitch1.Visible = true;
+                tbPitch1.Visible = true;
+                lbGain1.Visible = true;
+                tbGain1.Visible = true;
+                btnFix.Enabled = true;
                 plusclick++;
             }
             else if (plusclick == 1)
@@ -260,6 +267,10 @@ namespace PitchShifter
                 tBxfrom2.Visible = true;
                 tBxto2.Visible = true;
                 lbTo2.Visible = true;
+                lbPitch2.Visible = true;
+                tbPitch2.Visible = true;
+                lbGain2.Visible = true;
+                tbGain2.Visible = true;
                 plusclick++;
             }
             else if (plusclick == 2)
@@ -268,6 +279,10 @@ namespace PitchShifter
                 tBxfrom3.Visible = true;
                 tBxto3.Visible = true;
                 lbTo3.Visible = true;
+                lbPitch3.Visible = true;
+                tbPitch3.Visible = true;
+                lbGain3.Visible = true;
+                tbGain3.Visible = true;
                 plusclick++;
             }
             else if (plusclick == 3)
@@ -276,6 +291,10 @@ namespace PitchShifter
                 tBxfrom4.Visible = true;
                 tBxto4.Visible = true;
                 lbTo4.Visible = true;
+                lbPitch4.Visible = true;
+                tbPitch4.Visible = true;
+                lbGain4.Visible = true;
+                tbGain4.Visible = true;
                 plusclick++;
             }
             else if (plusclick == 4)
@@ -284,6 +303,10 @@ namespace PitchShifter
                 tBxfrom5.Visible = true;
                 tBxto5.Visible = true;
                 lbTo5.Visible = true;
+                lbPitch5.Visible = true;
+                tbPitch5.Visible = true;
+                lbGain5.Visible = true;
+                tbGain5.Visible = true;
                 plusclick++;
             }
             else if (plusclick == 5)
@@ -292,6 +315,10 @@ namespace PitchShifter
                 tBxfrom6.Visible = true;
                 tBxto6.Visible = true;
                 lbTo6.Visible = true;
+                lbPitch6.Visible = true;
+                tbPitch6.Visible = true;
+                lbGain6.Visible = true;
+                tbGain6.Visible = true;
                 plusclick++;
             }
             else if (plusclick == 6)
@@ -300,6 +327,10 @@ namespace PitchShifter
                 tBxfrom7.Visible = true;
                 tBxto7.Visible = true;
                 lbTo7.Visible = true;
+                lbPitch7.Visible = true;
+                tbPitch7.Visible = true;
+                lbGain7.Visible = true;
+                tbGain7.Visible = true;
                 plusclick++;
             }
             else if (plusclick == 7)
@@ -308,6 +339,10 @@ namespace PitchShifter
                 tBxfrom8.Visible = true;
                 tBxto8.Visible = true;
                 lbTo8.Visible = true;
+                lbPitch8.Visible = true;
+                tbPitch8.Visible = true;
+                lbGain8.Visible = true;
+                tbGain8.Visible = true;
                 plusclick++;
             }
             else if (plusclick == 8)
@@ -316,6 +351,10 @@ namespace PitchShifter
                 tBxfrom9.Visible = true;
                 tBxto9.Visible = true;
                 lbTo9.Visible = true;
+                lbPitch9.Visible = true;
+                tbPitch9.Visible = true;
+                lbGain9.Visible = true;
+                tbGain9.Visible = true;
                 plusclick++;
             }
             else if (plusclick == 9)
@@ -324,19 +363,103 @@ namespace PitchShifter
                 tBxfrom10.Visible = true;
                 tBxto10.Visible = true;
                 lbTo10.Visible = true;
+                lbPitch10.Visible = true;
+                tbPitch10.Visible = true;
+                lbGain10.Visible = true;
+                tbGain10.Visible = true;
                 bTnPlus.Enabled = false;
             }
         }
 
         private void btnFix_Click(object sender, EventArgs e)
         {
-
+            for (int i = 0; i < min.Length; i++)
+            {
+                if (plusclick == 1)
+                {
+                    min[0] = int.Parse(tBxfrom1.Text);
+                    max[0] = int.Parse(tBxto1.Text);
+                    Pitch[0] = float.Parse(tbPitch1.Text);
+                    Gain[0] = float.Parse(tbGain1.Text);
+                }
+                else if (plusclick == 2)
+                {
+                    min[1] = int.Parse(tBxfrom2.Text);
+                    max[1] = int.Parse(tBxto2.Text);
+                    Pitch[1] = float.Parse(tbPitch2.Text);
+                    Gain[1] = float.Parse(tbGain2.Text);
+                }
+                else if (plusclick == 3)
+                {
+                    min[2] = int.Parse(tBxfrom3.Text);
+                    max[2] = int.Parse(tBxto3.Text);
+                    Pitch[2] = float.Parse(tbPitch3.Text);
+                    Gain[2] = float.Parse(tbGain3.Text);
+                }
+                else if (plusclick == 4)
+                {
+                    min[3] = int.Parse(tBxfrom4.Text);
+                    max[3] = int.Parse(tBxto4.Text);
+                    Pitch[3] = float.Parse(tbPitch4.Text);
+                    Gain[3] = float.Parse(tbGain4.Text);
+                }
+                else if (plusclick == 5)
+                {
+                    min[4] = int.Parse(tBxfrom5.Text);
+                    max[4] = int.Parse(tBxto5.Text);
+                    Pitch[4] = float.Parse(tbPitch5.Text);
+                    Gain[4] = float.Parse(tbGain5.Text);
+                }
+                else if (plusclick == 6)
+                {
+                    min[5] = int.Parse(tBxfrom6.Text);
+                    max[5] = int.Parse(tBxto6.Text);
+                    Pitch[5] = float.Parse(tbPitch6.Text);
+                    Gain[5] = float.Parse(tbGain6.Text);
+                }
+                else if (plusclick == 7)
+                {
+                    min[6] = int.Parse(tBxfrom7.Text);
+                    max[6] = int.Parse(tBxto7.Text);
+                    Pitch[6] = float.Parse(tbPitch7.Text);
+                    Gain[6] = float.Parse(tbGain7.Text);
+                }
+                else if (plusclick == 8)
+                {
+                    min[7] = int.Parse(tBxfrom8.Text);
+                    max[7] = int.Parse(tBxto8.Text);
+                    Pitch[7] = float.Parse(tbPitch8.Text);
+                    Gain[7] = float.Parse(tbGain8.Text);
+                }
+                else if (plusclick == 9 && plus == 0)
+                {
+                    min[8] = int.Parse(tBxfrom9.Text);
+                    max[8] = int.Parse(tBxto9.Text);
+                    Pitch[8] = float.Parse(tbPitch9.Text);
+                    Gain[8] = float.Parse(tbGain9.Text);
+                    plus++;
+                }
+                else if (plus == 1)
+                {
+                    min[9] = int.Parse(tBxfrom10.Text);
+                    max[9] = int.Parse(tBxto10.Text);
+                    Pitch[9] = float.Parse(tbPitch10.Text);
+                    Gain[9] = float.Parse(tbGain10.Text);
+                    plus--;
+                }
+            }
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
 
         }
+
+        private void textBox4_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
         private void tbDiapMinus()
         {
             if (plusclick == 9)
@@ -345,6 +468,10 @@ namespace PitchShifter
                 tBxfrom10.Visible = false;
                 tBxto10.Visible = false;
                 lbTo10.Visible = false;
+                lbPitch10.Visible = false;
+                tbPitch10.Visible = false;
+                lbGain10.Visible = false;
+                tbGain10.Visible = false;
                 bTnPlus.Enabled = true;
                 plusclick--;
             }
@@ -354,6 +481,10 @@ namespace PitchShifter
                 tBxfrom9.Visible = false;
                 tBxto9.Visible = false;
                 lbTo9.Visible = false;
+                lbPitch9.Visible = false;
+                tbPitch9.Visible = false;
+                lbGain9.Visible = false;
+                tbGain9.Visible = false;
                 plusclick--;
             }
             else if (plusclick == 7)
@@ -362,6 +493,10 @@ namespace PitchShifter
                 tBxfrom8.Visible = false;
                 tBxto8.Visible = false;
                 lbTo8.Visible = false;
+                lbPitch8.Visible = false;
+                tbPitch8.Visible = false;
+                lbGain8.Visible = false;
+                tbGain8.Visible = false;
                 plusclick--;
             }
             else if (plusclick == 6)
@@ -370,6 +505,10 @@ namespace PitchShifter
                 tBxfrom7.Visible = false;
                 tBxto7.Visible = false;
                 lbTo7.Visible = false;
+                lbPitch7.Visible = false;
+                tbPitch7.Visible = false;
+                lbGain7.Visible = false;
+                tbGain7.Visible = false;
                 plusclick--;
             }
             else if (plusclick == 5)
@@ -378,6 +517,10 @@ namespace PitchShifter
                 tBxfrom6.Visible = false;
                 tBxto6.Visible = false;
                 lbTo6.Visible = false;
+                lbPitch6.Visible = false;
+                tbPitch6.Visible = false;
+                lbGain6.Visible = false;
+                tbGain6.Visible = false;
                 plusclick--;
             }
             else if (plusclick == 4)
@@ -386,6 +529,10 @@ namespace PitchShifter
                 tBxfrom5.Visible = false;
                 tBxto5.Visible = false;
                 lbTo5.Visible = false;
+                lbPitch5.Visible = false;
+                tbPitch5.Visible = false;
+                lbGain5.Visible = false;
+                tbGain5.Visible = false;
                 plusclick--;
             }
             else if (plusclick == 3)
@@ -394,6 +541,10 @@ namespace PitchShifter
                 tBxfrom4.Visible = false;
                 tBxto4.Visible = false;
                 lbTo4.Visible = false;
+                lbPitch4.Visible = false;
+                tbPitch4.Visible = false;
+                lbGain4.Visible = false;
+                tbGain4.Visible = false;
                 plusclick--;
             }
             else if (plusclick == 2)
@@ -402,6 +553,10 @@ namespace PitchShifter
                 tBxfrom3.Visible = false;
                 tBxto3.Visible = false;
                 lbTo3.Visible = false;
+                lbPitch3.Visible = false;
+                tbPitch3.Visible = false;
+                lbGain3.Visible = false;
+                tbGain3.Visible = false;
                 plusclick--;
             }
             else if (plusclick == 1)
@@ -410,6 +565,10 @@ namespace PitchShifter
                 tBxfrom2.Visible = false;
                 tBxto2.Visible = false;
                 lbTo2.Visible = false;
+                lbPitch2.Visible = false;
+                tbPitch2.Visible = false;
+                lbGain2.Visible = false;
+                tbGain2.Visible = false;
                 plusclick--;
             }
             else if (plusclick == 0)
@@ -418,7 +577,12 @@ namespace PitchShifter
                 tBxfrom1.Visible = false;
                 tBxto1.Visible = false;
                 lbTo1.Visible = false;
+                lbPitch1.Visible = false;
+                tbPitch1.Visible = false;
+                lbGain1.Visible = false;
+                tbGain1.Visible = false;
                 bTnMinus.Enabled = false;
+                btnFix.Enabled = false;
             }
         }
     }
