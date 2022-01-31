@@ -126,16 +126,18 @@
             this.lbGain8 = new System.Windows.Forms.Label();
             this.lbGain9 = new System.Windows.Forms.Label();
             this.lbGain10 = new System.Windows.Forms.Label();
+            this.trackVolume = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.trackPitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackGain)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tbRange.SuspendLayout();
             this.tbSettings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackVolume)).BeginInit();
             this.SuspendLayout();
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(1055, 167);
+            this.btnStart.Location = new System.Drawing.Point(1055, 232);
             this.btnStart.Margin = new System.Windows.Forms.Padding(4);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(135, 28);
@@ -237,7 +239,7 @@
             // 
             this.chkAddMp3.AutoSize = true;
             this.chkAddMp3.Enabled = false;
-            this.chkAddMp3.Location = new System.Drawing.Point(873, 155);
+            this.chkAddMp3.Location = new System.Drawing.Point(873, 237);
             this.chkAddMp3.Margin = new System.Windows.Forms.Padding(4);
             this.chkAddMp3.Name = "chkAddMp3";
             this.chkAddMp3.Size = new System.Drawing.Size(137, 21);
@@ -272,7 +274,7 @@
             // btnFix
             // 
             this.btnFix.Enabled = false;
-            this.btnFix.Location = new System.Drawing.Point(1055, 128);
+            this.btnFix.Location = new System.Drawing.Point(1055, 193);
             this.btnFix.Name = "btnFix";
             this.btnFix.Size = new System.Drawing.Size(135, 29);
             this.btnFix.TabIndex = 16;
@@ -1119,12 +1121,21 @@
             this.lbGain10.Text = "Gain";
             this.lbGain10.Visible = false;
             // 
+            // trackVolume
+            // 
+            this.trackVolume.Location = new System.Drawing.Point(917, 122);
+            this.trackVolume.Name = "trackVolume";
+            this.trackVolume.Size = new System.Drawing.Size(400, 56);
+            this.trackVolume.TabIndex = 18;
+            this.trackVolume.Scroll += new System.EventHandler(this.trackVolume_Scroll);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1330, 236);
+            this.ClientSize = new System.Drawing.Size(1330, 313);
+            this.Controls.Add(this.trackVolume);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnFix);
             this.Controls.Add(this.chkAddMp3);
@@ -1148,6 +1159,7 @@
             this.tbRange.PerformLayout();
             this.tbSettings.ResumeLayout(false);
             this.tbSettings.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackVolume)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1252,6 +1264,7 @@
         private System.Windows.Forms.Label lbPitch3;
         private System.Windows.Forms.Label lbPitch2;
         private System.Windows.Forms.Label lbPitch1;
+        private System.Windows.Forms.TrackBar trackVolume;
     }
 }
 

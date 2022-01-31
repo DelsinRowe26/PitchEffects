@@ -30,7 +30,7 @@ namespace PitchShifter
         private WasapiCapture mSoundIn;
         private WasapiOut mSoundOut;
         private SampleDSP mDsp;
-        //private VolumeSource vSab;
+        private VolumeSource vSab;
         private SimpleMixer mMixer;
         private ISampleSource mMp3;
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -78,6 +78,9 @@ namespace PitchShifter
                 mDsp = new SampleDSP(source.ToSampleSource().ToMono());
                 mDsp.GainDB = trackGain.Value;
                 SetPitchShiftValue();
+
+                vSab = new VolumeSource(source.ToSampleSource().ToMono());
+                vSab.Volume = trackVolume.Value;
 
                 //Инициальный микшер
                 mMixer = new SimpleMixer(1, 44100) //моно, 44,1 КГц
@@ -128,6 +131,10 @@ namespace PitchShifter
         private void SetPitchShiftValue()
         {
             mDsp.PitchShift = (float)Math.Pow(4.0F, trackPitch.Value / 13.5F);
+        }
+        private void VolumeValue()
+        {
+            vSab.Volume = (float)Math.Pow(4.0F, trackVolume.Value / 13.5F);
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -456,6 +463,11 @@ namespace PitchShifter
         }
 
         private void textBox4_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackVolume_Scroll(object sender, EventArgs e)
         {
 
         }
