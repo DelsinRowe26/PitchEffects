@@ -30,7 +30,7 @@ namespace PitchShifter
         private WasapiCapture mSoundIn;
         private WasapiOut mSoundOut;
         private SampleDSP mDsp;
-        private VolumeSource vSab;
+        private MusicPlayer vSab = new MusicPlayer();
         private SimpleMixer mMixer;
         private ISampleSource mMp3;
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -79,8 +79,11 @@ namespace PitchShifter
                 mDsp.GainDB = trackGain.Value;
                 SetPitchShiftValue();
 
-                vSab = new VolumeSource(source.ToSampleSource().ToMono());
+                /*vSab = new VolumeSource(source.ToSampleSource().ToMono());
                 vSab.Volume = trackVolume.Value;
+                VolumeValue();*/
+                
+
 
                 //Инициальный микшер
                 mMixer = new SimpleMixer(1, 44100) //моно, 44,1 КГц
@@ -125,16 +128,13 @@ namespace PitchShifter
                 trackGain.Enabled = true;
                 trackPitch.Enabled = true;
                 chkAddMp3.Enabled = true;
+                trackVolume.Enabled = true;
             }
         }
 
         private void SetPitchShiftValue()
         {
             mDsp.PitchShift = (float)Math.Pow(4.0F, trackPitch.Value / 13.5F);
-        }
-        private void VolumeValue()
-        {
-            vSab.Volume = (float)Math.Pow(4.0F, trackVolume.Value / 13.5F);
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -469,9 +469,19 @@ namespace PitchShifter
 
         private void trackVolume_Scroll(object sender, EventArgs e)
         {
-
+            vSab.Volume = trackVolume.Value;
         }
 
+        private void trackVolume_ValueChanged(object sender, EventArgs e)
+        {
+            vSab.Volume = trackVolume.Value;
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            trackVolume.Value = 0;
+        }
+        
         private void tbDiapMinus()
         {
             if (plusclick == 9)

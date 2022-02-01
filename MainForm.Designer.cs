@@ -45,6 +45,46 @@
             this.btnFix = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tbRange = new System.Windows.Forms.TabPage();
+            this.lbGain10 = new System.Windows.Forms.Label();
+            this.lbGain9 = new System.Windows.Forms.Label();
+            this.lbGain8 = new System.Windows.Forms.Label();
+            this.lbGain7 = new System.Windows.Forms.Label();
+            this.lbGain6 = new System.Windows.Forms.Label();
+            this.lbGain5 = new System.Windows.Forms.Label();
+            this.lbGain4 = new System.Windows.Forms.Label();
+            this.lbGain3 = new System.Windows.Forms.Label();
+            this.lbGain2 = new System.Windows.Forms.Label();
+            this.lbGain1 = new System.Windows.Forms.Label();
+            this.lbPitch10 = new System.Windows.Forms.Label();
+            this.lbPitch9 = new System.Windows.Forms.Label();
+            this.lbPitch8 = new System.Windows.Forms.Label();
+            this.lbPitch7 = new System.Windows.Forms.Label();
+            this.lbPitch6 = new System.Windows.Forms.Label();
+            this.lbPitch5 = new System.Windows.Forms.Label();
+            this.lbPitch4 = new System.Windows.Forms.Label();
+            this.lbPitch3 = new System.Windows.Forms.Label();
+            this.lbPitch2 = new System.Windows.Forms.Label();
+            this.lbPitch1 = new System.Windows.Forms.Label();
+            this.tbGain10 = new System.Windows.Forms.TextBox();
+            this.tbPitch10 = new System.Windows.Forms.TextBox();
+            this.tbGain9 = new System.Windows.Forms.TextBox();
+            this.tbPitch9 = new System.Windows.Forms.TextBox();
+            this.tbGain8 = new System.Windows.Forms.TextBox();
+            this.tbPitch8 = new System.Windows.Forms.TextBox();
+            this.tbGain7 = new System.Windows.Forms.TextBox();
+            this.tbPitch7 = new System.Windows.Forms.TextBox();
+            this.tbGain6 = new System.Windows.Forms.TextBox();
+            this.tbPitch6 = new System.Windows.Forms.TextBox();
+            this.tbGain5 = new System.Windows.Forms.TextBox();
+            this.tbPitch5 = new System.Windows.Forms.TextBox();
+            this.tbGain4 = new System.Windows.Forms.TextBox();
+            this.tbPitch4 = new System.Windows.Forms.TextBox();
+            this.tbGain3 = new System.Windows.Forms.TextBox();
+            this.tbPitch3 = new System.Windows.Forms.TextBox();
+            this.tbGain2 = new System.Windows.Forms.TextBox();
+            this.tbPitch2 = new System.Windows.Forms.TextBox();
+            this.tbGain1 = new System.Windows.Forms.TextBox();
+            this.tbPitch1 = new System.Windows.Forms.TextBox();
             this.lbTo10 = new System.Windows.Forms.Label();
             this.lbTo9 = new System.Windows.Forms.Label();
             this.lbTo8 = new System.Windows.Forms.Label();
@@ -86,47 +126,8 @@
             this.tBxto1 = new System.Windows.Forms.TextBox();
             this.tBxfrom1 = new System.Windows.Forms.TextBox();
             this.tbSettings = new System.Windows.Forms.TabPage();
-            this.tbPitch1 = new System.Windows.Forms.TextBox();
-            this.tbGain1 = new System.Windows.Forms.TextBox();
-            this.tbPitch2 = new System.Windows.Forms.TextBox();
-            this.tbGain2 = new System.Windows.Forms.TextBox();
-            this.tbPitch3 = new System.Windows.Forms.TextBox();
-            this.tbGain3 = new System.Windows.Forms.TextBox();
-            this.tbGain6 = new System.Windows.Forms.TextBox();
-            this.tbPitch6 = new System.Windows.Forms.TextBox();
-            this.tbGain5 = new System.Windows.Forms.TextBox();
-            this.tbPitch5 = new System.Windows.Forms.TextBox();
-            this.tbGain4 = new System.Windows.Forms.TextBox();
-            this.tbPitch4 = new System.Windows.Forms.TextBox();
-            this.tbGain10 = new System.Windows.Forms.TextBox();
-            this.tbPitch10 = new System.Windows.Forms.TextBox();
-            this.tbGain9 = new System.Windows.Forms.TextBox();
-            this.tbPitch9 = new System.Windows.Forms.TextBox();
-            this.tbGain8 = new System.Windows.Forms.TextBox();
-            this.tbPitch8 = new System.Windows.Forms.TextBox();
-            this.tbGain7 = new System.Windows.Forms.TextBox();
-            this.tbPitch7 = new System.Windows.Forms.TextBox();
-            this.lbPitch1 = new System.Windows.Forms.Label();
-            this.lbPitch2 = new System.Windows.Forms.Label();
-            this.lbPitch3 = new System.Windows.Forms.Label();
-            this.lbPitch4 = new System.Windows.Forms.Label();
-            this.lbPitch5 = new System.Windows.Forms.Label();
-            this.lbPitch6 = new System.Windows.Forms.Label();
-            this.lbPitch7 = new System.Windows.Forms.Label();
-            this.lbPitch8 = new System.Windows.Forms.Label();
-            this.lbPitch9 = new System.Windows.Forms.Label();
-            this.lbPitch10 = new System.Windows.Forms.Label();
-            this.lbGain1 = new System.Windows.Forms.Label();
-            this.lbGain2 = new System.Windows.Forms.Label();
-            this.lbGain3 = new System.Windows.Forms.Label();
-            this.lbGain4 = new System.Windows.Forms.Label();
-            this.lbGain5 = new System.Windows.Forms.Label();
-            this.lbGain6 = new System.Windows.Forms.Label();
-            this.lbGain7 = new System.Windows.Forms.Label();
-            this.lbGain8 = new System.Windows.Forms.Label();
-            this.lbGain9 = new System.Windows.Forms.Label();
-            this.lbGain10 = new System.Windows.Forms.Label();
             this.trackVolume = new System.Windows.Forms.TrackBar();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackPitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackGain)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -384,6 +385,367 @@
             this.tbRange.TabIndex = 0;
             this.tbRange.Text = "Range";
             this.tbRange.UseVisualStyleBackColor = true;
+            // 
+            // lbGain10
+            // 
+            this.lbGain10.AutoSize = true;
+            this.lbGain10.Location = new System.Drawing.Point(583, 259);
+            this.lbGain10.Name = "lbGain10";
+            this.lbGain10.Size = new System.Drawing.Size(38, 17);
+            this.lbGain10.TabIndex = 95;
+            this.lbGain10.Text = "Gain";
+            this.lbGain10.Visible = false;
+            // 
+            // lbGain9
+            // 
+            this.lbGain9.AutoSize = true;
+            this.lbGain9.Location = new System.Drawing.Point(582, 232);
+            this.lbGain9.Name = "lbGain9";
+            this.lbGain9.Size = new System.Drawing.Size(38, 17);
+            this.lbGain9.TabIndex = 94;
+            this.lbGain9.Text = "Gain";
+            this.lbGain9.Visible = false;
+            // 
+            // lbGain8
+            // 
+            this.lbGain8.AutoSize = true;
+            this.lbGain8.Location = new System.Drawing.Point(583, 206);
+            this.lbGain8.Name = "lbGain8";
+            this.lbGain8.Size = new System.Drawing.Size(38, 17);
+            this.lbGain8.TabIndex = 93;
+            this.lbGain8.Text = "Gain";
+            this.lbGain8.Visible = false;
+            // 
+            // lbGain7
+            // 
+            this.lbGain7.AutoSize = true;
+            this.lbGain7.Location = new System.Drawing.Point(583, 178);
+            this.lbGain7.Name = "lbGain7";
+            this.lbGain7.Size = new System.Drawing.Size(38, 17);
+            this.lbGain7.TabIndex = 92;
+            this.lbGain7.Text = "Gain";
+            this.lbGain7.Visible = false;
+            // 
+            // lbGain6
+            // 
+            this.lbGain6.AutoSize = true;
+            this.lbGain6.Location = new System.Drawing.Point(583, 148);
+            this.lbGain6.Name = "lbGain6";
+            this.lbGain6.Size = new System.Drawing.Size(38, 17);
+            this.lbGain6.TabIndex = 91;
+            this.lbGain6.Text = "Gain";
+            this.lbGain6.Visible = false;
+            // 
+            // lbGain5
+            // 
+            this.lbGain5.AutoSize = true;
+            this.lbGain5.Location = new System.Drawing.Point(582, 120);
+            this.lbGain5.Name = "lbGain5";
+            this.lbGain5.Size = new System.Drawing.Size(38, 17);
+            this.lbGain5.TabIndex = 90;
+            this.lbGain5.Text = "Gain";
+            this.lbGain5.Visible = false;
+            // 
+            // lbGain4
+            // 
+            this.lbGain4.AutoSize = true;
+            this.lbGain4.Location = new System.Drawing.Point(582, 91);
+            this.lbGain4.Name = "lbGain4";
+            this.lbGain4.Size = new System.Drawing.Size(38, 17);
+            this.lbGain4.TabIndex = 89;
+            this.lbGain4.Text = "Gain";
+            this.lbGain4.Visible = false;
+            // 
+            // lbGain3
+            // 
+            this.lbGain3.AutoSize = true;
+            this.lbGain3.Location = new System.Drawing.Point(582, 63);
+            this.lbGain3.Name = "lbGain3";
+            this.lbGain3.Size = new System.Drawing.Size(38, 17);
+            this.lbGain3.TabIndex = 88;
+            this.lbGain3.Text = "Gain";
+            this.lbGain3.Visible = false;
+            // 
+            // lbGain2
+            // 
+            this.lbGain2.AutoSize = true;
+            this.lbGain2.Location = new System.Drawing.Point(582, 35);
+            this.lbGain2.Name = "lbGain2";
+            this.lbGain2.Size = new System.Drawing.Size(38, 17);
+            this.lbGain2.TabIndex = 87;
+            this.lbGain2.Text = "Gain";
+            this.lbGain2.Visible = false;
+            // 
+            // lbGain1
+            // 
+            this.lbGain1.AutoSize = true;
+            this.lbGain1.Location = new System.Drawing.Point(582, 9);
+            this.lbGain1.Name = "lbGain1";
+            this.lbGain1.Size = new System.Drawing.Size(38, 17);
+            this.lbGain1.TabIndex = 86;
+            this.lbGain1.Text = "Gain";
+            this.lbGain1.Visible = false;
+            // 
+            // lbPitch10
+            // 
+            this.lbPitch10.AutoSize = true;
+            this.lbPitch10.Location = new System.Drawing.Point(410, 260);
+            this.lbPitch10.Name = "lbPitch10";
+            this.lbPitch10.Size = new System.Drawing.Size(39, 17);
+            this.lbPitch10.TabIndex = 85;
+            this.lbPitch10.Text = "Pitch";
+            this.lbPitch10.Visible = false;
+            // 
+            // lbPitch9
+            // 
+            this.lbPitch9.AutoSize = true;
+            this.lbPitch9.Location = new System.Drawing.Point(410, 232);
+            this.lbPitch9.Name = "lbPitch9";
+            this.lbPitch9.Size = new System.Drawing.Size(39, 17);
+            this.lbPitch9.TabIndex = 84;
+            this.lbPitch9.Text = "Pitch";
+            this.lbPitch9.Visible = false;
+            // 
+            // lbPitch8
+            // 
+            this.lbPitch8.AutoSize = true;
+            this.lbPitch8.Location = new System.Drawing.Point(410, 204);
+            this.lbPitch8.Name = "lbPitch8";
+            this.lbPitch8.Size = new System.Drawing.Size(39, 17);
+            this.lbPitch8.TabIndex = 83;
+            this.lbPitch8.Text = "Pitch";
+            this.lbPitch8.Visible = false;
+            // 
+            // lbPitch7
+            // 
+            this.lbPitch7.AutoSize = true;
+            this.lbPitch7.Location = new System.Drawing.Point(410, 176);
+            this.lbPitch7.Name = "lbPitch7";
+            this.lbPitch7.Size = new System.Drawing.Size(39, 17);
+            this.lbPitch7.TabIndex = 82;
+            this.lbPitch7.Text = "Pitch";
+            this.lbPitch7.Visible = false;
+            // 
+            // lbPitch6
+            // 
+            this.lbPitch6.AutoSize = true;
+            this.lbPitch6.Location = new System.Drawing.Point(410, 148);
+            this.lbPitch6.Name = "lbPitch6";
+            this.lbPitch6.Size = new System.Drawing.Size(39, 17);
+            this.lbPitch6.TabIndex = 81;
+            this.lbPitch6.Text = "Pitch";
+            this.lbPitch6.Visible = false;
+            // 
+            // lbPitch5
+            // 
+            this.lbPitch5.AutoSize = true;
+            this.lbPitch5.Location = new System.Drawing.Point(410, 120);
+            this.lbPitch5.Name = "lbPitch5";
+            this.lbPitch5.Size = new System.Drawing.Size(39, 17);
+            this.lbPitch5.TabIndex = 80;
+            this.lbPitch5.Text = "Pitch";
+            this.lbPitch5.Visible = false;
+            // 
+            // lbPitch4
+            // 
+            this.lbPitch4.AutoSize = true;
+            this.lbPitch4.Location = new System.Drawing.Point(410, 92);
+            this.lbPitch4.Name = "lbPitch4";
+            this.lbPitch4.Size = new System.Drawing.Size(39, 17);
+            this.lbPitch4.TabIndex = 79;
+            this.lbPitch4.Text = "Pitch";
+            this.lbPitch4.Visible = false;
+            // 
+            // lbPitch3
+            // 
+            this.lbPitch3.AutoSize = true;
+            this.lbPitch3.Location = new System.Drawing.Point(410, 61);
+            this.lbPitch3.Name = "lbPitch3";
+            this.lbPitch3.Size = new System.Drawing.Size(39, 17);
+            this.lbPitch3.TabIndex = 78;
+            this.lbPitch3.Text = "Pitch";
+            this.lbPitch3.Visible = false;
+            // 
+            // lbPitch2
+            // 
+            this.lbPitch2.AutoSize = true;
+            this.lbPitch2.Location = new System.Drawing.Point(410, 35);
+            this.lbPitch2.Name = "lbPitch2";
+            this.lbPitch2.Size = new System.Drawing.Size(39, 17);
+            this.lbPitch2.TabIndex = 77;
+            this.lbPitch2.Text = "Pitch";
+            this.lbPitch2.Visible = false;
+            // 
+            // lbPitch1
+            // 
+            this.lbPitch1.AutoSize = true;
+            this.lbPitch1.Location = new System.Drawing.Point(410, 9);
+            this.lbPitch1.Name = "lbPitch1";
+            this.lbPitch1.Size = new System.Drawing.Size(39, 17);
+            this.lbPitch1.TabIndex = 76;
+            this.lbPitch1.Text = "Pitch";
+            this.lbPitch1.Visible = false;
+            // 
+            // tbGain10
+            // 
+            this.tbGain10.Location = new System.Drawing.Point(627, 257);
+            this.tbGain10.Name = "tbGain10";
+            this.tbGain10.Size = new System.Drawing.Size(100, 22);
+            this.tbGain10.TabIndex = 75;
+            this.tbGain10.Visible = false;
+            // 
+            // tbPitch10
+            // 
+            this.tbPitch10.Location = new System.Drawing.Point(455, 257);
+            this.tbPitch10.Name = "tbPitch10";
+            this.tbPitch10.Size = new System.Drawing.Size(100, 22);
+            this.tbPitch10.TabIndex = 74;
+            this.tbPitch10.Visible = false;
+            // 
+            // tbGain9
+            // 
+            this.tbGain9.Location = new System.Drawing.Point(627, 229);
+            this.tbGain9.Name = "tbGain9";
+            this.tbGain9.Size = new System.Drawing.Size(100, 22);
+            this.tbGain9.TabIndex = 73;
+            this.tbGain9.Visible = false;
+            // 
+            // tbPitch9
+            // 
+            this.tbPitch9.Location = new System.Drawing.Point(455, 229);
+            this.tbPitch9.Name = "tbPitch9";
+            this.tbPitch9.Size = new System.Drawing.Size(100, 22);
+            this.tbPitch9.TabIndex = 72;
+            this.tbPitch9.Visible = false;
+            // 
+            // tbGain8
+            // 
+            this.tbGain8.Location = new System.Drawing.Point(627, 201);
+            this.tbGain8.Name = "tbGain8";
+            this.tbGain8.Size = new System.Drawing.Size(100, 22);
+            this.tbGain8.TabIndex = 71;
+            this.tbGain8.Visible = false;
+            // 
+            // tbPitch8
+            // 
+            this.tbPitch8.Location = new System.Drawing.Point(455, 201);
+            this.tbPitch8.Name = "tbPitch8";
+            this.tbPitch8.Size = new System.Drawing.Size(100, 22);
+            this.tbPitch8.TabIndex = 70;
+            this.tbPitch8.Visible = false;
+            // 
+            // tbGain7
+            // 
+            this.tbGain7.Location = new System.Drawing.Point(627, 173);
+            this.tbGain7.Name = "tbGain7";
+            this.tbGain7.Size = new System.Drawing.Size(100, 22);
+            this.tbGain7.TabIndex = 69;
+            this.tbGain7.Visible = false;
+            // 
+            // tbPitch7
+            // 
+            this.tbPitch7.Location = new System.Drawing.Point(455, 173);
+            this.tbPitch7.Name = "tbPitch7";
+            this.tbPitch7.Size = new System.Drawing.Size(100, 22);
+            this.tbPitch7.TabIndex = 68;
+            this.tbPitch7.Visible = false;
+            // 
+            // tbGain6
+            // 
+            this.tbGain6.Location = new System.Drawing.Point(627, 145);
+            this.tbGain6.Name = "tbGain6";
+            this.tbGain6.Size = new System.Drawing.Size(100, 22);
+            this.tbGain6.TabIndex = 67;
+            this.tbGain6.Visible = false;
+            // 
+            // tbPitch6
+            // 
+            this.tbPitch6.Location = new System.Drawing.Point(455, 145);
+            this.tbPitch6.Name = "tbPitch6";
+            this.tbPitch6.Size = new System.Drawing.Size(100, 22);
+            this.tbPitch6.TabIndex = 66;
+            this.tbPitch6.Visible = false;
+            // 
+            // tbGain5
+            // 
+            this.tbGain5.Location = new System.Drawing.Point(627, 117);
+            this.tbGain5.Name = "tbGain5";
+            this.tbGain5.Size = new System.Drawing.Size(100, 22);
+            this.tbGain5.TabIndex = 65;
+            this.tbGain5.Visible = false;
+            // 
+            // tbPitch5
+            // 
+            this.tbPitch5.Location = new System.Drawing.Point(455, 117);
+            this.tbPitch5.Name = "tbPitch5";
+            this.tbPitch5.Size = new System.Drawing.Size(100, 22);
+            this.tbPitch5.TabIndex = 64;
+            this.tbPitch5.Visible = false;
+            // 
+            // tbGain4
+            // 
+            this.tbGain4.Location = new System.Drawing.Point(627, 89);
+            this.tbGain4.Name = "tbGain4";
+            this.tbGain4.Size = new System.Drawing.Size(100, 22);
+            this.tbGain4.TabIndex = 63;
+            this.tbGain4.Visible = false;
+            // 
+            // tbPitch4
+            // 
+            this.tbPitch4.Location = new System.Drawing.Point(455, 89);
+            this.tbPitch4.Name = "tbPitch4";
+            this.tbPitch4.Size = new System.Drawing.Size(100, 22);
+            this.tbPitch4.TabIndex = 62;
+            this.tbPitch4.Visible = false;
+            // 
+            // tbGain3
+            // 
+            this.tbGain3.Location = new System.Drawing.Point(627, 60);
+            this.tbGain3.Name = "tbGain3";
+            this.tbGain3.Size = new System.Drawing.Size(100, 22);
+            this.tbGain3.TabIndex = 61;
+            this.tbGain3.Visible = false;
+            // 
+            // tbPitch3
+            // 
+            this.tbPitch3.Location = new System.Drawing.Point(455, 61);
+            this.tbPitch3.Name = "tbPitch3";
+            this.tbPitch3.Size = new System.Drawing.Size(100, 22);
+            this.tbPitch3.TabIndex = 60;
+            this.tbPitch3.Visible = false;
+            // 
+            // tbGain2
+            // 
+            this.tbGain2.Location = new System.Drawing.Point(627, 32);
+            this.tbGain2.Name = "tbGain2";
+            this.tbGain2.Size = new System.Drawing.Size(100, 22);
+            this.tbGain2.TabIndex = 59;
+            this.tbGain2.Visible = false;
+            this.tbGain2.TextChanged += new System.EventHandler(this.textBox4_TextChanged_1);
+            // 
+            // tbPitch2
+            // 
+            this.tbPitch2.Location = new System.Drawing.Point(455, 33);
+            this.tbPitch2.Name = "tbPitch2";
+            this.tbPitch2.Size = new System.Drawing.Size(100, 22);
+            this.tbPitch2.TabIndex = 58;
+            this.tbPitch2.Visible = false;
+            // 
+            // tbGain1
+            // 
+            this.tbGain1.Location = new System.Drawing.Point(627, 6);
+            this.tbGain1.Name = "tbGain1";
+            this.tbGain1.Size = new System.Drawing.Size(100, 22);
+            this.tbGain1.TabIndex = 57;
+            this.tbGain1.Visible = false;
+            // 
+            // tbPitch1
+            // 
+            this.tbPitch1.Location = new System.Drawing.Point(455, 6);
+            this.tbPitch1.Name = "tbPitch1";
+            this.tbPitch1.Size = new System.Drawing.Size(100, 22);
+            this.tbPitch1.TabIndex = 56;
+            this.tbPitch1.Visible = false;
             // 
             // lbTo10
             // 
@@ -755,379 +1117,32 @@
             this.tbSettings.Location = new System.Drawing.Point(4, 25);
             this.tbSettings.Name = "tbSettings";
             this.tbSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.tbSettings.Size = new System.Drawing.Size(489, 191);
+            this.tbSettings.Size = new System.Drawing.Size(798, 191);
             this.tbSettings.TabIndex = 1;
             this.tbSettings.Text = "Settings";
             this.tbSettings.UseVisualStyleBackColor = true;
             // 
-            // tbPitch1
-            // 
-            this.tbPitch1.Location = new System.Drawing.Point(455, 6);
-            this.tbPitch1.Name = "tbPitch1";
-            this.tbPitch1.Size = new System.Drawing.Size(100, 22);
-            this.tbPitch1.TabIndex = 56;
-            this.tbPitch1.Visible = false;
-            // 
-            // tbGain1
-            // 
-            this.tbGain1.Location = new System.Drawing.Point(627, 6);
-            this.tbGain1.Name = "tbGain1";
-            this.tbGain1.Size = new System.Drawing.Size(100, 22);
-            this.tbGain1.TabIndex = 57;
-            this.tbGain1.Visible = false;
-            // 
-            // tbPitch2
-            // 
-            this.tbPitch2.Location = new System.Drawing.Point(455, 33);
-            this.tbPitch2.Name = "tbPitch2";
-            this.tbPitch2.Size = new System.Drawing.Size(100, 22);
-            this.tbPitch2.TabIndex = 58;
-            this.tbPitch2.Visible = false;
-            // 
-            // tbGain2
-            // 
-            this.tbGain2.Location = new System.Drawing.Point(627, 32);
-            this.tbGain2.Name = "tbGain2";
-            this.tbGain2.Size = new System.Drawing.Size(100, 22);
-            this.tbGain2.TabIndex = 59;
-            this.tbGain2.Visible = false;
-            this.tbGain2.TextChanged += new System.EventHandler(this.textBox4_TextChanged_1);
-            // 
-            // tbPitch3
-            // 
-            this.tbPitch3.Location = new System.Drawing.Point(455, 61);
-            this.tbPitch3.Name = "tbPitch3";
-            this.tbPitch3.Size = new System.Drawing.Size(100, 22);
-            this.tbPitch3.TabIndex = 60;
-            this.tbPitch3.Visible = false;
-            // 
-            // tbGain3
-            // 
-            this.tbGain3.Location = new System.Drawing.Point(627, 60);
-            this.tbGain3.Name = "tbGain3";
-            this.tbGain3.Size = new System.Drawing.Size(100, 22);
-            this.tbGain3.TabIndex = 61;
-            this.tbGain3.Visible = false;
-            // 
-            // tbGain6
-            // 
-            this.tbGain6.Location = new System.Drawing.Point(627, 145);
-            this.tbGain6.Name = "tbGain6";
-            this.tbGain6.Size = new System.Drawing.Size(100, 22);
-            this.tbGain6.TabIndex = 67;
-            this.tbGain6.Visible = false;
-            // 
-            // tbPitch6
-            // 
-            this.tbPitch6.Location = new System.Drawing.Point(455, 145);
-            this.tbPitch6.Name = "tbPitch6";
-            this.tbPitch6.Size = new System.Drawing.Size(100, 22);
-            this.tbPitch6.TabIndex = 66;
-            this.tbPitch6.Visible = false;
-            // 
-            // tbGain5
-            // 
-            this.tbGain5.Location = new System.Drawing.Point(627, 117);
-            this.tbGain5.Name = "tbGain5";
-            this.tbGain5.Size = new System.Drawing.Size(100, 22);
-            this.tbGain5.TabIndex = 65;
-            this.tbGain5.Visible = false;
-            // 
-            // tbPitch5
-            // 
-            this.tbPitch5.Location = new System.Drawing.Point(455, 117);
-            this.tbPitch5.Name = "tbPitch5";
-            this.tbPitch5.Size = new System.Drawing.Size(100, 22);
-            this.tbPitch5.TabIndex = 64;
-            this.tbPitch5.Visible = false;
-            // 
-            // tbGain4
-            // 
-            this.tbGain4.Location = new System.Drawing.Point(627, 89);
-            this.tbGain4.Name = "tbGain4";
-            this.tbGain4.Size = new System.Drawing.Size(100, 22);
-            this.tbGain4.TabIndex = 63;
-            this.tbGain4.Visible = false;
-            // 
-            // tbPitch4
-            // 
-            this.tbPitch4.Location = new System.Drawing.Point(455, 89);
-            this.tbPitch4.Name = "tbPitch4";
-            this.tbPitch4.Size = new System.Drawing.Size(100, 22);
-            this.tbPitch4.TabIndex = 62;
-            this.tbPitch4.Visible = false;
-            // 
-            // tbGain10
-            // 
-            this.tbGain10.Location = new System.Drawing.Point(627, 257);
-            this.tbGain10.Name = "tbGain10";
-            this.tbGain10.Size = new System.Drawing.Size(100, 22);
-            this.tbGain10.TabIndex = 75;
-            this.tbGain10.Visible = false;
-            // 
-            // tbPitch10
-            // 
-            this.tbPitch10.Location = new System.Drawing.Point(455, 257);
-            this.tbPitch10.Name = "tbPitch10";
-            this.tbPitch10.Size = new System.Drawing.Size(100, 22);
-            this.tbPitch10.TabIndex = 74;
-            this.tbPitch10.Visible = false;
-            // 
-            // tbGain9
-            // 
-            this.tbGain9.Location = new System.Drawing.Point(627, 229);
-            this.tbGain9.Name = "tbGain9";
-            this.tbGain9.Size = new System.Drawing.Size(100, 22);
-            this.tbGain9.TabIndex = 73;
-            this.tbGain9.Visible = false;
-            // 
-            // tbPitch9
-            // 
-            this.tbPitch9.Location = new System.Drawing.Point(455, 229);
-            this.tbPitch9.Name = "tbPitch9";
-            this.tbPitch9.Size = new System.Drawing.Size(100, 22);
-            this.tbPitch9.TabIndex = 72;
-            this.tbPitch9.Visible = false;
-            // 
-            // tbGain8
-            // 
-            this.tbGain8.Location = new System.Drawing.Point(627, 201);
-            this.tbGain8.Name = "tbGain8";
-            this.tbGain8.Size = new System.Drawing.Size(100, 22);
-            this.tbGain8.TabIndex = 71;
-            this.tbGain8.Visible = false;
-            // 
-            // tbPitch8
-            // 
-            this.tbPitch8.Location = new System.Drawing.Point(455, 201);
-            this.tbPitch8.Name = "tbPitch8";
-            this.tbPitch8.Size = new System.Drawing.Size(100, 22);
-            this.tbPitch8.TabIndex = 70;
-            this.tbPitch8.Visible = false;
-            // 
-            // tbGain7
-            // 
-            this.tbGain7.Location = new System.Drawing.Point(627, 173);
-            this.tbGain7.Name = "tbGain7";
-            this.tbGain7.Size = new System.Drawing.Size(100, 22);
-            this.tbGain7.TabIndex = 69;
-            this.tbGain7.Visible = false;
-            // 
-            // tbPitch7
-            // 
-            this.tbPitch7.Location = new System.Drawing.Point(455, 173);
-            this.tbPitch7.Name = "tbPitch7";
-            this.tbPitch7.Size = new System.Drawing.Size(100, 22);
-            this.tbPitch7.TabIndex = 68;
-            this.tbPitch7.Visible = false;
-            // 
-            // lbPitch1
-            // 
-            this.lbPitch1.AutoSize = true;
-            this.lbPitch1.Location = new System.Drawing.Point(410, 9);
-            this.lbPitch1.Name = "lbPitch1";
-            this.lbPitch1.Size = new System.Drawing.Size(39, 17);
-            this.lbPitch1.TabIndex = 76;
-            this.lbPitch1.Text = "Pitch";
-            this.lbPitch1.Visible = false;
-            // 
-            // lbPitch2
-            // 
-            this.lbPitch2.AutoSize = true;
-            this.lbPitch2.Location = new System.Drawing.Point(410, 35);
-            this.lbPitch2.Name = "lbPitch2";
-            this.lbPitch2.Size = new System.Drawing.Size(39, 17);
-            this.lbPitch2.TabIndex = 77;
-            this.lbPitch2.Text = "Pitch";
-            this.lbPitch2.Visible = false;
-            // 
-            // lbPitch3
-            // 
-            this.lbPitch3.AutoSize = true;
-            this.lbPitch3.Location = new System.Drawing.Point(410, 61);
-            this.lbPitch3.Name = "lbPitch3";
-            this.lbPitch3.Size = new System.Drawing.Size(39, 17);
-            this.lbPitch3.TabIndex = 78;
-            this.lbPitch3.Text = "Pitch";
-            this.lbPitch3.Visible = false;
-            // 
-            // lbPitch4
-            // 
-            this.lbPitch4.AutoSize = true;
-            this.lbPitch4.Location = new System.Drawing.Point(410, 92);
-            this.lbPitch4.Name = "lbPitch4";
-            this.lbPitch4.Size = new System.Drawing.Size(39, 17);
-            this.lbPitch4.TabIndex = 79;
-            this.lbPitch4.Text = "Pitch";
-            this.lbPitch4.Visible = false;
-            // 
-            // lbPitch5
-            // 
-            this.lbPitch5.AutoSize = true;
-            this.lbPitch5.Location = new System.Drawing.Point(410, 120);
-            this.lbPitch5.Name = "lbPitch5";
-            this.lbPitch5.Size = new System.Drawing.Size(39, 17);
-            this.lbPitch5.TabIndex = 80;
-            this.lbPitch5.Text = "Pitch";
-            this.lbPitch5.Visible = false;
-            // 
-            // lbPitch6
-            // 
-            this.lbPitch6.AutoSize = true;
-            this.lbPitch6.Location = new System.Drawing.Point(410, 148);
-            this.lbPitch6.Name = "lbPitch6";
-            this.lbPitch6.Size = new System.Drawing.Size(39, 17);
-            this.lbPitch6.TabIndex = 81;
-            this.lbPitch6.Text = "Pitch";
-            this.lbPitch6.Visible = false;
-            // 
-            // lbPitch7
-            // 
-            this.lbPitch7.AutoSize = true;
-            this.lbPitch7.Location = new System.Drawing.Point(410, 176);
-            this.lbPitch7.Name = "lbPitch7";
-            this.lbPitch7.Size = new System.Drawing.Size(39, 17);
-            this.lbPitch7.TabIndex = 82;
-            this.lbPitch7.Text = "Pitch";
-            this.lbPitch7.Visible = false;
-            // 
-            // lbPitch8
-            // 
-            this.lbPitch8.AutoSize = true;
-            this.lbPitch8.Location = new System.Drawing.Point(410, 204);
-            this.lbPitch8.Name = "lbPitch8";
-            this.lbPitch8.Size = new System.Drawing.Size(39, 17);
-            this.lbPitch8.TabIndex = 83;
-            this.lbPitch8.Text = "Pitch";
-            this.lbPitch8.Visible = false;
-            // 
-            // lbPitch9
-            // 
-            this.lbPitch9.AutoSize = true;
-            this.lbPitch9.Location = new System.Drawing.Point(410, 232);
-            this.lbPitch9.Name = "lbPitch9";
-            this.lbPitch9.Size = new System.Drawing.Size(39, 17);
-            this.lbPitch9.TabIndex = 84;
-            this.lbPitch9.Text = "Pitch";
-            this.lbPitch9.Visible = false;
-            // 
-            // lbPitch10
-            // 
-            this.lbPitch10.AutoSize = true;
-            this.lbPitch10.Location = new System.Drawing.Point(410, 260);
-            this.lbPitch10.Name = "lbPitch10";
-            this.lbPitch10.Size = new System.Drawing.Size(39, 17);
-            this.lbPitch10.TabIndex = 85;
-            this.lbPitch10.Text = "Pitch";
-            this.lbPitch10.Visible = false;
-            // 
-            // lbGain1
-            // 
-            this.lbGain1.AutoSize = true;
-            this.lbGain1.Location = new System.Drawing.Point(582, 9);
-            this.lbGain1.Name = "lbGain1";
-            this.lbGain1.Size = new System.Drawing.Size(38, 17);
-            this.lbGain1.TabIndex = 86;
-            this.lbGain1.Text = "Gain";
-            this.lbGain1.Visible = false;
-            // 
-            // lbGain2
-            // 
-            this.lbGain2.AutoSize = true;
-            this.lbGain2.Location = new System.Drawing.Point(582, 35);
-            this.lbGain2.Name = "lbGain2";
-            this.lbGain2.Size = new System.Drawing.Size(38, 17);
-            this.lbGain2.TabIndex = 87;
-            this.lbGain2.Text = "Gain";
-            this.lbGain2.Visible = false;
-            // 
-            // lbGain3
-            // 
-            this.lbGain3.AutoSize = true;
-            this.lbGain3.Location = new System.Drawing.Point(582, 63);
-            this.lbGain3.Name = "lbGain3";
-            this.lbGain3.Size = new System.Drawing.Size(38, 17);
-            this.lbGain3.TabIndex = 88;
-            this.lbGain3.Text = "Gain";
-            this.lbGain3.Visible = false;
-            // 
-            // lbGain4
-            // 
-            this.lbGain4.AutoSize = true;
-            this.lbGain4.Location = new System.Drawing.Point(582, 91);
-            this.lbGain4.Name = "lbGain4";
-            this.lbGain4.Size = new System.Drawing.Size(38, 17);
-            this.lbGain4.TabIndex = 89;
-            this.lbGain4.Text = "Gain";
-            this.lbGain4.Visible = false;
-            // 
-            // lbGain5
-            // 
-            this.lbGain5.AutoSize = true;
-            this.lbGain5.Location = new System.Drawing.Point(582, 120);
-            this.lbGain5.Name = "lbGain5";
-            this.lbGain5.Size = new System.Drawing.Size(38, 17);
-            this.lbGain5.TabIndex = 90;
-            this.lbGain5.Text = "Gain";
-            this.lbGain5.Visible = false;
-            // 
-            // lbGain6
-            // 
-            this.lbGain6.AutoSize = true;
-            this.lbGain6.Location = new System.Drawing.Point(583, 148);
-            this.lbGain6.Name = "lbGain6";
-            this.lbGain6.Size = new System.Drawing.Size(38, 17);
-            this.lbGain6.TabIndex = 91;
-            this.lbGain6.Text = "Gain";
-            this.lbGain6.Visible = false;
-            // 
-            // lbGain7
-            // 
-            this.lbGain7.AutoSize = true;
-            this.lbGain7.Location = new System.Drawing.Point(583, 178);
-            this.lbGain7.Name = "lbGain7";
-            this.lbGain7.Size = new System.Drawing.Size(38, 17);
-            this.lbGain7.TabIndex = 92;
-            this.lbGain7.Text = "Gain";
-            this.lbGain7.Visible = false;
-            // 
-            // lbGain8
-            // 
-            this.lbGain8.AutoSize = true;
-            this.lbGain8.Location = new System.Drawing.Point(583, 206);
-            this.lbGain8.Name = "lbGain8";
-            this.lbGain8.Size = new System.Drawing.Size(38, 17);
-            this.lbGain8.TabIndex = 93;
-            this.lbGain8.Text = "Gain";
-            this.lbGain8.Visible = false;
-            // 
-            // lbGain9
-            // 
-            this.lbGain9.AutoSize = true;
-            this.lbGain9.Location = new System.Drawing.Point(582, 232);
-            this.lbGain9.Name = "lbGain9";
-            this.lbGain9.Size = new System.Drawing.Size(38, 17);
-            this.lbGain9.TabIndex = 94;
-            this.lbGain9.Text = "Gain";
-            this.lbGain9.Visible = false;
-            // 
-            // lbGain10
-            // 
-            this.lbGain10.AutoSize = true;
-            this.lbGain10.Location = new System.Drawing.Point(583, 259);
-            this.lbGain10.Name = "lbGain10";
-            this.lbGain10.Size = new System.Drawing.Size(38, 17);
-            this.lbGain10.TabIndex = 95;
-            this.lbGain10.Text = "Gain";
-            this.lbGain10.Visible = false;
-            // 
             // trackVolume
             // 
+            this.trackVolume.Enabled = false;
             this.trackVolume.Location = new System.Drawing.Point(917, 122);
+            this.trackVolume.Maximum = 100;
             this.trackVolume.Name = "trackVolume";
             this.trackVolume.Size = new System.Drawing.Size(400, 56);
-            this.trackVolume.TabIndex = 18;
+            this.trackVolume.TabIndex = 8;
+            this.trackVolume.TickFrequency = 5;
             this.trackVolume.Scroll += new System.EventHandler(this.trackVolume_Scroll);
+            this.trackVolume.ValueChanged += new System.EventHandler(this.trackVolume_ValueChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(870, 128);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 17);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "Volume";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // MainForm
             // 
@@ -1135,6 +1150,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1330, 313);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.trackVolume);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnFix);
@@ -1265,6 +1281,7 @@
         private System.Windows.Forms.Label lbPitch2;
         private System.Windows.Forms.Label lbPitch1;
         private System.Windows.Forms.TrackBar trackVolume;
+        private System.Windows.Forms.Label label3;
     }
 }
 

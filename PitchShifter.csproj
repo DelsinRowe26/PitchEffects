@@ -52,6 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MusicPlayer.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SampleDSP.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
