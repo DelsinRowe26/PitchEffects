@@ -128,7 +128,7 @@ namespace PitchShifter
                 trackGain.Enabled = true;
                 trackPitch.Enabled = true;
                 chkAddMp3.Enabled = true;
-                trackVolume.Enabled = true;
+                bTnReset.Enabled = true;
             }
         }
 
@@ -464,21 +464,12 @@ namespace PitchShifter
 
         }
 
-        private void trackVolume_Scroll(object sender, EventArgs e)
+        private void bTnReset_Click(object sender, EventArgs e)
         {
-            vSab.Volume = trackVolume.Value;
+            trackGain.Value = 0;
+            trackPitch.Value = 0;
         }
 
-        private void trackVolume_ValueChanged(object sender, EventArgs e)
-        {
-            vSab.Volume = trackVolume.Value;
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-            trackVolume.Value = 0;
-        }
-        
         private void tbDiapMinus()
         {
             if (plusclick == 9)
