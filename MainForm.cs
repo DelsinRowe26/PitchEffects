@@ -75,7 +75,7 @@ namespace PitchShifter
                 var source = new SoundInSource(mSoundIn) { FillWithZeros = true };
 
                 //Init DSP для смещения высоты тона
-                mDsp = new SampleDSP(source.ToSampleSource().ToMono());
+                mDsp = new SampleDSP(source.ToSampleSource().ToStereo());
                 mDsp.GainDB = trackGain.Value;
                 SetPitchShiftValue();
 
@@ -86,7 +86,7 @@ namespace PitchShifter
 
 
                 //Инициальный микшер
-                mMixer = new SimpleMixer(1, 44100) //моно, 44,1 КГц
+                mMixer = new SimpleMixer(2, 44100) //стерео, 44,1 КГц
                 {
                     FillWithZeros = false,
                     DivideResult = true //Для этого установлено значение true, чтобы избежать звуков тиков из-за превышения -1 и 1.
@@ -178,7 +178,7 @@ namespace PitchShifter
             {
                 if (chkAddMp3.Checked)
                 {
-                    mMp3 = CodecFactory.Instance.GetCodec("test.mp3").ToMono().ToSampleSource();
+                    mMp3 = CodecFactory.Instance.GetCodec("test.mp3").ToStereo().ToSampleSource();
                     mMixer.AddSource(mMp3.ChangeSampleRate(mMixer.WaveFormat.SampleRate));
                 }
                 else
@@ -382,77 +382,74 @@ namespace PitchShifter
         {
             for (int i = 0; i < min.Length; i++)
             {
-                if (plusclick == 1)
+                switch (plusclick)
                 {
-                    min[0] = int.Parse(tBxfrom1.Text);
-                    max[0] = int.Parse(tBxto1.Text);
-                    Pitch[0] = float.Parse(tbPitch1.Text);
-                    Gain[0] = float.Parse(tbGain1.Text);
-                }
-                else if (plusclick == 2)
-                {
-                    min[1] = int.Parse(tBxfrom2.Text);
-                    max[1] = int.Parse(tBxto2.Text);
-                    Pitch[1] = float.Parse(tbPitch2.Text);
-                    Gain[1] = float.Parse(tbGain2.Text);
-                }
-                else if (plusclick == 3)
-                {
-                    min[2] = int.Parse(tBxfrom3.Text);
-                    max[2] = int.Parse(tBxto3.Text);
-                    Pitch[2] = float.Parse(tbPitch3.Text);
-                    Gain[2] = float.Parse(tbGain3.Text);
-                }
-                else if (plusclick == 4)
-                {
-                    min[3] = int.Parse(tBxfrom4.Text);
-                    max[3] = int.Parse(tBxto4.Text);
-                    Pitch[3] = float.Parse(tbPitch4.Text);
-                    Gain[3] = float.Parse(tbGain4.Text);
-                }
-                else if (plusclick == 5)
-                {
-                    min[4] = int.Parse(tBxfrom5.Text);
-                    max[4] = int.Parse(tBxto5.Text);
-                    Pitch[4] = float.Parse(tbPitch5.Text);
-                    Gain[4] = float.Parse(tbGain5.Text);
-                }
-                else if (plusclick == 6)
-                {
-                    min[5] = int.Parse(tBxfrom6.Text);
-                    max[5] = int.Parse(tBxto6.Text);
-                    Pitch[5] = float.Parse(tbPitch6.Text);
-                    Gain[5] = float.Parse(tbGain6.Text);
-                }
-                else if (plusclick == 7)
-                {
-                    min[6] = int.Parse(tBxfrom7.Text);
-                    max[6] = int.Parse(tBxto7.Text);
-                    Pitch[6] = float.Parse(tbPitch7.Text);
-                    Gain[6] = float.Parse(tbGain7.Text);
-                }
-                else if (plusclick == 8)
-                {
-                    min[7] = int.Parse(tBxfrom8.Text);
-                    max[7] = int.Parse(tBxto8.Text);
-                    Pitch[7] = float.Parse(tbPitch8.Text);
-                    Gain[7] = float.Parse(tbGain8.Text);
-                }
-                else if (plusclick == 9 && plus == 0)
-                {
-                    min[8] = int.Parse(tBxfrom9.Text);
-                    max[8] = int.Parse(tBxto9.Text);
-                    Pitch[8] = float.Parse(tbPitch9.Text);
-                    Gain[8] = float.Parse(tbGain9.Text);
-                    plus++;
-                }
-                else if (plus == 1)
-                {
-                    min[9] = int.Parse(tBxfrom10.Text);
-                    max[9] = int.Parse(tBxto10.Text);
-                    Pitch[9] = float.Parse(tbPitch10.Text);
-                    Gain[9] = float.Parse(tbGain10.Text);
-                    plus--;
+                    case 1:
+                        min[0] = int.Parse(tBxfrom1.Text);
+                        max[0] = int.Parse(tBxto1.Text);
+                        Pitch[0] = float.Parse(tbPitch1.Text);
+                        Gain[0] = float.Parse(tbGain1.Text);
+                        break;
+                    case 2:
+                        min[1] = int.Parse(tBxfrom2.Text);
+                        max[1] = int.Parse(tBxto2.Text);
+                        Pitch[1] = float.Parse(tbPitch2.Text);
+                        Gain[1] = float.Parse(tbGain2.Text);
+                        break;
+                    case 3:
+                        min[2] = int.Parse(tBxfrom3.Text);
+                        max[2] = int.Parse(tBxto3.Text);
+                        Pitch[2] = float.Parse(tbPitch3.Text);
+                        Gain[2] = float.Parse(tbGain3.Text);
+                        break;
+                    case 4:
+                        min[3] = int.Parse(tBxfrom4.Text);
+                        max[3] = int.Parse(tBxto4.Text);
+                        Pitch[3] = float.Parse(tbPitch4.Text);
+                        Gain[3] = float.Parse(tbGain4.Text);
+                        break;
+                    case 5:
+                        min[4] = int.Parse(tBxfrom5.Text);
+                        max[4] = int.Parse(tBxto5.Text);
+                        Pitch[4] = float.Parse(tbPitch5.Text);
+                        Gain[4] = float.Parse(tbGain5.Text);
+                        break;
+                    case 6:
+                        min[5] = int.Parse(tBxfrom6.Text);
+                        max[5] = int.Parse(tBxto6.Text);
+                        Pitch[5] = float.Parse(tbPitch6.Text);
+                        Gain[5] = float.Parse(tbGain6.Text);
+                        break;
+                    case 7:
+                        min[6] = int.Parse(tBxfrom7.Text);
+                        max[6] = int.Parse(tBxto7.Text);
+                        Pitch[6] = float.Parse(tbPitch7.Text);
+                        Gain[6] = float.Parse(tbGain7.Text);
+                        break;
+                    case 8:
+                        min[7] = int.Parse(tBxfrom8.Text);
+                        max[7] = int.Parse(tBxto8.Text);
+                        Pitch[7] = float.Parse(tbPitch8.Text);
+                        Gain[7] = float.Parse(tbGain8.Text);
+                        break;
+                    case 9 when plus == 0:
+                        min[8] = int.Parse(tBxfrom9.Text);
+                        max[8] = int.Parse(tBxto9.Text);
+                        Pitch[8] = float.Parse(tbPitch9.Text);
+                        Gain[8] = float.Parse(tbGain9.Text);
+                        plus++;
+                        break;
+                    default:
+                        if (plus == 1)
+                        {
+                            min[9] = int.Parse(tBxfrom10.Text);
+                            max[9] = int.Parse(tBxto10.Text);
+                            Pitch[9] = float.Parse(tbPitch10.Text);
+                            Gain[9] = float.Parse(tbGain10.Text);
+                            plus--;
+                        }
+
+                        break;
                 }
             }
         }
