@@ -126,7 +126,9 @@
             this.tBxto1 = new System.Windows.Forms.TextBox();
             this.tBxfrom1 = new System.Windows.Forms.TextBox();
             this.tbSettings = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.bTnReset = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackPitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackGain)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -137,7 +139,7 @@
             // btnStart
             // 
             this.btnStart.Location = new System.Drawing.Point(1055, 200);
-            this.btnStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(4);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(135, 28);
             this.btnStart.TabIndex = 2;
@@ -159,8 +161,9 @@
             // trackPitch
             // 
             this.trackPitch.Enabled = false;
+            this.trackPitch.LargeChange = 1;
             this.trackPitch.Location = new System.Drawing.Point(917, 14);
-            this.trackPitch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.trackPitch.Margin = new System.Windows.Forms.Padding(4);
             this.trackPitch.Minimum = -10;
             this.trackPitch.Name = "trackPitch";
             this.trackPitch.Size = new System.Drawing.Size(400, 56);
@@ -172,7 +175,7 @@
             // 
             this.cmbInput.FormattingEnabled = true;
             this.cmbInput.Location = new System.Drawing.Point(93, 11);
-            this.cmbInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbInput.Margin = new System.Windows.Forms.Padding(4);
             this.cmbInput.Name = "cmbInput";
             this.cmbInput.Size = new System.Drawing.Size(385, 24);
             this.cmbInput.TabIndex = 7;
@@ -181,7 +184,7 @@
             // 
             this.cmbOutput.FormattingEnabled = true;
             this.cmbOutput.Location = new System.Drawing.Point(93, 46);
-            this.cmbOutput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbOutput.Margin = new System.Windows.Forms.Padding(4);
             this.cmbOutput.Name = "cmbOutput";
             this.cmbOutput.Size = new System.Drawing.Size(385, 24);
             this.cmbOutput.TabIndex = 8;
@@ -226,13 +229,12 @@
             // 
             this.trackGain.Enabled = false;
             this.trackGain.Location = new System.Drawing.Point(917, 71);
-            this.trackGain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.trackGain.Maximum = 20;
-            this.trackGain.Minimum = -20;
+            this.trackGain.Margin = new System.Windows.Forms.Padding(4);
+            this.trackGain.Maximum = 30;
+            this.trackGain.Minimum = -10;
             this.trackGain.Name = "trackGain";
             this.trackGain.Size = new System.Drawing.Size(400, 56);
             this.trackGain.TabIndex = 11;
-            this.trackGain.TickFrequency = 2;
             this.trackGain.Scroll += new System.EventHandler(this.trackGain_Scroll);
             this.trackGain.ValueChanged += new System.EventHandler(this.trackGain_ValueChanged);
             // 
@@ -241,7 +243,7 @@
             this.chkAddMp3.AutoSize = true;
             this.chkAddMp3.Enabled = false;
             this.chkAddMp3.Location = new System.Drawing.Point(872, 205);
-            this.chkAddMp3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkAddMp3.Margin = new System.Windows.Forms.Padding(4);
             this.chkAddMp3.Name = "chkAddMp3";
             this.chkAddMp3.Size = new System.Drawing.Size(137, 21);
             this.chkAddMp3.TabIndex = 13;
@@ -1151,6 +1153,7 @@
             // 
             // tbSettings
             // 
+            this.tbSettings.Controls.Add(this.textBox1);
             this.tbSettings.Controls.Add(this.cmbOutput);
             this.tbSettings.Controls.Add(this.lblSpeaker);
             this.tbSettings.Controls.Add(this.lblMic);
@@ -1164,6 +1167,14 @@
             this.tbSettings.Text = "Settings";
             this.tbSettings.UseVisualStyleBackColor = true;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(93, 92);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 22);
+            this.textBox1.TabIndex = 11;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
             // bTnReset
             // 
             this.bTnReset.Enabled = false;
@@ -1175,12 +1186,23 @@
             this.bTnReset.UseVisualStyleBackColor = true;
             this.bTnReset.Click += new System.EventHandler(this.bTnReset_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(877, 118);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(132, 80);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Временная кнопка со значениями из первой версии";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1331, 251);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.bTnReset);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnFix);
@@ -1193,7 +1215,7 @@
             this.Controls.Add(this.bTnPlus);
             this.Controls.Add(this.bTnMinus);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1312,6 +1334,8 @@
         private System.Windows.Forms.Label lbPitch2;
         private System.Windows.Forms.Label lbPitch1;
         private System.Windows.Forms.Button bTnReset;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button1;
     }
 }
 

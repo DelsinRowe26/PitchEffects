@@ -7,6 +7,7 @@ using CSCore.SoundOut;//Выход звука
 using CSCore.CoreAudioAPI;
 using CSCore.Streams;
 using CSCore.Codecs;
+using CSCore.SoundOut.MMInterop;
 using System.Drawing;
 using System.Speech.Synthesis;
 using System.Collections.Generic;
@@ -17,20 +18,21 @@ namespace PitchShifter
     public partial class MainForm : Form
     {
         //Глобальные переменные
-        float[] Pitch = new float[10];
-        float[] Gain = new float[10];
+        int[] Pitch = new int[10];
+        int[] Gain = new int[10];
         int[] min = new int[10];
         int[] max = new int[10];
         int plusclick = 0, plus = 0;
-        public static List<TextBox> TextBoxes = new List<TextBox>();
+        /*public static List<TextBox> TextBoxes = new List<TextBox>();
         public static List<Label> labels = new List<Label>();
-        public static List<Label> nums = new List<Label>();
+        public static List<Label> nums = new List<Label>();*/
         private MMDeviceCollection mInputDevices;
         private MMDeviceCollection mOutputDevices;
         private WasapiCapture mSoundIn;
         private WasapiOut mSoundOut;
         private SampleDSP mDsp;
-        private MusicPlayer vSab = new MusicPlayer();
+        private WaveFormat format;
+        //private MusicPlayer vSab = new MusicPlayer();
         private SimpleMixer mMixer;
         private ISampleSource mMp3;
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -61,30 +63,27 @@ namespace PitchShifter
             }
 
         }
-
         private bool StartFullDuplex()
         {
             try
             {
                 //Запускает устройство захвата звука с задержкой 1 мс.
                 mSoundIn = new WasapiCapture(false, AudioClientShareMode.Exclusive, 1);
-                mSoundIn.Device = mInputDevices[cmbInput.SelectedIndex]; 
+                mSoundIn.Device = mInputDevices[cmbInput.SelectedIndex];
                 mSoundIn.Initialize();
                 mSoundIn.Start();
-
+                mSoundIn.WaveFormat.BytesPerSecond.ToString();
+                /*format = new WaveFormat();
+                format.BytesPerSecond.ToString();*/
+                
                 var source = new SoundInSource(mSoundIn) { FillWithZeros = true };
+
 
                 //Init DSP для смещения высоты тона
                 mDsp = new SampleDSP(source.ToSampleSource().ToStereo());
                 mDsp.GainDB = trackGain.Value;
                 SetPitchShiftValue();
-
-                /*vSab = new VolumeSource(source.ToSampleSource().ToMono());
-                vSab.Volume = trackVolume.Value;
-                VolumeValue();*/
                 
-
-
                 //Инициальный микшер
                 mMixer = new SimpleMixer(2, 44100) //стерео, 44,1 КГц
                 {
@@ -134,7 +133,7 @@ namespace PitchShifter
 
         private void SetPitchShiftValue()
         {
-            mDsp.PitchShift = (float)Math.Pow(4.0F, trackPitch.Value / 13.5F);
+            mDsp.PitchShift = (float)Math.Pow(2.0F, trackPitch.Value / 13.0F);
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -387,56 +386,56 @@ namespace PitchShifter
                     case 1:
                         min[0] = int.Parse(tBxfrom1.Text);
                         max[0] = int.Parse(tBxto1.Text);
-                        Pitch[0] = float.Parse(tbPitch1.Text);
-                        Gain[0] = float.Parse(tbGain1.Text);
+                        Pitch[0] = int.Parse(tbPitch1.Text);
+                        Gain[0] = int.Parse(tbGain1.Text);
                         break;
                     case 2:
                         min[1] = int.Parse(tBxfrom2.Text);
                         max[1] = int.Parse(tBxto2.Text);
-                        Pitch[1] = float.Parse(tbPitch2.Text);
-                        Gain[1] = float.Parse(tbGain2.Text);
+                        Pitch[1] = int.Parse(tbPitch2.Text);
+                        Gain[1] = int.Parse(tbGain2.Text);
                         break;
                     case 3:
                         min[2] = int.Parse(tBxfrom3.Text);
                         max[2] = int.Parse(tBxto3.Text);
-                        Pitch[2] = float.Parse(tbPitch3.Text);
-                        Gain[2] = float.Parse(tbGain3.Text);
+                        Pitch[2] = int.Parse(tbPitch3.Text);
+                        Gain[2] = int.Parse(tbGain3.Text);
                         break;
                     case 4:
                         min[3] = int.Parse(tBxfrom4.Text);
                         max[3] = int.Parse(tBxto4.Text);
-                        Pitch[3] = float.Parse(tbPitch4.Text);
-                        Gain[3] = float.Parse(tbGain4.Text);
+                        Pitch[3] = int.Parse(tbPitch4.Text);
+                        Gain[3] = int.Parse(tbGain4.Text);
                         break;
                     case 5:
                         min[4] = int.Parse(tBxfrom5.Text);
                         max[4] = int.Parse(tBxto5.Text);
-                        Pitch[4] = float.Parse(tbPitch5.Text);
-                        Gain[4] = float.Parse(tbGain5.Text);
+                        Pitch[4] = int.Parse(tbPitch5.Text);
+                        Gain[4] = int.Parse(tbGain5.Text);
                         break;
                     case 6:
                         min[5] = int.Parse(tBxfrom6.Text);
                         max[5] = int.Parse(tBxto6.Text);
-                        Pitch[5] = float.Parse(tbPitch6.Text);
-                        Gain[5] = float.Parse(tbGain6.Text);
+                        Pitch[5] = int.Parse(tbPitch6.Text);
+                        Gain[5] = int.Parse(tbGain6.Text);
                         break;
                     case 7:
                         min[6] = int.Parse(tBxfrom7.Text);
                         max[6] = int.Parse(tBxto7.Text);
-                        Pitch[6] = float.Parse(tbPitch7.Text);
-                        Gain[6] = float.Parse(tbGain7.Text);
+                        Pitch[6] = int.Parse(tbPitch7.Text);
+                        Gain[6] = int.Parse(tbGain7.Text);
                         break;
                     case 8:
                         min[7] = int.Parse(tBxfrom8.Text);
                         max[7] = int.Parse(tBxto8.Text);
-                        Pitch[7] = float.Parse(tbPitch8.Text);
-                        Gain[7] = float.Parse(tbGain8.Text);
+                        Pitch[7] = int.Parse(tbPitch8.Text);
+                        Gain[7] = int.Parse(tbGain8.Text);
                         break;
                     case 9 when plus == 0:
                         min[8] = int.Parse(tBxfrom9.Text);
                         max[8] = int.Parse(tBxto9.Text);
-                        Pitch[8] = float.Parse(tbPitch9.Text);
-                        Gain[8] = float.Parse(tbGain9.Text);
+                        Pitch[8] = int.Parse(tbPitch9.Text);
+                        Gain[8] = int.Parse(tbGain9.Text);
                         plus++;
                         break;
                     default:
@@ -444,8 +443,8 @@ namespace PitchShifter
                         {
                             min[9] = int.Parse(tBxfrom10.Text);
                             max[9] = int.Parse(tBxto10.Text);
-                            Pitch[9] = float.Parse(tbPitch10.Text);
-                            Gain[9] = float.Parse(tbGain10.Text);
+                            Pitch[9] = int.Parse(tbPitch10.Text);
+                            Gain[9] = int.Parse(tbGain10.Text);
                             plus--;
                         }
 
@@ -468,6 +467,17 @@ namespace PitchShifter
         {
             trackGain.Value = 0;
             trackPitch.Value = 0;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            textBox1.Text = mSoundIn.WaveFormat.SampleRate.ToString();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            trackGain.Value = 21;
+            trackPitch.Value = 6;
         }
 
         private void tbDiapMinus()
