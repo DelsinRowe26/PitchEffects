@@ -392,101 +392,101 @@
             // lbGain10
             // 
             this.lbGain10.AutoSize = true;
-            this.lbGain10.Location = new System.Drawing.Point(583, 258);
+            this.lbGain10.Location = new System.Drawing.Point(568, 258);
             this.lbGain10.Name = "lbGain10";
-            this.lbGain10.Size = new System.Drawing.Size(38, 17);
+            this.lbGain10.Size = new System.Drawing.Size(55, 17);
             this.lbGain10.TabIndex = 95;
-            this.lbGain10.Text = "Gain";
+            this.lbGain10.Text = "Volume";
             this.lbGain10.Visible = false;
             // 
             // lbGain9
             // 
             this.lbGain9.AutoSize = true;
-            this.lbGain9.Location = new System.Drawing.Point(581, 231);
+            this.lbGain9.Location = new System.Drawing.Point(566, 231);
             this.lbGain9.Name = "lbGain9";
-            this.lbGain9.Size = new System.Drawing.Size(38, 17);
+            this.lbGain9.Size = new System.Drawing.Size(55, 17);
             this.lbGain9.TabIndex = 94;
-            this.lbGain9.Text = "Gain";
+            this.lbGain9.Text = "Volume";
             this.lbGain9.Visible = false;
             // 
             // lbGain8
             // 
             this.lbGain8.AutoSize = true;
-            this.lbGain8.Location = new System.Drawing.Point(583, 206);
+            this.lbGain8.Location = new System.Drawing.Point(568, 206);
             this.lbGain8.Name = "lbGain8";
-            this.lbGain8.Size = new System.Drawing.Size(38, 17);
+            this.lbGain8.Size = new System.Drawing.Size(55, 17);
             this.lbGain8.TabIndex = 93;
-            this.lbGain8.Text = "Gain";
+            this.lbGain8.Text = "Volume";
             this.lbGain8.Visible = false;
             // 
             // lbGain7
             // 
             this.lbGain7.AutoSize = true;
-            this.lbGain7.Location = new System.Drawing.Point(583, 178);
+            this.lbGain7.Location = new System.Drawing.Point(568, 178);
             this.lbGain7.Name = "lbGain7";
-            this.lbGain7.Size = new System.Drawing.Size(38, 17);
+            this.lbGain7.Size = new System.Drawing.Size(55, 17);
             this.lbGain7.TabIndex = 92;
-            this.lbGain7.Text = "Gain";
+            this.lbGain7.Text = "Volume";
             this.lbGain7.Visible = false;
             // 
             // lbGain6
             // 
             this.lbGain6.AutoSize = true;
-            this.lbGain6.Location = new System.Drawing.Point(583, 148);
+            this.lbGain6.Location = new System.Drawing.Point(568, 148);
             this.lbGain6.Name = "lbGain6";
-            this.lbGain6.Size = new System.Drawing.Size(38, 17);
+            this.lbGain6.Size = new System.Drawing.Size(55, 17);
             this.lbGain6.TabIndex = 91;
-            this.lbGain6.Text = "Gain";
+            this.lbGain6.Text = "Volume";
             this.lbGain6.Visible = false;
             // 
             // lbGain5
             // 
             this.lbGain5.AutoSize = true;
-            this.lbGain5.Location = new System.Drawing.Point(581, 121);
+            this.lbGain5.Location = new System.Drawing.Point(566, 121);
             this.lbGain5.Name = "lbGain5";
-            this.lbGain5.Size = new System.Drawing.Size(38, 17);
+            this.lbGain5.Size = new System.Drawing.Size(55, 17);
             this.lbGain5.TabIndex = 90;
-            this.lbGain5.Text = "Gain";
+            this.lbGain5.Text = "Volume";
             this.lbGain5.Visible = false;
             // 
             // lbGain4
             // 
             this.lbGain4.AutoSize = true;
-            this.lbGain4.Location = new System.Drawing.Point(581, 91);
+            this.lbGain4.Location = new System.Drawing.Point(566, 91);
             this.lbGain4.Name = "lbGain4";
-            this.lbGain4.Size = new System.Drawing.Size(38, 17);
+            this.lbGain4.Size = new System.Drawing.Size(55, 17);
             this.lbGain4.TabIndex = 89;
-            this.lbGain4.Text = "Gain";
+            this.lbGain4.Text = "Volume";
             this.lbGain4.Visible = false;
             // 
             // lbGain3
             // 
             this.lbGain3.AutoSize = true;
-            this.lbGain3.Location = new System.Drawing.Point(581, 63);
+            this.lbGain3.Location = new System.Drawing.Point(566, 63);
             this.lbGain3.Name = "lbGain3";
-            this.lbGain3.Size = new System.Drawing.Size(38, 17);
+            this.lbGain3.Size = new System.Drawing.Size(55, 17);
             this.lbGain3.TabIndex = 88;
-            this.lbGain3.Text = "Gain";
+            this.lbGain3.Text = "Volume";
             this.lbGain3.Visible = false;
             // 
             // lbGain2
             // 
             this.lbGain2.AutoSize = true;
-            this.lbGain2.Location = new System.Drawing.Point(581, 34);
+            this.lbGain2.Location = new System.Drawing.Point(566, 34);
             this.lbGain2.Name = "lbGain2";
-            this.lbGain2.Size = new System.Drawing.Size(38, 17);
+            this.lbGain2.Size = new System.Drawing.Size(55, 17);
             this.lbGain2.TabIndex = 87;
-            this.lbGain2.Text = "Gain";
+            this.lbGain2.Text = "Volume";
             this.lbGain2.Visible = false;
             // 
             // lbGain1
             // 
             this.lbGain1.AutoSize = true;
-            this.lbGain1.Location = new System.Drawing.Point(581, 9);
+            this.lbGain1.Location = new System.Drawing.Point(566, 9);
             this.lbGain1.Name = "lbGain1";
-            this.lbGain1.Size = new System.Drawing.Size(38, 17);
+            this.lbGain1.Size = new System.Drawing.Size(55, 17);
             this.lbGain1.TabIndex = 86;
-            this.lbGain1.Text = "Gain";
+            this.lbGain1.Text = "Volume";
             this.lbGain1.Visible = false;
             // 
             // lbPitch10

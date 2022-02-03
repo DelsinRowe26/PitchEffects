@@ -7,6 +7,11 @@ using CSCore.SoundOut;//Выход звука
 using CSCore.CoreAudioAPI;
 using CSCore.Streams;
 using CSCore.Codecs;
+
+using NAudio;
+using NAudio.Wave;
+using NAudio.Wave.SampleProviders;
+
 using CSCore.SoundOut.MMInterop;
 using System.Drawing;
 using System.Speech.Synthesis;
@@ -17,6 +22,13 @@ namespace PitchShifter
 {
     public partial class MainForm : Form
     {
+        private float parabolic(float[] f, int peak)
+        {
+            if (peak == 0) return f[0];
+            var xv = 0.5f * (f[peak - 1] - f[peak + 1]) / (f[peak - 1] - 2 * f[peak] + f[peak + 1]) + peak;
+
+            return xv;
+        }
         //Глобальные переменные
         int[] Pitch = new int[10];
         int[] Gain = new int[10];
@@ -29,9 +41,9 @@ namespace PitchShifter
         private MMDeviceCollection mInputDevices;
         private MMDeviceCollection mOutputDevices;
         private WasapiCapture mSoundIn;
-        private WasapiOut mSoundOut;
+        private CSCore.SoundOut.WasapiOut mSoundOut;
         private SampleDSP mDsp;
-        private WaveFormat format;
+        //private CSCore.WaveFormat format;
         //private MusicPlayer vSab = new MusicPlayer();
         private SimpleMixer mMixer;
         private ISampleSource mMp3;
@@ -95,7 +107,7 @@ namespace PitchShifter
                 mMixer.AddSource(mDsp.ChangeSampleRate(mMixer.WaveFormat.SampleRate));
 
                 //Запускает устройство воспроизведения звука с задержкой 1 мс.
-                mSoundOut = new WasapiOut(false, AudioClientShareMode.Exclusive, 1);
+                mSoundOut = new CSCore.SoundOut.WasapiOut(false, AudioClientShareMode.Exclusive, 1);
                 mSoundOut.Device = mOutputDevices[cmbOutput.SelectedIndex];
                 mSoundOut.Initialize(mMixer.ToWaveSource(16));
                 
