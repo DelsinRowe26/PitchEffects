@@ -8,9 +8,9 @@ using CSCore.CoreAudioAPI;
 using CSCore.Streams;
 using CSCore.Codecs;
 
-using NAudio;
+/*using NAudio;
 using NAudio.Wave;
-using NAudio.Wave.SampleProviders;
+using NAudio.Wave.SampleProviders;*/
 
 using CSCore.SoundOut.MMInterop;
 using System.Drawing;
@@ -22,13 +22,7 @@ namespace PitchShifter
 {
     public partial class MainForm : Form
     {
-        private float parabolic(float[] f, int peak)
-        {
-            if (peak == 0) return f[0];
-            var xv = 0.5f * (f[peak - 1] - f[peak + 1]) / (f[peak - 1] - 2 * f[peak] + f[peak + 1]) + peak;
-
-            return xv;
-        }
+        int wave;
         //Глобальные переменные
         int[] Pitch = new int[10];
         int[] Gain = new int[10];
@@ -42,6 +36,7 @@ namespace PitchShifter
         private MMDeviceCollection mOutputDevices;
         private WasapiCapture mSoundIn;
         private CSCore.SoundOut.WasapiOut mSoundOut;
+        private WaveIn waveIn = new WaveIn();
         private SampleDSP mDsp;
         //private CSCore.WaveFormat format;
         //private MusicPlayer vSab = new MusicPlayer();
@@ -84,7 +79,8 @@ namespace PitchShifter
                 mSoundIn.Device = mInputDevices[cmbInput.SelectedIndex];
                 mSoundIn.Initialize();
                 mSoundIn.Start();
-                mSoundIn.WaveFormat.BytesPerSecond.ToString();
+                //waveIn.WaveFormat = new WaveFormat(48000, 16, 2);
+                //mSoundIn.WaveFormat.SampleRate.ToString();
                 /*format = new WaveFormat();
                 format.BytesPerSecond.ToString();*/
                 
@@ -483,7 +479,10 @@ namespace PitchShifter
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            textBox1.Text = mSoundIn.WaveFormat.SampleRate.ToString();
+            //int.Parse(mSoundIn.WaveFormat.SampleRate);
+            wave = (int)Math.Pow(2.0F, mSoundIn.WaveFormat.SampleRate / 13.0F);
+            textBox1.Text = wave.ToString();
+            //textBox1.Text = mMixer.WaveFormat.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
