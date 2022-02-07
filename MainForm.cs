@@ -38,6 +38,7 @@ namespace PitchShifter
         private CSCore.SoundOut.WasapiOut mSoundOut;
         private WaveIn waveIn = new WaveIn();
         private SampleDSP mDsp;
+        private AudioClock audio;
         //private CSCore.WaveFormat format;
         //private MusicPlayer vSab = new MusicPlayer();
         private SimpleMixer mMixer;
@@ -79,13 +80,13 @@ namespace PitchShifter
                 mSoundIn.Device = mInputDevices[cmbInput.SelectedIndex];
                 mSoundIn.Initialize();
                 mSoundIn.Start();
+
                 //waveIn.WaveFormat = new WaveFormat(48000, 16, 2);
                 //mSoundIn.WaveFormat.SampleRate.ToString();
                 /*format = new WaveFormat();
                 format.BytesPerSecond.ToString();*/
                 
                 var source = new SoundInSource(mSoundIn) { FillWithZeros = true };
-
 
                 //Init DSP для смещения высоты тона
                 mDsp = new SampleDSP(source.ToSampleSource().ToStereo());
@@ -103,10 +104,18 @@ namespace PitchShifter
                 mMixer.AddSource(mDsp.ChangeSampleRate(mMixer.WaveFormat.SampleRate));
 
                 //Запускает устройство воспроизведения звука с задержкой 1 мс.
-                mSoundOut = new CSCore.SoundOut.WasapiOut(false, AudioClientShareMode.Exclusive, 1);
+                mSoundOut = new WasapiOut(false, AudioClientShareMode.Exclusive, 1);
                 mSoundOut.Device = mOutputDevices[cmbOutput.SelectedIndex];
                 mSoundOut.Initialize(mMixer.ToWaveSource(16));
-                
+
+                textBox1.Text = audio.Pu64Position.ToString();
+
+                //var audioout = new AudioClock();
+                //audio = new AudioClock();
+                //audio.GetFrequencyNative(out long value);
+                //audio.Pu64Frequency;
+                //textBox1.Text = audio.Pu64Frequency.ToString();
+
                 //Start rolling!
                 mSoundOut.Play();
                 return true;
@@ -480,8 +489,8 @@ namespace PitchShifter
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             //int.Parse(mSoundIn.WaveFormat.SampleRate);
-            wave = (int)Math.Pow(2.0F, mSoundIn.WaveFormat.SampleRate / 13.0F);
-            textBox1.Text = wave.ToString();
+            //wave = (int)Math.Pow(2.0F, mSoundIn.WaveFormat.SampleRate / 13.0F);
+            //textBox1.Text = audio.GetFrequencyNative(out long source).ToString();
             //textBox1.Text = mMixer.WaveFormat.ToString();
         }
 
