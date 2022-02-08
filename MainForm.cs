@@ -108,7 +108,7 @@ namespace PitchShifter
                 mSoundOut.Device = mOutputDevices[cmbOutput.SelectedIndex];
                 mSoundOut.Initialize(mMixer.ToWaveSource(16));
 
-                textBox1.Text = audio.Pu64Position.ToString();
+                //textBox1.Text = audio.Pu64Position.ToString();
 
                 //var audioout = new AudioClock();
                 //audio = new AudioClock();
@@ -161,6 +161,7 @@ namespace PitchShifter
         private void trackGain_Scroll(object sender, EventArgs e)
         {
             mDsp.GainDB = trackGain.Value;
+            lbVolValue.Text = trackGain.Value.ToString();
         }
 
         private void trackGain_ValueChanged(object sender, EventArgs e)
@@ -171,6 +172,7 @@ namespace PitchShifter
         private void trackPitch_Scroll(object sender, EventArgs e)
         {
             SetPitchShiftValue();
+            lbPitchValue.Text = trackPitch.Value.ToString();
         }
 
         private void trackPitch_ValueChanged(object sender, EventArgs e)
@@ -202,11 +204,6 @@ namespace PitchShifter
                     mMixer.RemoveSource(mMp3);
                 }
             } 
-        }
-
-        private void lblMic_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void bTnPlus_Click(object sender, EventArgs e)// Создание диапазонов
@@ -470,20 +467,12 @@ namespace PitchShifter
             }
         }
 
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
         private void bTnReset_Click(object sender, EventArgs e)
         {
             trackGain.Value = 0;
             trackPitch.Value = 0;
+            lbVolValue.Text = "0";
+            lbPitchValue.Text = "0";
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

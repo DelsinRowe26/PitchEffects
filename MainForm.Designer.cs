@@ -129,6 +129,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.bTnReset = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.lbPitchValue = new System.Windows.Forms.Label();
+            this.lbVolValue = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackPitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackGain)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -150,7 +152,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(869, 25);
+            this.label2.Location = new System.Drawing.Point(870, 12);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 17);
@@ -198,7 +200,6 @@
             this.lblMic.Size = new System.Drawing.Size(82, 17);
             this.lblMic.TabIndex = 9;
             this.lblMic.Text = "Microphone";
-            this.lblMic.Click += new System.EventHandler(this.lblMic_Click);
             // 
             // lblSpeaker
             // 
@@ -217,7 +218,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(869, 76);
+            this.label1.Location = new System.Drawing.Point(870, 69);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 17);
@@ -741,7 +742,6 @@
             this.tbGain2.Size = new System.Drawing.Size(100, 22);
             this.tbGain2.TabIndex = 59;
             this.tbGain2.Visible = false;
-            this.tbGain2.TextChanged += new System.EventHandler(this.textBox4_TextChanged_1);
             // 
             // tbPitch2
             // 
@@ -1095,7 +1095,6 @@
             this.tBxto3.Size = new System.Drawing.Size(100, 22);
             this.tBxto3.TabIndex = 22;
             this.tBxto3.Visible = false;
-            this.tBxto3.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // tBxto2
             // 
@@ -1197,12 +1196,32 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // lbPitchValue
+            // 
+            this.lbPitchValue.AutoSize = true;
+            this.lbPitchValue.Location = new System.Drawing.Point(870, 29);
+            this.lbPitchValue.Name = "lbPitchValue";
+            this.lbPitchValue.Size = new System.Drawing.Size(16, 17);
+            this.lbPitchValue.TabIndex = 20;
+            this.lbPitchValue.Text = "0";
+            // 
+            // lbVolValue
+            // 
+            this.lbVolValue.AutoSize = true;
+            this.lbVolValue.Location = new System.Drawing.Point(870, 86);
+            this.lbVolValue.Name = "lbVolValue";
+            this.lbVolValue.Size = new System.Drawing.Size(16, 17);
+            this.lbVolValue.TabIndex = 21;
+            this.lbVolValue.Text = "0";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1331, 251);
+            this.Controls.Add(this.lbVolValue);
+            this.Controls.Add(this.lbPitchValue);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.bTnReset);
             this.Controls.Add(this.tabControl1);
@@ -1337,6 +1356,8 @@
         private System.Windows.Forms.Button bTnReset;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lbPitchValue;
+        private System.Windows.Forms.Label lbVolValue;
     }
 }
 
