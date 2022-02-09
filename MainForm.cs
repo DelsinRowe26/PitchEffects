@@ -7,6 +7,8 @@ using CSCore.SoundOut;//Выход звука
 using CSCore.CoreAudioAPI;
 using CSCore.Streams;
 using CSCore.Codecs;
+using CSCore.DSP;
+using WinformsVisualization.Visualization;
 
 /*using NAudio;
 using NAudio.Wave;
@@ -38,7 +40,9 @@ namespace PitchShifter
         private CSCore.SoundOut.WasapiOut mSoundOut;
         private WaveIn waveIn = new WaveIn();
         private SampleDSP mDsp;
+        private FftSize fftSize;
         private AudioClock audio;
+        private BufferSource buffer;
         //private CSCore.WaveFormat format;
         //private MusicPlayer vSab = new MusicPlayer();
         private SimpleMixer mMixer;
@@ -81,6 +85,8 @@ namespace PitchShifter
                 mSoundIn.Initialize();
                 mSoundIn.Start();
 
+                //fftSize = (FftSize)4096;
+
                 //waveIn.WaveFormat = new WaveFormat(48000, 16, 2);
                 //mSoundIn.WaveFormat.SampleRate.ToString();
                 /*format = new WaveFormat();
@@ -92,16 +98,20 @@ namespace PitchShifter
                 mDsp = new SampleDSP(source.ToSampleSource().ToStereo());
                 mDsp.GainDB = trackGain.Value;
                 SetPitchShiftValue();
-                
+
+
                 //Инициальный микшер
                 mMixer = new SimpleMixer(2, 44100) //стерео, 44,1 КГц
                 {
                     FillWithZeros = false,
-                    DivideResult = true //Для этого установлено значение true, чтобы избежать звуков тиков из-за превышения -1 и 1.
+                    DivideResult = true, //Для этого установлено значение true, чтобы избежать звуков тиков из-за превышения -1 и 1.
                 };
 
                 //Добавляем наш источник звука в микшер
                 mMixer.AddSource(mDsp.ChangeSampleRate(mMixer.WaveFormat.SampleRate));
+                //mMixer.AddSource(mDsp.ChangeSampleRate(mMixer.Length.ToString()));
+
+                
 
                 //Запускает устройство воспроизведения звука с задержкой 1 мс.
                 mSoundOut = new WasapiOut(false, AudioClientShareMode.Exclusive, 1);
@@ -161,7 +171,7 @@ namespace PitchShifter
         private void trackGain_Scroll(object sender, EventArgs e)
         {
             mDsp.GainDB = trackGain.Value;
-            lbVolValue.Text = trackGain.Value.ToString();
+            VolValue();
         }
 
         private void trackGain_ValueChanged(object sender, EventArgs e)
@@ -172,7 +182,7 @@ namespace PitchShifter
         private void trackPitch_Scroll(object sender, EventArgs e)
         {
             SetPitchShiftValue();
-            lbPitchValue.Text = trackPitch.Value.ToString();
+            PitchValue();
         }
 
         private void trackPitch_ValueChanged(object sender, EventArgs e)
@@ -487,6 +497,18 @@ namespace PitchShifter
         {
             trackGain.Value = 21;
             trackPitch.Value = 6;
+            lbVolValue.Text = "21";
+            lbPitchValue.Text = "6";
+        }
+
+        private void PitchValue()
+        {
+            lbPitchValue.Text = trackPitch.Value.ToString();
+        }
+
+        private void VolValue()
+        {
+            lbVolValue.Text = trackGain.Value.ToString();
         }
 
         private void tbDiapMinus()
