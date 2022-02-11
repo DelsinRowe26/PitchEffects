@@ -6,6 +6,7 @@ using CSCore.SoundIn;//Вход звука
 using CSCore.SoundOut;//Выход звука
 using CSCore.CoreAudioAPI;
 using CSCore.Streams;
+using CSCore.Streams.Effects;
 using CSCore.Codecs;
 using CSCore.DSP;
 using WinformsVisualization.Visualization;
@@ -41,6 +42,7 @@ namespace PitchShifter
         private WaveIn waveIn = new WaveIn();
         private SampleDSP mDsp;
         private FftSize fftSize;
+        private EqualizerChannelFilter filter;
         private AudioClock audio;
         private BufferSource buffer;
         //private CSCore.WaveFormat format;
@@ -98,7 +100,7 @@ namespace PitchShifter
 
                 buffer = new BufferSource(source, 4096);
 
-                
+                filter.Frequency.ToString();
 
                 //Init DSP для смещения высоты тона
                 mDsp = new SampleDSP(source.ToSampleSource().ToStereo());
