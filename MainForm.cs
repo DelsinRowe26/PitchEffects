@@ -94,6 +94,12 @@ namespace PitchShifter
                 
                 var source = new SoundInSource(mSoundIn) { FillWithZeros = true };
 
+                //audio.GetFrequencyNative(out long source);
+
+                buffer = new BufferSource(source, 4096);
+
+                
+
                 //Init DSP для смещения высоты тона
                 mDsp = new SampleDSP(source.ToSampleSource().ToStereo());
                 mDsp.GainDB = trackGain.Value;
@@ -110,8 +116,6 @@ namespace PitchShifter
                 //Добавляем наш источник звука в микшер
                 mMixer.AddSource(mDsp.ChangeSampleRate(mMixer.WaveFormat.SampleRate));
                 //mMixer.AddSource(mDsp.ChangeSampleRate(mMixer.Length.ToString()));
-
-                
 
                 //Запускает устройство воспроизведения звука с задержкой 1 мс.
                 mSoundOut = new WasapiOut(false, AudioClientShareMode.Exclusive, 1);
