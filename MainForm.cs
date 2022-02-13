@@ -42,6 +42,7 @@ namespace PitchShifter
         private WaveIn waveIn = new WaveIn();
         private SampleDSP mDsp;
         private FftSize fftSize;
+        private SoundInSource sound;
         private EqualizerChannelFilter filter;
         private AudioClock audio;
         private BufferSource buffer;
@@ -49,10 +50,36 @@ namespace PitchShifter
         //private MusicPlayer vSab = new MusicPlayer();
         private SimpleMixer mMixer;
         private ISampleSource mMp3;
+
+        private IWaveSource _source;
+        private PitchShifter _pitchShifter;
+        private LineSpectrum _lineSpectrum;
+        private VoicePrint3DSpectrum _voicePrint3DSpectrum;
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         public MainForm()
         {
             InitializeComponent();
+        }
+
+        /*public static void Main(string[] args)
+        {
+            int sampleRate = 44100;
+            short[] data = new short[sampleRate];
+            double frequency = Math.PI * 2 * 20000.0 / sampleRate;
+            for(int index = 0; index < sampleRate; index++)
+            {
+                data[index] = (short)(Sine(index, frequency) * Length(-0.0015, frequency, index, 1.0, sampleRate) * short.MaxValue);
+            }
+        }*/
+
+        public static double Length(double compressor, double frequency, double position, double length, int sampleRate)
+        {
+            return Math.Exp(((compressor / sampleRate) * frequency * sampleRate * (position / sampleRate)) / (length / sampleRate));
+        }
+
+        public static double Sine(int index, double frequency)//!!!!!!!!!!!!!!!!!!!!!!!!!
+        {
+            return Math.Sin(index * frequency);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -86,7 +113,7 @@ namespace PitchShifter
                 mSoundIn.Device = mInputDevices[cmbInput.SelectedIndex];
                 mSoundIn.Initialize();
                 mSoundIn.Start();
-
+                
                 //fftSize = (FftSize)4096;
 
                 //waveIn.WaveFormat = new WaveFormat(48000, 16, 2);
@@ -95,19 +122,20 @@ namespace PitchShifter
                 format.BytesPerSecond.ToString();*/
                 
                 var source = new SoundInSource(mSoundIn) { FillWithZeros = true };
+                source.Position.ToString();
+                //textBox1.Text = source.Position.ToString();
 
                 //audio.GetFrequencyNative(out long source);
 
                 buffer = new BufferSource(source, 4096);
 
-                filter.Frequency.ToString();
+                //filter.Frequency.ToString();
 
                 //Init DSP для смещения высоты тона
                 mDsp = new SampleDSP(source.ToSampleSource().ToStereo());
                 mDsp.GainDB = trackGain.Value;
                 SetPitchShiftValue();
-
-
+                
                 //Инициальный микшер
                 mMixer = new SimpleMixer(2, 44100) //стерео, 44,1 КГц
                 {
@@ -126,11 +154,16 @@ namespace PitchShifter
 
                 //textBox1.Text = audio.Pu64Position.ToString();
 
-                //var audioout = new AudioClock();
-                //audio = new AudioClock();
-                //audio.GetFrequencyNative(out long value);
-                //audio.Pu64Frequency;
-                //textBox1.Text = audio.Pu64Frequency.ToString();
+                int sampleRate = 44100;
+                short[] data = new short[sampleRate];
+                double frequency = Math.PI * 2 * 440.0 / mSoundIn.WaveFormat.SampleRate;
+                for (int index = 0; index < sampleRate; index++)
+                {
+                    data[index] = (short)(Sine(index, frequency) * Length(-0.0015, frequency, index, 1.0, sampleRate) * short.MaxValue);
+                    //textBox1.Text = frequency.ToString();
+                }
+
+                SetupSampleSource(mDsp);
 
                 //Start rolling!
                 mSoundOut.Play();
@@ -497,6 +530,7 @@ namespace PitchShifter
             //wave = (int)Math.Pow(2.0F, mSoundIn.WaveFormat.SampleRate / 13.0F);
             //textBox1.Text = audio.GetFrequencyNative(out long source).ToString();
             //textBox1.Text = mMixer.WaveFormat.ToString();
+            //textBox1.Text = mDsp.Length.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -515,6 +549,42 @@ namespace PitchShifter
         private void VolValue()
         {
             lbVolValue.Text = trackGain.Value.ToString();
+        }
+
+        private void SetupSampleSource(ISampleSource aSampleSource)
+        {
+            const FftSize fftSize = FftSize.Fft4096;
+            //создать поставщика спектра, который предоставляет данные fft на основе некоторых входных данных
+            var spectrumProvider = new BasicSpectrumProvider(aSampleSource.WaveFormat.Channels,
+                aSampleSource.WaveFormat.SampleRate, fftSize);
+
+            //линейный спектр и трехмерный спектр голосовой печати, используемый для рендеринга некоторых данных fft
+            //чтобы получить некоторые данные fft, установите ранее созданный спектрпровайдер
+            _lineSpectrum = new LineSpectrum(fftSize)
+            {
+                SpectrumProvider = spectrumProvider,
+                UseAverage = true,
+                BarCount = 50,
+                BarSpacing = 2,
+                IsXLogScale = true,
+                ScalingStrategy = ScalingStrategy.Sqrt
+            };
+            _voicePrint3DSpectrum = new VoicePrint3DSpectrum(fftSize)
+            {
+                SpectrumProvider = spectrumProvider,
+                UseAverage = true,
+                PointCount = 200,
+                IsXLogScale = true,
+                ScalingStrategy = ScalingStrategy.Sqrt
+            };
+
+            //поток уведомлений единого блока используется для перехвата воспроизводимых сэмплов
+            var notificationSource = new SingleBlockNotificationStream(aSampleSource);
+            //передать перехваченные образцы в качестве входных данных в спектропровайдер (который рассчитает на их основе БПФ)
+            notificationSource.SingleBlockRead += (s, a) => spectrumProvider.Add(a.Left, a.Right);
+
+            _source = notificationSource.ToWaveSource(16);
+            textBox1.Text = notificationSource.ToString();
         }
 
         private void tbDiapMinus()
