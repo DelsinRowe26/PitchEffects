@@ -43,7 +43,7 @@ namespace PitchShifter
         private SampleDSP mDsp;
         private FftSize fftSize;
         private SoundInSource sound;
-        private EqualizerChannelFilter filter;
+        private Equalizer filter;
         private AudioClock audio;
         private BufferSource buffer;
         //private CSCore.WaveFormat format;
@@ -55,6 +55,9 @@ namespace PitchShifter
         private PitchShifter _pitchShifter;
         private LineSpectrum _lineSpectrum;
         private VoicePrint3DSpectrum _voicePrint3DSpectrum;
+
+        private readonly Bitmap _bitmap = new Bitmap(2000, 600);
+        private int _xpos;
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         public MainForm()
         {
@@ -585,6 +588,133 @@ namespace PitchShifter
 
             _source = notificationSource.ToWaveSource(16);
             textBox1.Text = notificationSource.ToString();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            //render the spectrum
+            GenerateLineSpectrum();
+            GenerateVoice3DPrintSpectrum();
+        }
+
+        private void GenerateLineSpectrum()
+        {
+            Image image = pictureBoxTop.Image;
+            var newImage = _lineSpectrum.CreateSpectrumLine(pictureBoxTop.Size, Color.Green, Color.Red, Color.Black, true);
+            if (newImage != null)
+            {
+                pictureBoxTop.Image = newImage;
+                if (image != null)
+                    image.Dispose();
+            }
+        }
+
+        private void GenerateVoice3DPrintSpectrum()
+        {
+            using (Graphics g = Graphics.FromImage(_bitmap))
+            {
+                pictureBoxBottom.Image = null;
+                if (_voicePrint3DSpectrum.CreateVoicePrint3D(g, new RectangleF(0, 0, _bitmap.Width, _bitmap.Height),
+                    _xpos, Color.Black, 3))
+                {
+                    _xpos += 3;
+                    if (_xpos >= _bitmap.Width)
+                        _xpos = 0;
+                }
+                pictureBoxBottom.Image = _bitmap;
+            }
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var openFileDialog = new OpenFileDialog()
+            {
+                Filter = CodecFactory.SupportedFilesFilterEn,
+                Title = "Select a file..."
+            };
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                //Stop();
+
+                //open the selected file
+                ISampleSource source = CodecFactory.Instance.GetCodec(openFileDialog.FileName)
+                    .ToSampleSource()
+                    .AppendSource(x => new PitchShifter(x), out _pitchShifter);
+
+                SetupSampleSource(source);
+
+                //play the audio
+                mSoundOut = new WasapiOut();
+                mSoundOut.Initialize(_source);
+                mSoundOut.Play();
+
+                timer1.Start();
+
+                propertyGridTop.SelectedObject = _lineSpectrum;
+                propertyGridBottom.SelectedObject = _voicePrint3DSpectrum;
+            }
+        }
+
+        private void fromDefaultDeviceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //open the default device 
+            mSoundIn = new WasapiLoopbackCapture();
+            //Наш циклический захват по умолчанию открывает устройство рендеринга по умолчанию, поэтому следующее не требуется.
+            //_soundIn.Device = MMDeviceEnumerator.DefaultAudioEndpoint(DataFlow.Render, Role.Console);
+            mSoundIn.Initialize();
+
+            var soundInSource = new SoundInSource(mSoundIn);
+            ISampleSource source = soundInSource.ToSampleSource().AppendSource(x => new PitchShifter(x), out _pitchShifter);
+
+            SetupSampleSource(source);
+
+            //Нам нужно читать из нашего источника, иначе SingleBlockRead никогда не будет вызываться, и наш поставщик спектра не будет заполнен.
+            byte[] buffer = new byte[_source.WaveFormat.BytesPerSecond / 2];
+            soundInSource.DataAvailable += (s, aEvent) =>
+            {
+                int read;
+                while ((read = _source.Read(buffer, 0, buffer.Length)) > 0) ;
+            };
+
+
+            //play the audio
+            mSoundIn.Start();
+
+            timer1.Start();
+
+            propertyGridTop.SelectedObject = _lineSpectrum;
+            propertyGridBottom.SelectedObject = _voicePrint3DSpectrum;
+        }
+
+        private void pitchShiftToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form form = new Form()
+            {
+                Width = 250,
+                Height = 70,
+                Text = String.Empty
+            };
+            TrackBar trackBar = new TrackBar()
+            {
+                TickStyle = TickStyle.None,
+                Minimum = -100,
+                Maximum = 100,
+                Value = (int)(_pitchShifter != null ? Math.Log10(_pitchShifter.PitchShiftFactor) / Math.Log10(2) * 120 : 0),
+                Dock = DockStyle.Fill
+            };
+            trackBar.ValueChanged += (s, args) =>
+            {
+                if (_pitchShifter != null)
+                {
+                    _pitchShifter.PitchShiftFactor = (float)Math.Pow(2, trackBar.Value / 120.0);
+                    form.Text = trackBar.Value.ToString();
+                }
+            };
+            form.Controls.Add(trackBar);
+
+            form.ShowDialog();
+
+            form.Dispose();
         }
 
         private void tbDiapMinus()

@@ -131,16 +131,27 @@
             this.button1 = new System.Windows.Forms.Button();
             this.lbPitchValue = new System.Windows.Forms.Label();
             this.lbVolValue = new System.Windows.Forms.Label();
+            this.pictureBoxTop = new System.Windows.Forms.PictureBox();
+            this.pictureBoxBottom = new System.Windows.Forms.PictureBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fromDefaultDeviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pitchShiftToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.propertyGridTop = new System.Windows.Forms.PropertyGrid();
+            this.propertyGridBottom = new System.Windows.Forms.PropertyGrid();
             ((System.ComponentModel.ISupportInitialize)(this.trackPitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackGain)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tbRange.SuspendLayout();
             this.tbSettings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTop)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBottom)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(1055, 200);
+            this.btnStart.Location = new System.Drawing.Point(1055, 216);
             this.btnStart.Margin = new System.Windows.Forms.Padding(4);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(135, 28);
@@ -152,10 +163,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(870, 12);
+            this.label2.Location = new System.Drawing.Point(870, 27);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 17);
+            this.label2.Size = new System.Drawing.Size(36, 16);
             this.label2.TabIndex = 6;
             this.label2.Text = "Pitch";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -164,7 +175,7 @@
             // 
             this.trackPitch.Enabled = false;
             this.trackPitch.LargeChange = 1;
-            this.trackPitch.Location = new System.Drawing.Point(917, 14);
+            this.trackPitch.Location = new System.Drawing.Point(914, 27);
             this.trackPitch.Margin = new System.Windows.Forms.Padding(4);
             this.trackPitch.Minimum = -10;
             this.trackPitch.Name = "trackPitch";
@@ -197,7 +208,7 @@
             this.lblMic.Location = new System.Drawing.Point(4, 14);
             this.lblMic.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMic.Name = "lblMic";
-            this.lblMic.Size = new System.Drawing.Size(82, 17);
+            this.lblMic.Size = new System.Drawing.Size(78, 16);
             this.lblMic.TabIndex = 9;
             this.lblMic.Text = "Microphone";
             // 
@@ -207,7 +218,7 @@
             this.lblSpeaker.Location = new System.Drawing.Point(4, 52);
             this.lblSpeaker.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSpeaker.Name = "lblSpeaker";
-            this.lblSpeaker.Size = new System.Drawing.Size(61, 17);
+            this.lblSpeaker.Size = new System.Drawing.Size(59, 16);
             this.lblSpeaker.TabIndex = 10;
             this.lblSpeaker.Text = "Speaker";
             // 
@@ -218,10 +229,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(870, 69);
+            this.label1.Location = new System.Drawing.Point(870, 82);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 17);
+            this.label1.Size = new System.Drawing.Size(53, 16);
             this.label1.TabIndex = 12;
             this.label1.Text = "Volume";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -229,7 +240,7 @@
             // trackGain
             // 
             this.trackGain.Enabled = false;
-            this.trackGain.Location = new System.Drawing.Point(917, 71);
+            this.trackGain.Location = new System.Drawing.Point(917, 82);
             this.trackGain.Margin = new System.Windows.Forms.Padding(4);
             this.trackGain.Maximum = 30;
             this.trackGain.Minimum = -10;
@@ -243,10 +254,10 @@
             // 
             this.chkAddMp3.AutoSize = true;
             this.chkAddMp3.Enabled = false;
-            this.chkAddMp3.Location = new System.Drawing.Point(872, 205);
+            this.chkAddMp3.Location = new System.Drawing.Point(873, 224);
             this.chkAddMp3.Margin = new System.Windows.Forms.Padding(4);
             this.chkAddMp3.Name = "chkAddMp3";
-            this.chkAddMp3.Size = new System.Drawing.Size(137, 21);
+            this.chkAddMp3.Size = new System.Drawing.Size(133, 20);
             this.chkAddMp3.TabIndex = 13;
             this.chkAddMp3.Text = "Add Sample Mp3";
             this.chkAddMp3.UseVisualStyleBackColor = true;
@@ -254,7 +265,7 @@
             // 
             // bTnPlus
             // 
-            this.bTnPlus.Location = new System.Drawing.Point(819, 179);
+            this.bTnPlus.Location = new System.Drawing.Point(819, 195);
             this.bTnPlus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bTnPlus.Name = "bTnPlus";
             this.bTnPlus.Size = new System.Drawing.Size(35, 23);
@@ -266,7 +277,7 @@
             // bTnMinus
             // 
             this.bTnMinus.Enabled = false;
-            this.bTnMinus.Location = new System.Drawing.Point(819, 207);
+            this.bTnMinus.Location = new System.Drawing.Point(819, 222);
             this.bTnMinus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bTnMinus.Name = "bTnMinus";
             this.bTnMinus.Size = new System.Drawing.Size(35, 23);
@@ -278,7 +289,7 @@
             // btnFix
             // 
             this.btnFix.Enabled = false;
-            this.btnFix.Location = new System.Drawing.Point(1055, 159);
+            this.btnFix.Location = new System.Drawing.Point(1055, 180);
             this.btnFix.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnFix.Name = "btnFix";
             this.btnFix.Size = new System.Drawing.Size(135, 30);
@@ -291,7 +302,7 @@
             // 
             this.tabControl1.Controls.Add(this.tbRange);
             this.tabControl1.Controls.Add(this.tbSettings);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Location = new System.Drawing.Point(12, 43);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -395,7 +406,7 @@
             this.lbGain10.AutoSize = true;
             this.lbGain10.Location = new System.Drawing.Point(568, 258);
             this.lbGain10.Name = "lbGain10";
-            this.lbGain10.Size = new System.Drawing.Size(55, 17);
+            this.lbGain10.Size = new System.Drawing.Size(53, 16);
             this.lbGain10.TabIndex = 95;
             this.lbGain10.Text = "Volume";
             this.lbGain10.Visible = false;
@@ -405,7 +416,7 @@
             this.lbGain9.AutoSize = true;
             this.lbGain9.Location = new System.Drawing.Point(566, 231);
             this.lbGain9.Name = "lbGain9";
-            this.lbGain9.Size = new System.Drawing.Size(55, 17);
+            this.lbGain9.Size = new System.Drawing.Size(53, 16);
             this.lbGain9.TabIndex = 94;
             this.lbGain9.Text = "Volume";
             this.lbGain9.Visible = false;
@@ -415,7 +426,7 @@
             this.lbGain8.AutoSize = true;
             this.lbGain8.Location = new System.Drawing.Point(568, 206);
             this.lbGain8.Name = "lbGain8";
-            this.lbGain8.Size = new System.Drawing.Size(55, 17);
+            this.lbGain8.Size = new System.Drawing.Size(53, 16);
             this.lbGain8.TabIndex = 93;
             this.lbGain8.Text = "Volume";
             this.lbGain8.Visible = false;
@@ -425,7 +436,7 @@
             this.lbGain7.AutoSize = true;
             this.lbGain7.Location = new System.Drawing.Point(568, 178);
             this.lbGain7.Name = "lbGain7";
-            this.lbGain7.Size = new System.Drawing.Size(55, 17);
+            this.lbGain7.Size = new System.Drawing.Size(53, 16);
             this.lbGain7.TabIndex = 92;
             this.lbGain7.Text = "Volume";
             this.lbGain7.Visible = false;
@@ -435,7 +446,7 @@
             this.lbGain6.AutoSize = true;
             this.lbGain6.Location = new System.Drawing.Point(568, 148);
             this.lbGain6.Name = "lbGain6";
-            this.lbGain6.Size = new System.Drawing.Size(55, 17);
+            this.lbGain6.Size = new System.Drawing.Size(53, 16);
             this.lbGain6.TabIndex = 91;
             this.lbGain6.Text = "Volume";
             this.lbGain6.Visible = false;
@@ -445,7 +456,7 @@
             this.lbGain5.AutoSize = true;
             this.lbGain5.Location = new System.Drawing.Point(566, 121);
             this.lbGain5.Name = "lbGain5";
-            this.lbGain5.Size = new System.Drawing.Size(55, 17);
+            this.lbGain5.Size = new System.Drawing.Size(53, 16);
             this.lbGain5.TabIndex = 90;
             this.lbGain5.Text = "Volume";
             this.lbGain5.Visible = false;
@@ -455,7 +466,7 @@
             this.lbGain4.AutoSize = true;
             this.lbGain4.Location = new System.Drawing.Point(566, 91);
             this.lbGain4.Name = "lbGain4";
-            this.lbGain4.Size = new System.Drawing.Size(55, 17);
+            this.lbGain4.Size = new System.Drawing.Size(53, 16);
             this.lbGain4.TabIndex = 89;
             this.lbGain4.Text = "Volume";
             this.lbGain4.Visible = false;
@@ -465,7 +476,7 @@
             this.lbGain3.AutoSize = true;
             this.lbGain3.Location = new System.Drawing.Point(566, 63);
             this.lbGain3.Name = "lbGain3";
-            this.lbGain3.Size = new System.Drawing.Size(55, 17);
+            this.lbGain3.Size = new System.Drawing.Size(53, 16);
             this.lbGain3.TabIndex = 88;
             this.lbGain3.Text = "Volume";
             this.lbGain3.Visible = false;
@@ -475,7 +486,7 @@
             this.lbGain2.AutoSize = true;
             this.lbGain2.Location = new System.Drawing.Point(566, 34);
             this.lbGain2.Name = "lbGain2";
-            this.lbGain2.Size = new System.Drawing.Size(55, 17);
+            this.lbGain2.Size = new System.Drawing.Size(53, 16);
             this.lbGain2.TabIndex = 87;
             this.lbGain2.Text = "Volume";
             this.lbGain2.Visible = false;
@@ -485,7 +496,7 @@
             this.lbGain1.AutoSize = true;
             this.lbGain1.Location = new System.Drawing.Point(566, 9);
             this.lbGain1.Name = "lbGain1";
-            this.lbGain1.Size = new System.Drawing.Size(55, 17);
+            this.lbGain1.Size = new System.Drawing.Size(53, 16);
             this.lbGain1.TabIndex = 86;
             this.lbGain1.Text = "Volume";
             this.lbGain1.Visible = false;
@@ -495,7 +506,7 @@
             this.lbPitch10.AutoSize = true;
             this.lbPitch10.Location = new System.Drawing.Point(411, 260);
             this.lbPitch10.Name = "lbPitch10";
-            this.lbPitch10.Size = new System.Drawing.Size(39, 17);
+            this.lbPitch10.Size = new System.Drawing.Size(36, 16);
             this.lbPitch10.TabIndex = 85;
             this.lbPitch10.Text = "Pitch";
             this.lbPitch10.Visible = false;
@@ -505,7 +516,7 @@
             this.lbPitch9.AutoSize = true;
             this.lbPitch9.Location = new System.Drawing.Point(411, 231);
             this.lbPitch9.Name = "lbPitch9";
-            this.lbPitch9.Size = new System.Drawing.Size(39, 17);
+            this.lbPitch9.Size = new System.Drawing.Size(36, 16);
             this.lbPitch9.TabIndex = 84;
             this.lbPitch9.Text = "Pitch";
             this.lbPitch9.Visible = false;
@@ -515,7 +526,7 @@
             this.lbPitch8.AutoSize = true;
             this.lbPitch8.Location = new System.Drawing.Point(411, 204);
             this.lbPitch8.Name = "lbPitch8";
-            this.lbPitch8.Size = new System.Drawing.Size(39, 17);
+            this.lbPitch8.Size = new System.Drawing.Size(36, 16);
             this.lbPitch8.TabIndex = 83;
             this.lbPitch8.Text = "Pitch";
             this.lbPitch8.Visible = false;
@@ -525,7 +536,7 @@
             this.lbPitch7.AutoSize = true;
             this.lbPitch7.Location = new System.Drawing.Point(411, 176);
             this.lbPitch7.Name = "lbPitch7";
-            this.lbPitch7.Size = new System.Drawing.Size(39, 17);
+            this.lbPitch7.Size = new System.Drawing.Size(36, 16);
             this.lbPitch7.TabIndex = 82;
             this.lbPitch7.Text = "Pitch";
             this.lbPitch7.Visible = false;
@@ -535,7 +546,7 @@
             this.lbPitch6.AutoSize = true;
             this.lbPitch6.Location = new System.Drawing.Point(411, 148);
             this.lbPitch6.Name = "lbPitch6";
-            this.lbPitch6.Size = new System.Drawing.Size(39, 17);
+            this.lbPitch6.Size = new System.Drawing.Size(36, 16);
             this.lbPitch6.TabIndex = 81;
             this.lbPitch6.Text = "Pitch";
             this.lbPitch6.Visible = false;
@@ -545,7 +556,7 @@
             this.lbPitch5.AutoSize = true;
             this.lbPitch5.Location = new System.Drawing.Point(411, 121);
             this.lbPitch5.Name = "lbPitch5";
-            this.lbPitch5.Size = new System.Drawing.Size(39, 17);
+            this.lbPitch5.Size = new System.Drawing.Size(36, 16);
             this.lbPitch5.TabIndex = 80;
             this.lbPitch5.Text = "Pitch";
             this.lbPitch5.Visible = false;
@@ -555,7 +566,7 @@
             this.lbPitch4.AutoSize = true;
             this.lbPitch4.Location = new System.Drawing.Point(411, 92);
             this.lbPitch4.Name = "lbPitch4";
-            this.lbPitch4.Size = new System.Drawing.Size(39, 17);
+            this.lbPitch4.Size = new System.Drawing.Size(36, 16);
             this.lbPitch4.TabIndex = 79;
             this.lbPitch4.Text = "Pitch";
             this.lbPitch4.Visible = false;
@@ -565,7 +576,7 @@
             this.lbPitch3.AutoSize = true;
             this.lbPitch3.Location = new System.Drawing.Point(411, 62);
             this.lbPitch3.Name = "lbPitch3";
-            this.lbPitch3.Size = new System.Drawing.Size(39, 17);
+            this.lbPitch3.Size = new System.Drawing.Size(36, 16);
             this.lbPitch3.TabIndex = 78;
             this.lbPitch3.Text = "Pitch";
             this.lbPitch3.Visible = false;
@@ -575,7 +586,7 @@
             this.lbPitch2.AutoSize = true;
             this.lbPitch2.Location = new System.Drawing.Point(411, 34);
             this.lbPitch2.Name = "lbPitch2";
-            this.lbPitch2.Size = new System.Drawing.Size(39, 17);
+            this.lbPitch2.Size = new System.Drawing.Size(36, 16);
             this.lbPitch2.TabIndex = 77;
             this.lbPitch2.Text = "Pitch";
             this.lbPitch2.Visible = false;
@@ -585,7 +596,7 @@
             this.lbPitch1.AutoSize = true;
             this.lbPitch1.Location = new System.Drawing.Point(411, 9);
             this.lbPitch1.Name = "lbPitch1";
-            this.lbPitch1.Size = new System.Drawing.Size(39, 17);
+            this.lbPitch1.Size = new System.Drawing.Size(36, 16);
             this.lbPitch1.TabIndex = 76;
             this.lbPitch1.Text = "Pitch";
             this.lbPitch1.Visible = false;
@@ -775,7 +786,7 @@
             this.lbTo10.AutoSize = true;
             this.lbTo10.Location = new System.Drawing.Point(199, 262);
             this.lbTo10.Name = "lbTo10";
-            this.lbTo10.Size = new System.Drawing.Size(20, 17);
+            this.lbTo10.Size = new System.Drawing.Size(18, 16);
             this.lbTo10.TabIndex = 55;
             this.lbTo10.Text = "to";
             this.lbTo10.Visible = false;
@@ -785,7 +796,7 @@
             this.lbTo9.AutoSize = true;
             this.lbTo9.Location = new System.Drawing.Point(199, 234);
             this.lbTo9.Name = "lbTo9";
-            this.lbTo9.Size = new System.Drawing.Size(20, 17);
+            this.lbTo9.Size = new System.Drawing.Size(18, 16);
             this.lbTo9.TabIndex = 54;
             this.lbTo9.Text = "to";
             this.lbTo9.Visible = false;
@@ -795,7 +806,7 @@
             this.lbTo8.AutoSize = true;
             this.lbTo8.Location = new System.Drawing.Point(199, 206);
             this.lbTo8.Name = "lbTo8";
-            this.lbTo8.Size = new System.Drawing.Size(20, 17);
+            this.lbTo8.Size = new System.Drawing.Size(18, 16);
             this.lbTo8.TabIndex = 53;
             this.lbTo8.Text = "to";
             this.lbTo8.Visible = false;
@@ -805,7 +816,7 @@
             this.lbTo7.AutoSize = true;
             this.lbTo7.Location = new System.Drawing.Point(199, 178);
             this.lbTo7.Name = "lbTo7";
-            this.lbTo7.Size = new System.Drawing.Size(20, 17);
+            this.lbTo7.Size = new System.Drawing.Size(18, 16);
             this.lbTo7.TabIndex = 52;
             this.lbTo7.Text = "to";
             this.lbTo7.Visible = false;
@@ -815,7 +826,7 @@
             this.lbTo6.AutoSize = true;
             this.lbTo6.Location = new System.Drawing.Point(199, 150);
             this.lbTo6.Name = "lbTo6";
-            this.lbTo6.Size = new System.Drawing.Size(20, 17);
+            this.lbTo6.Size = new System.Drawing.Size(18, 16);
             this.lbTo6.TabIndex = 51;
             this.lbTo6.Text = "to";
             this.lbTo6.Visible = false;
@@ -825,7 +836,7 @@
             this.lbTo5.AutoSize = true;
             this.lbTo5.Location = new System.Drawing.Point(199, 122);
             this.lbTo5.Name = "lbTo5";
-            this.lbTo5.Size = new System.Drawing.Size(20, 17);
+            this.lbTo5.Size = new System.Drawing.Size(18, 16);
             this.lbTo5.TabIndex = 50;
             this.lbTo5.Text = "to";
             this.lbTo5.Visible = false;
@@ -835,7 +846,7 @@
             this.lbTo4.AutoSize = true;
             this.lbTo4.Location = new System.Drawing.Point(199, 94);
             this.lbTo4.Name = "lbTo4";
-            this.lbTo4.Size = new System.Drawing.Size(20, 17);
+            this.lbTo4.Size = new System.Drawing.Size(18, 16);
             this.lbTo4.TabIndex = 49;
             this.lbTo4.Text = "to";
             this.lbTo4.Visible = false;
@@ -845,7 +856,7 @@
             this.lbTo3.AutoSize = true;
             this.lbTo3.Location = new System.Drawing.Point(199, 66);
             this.lbTo3.Name = "lbTo3";
-            this.lbTo3.Size = new System.Drawing.Size(20, 17);
+            this.lbTo3.Size = new System.Drawing.Size(18, 16);
             this.lbTo3.TabIndex = 48;
             this.lbTo3.Text = "to";
             this.lbTo3.Visible = false;
@@ -855,7 +866,7 @@
             this.lbTo2.AutoSize = true;
             this.lbTo2.Location = new System.Drawing.Point(199, 38);
             this.lbTo2.Name = "lbTo2";
-            this.lbTo2.Size = new System.Drawing.Size(20, 17);
+            this.lbTo2.Size = new System.Drawing.Size(18, 16);
             this.lbTo2.TabIndex = 47;
             this.lbTo2.Text = "to";
             this.lbTo2.Visible = false;
@@ -865,7 +876,7 @@
             this.lbTo1.AutoSize = true;
             this.lbTo1.Location = new System.Drawing.Point(199, 11);
             this.lbTo1.Name = "lbTo1";
-            this.lbTo1.Size = new System.Drawing.Size(20, 17);
+            this.lbTo1.Size = new System.Drawing.Size(18, 16);
             this.lbTo1.TabIndex = 46;
             this.lbTo1.Text = "to";
             this.lbTo1.Visible = false;
@@ -875,7 +886,7 @@
             this.lbFrom10.AutoSize = true;
             this.lbFrom10.Location = new System.Drawing.Point(17, 262);
             this.lbFrom10.Name = "lbFrom10";
-            this.lbFrom10.Size = new System.Drawing.Size(64, 17);
+            this.lbFrom10.Size = new System.Drawing.Size(58, 16);
             this.lbFrom10.TabIndex = 45;
             this.lbFrom10.Text = "10. From";
             this.lbFrom10.Visible = false;
@@ -885,7 +896,7 @@
             this.lbFrom9.AutoSize = true;
             this.lbFrom9.Location = new System.Drawing.Point(17, 234);
             this.lbFrom9.Name = "lbFrom9";
-            this.lbFrom9.Size = new System.Drawing.Size(56, 17);
+            this.lbFrom9.Size = new System.Drawing.Size(51, 16);
             this.lbFrom9.TabIndex = 44;
             this.lbFrom9.Text = "9. From";
             this.lbFrom9.Visible = false;
@@ -895,7 +906,7 @@
             this.lbFrom8.AutoSize = true;
             this.lbFrom8.Location = new System.Drawing.Point(17, 206);
             this.lbFrom8.Name = "lbFrom8";
-            this.lbFrom8.Size = new System.Drawing.Size(56, 17);
+            this.lbFrom8.Size = new System.Drawing.Size(51, 16);
             this.lbFrom8.TabIndex = 43;
             this.lbFrom8.Text = "8. From";
             this.lbFrom8.Visible = false;
@@ -905,7 +916,7 @@
             this.lbFrom7.AutoSize = true;
             this.lbFrom7.Location = new System.Drawing.Point(17, 178);
             this.lbFrom7.Name = "lbFrom7";
-            this.lbFrom7.Size = new System.Drawing.Size(56, 17);
+            this.lbFrom7.Size = new System.Drawing.Size(51, 16);
             this.lbFrom7.TabIndex = 42;
             this.lbFrom7.Text = "7. From";
             this.lbFrom7.Visible = false;
@@ -915,7 +926,7 @@
             this.lbFrom6.AutoSize = true;
             this.lbFrom6.Location = new System.Drawing.Point(17, 150);
             this.lbFrom6.Name = "lbFrom6";
-            this.lbFrom6.Size = new System.Drawing.Size(56, 17);
+            this.lbFrom6.Size = new System.Drawing.Size(51, 16);
             this.lbFrom6.TabIndex = 41;
             this.lbFrom6.Text = "6. From";
             this.lbFrom6.Visible = false;
@@ -925,7 +936,7 @@
             this.lbFrom5.AutoSize = true;
             this.lbFrom5.Location = new System.Drawing.Point(17, 122);
             this.lbFrom5.Name = "lbFrom5";
-            this.lbFrom5.Size = new System.Drawing.Size(56, 17);
+            this.lbFrom5.Size = new System.Drawing.Size(51, 16);
             this.lbFrom5.TabIndex = 40;
             this.lbFrom5.Text = "5. From";
             this.lbFrom5.Visible = false;
@@ -935,7 +946,7 @@
             this.lbFrom4.AutoSize = true;
             this.lbFrom4.Location = new System.Drawing.Point(17, 94);
             this.lbFrom4.Name = "lbFrom4";
-            this.lbFrom4.Size = new System.Drawing.Size(56, 17);
+            this.lbFrom4.Size = new System.Drawing.Size(51, 16);
             this.lbFrom4.TabIndex = 39;
             this.lbFrom4.Text = "4. From";
             this.lbFrom4.Visible = false;
@@ -945,7 +956,7 @@
             this.lbFrom3.AutoSize = true;
             this.lbFrom3.Location = new System.Drawing.Point(17, 66);
             this.lbFrom3.Name = "lbFrom3";
-            this.lbFrom3.Size = new System.Drawing.Size(56, 17);
+            this.lbFrom3.Size = new System.Drawing.Size(51, 16);
             this.lbFrom3.TabIndex = 38;
             this.lbFrom3.Text = "3. From";
             this.lbFrom3.Visible = false;
@@ -955,7 +966,7 @@
             this.lbFrom2.AutoSize = true;
             this.lbFrom2.Location = new System.Drawing.Point(17, 37);
             this.lbFrom2.Name = "lbFrom2";
-            this.lbFrom2.Size = new System.Drawing.Size(56, 17);
+            this.lbFrom2.Size = new System.Drawing.Size(51, 16);
             this.lbFrom2.TabIndex = 37;
             this.lbFrom2.Text = "2. From";
             this.lbFrom2.Visible = false;
@@ -965,7 +976,7 @@
             this.lbFrom1.AutoSize = true;
             this.lbFrom1.Location = new System.Drawing.Point(17, 11);
             this.lbFrom1.Name = "lbFrom1";
-            this.lbFrom1.Size = new System.Drawing.Size(56, 17);
+            this.lbFrom1.Size = new System.Drawing.Size(51, 16);
             this.lbFrom1.TabIndex = 36;
             this.lbFrom1.Text = "1. From";
             this.lbFrom1.Visible = false;
@@ -1178,7 +1189,7 @@
             // bTnReset
             // 
             this.bTnReset.Enabled = false;
-            this.bTnReset.Location = new System.Drawing.Point(1055, 126);
+            this.bTnReset.Location = new System.Drawing.Point(1055, 149);
             this.bTnReset.Name = "bTnReset";
             this.bTnReset.Size = new System.Drawing.Size(135, 26);
             this.bTnReset.TabIndex = 18;
@@ -1188,7 +1199,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(877, 118);
+            this.button1.Location = new System.Drawing.Point(874, 134);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(132, 80);
             this.button1.TabIndex = 19;
@@ -1199,27 +1210,95 @@
             // lbPitchValue
             // 
             this.lbPitchValue.AutoSize = true;
-            this.lbPitchValue.Location = new System.Drawing.Point(870, 29);
+            this.lbPitchValue.Location = new System.Drawing.Point(871, 43);
             this.lbPitchValue.Name = "lbPitchValue";
-            this.lbPitchValue.Size = new System.Drawing.Size(16, 17);
+            this.lbPitchValue.Size = new System.Drawing.Size(14, 16);
             this.lbPitchValue.TabIndex = 20;
             this.lbPitchValue.Text = "0";
             // 
             // lbVolValue
             // 
             this.lbVolValue.AutoSize = true;
-            this.lbVolValue.Location = new System.Drawing.Point(870, 86);
+            this.lbVolValue.Location = new System.Drawing.Point(870, 103);
             this.lbVolValue.Name = "lbVolValue";
-            this.lbVolValue.Size = new System.Drawing.Size(16, 17);
+            this.lbVolValue.Size = new System.Drawing.Size(14, 16);
             this.lbVolValue.TabIndex = 21;
             this.lbVolValue.Text = "0";
+            // 
+            // pictureBoxTop
+            // 
+            this.pictureBoxTop.Location = new System.Drawing.Point(12, 276);
+            this.pictureBoxTop.Name = "pictureBoxTop";
+            this.pictureBoxTop.Size = new System.Drawing.Size(842, 220);
+            this.pictureBoxTop.TabIndex = 22;
+            this.pictureBoxTop.TabStop = false;
+            // 
+            // pictureBoxBottom
+            // 
+            this.pictureBoxBottom.Location = new System.Drawing.Point(12, 502);
+            this.pictureBoxBottom.Name = "pictureBoxBottom";
+            this.pictureBoxBottom.Size = new System.Drawing.Size(842, 257);
+            this.pictureBoxBottom.TabIndex = 23;
+            this.pictureBoxBottom.TabStop = false;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openToolStripMenuItem,
+            this.fromDefaultDeviceToolStripMenuItem,
+            this.pitchShiftToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1331, 28);
+            this.menuStrip1.TabIndex = 24;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(59, 24);
+            this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
+            // fromDefaultDeviceToolStripMenuItem
+            // 
+            this.fromDefaultDeviceToolStripMenuItem.Name = "fromDefaultDeviceToolStripMenuItem";
+            this.fromDefaultDeviceToolStripMenuItem.Size = new System.Drawing.Size(159, 24);
+            this.fromDefaultDeviceToolStripMenuItem.Text = "From Default Device";
+            this.fromDefaultDeviceToolStripMenuItem.Click += new System.EventHandler(this.fromDefaultDeviceToolStripMenuItem_Click);
+            // 
+            // pitchShiftToolStripMenuItem
+            // 
+            this.pitchShiftToolStripMenuItem.Name = "pitchShiftToolStripMenuItem";
+            this.pitchShiftToolStripMenuItem.Size = new System.Drawing.Size(91, 24);
+            this.pitchShiftToolStripMenuItem.Text = "Pitch-Shift";
+            this.pitchShiftToolStripMenuItem.Click += new System.EventHandler(this.pitchShiftToolStripMenuItem_Click);
+            // 
+            // propertyGridTop
+            // 
+            this.propertyGridTop.Location = new System.Drawing.Point(860, 276);
+            this.propertyGridTop.Name = "propertyGridTop";
+            this.propertyGridTop.Size = new System.Drawing.Size(471, 220);
+            this.propertyGridTop.TabIndex = 25;
+            // 
+            // propertyGridBottom
+            // 
+            this.propertyGridBottom.Location = new System.Drawing.Point(860, 503);
+            this.propertyGridBottom.Name = "propertyGridBottom";
+            this.propertyGridBottom.Size = new System.Drawing.Size(468, 256);
+            this.propertyGridBottom.TabIndex = 26;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1331, 251);
+            this.ClientSize = new System.Drawing.Size(1331, 771);
+            this.Controls.Add(this.propertyGridBottom);
+            this.Controls.Add(this.propertyGridTop);
+            this.Controls.Add(this.pictureBoxBottom);
+            this.Controls.Add(this.pictureBoxTop);
             this.Controls.Add(this.lbVolValue);
             this.Controls.Add(this.lbPitchValue);
             this.Controls.Add(this.button1);
@@ -1234,7 +1313,9 @@
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.bTnPlus);
             this.Controls.Add(this.bTnMinus);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "MainForm";
@@ -1249,6 +1330,10 @@
             this.tbRange.PerformLayout();
             this.tbSettings.ResumeLayout(false);
             this.tbSettings.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTop)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBottom)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1358,6 +1443,14 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lbPitchValue;
         private System.Windows.Forms.Label lbVolValue;
+        private System.Windows.Forms.PictureBox pictureBoxTop;
+        private System.Windows.Forms.PictureBox pictureBoxBottom;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fromDefaultDeviceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pitchShiftToolStripMenuItem;
+        private System.Windows.Forms.PropertyGrid propertyGridTop;
+        private System.Windows.Forms.PropertyGrid propertyGridBottom;
     }
 }
 
