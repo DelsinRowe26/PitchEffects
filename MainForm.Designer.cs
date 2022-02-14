@@ -131,27 +131,16 @@
             this.button1 = new System.Windows.Forms.Button();
             this.lbPitchValue = new System.Windows.Forms.Label();
             this.lbVolValue = new System.Windows.Forms.Label();
-            this.pictureBoxTop = new System.Windows.Forms.PictureBox();
-            this.pictureBoxBottom = new System.Windows.Forms.PictureBox();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fromDefaultDeviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pitchShiftToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.propertyGridTop = new System.Windows.Forms.PropertyGrid();
-            this.propertyGridBottom = new System.Windows.Forms.PropertyGrid();
             ((System.ComponentModel.ISupportInitialize)(this.trackPitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackGain)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tbRange.SuspendLayout();
             this.tbSettings.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTop)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBottom)).BeginInit();
-            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(1055, 216);
+            this.btnStart.Location = new System.Drawing.Point(1055, 200);
             this.btnStart.Margin = new System.Windows.Forms.Padding(4);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(135, 28);
@@ -163,7 +152,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(870, 27);
+            this.label2.Location = new System.Drawing.Point(870, 12);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 16);
@@ -175,7 +164,7 @@
             // 
             this.trackPitch.Enabled = false;
             this.trackPitch.LargeChange = 1;
-            this.trackPitch.Location = new System.Drawing.Point(914, 27);
+            this.trackPitch.Location = new System.Drawing.Point(917, 14);
             this.trackPitch.Margin = new System.Windows.Forms.Padding(4);
             this.trackPitch.Minimum = -10;
             this.trackPitch.Name = "trackPitch";
@@ -229,7 +218,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(870, 82);
+            this.label1.Location = new System.Drawing.Point(870, 69);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 16);
@@ -240,7 +229,7 @@
             // trackGain
             // 
             this.trackGain.Enabled = false;
-            this.trackGain.Location = new System.Drawing.Point(917, 82);
+            this.trackGain.Location = new System.Drawing.Point(917, 71);
             this.trackGain.Margin = new System.Windows.Forms.Padding(4);
             this.trackGain.Maximum = 30;
             this.trackGain.Minimum = -10;
@@ -254,7 +243,7 @@
             // 
             this.chkAddMp3.AutoSize = true;
             this.chkAddMp3.Enabled = false;
-            this.chkAddMp3.Location = new System.Drawing.Point(873, 224);
+            this.chkAddMp3.Location = new System.Drawing.Point(872, 205);
             this.chkAddMp3.Margin = new System.Windows.Forms.Padding(4);
             this.chkAddMp3.Name = "chkAddMp3";
             this.chkAddMp3.Size = new System.Drawing.Size(133, 20);
@@ -265,7 +254,7 @@
             // 
             // bTnPlus
             // 
-            this.bTnPlus.Location = new System.Drawing.Point(819, 195);
+            this.bTnPlus.Location = new System.Drawing.Point(819, 179);
             this.bTnPlus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bTnPlus.Name = "bTnPlus";
             this.bTnPlus.Size = new System.Drawing.Size(35, 23);
@@ -277,7 +266,7 @@
             // bTnMinus
             // 
             this.bTnMinus.Enabled = false;
-            this.bTnMinus.Location = new System.Drawing.Point(819, 222);
+            this.bTnMinus.Location = new System.Drawing.Point(819, 207);
             this.bTnMinus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bTnMinus.Name = "bTnMinus";
             this.bTnMinus.Size = new System.Drawing.Size(35, 23);
@@ -289,7 +278,7 @@
             // btnFix
             // 
             this.btnFix.Enabled = false;
-            this.btnFix.Location = new System.Drawing.Point(1055, 180);
+            this.btnFix.Location = new System.Drawing.Point(1055, 159);
             this.btnFix.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnFix.Name = "btnFix";
             this.btnFix.Size = new System.Drawing.Size(135, 30);
@@ -302,7 +291,7 @@
             // 
             this.tabControl1.Controls.Add(this.tbRange);
             this.tabControl1.Controls.Add(this.tbSettings);
-            this.tabControl1.Location = new System.Drawing.Point(12, 43);
+            this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -1189,7 +1178,7 @@
             // bTnReset
             // 
             this.bTnReset.Enabled = false;
-            this.bTnReset.Location = new System.Drawing.Point(1055, 149);
+            this.bTnReset.Location = new System.Drawing.Point(1055, 126);
             this.bTnReset.Name = "bTnReset";
             this.bTnReset.Size = new System.Drawing.Size(135, 26);
             this.bTnReset.TabIndex = 18;
@@ -1199,7 +1188,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(874, 134);
+            this.button1.Location = new System.Drawing.Point(877, 118);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(132, 80);
             this.button1.TabIndex = 19;
@@ -1210,7 +1199,7 @@
             // lbPitchValue
             // 
             this.lbPitchValue.AutoSize = true;
-            this.lbPitchValue.Location = new System.Drawing.Point(871, 43);
+            this.lbPitchValue.Location = new System.Drawing.Point(870, 29);
             this.lbPitchValue.Name = "lbPitchValue";
             this.lbPitchValue.Size = new System.Drawing.Size(14, 16);
             this.lbPitchValue.TabIndex = 20;
@@ -1219,86 +1208,18 @@
             // lbVolValue
             // 
             this.lbVolValue.AutoSize = true;
-            this.lbVolValue.Location = new System.Drawing.Point(870, 103);
+            this.lbVolValue.Location = new System.Drawing.Point(870, 86);
             this.lbVolValue.Name = "lbVolValue";
             this.lbVolValue.Size = new System.Drawing.Size(14, 16);
             this.lbVolValue.TabIndex = 21;
             this.lbVolValue.Text = "0";
-            // 
-            // pictureBoxTop
-            // 
-            this.pictureBoxTop.Location = new System.Drawing.Point(12, 276);
-            this.pictureBoxTop.Name = "pictureBoxTop";
-            this.pictureBoxTop.Size = new System.Drawing.Size(842, 220);
-            this.pictureBoxTop.TabIndex = 22;
-            this.pictureBoxTop.TabStop = false;
-            // 
-            // pictureBoxBottom
-            // 
-            this.pictureBoxBottom.Location = new System.Drawing.Point(12, 502);
-            this.pictureBoxBottom.Name = "pictureBoxBottom";
-            this.pictureBoxBottom.Size = new System.Drawing.Size(842, 257);
-            this.pictureBoxBottom.TabIndex = 23;
-            this.pictureBoxBottom.TabStop = false;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openToolStripMenuItem,
-            this.fromDefaultDeviceToolStripMenuItem,
-            this.pitchShiftToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1331, 28);
-            this.menuStrip1.TabIndex = 24;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // openToolStripMenuItem
-            // 
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(59, 24);
-            this.openToolStripMenuItem.Text = "Open";
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
-            // 
-            // fromDefaultDeviceToolStripMenuItem
-            // 
-            this.fromDefaultDeviceToolStripMenuItem.Name = "fromDefaultDeviceToolStripMenuItem";
-            this.fromDefaultDeviceToolStripMenuItem.Size = new System.Drawing.Size(159, 24);
-            this.fromDefaultDeviceToolStripMenuItem.Text = "From Default Device";
-            this.fromDefaultDeviceToolStripMenuItem.Click += new System.EventHandler(this.fromDefaultDeviceToolStripMenuItem_Click);
-            // 
-            // pitchShiftToolStripMenuItem
-            // 
-            this.pitchShiftToolStripMenuItem.Name = "pitchShiftToolStripMenuItem";
-            this.pitchShiftToolStripMenuItem.Size = new System.Drawing.Size(91, 24);
-            this.pitchShiftToolStripMenuItem.Text = "Pitch-Shift";
-            this.pitchShiftToolStripMenuItem.Click += new System.EventHandler(this.pitchShiftToolStripMenuItem_Click);
-            // 
-            // propertyGridTop
-            // 
-            this.propertyGridTop.Location = new System.Drawing.Point(860, 276);
-            this.propertyGridTop.Name = "propertyGridTop";
-            this.propertyGridTop.Size = new System.Drawing.Size(471, 220);
-            this.propertyGridTop.TabIndex = 25;
-            // 
-            // propertyGridBottom
-            // 
-            this.propertyGridBottom.Location = new System.Drawing.Point(860, 503);
-            this.propertyGridBottom.Name = "propertyGridBottom";
-            this.propertyGridBottom.Size = new System.Drawing.Size(468, 256);
-            this.propertyGridBottom.TabIndex = 26;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1331, 771);
-            this.Controls.Add(this.propertyGridBottom);
-            this.Controls.Add(this.propertyGridTop);
-            this.Controls.Add(this.pictureBoxBottom);
-            this.Controls.Add(this.pictureBoxTop);
+            this.ClientSize = new System.Drawing.Size(1331, 251);
             this.Controls.Add(this.lbVolValue);
             this.Controls.Add(this.lbPitchValue);
             this.Controls.Add(this.button1);
@@ -1313,9 +1234,7 @@
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.bTnPlus);
             this.Controls.Add(this.bTnMinus);
-            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "MainForm";
@@ -1330,10 +1249,6 @@
             this.tbRange.PerformLayout();
             this.tbSettings.ResumeLayout(false);
             this.tbSettings.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTop)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBottom)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1443,14 +1358,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lbPitchValue;
         private System.Windows.Forms.Label lbVolValue;
-        private System.Windows.Forms.PictureBox pictureBoxTop;
-        private System.Windows.Forms.PictureBox pictureBoxBottom;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem fromDefaultDeviceToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pitchShiftToolStripMenuItem;
-        private System.Windows.Forms.PropertyGrid propertyGridTop;
-        private System.Windows.Forms.PropertyGrid propertyGridBottom;
     }
 }
 
