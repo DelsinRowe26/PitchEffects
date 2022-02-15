@@ -27,14 +27,13 @@ namespace PitchShifter
     {
         int wave;
         //Глобальные переменные
+        System.Timers.Timer dispatchingTimer;
+        public double interval_ms = 50;
         int[] Pitch = new int[10];
         int[] Gain = new int[10];
         int[] min = new int[10];
         int[] max = new int[10];
         int plusclick = 0, plus = 0;
-        /*public static List<TextBox> TextBoxes = new List<TextBox>();
-        public static List<Label> labels = new List<Label>();
-        public static List<Label> nums = new List<Label>();*/
         private MMDeviceCollection mInputDevices;
         private MMDeviceCollection mOutputDevices;
         private WasapiCapture mSoundIn;
@@ -117,30 +116,18 @@ namespace PitchShifter
                 mSoundIn.Initialize();
                 mSoundIn.Start();
                 
-                //fftSize = (FftSize)4096;
-
-                //waveIn.WaveFormat = new WaveFormat(48000, 16, 2);
-                //mSoundIn.WaveFormat.SampleRate.ToString();
-                /*format = new WaveFormat();
-                format.BytesPerSecond.ToString();*/
+                
                 
                 var source = new SoundInSource(mSoundIn) { FillWithZeros = true };
-                source.Position.ToString();
-                //textBox1.Text = source.Position.ToString();
-
-                //audio.GetFrequencyNative(out long source);
-
-                buffer = new BufferSource(source, 4096);
-
-                //filter.Frequency.ToString();
-
+                
+                
                 //Init DSP для смещения высоты тона
                 mDsp = new SampleDSP(source.ToSampleSource().ToStereo());
                 mDsp.GainDB = trackGain.Value;
                 SetPitchShiftValue();
                 
                 //Инициальный микшер
-                mMixer = new SimpleMixer(2, 44100) //стерео, 44,1 КГц
+                mMixer = new SimpleMixer(2, 48000) //стерео, 44,1 КГц
                 {
                     FillWithZeros = false,
                     DivideResult = true, //Для этого установлено значение true, чтобы избежать звуков тиков из-за превышения -1 и 1.
@@ -148,14 +135,11 @@ namespace PitchShifter
 
                 //Добавляем наш источник звука в микшер
                 mMixer.AddSource(mDsp.ChangeSampleRate(mMixer.WaveFormat.SampleRate));
-                //mMixer.AddSource(mDsp.ChangeSampleRate(mMixer.Length.ToString()));
 
                 //Запускает устройство воспроизведения звука с задержкой 1 мс.
                 mSoundOut = new WasapiOut(false, AudioClientShareMode.Exclusive, 1);
                 mSoundOut.Device = mOutputDevices[cmbOutput.SelectedIndex];
                 mSoundOut.Initialize(mMixer.ToWaveSource(16));
-
-                //textBox1.Text = audio.Pu64Position.ToString();
 
                 int sampleRate = 44100;
                 short[] data = new short[sampleRate];
@@ -677,5 +661,7 @@ namespace PitchShifter
                 btnFix.Enabled = false;
             }
         }
+
+
     }
 }
