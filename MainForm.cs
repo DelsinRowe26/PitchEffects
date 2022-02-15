@@ -155,8 +155,6 @@ namespace PitchShifter
                 mSoundOut.Device = mOutputDevices[cmbOutput.SelectedIndex];
                 mSoundOut.Initialize(mMixer.ToWaveSource(16));
 
-            
-
                 //textBox1.Text = audio.Pu64Position.ToString();
 
                 int sampleRate = 44100;
@@ -167,8 +165,6 @@ namespace PitchShifter
                     data[index] = (short)(Sine(index, frequency) * Length(-0.0015, frequency, index, 1.0, sampleRate) * short.MaxValue);
                     //textBox1.Text = frequency.ToString();
                 }
-
-                SetupSampleSource(mDsp);
 
                 //Start rolling!
                 mSoundOut.Play();
