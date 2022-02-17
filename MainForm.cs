@@ -9,6 +9,7 @@ using CSCore.Streams;
 using CSCore.Streams.Effects;
 using CSCore.Codecs;
 using CSCore.DSP;
+using System.Numerics;
 using WinformsVisualization.Visualization;
 
 /*using NAudio;
@@ -26,7 +27,6 @@ namespace PitchShifter
     public partial class MainForm : Form
     {
         AudioLevelMonitor audioMonitor;
-        int wave;
         //Глобальные переменныe
         int[] Pitch = new int[10];
         int[] Gain = new int[10];
@@ -37,13 +37,13 @@ namespace PitchShifter
         private MMDeviceCollection mOutputDevices;
         private WasapiCapture mSoundIn;
         private CSCore.SoundOut.WasapiOut mSoundOut;
-        private WaveIn waveIn = new WaveIn();
+        private WaveIn waveIn;
         private SampleDSP mDsp;
         private FftSize fftSize;
         private SoundInSource sound;
         private Equalizer filter;
         private AudioClock audio;
-        private BufferSource buffer;
+        private FftProvider fftProvider;
         //private CSCore.WaveFormat format;
         //private MusicPlayer vSab = new MusicPlayer();
         private SimpleMixer mMixer;
@@ -111,12 +111,14 @@ namespace PitchShifter
                 mSoundIn.Start();
                 
                 var source = new SoundInSource(mSoundIn) { FillWithZeros = true };
-                
+
                 //Init DSP для смещения высоты тона
                 mDsp = new SampleDSP(source.ToSampleSource().ToStereo());
                 mDsp.GainDB = trackGain.Value + 20;
                 SetPitchShiftValue();
-                
+
+                textBox1.Text = source.GetPosition().TotalSeconds.ToString();
+
                 //Инициальный микшер
                 mMixer = new SimpleMixer(2, 48000) //стерео, 44,1 КГц
                 {
@@ -157,6 +159,7 @@ namespace PitchShifter
         {
             if (mSoundOut != null) mSoundOut.Dispose();
             if (mSoundIn != null) mSoundIn.Dispose();
+
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -755,6 +758,116 @@ namespace PitchShifter
             }
         }
 
+        private static Complex w(int k, int N)
+        {
+            if (k % N == 0) return 1;
+            double arg = -2 * Math.PI * k / N;
+            return new Complex(Math.Cos(arg), Math.Sin(arg));
+        }
+        public static Complex[] fft(Complex[] x)
+        {
+            Complex[] X;
+            int N = x.Length;
+            if (N == 2)
+            {
+                X = new Complex[2];
+                X[0] = x[0] + x[1];
+                X[1] = x[0] - x[1];
+            }
+            else
+            {
+                Complex[] x_even = new Complex[N / 2];
+                Complex[] x_odd = new Complex[N / 2];
+                for (int i = 0; i < N / 2; i++)
+                {
+                    x_even[i] = x[2 * i];
+                    x_odd[i] = x[2 * i + 1];
+                }
+                Complex[] X_even = fft(x_even);
+                Complex[] X_odd = fft(x_odd);
+                X = new Complex[N];
+                for (int i = 0; i < N / 2; i++)
+                {
+                    X[i] = X_even[i] + w(i, N) * X_odd[i];
+                    X[i + N / 2] = X_even[i] - w(i, N) * X_odd[i];
+                }
+            }
+            return X;
+        }
 
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            StopFullDuplex();
+            trackGain.Enabled = false;
+            trackPitch.Enabled = false;
+            chkAddMp3.Enabled = false;
+            bTnReset.Enabled = false;
+        }
+
+        public static Complex[] nfft(Complex[] X)
+        {
+            int N = X.Length;
+            Complex[] X_n = new Complex[N];
+            for (int i = 0; i < N / 2; i++)
+            {
+                X_n[i] = X[N / 2 + i];
+                X_n[N / 2 + i] = X[i];
+            }
+            return X_n;
+        }
+
+        public static void ShortTimeFourierTransform(float[] fftBuffer, long fftFrameSize, long sign)
+        {
+            long i;
+            long j, le;
+            long k;
+
+            for (i = 2; i < 2 * fftFrameSize - 2; i += 2)
+            {
+                long bitm;
+                for (bitm = 2, j = 0; bitm < 2 * fftFrameSize; bitm <<= 1)
+                {
+                    if ((i & bitm) != 0) j++;
+                    j <<= 1;
+                }
+                if (i < j)
+                {
+                    var temp = fftBuffer[i];
+                    fftBuffer[i] = fftBuffer[j];
+                    fftBuffer[j] = temp;
+                    temp = fftBuffer[i + 1];
+                    fftBuffer[i + 1] = fftBuffer[j + 1];
+                    fftBuffer[j + 1] = temp;
+                }
+            }
+            long max = (long)(Math.Log(fftFrameSize) / Math.Log(2.0) + .5);
+            for (k = 0, le = 2; k < max; k++)
+            {
+                le <<= 1;
+                var le2 = le >> 1;
+                var ur = 1.0F;
+                var ui = 0.0F;
+                var arg = (float)Math.PI / (le2 >> 1);
+                var wr = (float)Math.Cos(arg);
+                var wi = (float)(sign * Math.Sin(arg));
+                for (j = 0; j < le2; j += 2)
+                {
+                    float tr;
+                    for (i = j; i < 2 * fftFrameSize; i += le)
+                    {
+                        tr = fftBuffer[i + le2] * ur - fftBuffer[i + le2 + 1] * ui;
+                        var ti = fftBuffer[i + le2] * ui + fftBuffer[i + le2 + 1] * ur;
+                        fftBuffer[i + le2] = fftBuffer[i] - tr;
+                        fftBuffer[i + le2 + 1] = fftBuffer[i + 1] - ti;
+                        fftBuffer[i] += tr;
+                        fftBuffer[i + 1] += ti;
+
+                    }
+                    tr = ur * wr - ui * wi;
+                    ui = ur * wi + ui * wr;
+                    ur = tr;
+                }
+            }
+        }
     }
 }

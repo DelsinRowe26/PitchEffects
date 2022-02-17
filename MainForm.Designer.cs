@@ -45,6 +45,16 @@
             this.btnFix = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tbRange = new System.Windows.Forms.TabPage();
+            this.btnPitchVol10 = new System.Windows.Forms.Button();
+            this.btnPitchVol9 = new System.Windows.Forms.Button();
+            this.btnPitchVol8 = new System.Windows.Forms.Button();
+            this.btnPitchVol7 = new System.Windows.Forms.Button();
+            this.btnPitchVol6 = new System.Windows.Forms.Button();
+            this.btnPitchVol5 = new System.Windows.Forms.Button();
+            this.btnPitchVol4 = new System.Windows.Forms.Button();
+            this.btnPitchVol3 = new System.Windows.Forms.Button();
+            this.btnPitchVol2 = new System.Windows.Forms.Button();
+            this.btnPitchVol1 = new System.Windows.Forms.Button();
             this.ZnachVol = new System.Windows.Forms.Label();
             this.lbZnachPitch = new System.Windows.Forms.Label();
             this.lbGain10 = new System.Windows.Forms.Label();
@@ -133,16 +143,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.lbPitchValue = new System.Windows.Forms.Label();
             this.lbVolValue = new System.Windows.Forms.Label();
-            this.btnPitchVol1 = new System.Windows.Forms.Button();
-            this.btnPitchVol2 = new System.Windows.Forms.Button();
-            this.btnPitchVol3 = new System.Windows.Forms.Button();
-            this.btnPitchVol4 = new System.Windows.Forms.Button();
-            this.btnPitchVol5 = new System.Windows.Forms.Button();
-            this.btnPitchVol6 = new System.Windows.Forms.Button();
-            this.btnPitchVol7 = new System.Windows.Forms.Button();
-            this.btnPitchVol8 = new System.Windows.Forms.Button();
-            this.btnPitchVol9 = new System.Windows.Forms.Button();
-            this.btnPitchVol10 = new System.Windows.Forms.Button();
+            this.btnStop = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackPitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackGain)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -152,7 +153,7 @@
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(1156, 197);
+            this.btnStart.Location = new System.Drawing.Point(1156, 213);
             this.btnStart.Margin = new System.Windows.Forms.Padding(4);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(135, 28);
@@ -290,7 +291,7 @@
             // btnFix
             // 
             this.btnFix.Enabled = false;
-            this.btnFix.Location = new System.Drawing.Point(1156, 161);
+            this.btnFix.Location = new System.Drawing.Point(1156, 143);
             this.btnFix.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnFix.Name = "btnFix";
             this.btnFix.Size = new System.Drawing.Size(135, 30);
@@ -414,6 +415,116 @@
             this.tbRange.Text = "Range";
             this.tbRange.UseVisualStyleBackColor = true;
             // 
+            // btnPitchVol10
+            // 
+            this.btnPitchVol10.Location = new System.Drawing.Point(789, 250);
+            this.btnPitchVol10.Name = "btnPitchVol10";
+            this.btnPitchVol10.Size = new System.Drawing.Size(93, 23);
+            this.btnPitchVol10.TabIndex = 108;
+            this.btnPitchVol10.Text = "Put a value";
+            this.btnPitchVol10.UseVisualStyleBackColor = true;
+            this.btnPitchVol10.Visible = false;
+            this.btnPitchVol10.Click += new System.EventHandler(this.btnPitchVol10_Click);
+            // 
+            // btnPitchVol9
+            // 
+            this.btnPitchVol9.Location = new System.Drawing.Point(789, 225);
+            this.btnPitchVol9.Name = "btnPitchVol9";
+            this.btnPitchVol9.Size = new System.Drawing.Size(93, 23);
+            this.btnPitchVol9.TabIndex = 107;
+            this.btnPitchVol9.Text = "Put a value";
+            this.btnPitchVol9.UseVisualStyleBackColor = true;
+            this.btnPitchVol9.Visible = false;
+            this.btnPitchVol9.Click += new System.EventHandler(this.btnPitchVol9_Click);
+            // 
+            // btnPitchVol8
+            // 
+            this.btnPitchVol8.Location = new System.Drawing.Point(789, 199);
+            this.btnPitchVol8.Name = "btnPitchVol8";
+            this.btnPitchVol8.Size = new System.Drawing.Size(93, 23);
+            this.btnPitchVol8.TabIndex = 106;
+            this.btnPitchVol8.Text = "Put a value";
+            this.btnPitchVol8.UseVisualStyleBackColor = true;
+            this.btnPitchVol8.Visible = false;
+            this.btnPitchVol8.Click += new System.EventHandler(this.btnPitchVol8_Click);
+            // 
+            // btnPitchVol7
+            // 
+            this.btnPitchVol7.Location = new System.Drawing.Point(789, 173);
+            this.btnPitchVol7.Name = "btnPitchVol7";
+            this.btnPitchVol7.Size = new System.Drawing.Size(93, 23);
+            this.btnPitchVol7.TabIndex = 105;
+            this.btnPitchVol7.Text = "Put a value";
+            this.btnPitchVol7.UseVisualStyleBackColor = true;
+            this.btnPitchVol7.Visible = false;
+            this.btnPitchVol7.Click += new System.EventHandler(this.btnPitchVol7_Click);
+            // 
+            // btnPitchVol6
+            // 
+            this.btnPitchVol6.Location = new System.Drawing.Point(789, 143);
+            this.btnPitchVol6.Name = "btnPitchVol6";
+            this.btnPitchVol6.Size = new System.Drawing.Size(93, 23);
+            this.btnPitchVol6.TabIndex = 104;
+            this.btnPitchVol6.Text = "Put a value";
+            this.btnPitchVol6.UseVisualStyleBackColor = true;
+            this.btnPitchVol6.Visible = false;
+            this.btnPitchVol6.Click += new System.EventHandler(this.btnPitchVol6_Click);
+            // 
+            // btnPitchVol5
+            // 
+            this.btnPitchVol5.Location = new System.Drawing.Point(789, 117);
+            this.btnPitchVol5.Name = "btnPitchVol5";
+            this.btnPitchVol5.Size = new System.Drawing.Size(93, 23);
+            this.btnPitchVol5.TabIndex = 102;
+            this.btnPitchVol5.Text = "Put a value";
+            this.btnPitchVol5.UseVisualStyleBackColor = true;
+            this.btnPitchVol5.Visible = false;
+            this.btnPitchVol5.Click += new System.EventHandler(this.btnPitchVol5_Click);
+            // 
+            // btnPitchVol4
+            // 
+            this.btnPitchVol4.Location = new System.Drawing.Point(789, 89);
+            this.btnPitchVol4.Name = "btnPitchVol4";
+            this.btnPitchVol4.Size = new System.Drawing.Size(93, 23);
+            this.btnPitchVol4.TabIndex = 101;
+            this.btnPitchVol4.Text = "Put a value";
+            this.btnPitchVol4.UseVisualStyleBackColor = true;
+            this.btnPitchVol4.Visible = false;
+            this.btnPitchVol4.Click += new System.EventHandler(this.btnPitchVol4_Click);
+            // 
+            // btnPitchVol3
+            // 
+            this.btnPitchVol3.Location = new System.Drawing.Point(789, 61);
+            this.btnPitchVol3.Name = "btnPitchVol3";
+            this.btnPitchVol3.Size = new System.Drawing.Size(93, 23);
+            this.btnPitchVol3.TabIndex = 100;
+            this.btnPitchVol3.Text = "Put a value";
+            this.btnPitchVol3.UseVisualStyleBackColor = true;
+            this.btnPitchVol3.Visible = false;
+            this.btnPitchVol3.Click += new System.EventHandler(this.btnPitchVol3_Click);
+            // 
+            // btnPitchVol2
+            // 
+            this.btnPitchVol2.Location = new System.Drawing.Point(789, 32);
+            this.btnPitchVol2.Name = "btnPitchVol2";
+            this.btnPitchVol2.Size = new System.Drawing.Size(93, 23);
+            this.btnPitchVol2.TabIndex = 99;
+            this.btnPitchVol2.Text = "Put a value";
+            this.btnPitchVol2.UseVisualStyleBackColor = true;
+            this.btnPitchVol2.Visible = false;
+            this.btnPitchVol2.Click += new System.EventHandler(this.btnPitchVol2_Click);
+            // 
+            // btnPitchVol1
+            // 
+            this.btnPitchVol1.Location = new System.Drawing.Point(789, 7);
+            this.btnPitchVol1.Name = "btnPitchVol1";
+            this.btnPitchVol1.Size = new System.Drawing.Size(93, 23);
+            this.btnPitchVol1.TabIndex = 98;
+            this.btnPitchVol1.Text = "Put a value";
+            this.btnPitchVol1.UseVisualStyleBackColor = true;
+            this.btnPitchVol1.Visible = false;
+            this.btnPitchVol1.Click += new System.EventHandler(this.btnPitchVol1_Click);
+            // 
             // ZnachVol
             // 
             this.ZnachVol.BackColor = System.Drawing.Color.Transparent;
@@ -436,7 +547,7 @@
             // lbGain10
             // 
             this.lbGain10.AutoSize = true;
-            this.lbGain10.Location = new System.Drawing.Point(626, 260);
+            this.lbGain10.Location = new System.Drawing.Point(626, 254);
             this.lbGain10.Name = "lbGain10";
             this.lbGain10.Size = new System.Drawing.Size(53, 16);
             this.lbGain10.TabIndex = 95;
@@ -446,7 +557,7 @@
             // lbGain9
             // 
             this.lbGain9.AutoSize = true;
-            this.lbGain9.Location = new System.Drawing.Point(626, 233);
+            this.lbGain9.Location = new System.Drawing.Point(626, 227);
             this.lbGain9.Name = "lbGain9";
             this.lbGain9.Size = new System.Drawing.Size(53, 16);
             this.lbGain9.TabIndex = 94;
@@ -456,7 +567,7 @@
             // lbGain8
             // 
             this.lbGain8.AutoSize = true;
-            this.lbGain8.Location = new System.Drawing.Point(626, 208);
+            this.lbGain8.Location = new System.Drawing.Point(626, 202);
             this.lbGain8.Name = "lbGain8";
             this.lbGain8.Size = new System.Drawing.Size(53, 16);
             this.lbGain8.TabIndex = 93;
@@ -466,7 +577,7 @@
             // lbGain7
             // 
             this.lbGain7.AutoSize = true;
-            this.lbGain7.Location = new System.Drawing.Point(626, 183);
+            this.lbGain7.Location = new System.Drawing.Point(626, 177);
             this.lbGain7.Name = "lbGain7";
             this.lbGain7.Size = new System.Drawing.Size(53, 16);
             this.lbGain7.TabIndex = 92;
@@ -476,7 +587,7 @@
             // lbGain6
             // 
             this.lbGain6.AutoSize = true;
-            this.lbGain6.Location = new System.Drawing.Point(626, 155);
+            this.lbGain6.Location = new System.Drawing.Point(626, 151);
             this.lbGain6.Name = "lbGain6";
             this.lbGain6.Size = new System.Drawing.Size(53, 16);
             this.lbGain6.TabIndex = 91;
@@ -486,7 +597,7 @@
             // lbGain5
             // 
             this.lbGain5.AutoSize = true;
-            this.lbGain5.Location = new System.Drawing.Point(626, 124);
+            this.lbGain5.Location = new System.Drawing.Point(626, 120);
             this.lbGain5.Name = "lbGain5";
             this.lbGain5.Size = new System.Drawing.Size(53, 16);
             this.lbGain5.TabIndex = 90;
@@ -496,7 +607,7 @@
             // lbGain4
             // 
             this.lbGain4.AutoSize = true;
-            this.lbGain4.Location = new System.Drawing.Point(626, 95);
+            this.lbGain4.Location = new System.Drawing.Point(626, 91);
             this.lbGain4.Name = "lbGain4";
             this.lbGain4.Size = new System.Drawing.Size(53, 16);
             this.lbGain4.TabIndex = 89;
@@ -506,7 +617,7 @@
             // lbGain3
             // 
             this.lbGain3.AutoSize = true;
-            this.lbGain3.Location = new System.Drawing.Point(626, 65);
+            this.lbGain3.Location = new System.Drawing.Point(626, 61);
             this.lbGain3.Name = "lbGain3";
             this.lbGain3.Size = new System.Drawing.Size(53, 16);
             this.lbGain3.TabIndex = 88;
@@ -516,7 +627,7 @@
             // lbGain2
             // 
             this.lbGain2.AutoSize = true;
-            this.lbGain2.Location = new System.Drawing.Point(626, 39);
+            this.lbGain2.Location = new System.Drawing.Point(626, 35);
             this.lbGain2.Name = "lbGain2";
             this.lbGain2.Size = new System.Drawing.Size(53, 16);
             this.lbGain2.TabIndex = 87;
@@ -526,7 +637,7 @@
             // lbGain1
             // 
             this.lbGain1.AutoSize = true;
-            this.lbGain1.Location = new System.Drawing.Point(626, 14);
+            this.lbGain1.Location = new System.Drawing.Point(626, 10);
             this.lbGain1.Name = "lbGain1";
             this.lbGain1.Size = new System.Drawing.Size(53, 16);
             this.lbGain1.TabIndex = 86;
@@ -635,7 +746,7 @@
             // 
             // tbGain10
             // 
-            this.tbGain10.Location = new System.Drawing.Point(683, 259);
+            this.tbGain10.Location = new System.Drawing.Point(683, 253);
             this.tbGain10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGain10.Name = "tbGain10";
             this.tbGain10.Size = new System.Drawing.Size(100, 22);
@@ -653,7 +764,7 @@
             // 
             // tbGain9
             // 
-            this.tbGain9.Location = new System.Drawing.Point(683, 231);
+            this.tbGain9.Location = new System.Drawing.Point(683, 225);
             this.tbGain9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGain9.Name = "tbGain9";
             this.tbGain9.Size = new System.Drawing.Size(100, 22);
@@ -671,7 +782,7 @@
             // 
             // tbGain8
             // 
-            this.tbGain8.Location = new System.Drawing.Point(683, 203);
+            this.tbGain8.Location = new System.Drawing.Point(683, 197);
             this.tbGain8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGain8.Name = "tbGain8";
             this.tbGain8.Size = new System.Drawing.Size(100, 22);
@@ -689,7 +800,7 @@
             // 
             // tbGain7
             // 
-            this.tbGain7.Location = new System.Drawing.Point(683, 178);
+            this.tbGain7.Location = new System.Drawing.Point(683, 172);
             this.tbGain7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGain7.Name = "tbGain7";
             this.tbGain7.Size = new System.Drawing.Size(100, 22);
@@ -707,7 +818,7 @@
             // 
             // tbGain6
             // 
-            this.tbGain6.Location = new System.Drawing.Point(683, 149);
+            this.tbGain6.Location = new System.Drawing.Point(683, 145);
             this.tbGain6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGain6.Name = "tbGain6";
             this.tbGain6.Size = new System.Drawing.Size(100, 22);
@@ -725,7 +836,7 @@
             // 
             // tbGain5
             // 
-            this.tbGain5.Location = new System.Drawing.Point(683, 121);
+            this.tbGain5.Location = new System.Drawing.Point(683, 117);
             this.tbGain5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGain5.Name = "tbGain5";
             this.tbGain5.Size = new System.Drawing.Size(100, 22);
@@ -743,7 +854,7 @@
             // 
             // tbGain4
             // 
-            this.tbGain4.Location = new System.Drawing.Point(683, 93);
+            this.tbGain4.Location = new System.Drawing.Point(683, 89);
             this.tbGain4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGain4.Name = "tbGain4";
             this.tbGain4.Size = new System.Drawing.Size(100, 22);
@@ -761,7 +872,7 @@
             // 
             // tbGain3
             // 
-            this.tbGain3.Location = new System.Drawing.Point(683, 64);
+            this.tbGain3.Location = new System.Drawing.Point(683, 60);
             this.tbGain3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGain3.Name = "tbGain3";
             this.tbGain3.Size = new System.Drawing.Size(100, 22);
@@ -779,7 +890,7 @@
             // 
             // tbGain2
             // 
-            this.tbGain2.Location = new System.Drawing.Point(683, 36);
+            this.tbGain2.Location = new System.Drawing.Point(683, 32);
             this.tbGain2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGain2.Name = "tbGain2";
             this.tbGain2.Size = new System.Drawing.Size(100, 22);
@@ -797,7 +908,7 @@
             // 
             // tbGain1
             // 
-            this.tbGain1.Location = new System.Drawing.Point(683, 10);
+            this.tbGain1.Location = new System.Drawing.Point(683, 6);
             this.tbGain1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGain1.Name = "tbGain1";
             this.tbGain1.Size = new System.Drawing.Size(100, 22);
@@ -1204,7 +1315,7 @@
             this.tbSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbSettings.Name = "tbSettings";
             this.tbSettings.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbSettings.Size = new System.Drawing.Size(893, 191);
+            this.tbSettings.Size = new System.Drawing.Size(905, 191);
             this.tbSettings.TabIndex = 1;
             this.tbSettings.Text = "Settings";
             this.tbSettings.UseVisualStyleBackColor = true;
@@ -1221,7 +1332,7 @@
             // bTnReset
             // 
             this.bTnReset.Enabled = false;
-            this.bTnReset.Location = new System.Drawing.Point(1156, 126);
+            this.bTnReset.Location = new System.Drawing.Point(1156, 112);
             this.bTnReset.Name = "bTnReset";
             this.bTnReset.Size = new System.Drawing.Size(135, 26);
             this.bTnReset.TabIndex = 18;
@@ -1257,115 +1368,15 @@
             this.lbVolValue.TabIndex = 21;
             this.lbVolValue.Text = "0";
             // 
-            // btnPitchVol1
+            // btnStop
             // 
-            this.btnPitchVol1.Location = new System.Drawing.Point(789, 11);
-            this.btnPitchVol1.Name = "btnPitchVol1";
-            this.btnPitchVol1.Size = new System.Drawing.Size(93, 23);
-            this.btnPitchVol1.TabIndex = 98;
-            this.btnPitchVol1.Text = "Put a value";
-            this.btnPitchVol1.UseVisualStyleBackColor = true;
-            this.btnPitchVol1.Visible = false;
-            this.btnPitchVol1.Click += new System.EventHandler(this.btnPitchVol1_Click);
-            // 
-            // btnPitchVol2
-            // 
-            this.btnPitchVol2.Location = new System.Drawing.Point(789, 36);
-            this.btnPitchVol2.Name = "btnPitchVol2";
-            this.btnPitchVol2.Size = new System.Drawing.Size(93, 23);
-            this.btnPitchVol2.TabIndex = 99;
-            this.btnPitchVol2.Text = "Put a value";
-            this.btnPitchVol2.UseVisualStyleBackColor = true;
-            this.btnPitchVol2.Visible = false;
-            this.btnPitchVol2.Click += new System.EventHandler(this.btnPitchVol2_Click);
-            // 
-            // btnPitchVol3
-            // 
-            this.btnPitchVol3.Location = new System.Drawing.Point(789, 65);
-            this.btnPitchVol3.Name = "btnPitchVol3";
-            this.btnPitchVol3.Size = new System.Drawing.Size(93, 23);
-            this.btnPitchVol3.TabIndex = 100;
-            this.btnPitchVol3.Text = "Put a value";
-            this.btnPitchVol3.UseVisualStyleBackColor = true;
-            this.btnPitchVol3.Visible = false;
-            this.btnPitchVol3.Click += new System.EventHandler(this.btnPitchVol3_Click);
-            // 
-            // btnPitchVol4
-            // 
-            this.btnPitchVol4.Location = new System.Drawing.Point(789, 93);
-            this.btnPitchVol4.Name = "btnPitchVol4";
-            this.btnPitchVol4.Size = new System.Drawing.Size(93, 23);
-            this.btnPitchVol4.TabIndex = 101;
-            this.btnPitchVol4.Text = "Put a value";
-            this.btnPitchVol4.UseVisualStyleBackColor = true;
-            this.btnPitchVol4.Visible = false;
-            this.btnPitchVol4.Click += new System.EventHandler(this.btnPitchVol4_Click);
-            // 
-            // btnPitchVol5
-            // 
-            this.btnPitchVol5.Location = new System.Drawing.Point(789, 121);
-            this.btnPitchVol5.Name = "btnPitchVol5";
-            this.btnPitchVol5.Size = new System.Drawing.Size(93, 23);
-            this.btnPitchVol5.TabIndex = 102;
-            this.btnPitchVol5.Text = "Put a value";
-            this.btnPitchVol5.UseVisualStyleBackColor = true;
-            this.btnPitchVol5.Visible = false;
-            this.btnPitchVol5.Click += new System.EventHandler(this.btnPitchVol5_Click);
-            // 
-            // btnPitchVol6
-            // 
-            this.btnPitchVol6.Location = new System.Drawing.Point(789, 147);
-            this.btnPitchVol6.Name = "btnPitchVol6";
-            this.btnPitchVol6.Size = new System.Drawing.Size(93, 23);
-            this.btnPitchVol6.TabIndex = 104;
-            this.btnPitchVol6.Text = "Put a value";
-            this.btnPitchVol6.UseVisualStyleBackColor = true;
-            this.btnPitchVol6.Visible = false;
-            this.btnPitchVol6.Click += new System.EventHandler(this.btnPitchVol6_Click);
-            // 
-            // btnPitchVol7
-            // 
-            this.btnPitchVol7.Location = new System.Drawing.Point(789, 177);
-            this.btnPitchVol7.Name = "btnPitchVol7";
-            this.btnPitchVol7.Size = new System.Drawing.Size(93, 23);
-            this.btnPitchVol7.TabIndex = 105;
-            this.btnPitchVol7.Text = "Put a value";
-            this.btnPitchVol7.UseVisualStyleBackColor = true;
-            this.btnPitchVol7.Visible = false;
-            this.btnPitchVol7.Click += new System.EventHandler(this.btnPitchVol7_Click);
-            // 
-            // btnPitchVol8
-            // 
-            this.btnPitchVol8.Location = new System.Drawing.Point(789, 205);
-            this.btnPitchVol8.Name = "btnPitchVol8";
-            this.btnPitchVol8.Size = new System.Drawing.Size(93, 23);
-            this.btnPitchVol8.TabIndex = 106;
-            this.btnPitchVol8.Text = "Put a value";
-            this.btnPitchVol8.UseVisualStyleBackColor = true;
-            this.btnPitchVol8.Visible = false;
-            this.btnPitchVol8.Click += new System.EventHandler(this.btnPitchVol8_Click);
-            // 
-            // btnPitchVol9
-            // 
-            this.btnPitchVol9.Location = new System.Drawing.Point(789, 231);
-            this.btnPitchVol9.Name = "btnPitchVol9";
-            this.btnPitchVol9.Size = new System.Drawing.Size(93, 23);
-            this.btnPitchVol9.TabIndex = 107;
-            this.btnPitchVol9.Text = "Put a value";
-            this.btnPitchVol9.UseVisualStyleBackColor = true;
-            this.btnPitchVol9.Visible = false;
-            this.btnPitchVol9.Click += new System.EventHandler(this.btnPitchVol9_Click);
-            // 
-            // btnPitchVol10
-            // 
-            this.btnPitchVol10.Location = new System.Drawing.Point(789, 256);
-            this.btnPitchVol10.Name = "btnPitchVol10";
-            this.btnPitchVol10.Size = new System.Drawing.Size(93, 23);
-            this.btnPitchVol10.TabIndex = 108;
-            this.btnPitchVol10.Text = "Put a value";
-            this.btnPitchVol10.UseVisualStyleBackColor = true;
-            this.btnPitchVol10.Visible = false;
-            this.btnPitchVol10.Click += new System.EventHandler(this.btnPitchVol10_Click);
+            this.btnStop.Location = new System.Drawing.Point(1156, 180);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(135, 26);
+            this.btnStop.TabIndex = 22;
+            this.btnStop.Text = "Stop";
+            this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
             // MainForm
             // 
@@ -1373,6 +1384,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1444, 251);
+            this.Controls.Add(this.btnStop);
             this.Controls.Add(this.lbVolValue);
             this.Controls.Add(this.lbPitchValue);
             this.Controls.Add(this.button1);
@@ -1523,6 +1535,7 @@
         private System.Windows.Forms.Button btnPitchVol5;
         private System.Windows.Forms.Button btnPitchVol4;
         private System.Windows.Forms.Button btnPitchVol3;
+        private System.Windows.Forms.Button btnStop;
     }
 }
 
