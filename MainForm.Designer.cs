@@ -242,6 +242,7 @@
             // trackGain
             // 
             this.trackGain.Enabled = false;
+            this.trackGain.LargeChange = 1;
             this.trackGain.Location = new System.Drawing.Point(1031, 63);
             this.trackGain.Margin = new System.Windows.Forms.Padding(4);
             this.trackGain.Maximum = 30;

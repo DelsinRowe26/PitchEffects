@@ -9,7 +9,8 @@ using CSCore.Streams;
 using CSCore.Streams.Effects;
 using CSCore.Codecs;
 using CSCore.DSP;
-using System.Numerics;
+using CSCore.Utils;
+//using System.Numerics;
 using WinformsVisualization.Visualization;
 
 /*using NAudio;
@@ -39,6 +40,7 @@ namespace PitchShifter
         private CSCore.SoundOut.WasapiOut mSoundOut;
         private WaveIn waveIn;
         private SampleDSP mDsp;
+        private Complex[] data;
         private FftSize fftSize;
         private SoundInSource sound;
         private Equalizer filter;
@@ -68,17 +70,17 @@ namespace PitchShifter
             }
         }*/
 
-        public static double Length(double compressor, double frequency, double position, double length, int sampleRate)
+        public static double Length(double compressor, double frequency, double position, double length, int sampleRate)//какая-то хрень из интернета
         {
             return Math.Exp(((compressor / sampleRate) * frequency * sampleRate * (position / sampleRate)) / (length / sampleRate));
         }
 
-        public static double Sine(int index, double frequency)//!!!!!!!!!!!!!!!!!!!!!!!!!
+        public static double Sine(int index, double frequency)//!!!!!!!!!!!!!!!!!!!!!!!!!Хрень понадобится лезь, не понадобится не лезь.
         {
             return Math.Sin(index * frequency);
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)//загрузка и определение микрофона и колонок
         {
             //Находит устройства для захвата звука и заполнияет комбобокс
             MMDeviceEnumerator deviceEnum = new MMDeviceEnumerator();
@@ -100,7 +102,7 @@ namespace PitchShifter
             }
 
         }
-        private bool StartFullDuplex()
+        private bool StartFullDuplex()//запуск пича и громкости
         {
             try
             {
@@ -112,12 +114,14 @@ namespace PitchShifter
                 
                 var source = new SoundInSource(mSoundIn) { FillWithZeros = true };
 
+                
+
+                //source.Read(0x400, 1, 2);
+
                 //Init DSP для смещения высоты тона
                 mDsp = new SampleDSP(source.ToSampleSource().ToStereo());
                 mDsp.GainDB = trackGain.Value + 20;
                 SetPitchShiftValue();
-
-                textBox1.Text = source.GetPosition().TotalSeconds.ToString();
 
                 //Инициальный микшер
                 mMixer = new SimpleMixer(2, 48000) //стерео, 44,1 КГц
@@ -134,13 +138,13 @@ namespace PitchShifter
                 mSoundOut.Device = mOutputDevices[cmbOutput.SelectedIndex];
                 mSoundOut.Initialize(mMixer.ToWaveSource(16));
 
-                int sampleRate = 48000;
+                /*int sampleRate = 48000;
                 short[] data = new short[sampleRate];
                 double frequency = Math.PI * 2 * 440.0 / mSoundIn.WaveFormat.SampleRate;
                 for (int index = 0; index < sampleRate; index++)
                 {
                     data[index] = (short)(Sine(index, frequency) * Length(-0.0015, frequency, index, 1.0, sampleRate) * short.MaxValue);
-                }
+                }*/
 
                 //Start rolling!
                 mSoundOut.Play();
@@ -155,7 +159,7 @@ namespace PitchShifter
             return false;
         }
 
-        private void StopFullDuplex()
+        private void StopFullDuplex()//остановка всего
         {
             if (mSoundOut != null) mSoundOut.Dispose();
             if (mSoundIn != null) mSoundIn.Dispose();
@@ -174,7 +178,7 @@ namespace PitchShifter
             }
         }
 
-        private void SetPitchShiftValue()
+        private void SetPitchShiftValue()//рассчеты и значения пича
         {
             mDsp.PitchShift = (float)Math.Pow(2.0F, trackPitch.Value / 13.0F);
         }
@@ -216,7 +220,7 @@ namespace PitchShifter
             trackPitch.Value = 0;
         }
 
-        private void chkAddMp3_CheckedChanged(object sender, EventArgs e)
+        private void chkAddMp3_CheckedChanged(object sender, EventArgs e)//чекбокс для включения музыки на фоне
         {
             if (mMixer != null)
             {
@@ -232,12 +236,12 @@ namespace PitchShifter
             } 
         }
 
-        private void bTnPlus_Click(object sender, EventArgs e)// Создание диапазонов
+        private void bTnPlus_Click(object sender, EventArgs e)// Кнопка для создание текстбоксов диапазонов
         {
             tbDiapPlus();
         }
 
-        private void bTnMinus_Click(object sender, EventArgs e)
+        private void bTnMinus_Click(object sender, EventArgs e)//удаление текстбоксов
         {
             tbDiapMinus();
         }
@@ -291,7 +295,7 @@ namespace PitchShifter
             TextBoxes.Add(newTextBox2);
             controls.Add(newTextBox2);
         }*/
-        private void tbDiapPlus()
+        private void tbDiapPlus()//добавление текст боксов основная процедура
         {
             if (plusclick == 0)
             {
@@ -429,7 +433,7 @@ namespace PitchShifter
             }
         }
 
-        private void btnFix_Click(object sender, EventArgs e)
+        private void btnFix_Click(object sender, EventArgs e)//фиксация значений из текстбоксов
         {
             for (int i = 0; i < min.Length; i++)
             {
@@ -505,7 +509,7 @@ namespace PitchShifter
             }
         }
 
-        private void bTnReset_Click(object sender, EventArgs e)
+        private void bTnReset_Click(object sender, EventArgs e)//обнуление трэкбаров
         {
             trackGain.Value = 0;
             trackPitch.Value = 0;
@@ -620,7 +624,7 @@ namespace PitchShifter
             lbVolValue.Text = tbGain10.Text;
         }
 
-        private void tbDiapMinus()
+        private void tbDiapMinus()//процедура удаления текстбоксов
         {
             if (plusclick == 9)
             {
@@ -758,6 +762,27 @@ namespace PitchShifter
             }
         }
 
+        private void btnStop_Click(object sender, EventArgs e)//просто кнопка остановки
+        {
+            StopFullDuplex();
+            trackGain.Enabled = false;
+            trackPitch.Enabled = false;
+            chkAddMp3.Enabled = false;
+            bTnReset.Enabled = false;
+        }
+
+        /*public static Complex[] nfft(Complex[] X)//Взятое из интернета БПФ 
+        {
+            int N = X.Length;
+            Complex[] X_n = new Complex[N];
+            for (int i = 0; i < N / 2; i++)
+            {
+                X_n[i] = X[N / 2 + i];
+                X_n[N / 2 + i] = X[i];
+            }
+            return X_n;
+        }
+
         private static Complex w(int k, int N)
         {
             if (k % N == 0) return 1;
@@ -793,30 +818,9 @@ namespace PitchShifter
                 }
             }
             return X;
-        }
+        }*/
 
-        private void btnStop_Click(object sender, EventArgs e)
-        {
-            StopFullDuplex();
-            trackGain.Enabled = false;
-            trackPitch.Enabled = false;
-            chkAddMp3.Enabled = false;
-            bTnReset.Enabled = false;
-        }
-
-        public static Complex[] nfft(Complex[] X)
-        {
-            int N = X.Length;
-            Complex[] X_n = new Complex[N];
-            for (int i = 0; i < N / 2; i++)
-            {
-                X_n[i] = X[N / 2 + i];
-                X_n[N / 2 + i] = X[i];
-            }
-            return X_n;
-        }
-
-        public static void ShortTimeFourierTransform(float[] fftBuffer, long fftFrameSize, long sign)
+        public static void ShortTimeFourierTransform(float[] fftBuffer, long fftFrameSize, long sign)//Взятое из интернета БПФ 
         {
             long i;
             long j, le;
@@ -869,5 +873,9 @@ namespace PitchShifter
                 }
             }
         }
+        /*public static Complex[] FftResultBuffer(int k, int N)
+        {
+            
+        }*/
     }
 }
