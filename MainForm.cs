@@ -106,7 +106,7 @@ namespace PitchShifter
         }
         private bool StartFullDuplex()//запуск пича и громкости
         {
-            long offset, sampleCount, osamp, i, k, qpd, index, inFifoLatency, stepSize, fftFrameSize2;
+            long offset = 1, sampleCount = 1, osamp, i, k, qpd, index, inFifoLatency, stepSize, fftFrameSize2;
             float[] indata = new float[4096];
             double magn, phase, tmp, window, real, imag;
             double freqPerBin, expct;
@@ -129,6 +129,10 @@ namespace PitchShifter
                 
                 var source = new SoundInSource(mSoundIn) { FillWithZeros = true };
 
+                for(i = offset; i < sampleCount; i++)
+                {
+
+                }
                 ShortTimeFourierTransform(fftBuffer, 4096, -1);
 
                 
