@@ -29,6 +29,8 @@ namespace PitchShifter
     {
         AudioLevelMonitor audioMonitor;
         //Глобальные переменныe
+        private static float[] fftBuffer = new float[32000];
+        private static long gRover, gInit;
         int[] Pitch = new int[10];
         int[] Gain = new int[10];
         int[] min = new int[10];
@@ -104,6 +106,19 @@ namespace PitchShifter
         }
         private bool StartFullDuplex()//запуск пича и громкости
         {
+            long offset, sampleCount, osamp, i, k, qpd, index, inFifoLatency, stepSize, fftFrameSize2;
+            float[] indata = new float[4096];
+            double magn, phase, tmp, window, real, imag;
+            double freqPerBin, expct;
+
+            float[] outdata = indata;
+            fftFrameSize2 = 2048;
+            stepSize = 4096 / 48000;
+            freqPerBin = 48000 / (double)4096;
+            expct = 2.0 * Math.PI * (double)stepSize / (double)4096;
+            inFifoLatency = 4096 - stepSize;
+            if (gRover == 0) gRover = inFifoLatency;
+
             try
             {
                 //Запускает устройство захвата звука с задержкой 1 мс.
@@ -114,9 +129,11 @@ namespace PitchShifter
                 
                 var source = new SoundInSource(mSoundIn) { FillWithZeros = true };
 
+                ShortTimeFourierTransform(fftBuffer, 4096, -1);
+
                 
 
-                //source.Read(0x400, 1, 2);
+                ShortTimeFourierTransform(fftBuffer, 4096, 1);
 
                 //Init DSP для смещения высоты тона
                 mDsp = new SampleDSP(source.ToSampleSource().ToStereo());
@@ -524,6 +541,7 @@ namespace PitchShifter
             //textBox1.Text = audio.GetFrequencyNative(out long source).ToString();
             //textBox1.Text = mMixer.WaveFormat.ToString();
             //textBox1.Text = mDsp.Length.ToString();
+            textBox1.Text = fftBuffer.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -820,15 +838,14 @@ namespace PitchShifter
             return X;
         }*/
 
-        public static void ShortTimeFourierTransform(float[] fftBuffer, long fftFrameSize, long sign)//Взятое из интернета БПФ 
+        public static void ShortTimeFourierTransform(float[] fftBuffer, long fftFrameSize, long sign)
         {
-            long i;
-            long j, le;
-            long k;
+            float wr, wi, arg, temp;
+            float tr, ti, ur, ui;
+            long i, bitm, j, le, le2, k;
 
             for (i = 2; i < 2 * fftFrameSize - 2; i += 2)
             {
-                long bitm;
                 for (bitm = 2, j = 0; bitm < 2 * fftFrameSize; bitm <<= 1)
                 {
                     if ((i & bitm) != 0) j++;
@@ -836,7 +853,7 @@ namespace PitchShifter
                 }
                 if (i < j)
                 {
-                    var temp = fftBuffer[i];
+                    temp = fftBuffer[i];
                     fftBuffer[i] = fftBuffer[j];
                     fftBuffer[j] = temp;
                     temp = fftBuffer[i + 1];
@@ -848,19 +865,19 @@ namespace PitchShifter
             for (k = 0, le = 2; k < max; k++)
             {
                 le <<= 1;
-                var le2 = le >> 1;
-                var ur = 1.0F;
-                var ui = 0.0F;
-                var arg = (float)Math.PI / (le2 >> 1);
-                var wr = (float)Math.Cos(arg);
-                var wi = (float)(sign * Math.Sin(arg));
+                le2 = le >> 1;
+                ur = 1.0F;
+                ui = 0.0F;
+                arg = (float)Math.PI / (le2 >> 1);
+                wr = (float)Math.Cos(arg);
+                wi = (float)(sign * Math.Sin(arg));
                 for (j = 0; j < le2; j += 2)
                 {
-                    float tr;
+
                     for (i = j; i < 2 * fftFrameSize; i += le)
                     {
                         tr = fftBuffer[i + le2] * ur - fftBuffer[i + le2 + 1] * ui;
-                        var ti = fftBuffer[i + le2] * ui + fftBuffer[i + le2 + 1] * ur;
+                        ti = fftBuffer[i + le2] * ui + fftBuffer[i + le2 + 1] * ur;
                         fftBuffer[i + le2] = fftBuffer[i] - tr;
                         fftBuffer[i + le2 + 1] = fftBuffer[i + 1] - ti;
                         fftBuffer[i] += tr;

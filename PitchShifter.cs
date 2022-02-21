@@ -82,7 +82,7 @@ namespace PitchShifter
 
 
             float[] outdata = indata;
-            /* set up some handy variables */
+            /* set up some handy variables/настроить некоторые удобные переменные */
             fftFrameSize2 = fftFrameSize / 2;
             stepSize = fftFrameSize / osamp;
             freqPerBin = sampleRate / (double)fftFrameSize;
@@ -90,22 +90,21 @@ namespace PitchShifter
             inFifoLatency = fftFrameSize - stepSize;
             if (gRover == 0) gRover = inFifoLatency;
 
-
-            /* main processing loop */
+            /* main processing loop/основной цикл обработки */
             for (i = offset; i < sampleCount; i++)
             {
 
-                /* As long as we have not yet collected enough data just read in */
+                /* As long as we have not yet collected enough data just read in/Пока мы еще не собрали достаточно данных, просто читаем в */
                 gInFIFO[gRover] = indata[i];
                 outdata[i] = gOutFIFO[gRover - inFifoLatency];
                 gRover++;
 
-                /* now we have enough data for processing */
+                /* now we have enough data for processing/теперь у нас достаточно данных для обработки */
                 if (gRover >= fftFrameSize)
                 {
                     gRover = inFifoLatency;
 
-                    /* do windowing and re,im interleave */
+                    /* do windowing and re,im interleave/делать окна и повторно чередовать */
                     for (k = 0; k < fftFrameSize; k++)
                     {
                         window = -.5 * Math.Cos(2.0 * Math.PI * (double)k / (double)fftFrameSize) + .5;
@@ -118,46 +117,46 @@ namespace PitchShifter
                     /* do transform */
                     ShortTimeFourierTransform(gFFTworksp, fftFrameSize, -1);
 
-                    /* this is the analysis step */
+                    /* this is the analysis step/это этап анализа  */
                     for (k = 0; k <= fftFrameSize2; k++)
                     {
 
-                        /* de-interlace FFT buffer */
+                        /* de-interlace FFT buffer/деинтерлейсный буфер FFT  */
                         real = gFFTworksp[2 * k];
                         imag = gFFTworksp[2 * k + 1];
 
-                        /* compute magnitude and phase */
+                        /* compute magnitude and phase/вычислить амплитуду и фазу  */
                         magn = 2.0 * Math.Sqrt(real * real + imag * imag);
                         phase = Math.Atan2(imag, real);
 
-                        /* compute phase difference */
+                        /* compute phase difference/вычислить разность фаз */
                         tmp = phase - gLastPhase[k];
                         gLastPhase[k] = (float)phase;
 
-                        /* subtract expected phase difference */
+                        /* subtract expected phase difference/вычесть ожидаемую разность фаз */
                         tmp -= (double)k * expct;
 
-                        /* map delta phase into +/- Pi interval */
+                        /* map delta phase into +/- Pi interval/сопоставить фазу дельты с интервалом +/- Pi */
                         qpd = (long)(tmp / Math.PI);
                         if (qpd >= 0) qpd += qpd & 1;
                         else qpd -= qpd & 1;
                         tmp -= Math.PI * (double)qpd;
 
-                        /* get deviation from bin frequency from the +/- Pi interval */
+                        /* get deviation from bin frequency from the +/- Pi interval/получить отклонение от частоты бина от интервала +/- Pi */
                         tmp = osamp * tmp / (2.0 * Math.PI);
 
-                        /* compute the k-th partials' true frequency */
+                        /* compute the k-th partials' true frequency/вычислить истинную частоту k-го парциала */
                         tmp = (double)k * freqPerBin + tmp * freqPerBin;
 
-                        /* store magnitude and true frequency in analysis arrays */
+                        /* store magnitude and true frequency in analysis arrays/хранить величину и истинную частоту в массивах анализа */
                         gAnaMagn[k] = (float)magn;
                         gAnaFreq[k] = (float)tmp;
 
                     }
 
                     /* ***************** PROCESSING ******************* */
-                    /* this does the actual pitch shifting */
-                    
+                    /* this does the actual pitch shifting/это делает фактическое изменение высоты тона */
+
                     for (int zero = 0; zero < fftFrameSize; zero++)
                     {
                         gSynMagn[zero] = 0;
@@ -204,13 +203,13 @@ namespace PitchShifter
                         gFFTworksp[2 * k + 1] = (float)(magn * Math.Sin(phase));
                     }
 
-                    /* zero negative frequencies */
+                    /* zero negative frequencies/ноль отрицательных частот */
                     for (k = fftFrameSize + 2; k < 2 * fftFrameSize; k++) gFFTworksp[k] = 0.0F;
 
-                    /* do inverse transform */
+                    /* do inverse transform/сделать обратное преобразование */
                     ShortTimeFourierTransform(gFFTworksp, fftFrameSize, 1);
 
-                    /* do windowing and add to output accumulator */
+                    /* do windowing and add to output accumulator/делать окна и добавлять в выходной аккумулятор */
                     for (k = 0; k < fftFrameSize; k++)
                     {
                         window = -.5 * Math.Cos(2.0 * Math.PI * (double)k / (double)fftFrameSize) + .5;
@@ -218,14 +217,14 @@ namespace PitchShifter
                     }
                     for (k = 0; k < stepSize; k++) gOutFIFO[k] = gOutputAccum[k];
 
-                    /* shift accumulator */
+                    /* shift accumulator/сменный аккумулятор */
                     //memmove(gOutputAccum, gOutputAccum + stepSize, fftFrameSize * sizeof(float));
                     for (k = 0; k < fftFrameSize; k++)
                     {
                         gOutputAccum[k] = gOutputAccum[k + stepSize];
                     }
 
-                    /* move input FIFO */
+                    /* move input FIFO/переместить вход FIFO */
                     for (k = 0; k < inFifoLatency; k++) gInFIFO[k] = gInFIFO[k + stepSize];
                 }
             }
