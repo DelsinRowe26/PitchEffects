@@ -62,7 +62,6 @@
     <Compile Include="AudioLevelsUIControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="SampleDSP.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

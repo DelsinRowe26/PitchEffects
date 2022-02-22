@@ -144,6 +144,7 @@
             this.lbPitchValue = new System.Windows.Forms.Label();
             this.lbVolValue = new System.Windows.Forms.Label();
             this.btnStop = new System.Windows.Forms.Button();
+            this.tbBufferValue = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.trackPitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackGain)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -1307,6 +1308,7 @@
             // 
             // tbSettings
             // 
+            this.tbSettings.Controls.Add(this.tbBufferValue);
             this.tbSettings.Controls.Add(this.textBox1);
             this.tbSettings.Controls.Add(this.cmbOutput);
             this.tbSettings.Controls.Add(this.lblSpeaker);
@@ -1378,6 +1380,14 @@
             this.btnStop.Text = "Stop";
             this.btnStop.UseVisualStyleBackColor = true;
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            // 
+            // tbBufferValue
+            // 
+            this.tbBufferValue.Location = new System.Drawing.Point(561, 11);
+            this.tbBufferValue.Multiline = true;
+            this.tbBufferValue.Name = "tbBufferValue";
+            this.tbBufferValue.Size = new System.Drawing.Size(100, 24);
+            this.tbBufferValue.TabIndex = 12;
             // 
             // MainForm
             // 
@@ -1537,6 +1547,7 @@
         private System.Windows.Forms.Button btnPitchVol4;
         private System.Windows.Forms.Button btnPitchVol3;
         private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.TextBox tbBufferValue;
     }
 }
 

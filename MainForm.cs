@@ -27,10 +27,9 @@ namespace PitchShifter
 {
     public partial class MainForm : Form
     {
-        AudioLevelMonitor audioMonitor;
         //Глобальные переменныe
+        private long fftFrameSize;
         private static float[] fftBuffer = new float[32000];
-        private static long gRover, gInit;
         int[] Pitch = new int[10];
         int[] Gain = new int[10];
         int[] min = new int[10];
@@ -39,26 +38,14 @@ namespace PitchShifter
         private MMDeviceCollection mInputDevices;
         private MMDeviceCollection mOutputDevices;
         private WasapiCapture mSoundIn;
-        private CSCore.SoundOut.WasapiOut mSoundOut;
-        private WaveIn waveIn;
+        private WasapiOut mSoundOut;
         private SampleDSP mDsp;
-        private Complex[] data;
-        private FftSize fftSize;
-        private SoundInSource sound;
-        private Equalizer filter;
-        private AudioClock audio;
-        private FftProvider fftProvider;
-        //private CSCore.WaveFormat format;
-        //private MusicPlayer vSab = new MusicPlayer();
         private SimpleMixer mMixer;
         private ISampleSource mMp3;
-        private readonly Bitmap _bitmap = new Bitmap(2000, 600);
-        private int _xpos;
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         public MainForm()
         {
             InitializeComponent();
-            audioMonitor = new AudioLevelMonitor();
         }
 
         /*public static void Main(string[] args)
@@ -106,19 +93,6 @@ namespace PitchShifter
         }
         private bool StartFullDuplex()//запуск пича и громкости
         {
-            long offset = 1, sampleCount = 1, osamp, i, k, qpd, index, inFifoLatency, stepSize, fftFrameSize2;
-            float[] indata = new float[4096];
-            double magn, phase, tmp, window, real, imag;
-            double freqPerBin, expct;
-
-            float[] outdata = indata;
-            fftFrameSize2 = 2048;
-            stepSize = 4096 / 48000;
-            freqPerBin = 48000 / (double)4096;
-            expct = 2.0 * Math.PI * (double)stepSize / (double)4096;
-            inFifoLatency = 4096 - stepSize;
-            if (gRover == 0) gRover = inFifoLatency;
-
             try
             {
                 //Запускает устройство захвата звука с задержкой 1 мс.
@@ -129,15 +103,9 @@ namespace PitchShifter
                 
                 var source = new SoundInSource(mSoundIn) { FillWithZeros = true };
 
-                for(i = offset; i < sampleCount; i++)
-                {
+                //FastFourierTransformation.Fft(fftBuf, 12, FftMode.Forward);
 
-                }
-                ShortTimeFourierTransform(fftBuffer, 4096, -1);
-
-                
-
-                ShortTimeFourierTransform(fftBuffer, 4096, 1);
+                PitchShifter.ShortTimeFourierTransform(fftBuffer, 4096, -1);
 
                 //Init DSP для смещения высоты тона
                 mDsp = new SampleDSP(source.ToSampleSource().ToStereo());
@@ -158,14 +126,6 @@ namespace PitchShifter
                 mSoundOut = new WasapiOut(false, AudioClientShareMode.Exclusive, 1);
                 mSoundOut.Device = mOutputDevices[cmbOutput.SelectedIndex];
                 mSoundOut.Initialize(mMixer.ToWaveSource(16));
-
-                /*int sampleRate = 48000;
-                short[] data = new short[sampleRate];
-                double frequency = Math.PI * 2 * 440.0 / mSoundIn.WaveFormat.SampleRate;
-                for (int index = 0; index < sampleRate; index++)
-                {
-                    data[index] = (short)(Sine(index, frequency) * Length(-0.0015, frequency, index, 1.0, sampleRate) * short.MaxValue);
-                }*/
 
                 //Start rolling!
                 mSoundOut.Play();
@@ -202,6 +162,8 @@ namespace PitchShifter
         private void SetPitchShiftValue()//рассчеты и значения пича
         {
             mDsp.PitchShift = (float)Math.Pow(2.0F, trackPitch.Value / 13.0F);
+            textBox1.Text = mDsp.PitchShift.ToString();
+            PitchShifter.ShortTimeFourierTransform(fftBuffer, 4096, -1);
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
