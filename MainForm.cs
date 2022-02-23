@@ -48,17 +48,6 @@ namespace PitchShifter
             InitializeComponent();
         }
 
-        /*public static void Main(string[] args)
-        {
-            int sampleRate = 44100;
-            short[] data = new short[sampleRate];
-            double frequency = Math.PI * 2 * 20000.0 / sampleRate;
-            for(int index = 0; index < sampleRate; index++)
-            {
-                data[index] = (short)(Sine(index, frequency) * Length(-0.0015, frequency, index, 1.0, sampleRate) * short.MaxValue);
-            }
-        }*/
-
         public static double Length(double compressor, double frequency, double position, double length, int sampleRate)//какая-то хрень из интернета
         {
             return Math.Exp(((compressor / sampleRate) * frequency * sampleRate * (position / sampleRate)) / (length / sampleRate));
@@ -103,7 +92,7 @@ namespace PitchShifter
                 
                 var source = new SoundInSource(mSoundIn) { FillWithZeros = true };
 
-                //FastFourierTransformation.Fft(fftBuf, 12, FftMode.Forward);
+                
 
                 PitchShifter.ShortTimeFourierTransform(fftBuffer, 4096, -1);
 
@@ -162,7 +151,6 @@ namespace PitchShifter
         private void SetPitchShiftValue()//рассчеты и значения пича
         {
             mDsp.PitchShift = (float)Math.Pow(2.0F, trackPitch.Value / 13.0F);
-            textBox1.Text = mDsp.PitchShift.ToString();
             PitchShifter.ShortTimeFourierTransform(fftBuffer, 4096, -1);
         }
 
@@ -507,7 +495,7 @@ namespace PitchShifter
             //textBox1.Text = audio.GetFrequencyNative(out long source).ToString();
             //textBox1.Text = mMixer.WaveFormat.ToString();
             //textBox1.Text = mDsp.Length.ToString();
-            textBox1.Text = fftBuffer.ToString();
+            //textBox1.Text = fftBuffer.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)

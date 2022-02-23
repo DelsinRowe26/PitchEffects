@@ -144,7 +144,6 @@
             this.lbPitchValue = new System.Windows.Forms.Label();
             this.lbVolValue = new System.Windows.Forms.Label();
             this.btnStop = new System.Windows.Forms.Button();
-            this.tbBufferValue = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.trackPitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackGain)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -180,7 +179,8 @@
             this.trackPitch.LargeChange = 1;
             this.trackPitch.Location = new System.Drawing.Point(1031, 10);
             this.trackPitch.Margin = new System.Windows.Forms.Padding(4);
-            this.trackPitch.Minimum = -10;
+            this.trackPitch.Maximum = 15;
+            this.trackPitch.Minimum = -15;
             this.trackPitch.Name = "trackPitch";
             this.trackPitch.Size = new System.Drawing.Size(400, 56);
             this.trackPitch.TabIndex = 5;
@@ -543,7 +543,7 @@
             this.lbZnachPitch.Name = "lbZnachPitch";
             this.lbZnachPitch.Size = new System.Drawing.Size(63, 68);
             this.lbZnachPitch.TabIndex = 96;
-            this.lbZnachPitch.Text = "Peach value from -10 to 10";
+            this.lbZnachPitch.Text = "Peach value from -15 to 15";
             this.lbZnachPitch.Visible = false;
             // 
             // lbGain10
@@ -1308,7 +1308,6 @@
             // 
             // tbSettings
             // 
-            this.tbSettings.Controls.Add(this.tbBufferValue);
             this.tbSettings.Controls.Add(this.textBox1);
             this.tbSettings.Controls.Add(this.cmbOutput);
             this.tbSettings.Controls.Add(this.lblSpeaker);
@@ -1380,14 +1379,6 @@
             this.btnStop.Text = "Stop";
             this.btnStop.UseVisualStyleBackColor = true;
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
-            // 
-            // tbBufferValue
-            // 
-            this.tbBufferValue.Location = new System.Drawing.Point(561, 11);
-            this.tbBufferValue.Multiline = true;
-            this.tbBufferValue.Name = "tbBufferValue";
-            this.tbBufferValue.Size = new System.Drawing.Size(100, 24);
-            this.tbBufferValue.TabIndex = 12;
             // 
             // MainForm
             // 
@@ -1547,7 +1538,6 @@
         private System.Windows.Forms.Button btnPitchVol4;
         private System.Windows.Forms.Button btnPitchVol3;
         private System.Windows.Forms.Button btnStop;
-        private System.Windows.Forms.TextBox tbBufferValue;
     }
 }
 
