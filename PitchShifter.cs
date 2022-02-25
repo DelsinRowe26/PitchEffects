@@ -126,7 +126,7 @@ namespace PitchShifter
                         imag = gFFTworksp[2 * k + 1];
 
                         /* compute magnitude and phase/вычислить амплитуду и фазу  */
-                        magn = 2.0 * Math.Sqrt(real * real + imag * imag);
+                        magn = 6.0 * Math.Sqrt(real * real + imag * imag);
                         phase = Math.Atan2(imag, real);
 
                         /* compute phase difference/вычислить разность фаз */
@@ -151,7 +151,7 @@ namespace PitchShifter
                         /* store magnitude and true frequency in analysis arrays/хранить величину и истинную частоту в массивах анализа */
                         gAnaMagn[k] = (float)magn;
                         gAnaFreq[k] = (float)tmp;
-
+                        
                     }
 
                     /* ***************** PROCESSING ******************* */
@@ -172,33 +172,33 @@ namespace PitchShifter
                             gSynFreq[index] = gAnaFreq[k] * pitchShift;
                         }
                     }
-                 
+
                     /* ***************** SYNTHESIS ******************* */
-                    /* this is the synthesis step */
+                    /* this is the synthesis step/это этап синтеза */
                     for (k = 0; k <= fftFrameSize2; k++)
                     {
 
-                        /* get magnitude and true frequency from synthesis arrays */
+                        /* get magnitude and true frequency from synthesis arrays/получить величину и истинную частоту из массивов синтеза */
                         magn = gSynMagn[k];
                         tmp = gSynFreq[k];
 
-                        /* subtract bin mid frequency */
+                        /* subtract bin mid frequency/вычесть среднюю частоту бина */
                         tmp -= (double)k * freqPerBin;
 
-                        /* get bin deviation from freq deviation */
+                        /* get bin deviation from freq deviation/получить отклонение бина от отклонения частоты */
                         tmp /= freqPerBin;
 
-                        /* take osamp into account */
+                        /* take osamp into account/учитывать осамп */
                         tmp = 2.0 * Math.PI * tmp / osamp;
 
-                        /* add the overlap phase advance back in */
+                        /* add the overlap phase advance back in/добавить фазу перекрытия обратно в */
                         tmp += (double)k * expct;
 
-                        /* accumulate delta phase to get bin phase */
+                        /* accumulate delta phase to get bin phase/накапливать дельта-фазу, чтобы получить бин-фазу */
                         gSumPhase[k] += (float)tmp;
                         phase = gSumPhase[k];
 
-                        /* get real and imag part and re-interleave */
+                        /* get real and imag part and re-interleave/получить реальную часть и часть изображения и повторно чередовать */
                         gFFTworksp[2 * k] = (float)(magn * Math.Cos(phase));
                         gFFTworksp[2 * k + 1] = (float)(magn * Math.Sin(phase));
                     }

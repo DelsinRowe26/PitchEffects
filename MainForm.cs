@@ -6,29 +6,13 @@ using CSCore.SoundIn;//Вход звука
 using CSCore.SoundOut;//Выход звука
 using CSCore.CoreAudioAPI;
 using CSCore.Streams;
-using CSCore.Streams.Effects;
 using CSCore.Codecs;
-using CSCore.DSP;
-using CSCore.Utils;
-//using System.Numerics;
-using WinformsVisualization.Visualization;
-
-/*using NAudio;
-using NAudio.Wave;
-using NAudio.Wave.SampleProviders;*/
-
-using CSCore.SoundOut.MMInterop;
-using System.Drawing;
-using System.Speech.Synthesis;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace PitchShifter
 {
     public partial class MainForm : Form
     {
         //Глобальные переменныe
-        private long fftFrameSize;
         private static float[] fftBuffer = new float[32000];
         int[] Pitch = new int[10];
         int[] Gain = new int[10];
@@ -46,16 +30,6 @@ namespace PitchShifter
         public MainForm()
         {
             InitializeComponent();
-        }
-
-        public static double Length(double compressor, double frequency, double position, double length, int sampleRate)//какая-то хрень из интернета
-        {
-            return Math.Exp(((compressor / sampleRate) * frequency * sampleRate * (position / sampleRate)) / (length / sampleRate));
-        }
-
-        public static double Sine(int index, double frequency)//!!!!!!!!!!!!!!!!!!!!!!!!!Хрень понадобится лезь, не понадобится не лезь.
-        {
-            return Math.Sin(index * frequency);
         }
 
         private void MainForm_Load(object sender, EventArgs e)//загрузка и определение микрофона и колонок
@@ -742,111 +716,5 @@ namespace PitchShifter
             chkAddMp3.Enabled = false;
             bTnReset.Enabled = false;
         }
-
-        /*public static Complex[] nfft(Complex[] X)//Взятое из интернета БПФ 
-        {
-            int N = X.Length;
-            Complex[] X_n = new Complex[N];
-            for (int i = 0; i < N / 2; i++)
-            {
-                X_n[i] = X[N / 2 + i];
-                X_n[N / 2 + i] = X[i];
-            }
-            return X_n;
-        }
-
-        private static Complex w(int k, int N)
-        {
-            if (k % N == 0) return 1;
-            double arg = -2 * Math.PI * k / N;
-            return new Complex(Math.Cos(arg), Math.Sin(arg));
-        }
-        public static Complex[] fft(Complex[] x)
-        {
-            Complex[] X;
-            int N = x.Length;
-            if (N == 2)
-            {
-                X = new Complex[2];
-                X[0] = x[0] + x[1];
-                X[1] = x[0] - x[1];
-            }
-            else
-            {
-                Complex[] x_even = new Complex[N / 2];
-                Complex[] x_odd = new Complex[N / 2];
-                for (int i = 0; i < N / 2; i++)
-                {
-                    x_even[i] = x[2 * i];
-                    x_odd[i] = x[2 * i + 1];
-                }
-                Complex[] X_even = fft(x_even);
-                Complex[] X_odd = fft(x_odd);
-                X = new Complex[N];
-                for (int i = 0; i < N / 2; i++)
-                {
-                    X[i] = X_even[i] + w(i, N) * X_odd[i];
-                    X[i + N / 2] = X_even[i] - w(i, N) * X_odd[i];
-                }
-            }
-            return X;
-        }*/
-
-        public static void ShortTimeFourierTransform(float[] fftBuffer, long fftFrameSize, long sign)
-        {
-            float wr, wi, arg, temp;
-            float tr, ti, ur, ui;
-            long i, bitm, j, le, le2, k;
-
-            for (i = 2; i < 2 * fftFrameSize - 2; i += 2)
-            {
-                for (bitm = 2, j = 0; bitm < 2 * fftFrameSize; bitm <<= 1)
-                {
-                    if ((i & bitm) != 0) j++;
-                    j <<= 1;
-                }
-                if (i < j)
-                {
-                    temp = fftBuffer[i];
-                    fftBuffer[i] = fftBuffer[j];
-                    fftBuffer[j] = temp;
-                    temp = fftBuffer[i + 1];
-                    fftBuffer[i + 1] = fftBuffer[j + 1];
-                    fftBuffer[j + 1] = temp;
-                }
-            }
-            long max = (long)(Math.Log(fftFrameSize) / Math.Log(2.0) + .5);
-            for (k = 0, le = 2; k < max; k++)
-            {
-                le <<= 1;
-                le2 = le >> 1;
-                ur = 1.0F;
-                ui = 0.0F;
-                arg = (float)Math.PI / (le2 >> 1);
-                wr = (float)Math.Cos(arg);
-                wi = (float)(sign * Math.Sin(arg));
-                for (j = 0; j < le2; j += 2)
-                {
-
-                    for (i = j; i < 2 * fftFrameSize; i += le)
-                    {
-                        tr = fftBuffer[i + le2] * ur - fftBuffer[i + le2 + 1] * ui;
-                        ti = fftBuffer[i + le2] * ui + fftBuffer[i + le2 + 1] * ur;
-                        fftBuffer[i + le2] = fftBuffer[i] - tr;
-                        fftBuffer[i + le2 + 1] = fftBuffer[i + 1] - ti;
-                        fftBuffer[i] += tr;
-                        fftBuffer[i + 1] += ti;
-
-                    }
-                    tr = ur * wr - ui * wi;
-                    ui = ur * wi + ui * wr;
-                    ur = tr;
-                }
-            }
-        }
-        /*public static Complex[] FftResultBuffer(int k, int N)
-        {
-            
-        }*/
     }
 }
