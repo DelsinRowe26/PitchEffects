@@ -126,11 +126,11 @@ namespace PitchShifter
                         imag = gFFTworksp[2 * k + 1];
 
                         /* compute magnitude and phase/вычислить амплитуду и фазу  */
-                        magn = 6.0 * Math.Sqrt(real * real + imag * imag);
-                        phase = Math.Atan2(imag, real);
+                        magn = 6.0 * Math.Sqrt(real * real + imag * imag);//амплитуда
+                        phase = Math.Atan2(imag, real);//фаза
 
                         /* compute phase difference/вычислить разность фаз */
-                        tmp = phase - gLastPhase[k];
+                        tmp = phase - gLastPhase[k];//частота
                         gLastPhase[k] = (float)phase;
 
                         /* subtract expected phase difference/вычесть ожидаемую разность фаз */
@@ -234,9 +234,9 @@ namespace PitchShifter
         #region Private Static Methods
         public static void ShortTimeFourierTransform(float[] fftBuffer, long fftFrameSize, long sign)
         {
-            float wr, wi, arg, temp;
-            float tr, ti, ur, ui;
-            long i, bitm, j, le, le2, k;
+            float wr, wi, arg, temp;//temp для замены, arg для вычисления косинусоида, wr для записи косинусоида, wi для записи синусоида
+            float tr, ti, ur, ui;//
+            long i, bitm, j, le, le2, k;//le,le2 это длина кажется но не точно. i и j индексы массива. 
 
             for (i = 2; i < 2 * fftFrameSize - 2; i += 2)
             {
