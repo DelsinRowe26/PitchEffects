@@ -151,7 +151,7 @@ namespace PitchShifter
                         /* store magnitude and true frequency in analysis arrays/хранить величину и истинную частоту в массивах анализа */
                         gAnaMagn[k] = (float)magn;
                         gAnaFreq[k] = (float)tmp;
-                        
+
                     }
 
                     /* ***************** PROCESSING ******************* */
@@ -263,23 +263,23 @@ namespace PitchShifter
                 ur = 1.0F;
                 ui = 0.0F;
                 arg = (float)Math.PI / (le2 >> 1);
-                wr = (float)Math.Cos(arg);
-                wi = (float)(sign * Math.Sin(arg));
+                wr = (float)(Math.Cos(arg));//нихуя не умножать и не прибовлять иначе ушам придет пиздец
+                wi = (float)(sign * Math.Sin(arg));//нихуя не умножать и не прибовлять иначе ушам придет пиздец
                 for (j = 0; j < le2; j += 2)
                 {
 
                     for (i = j; i < 2 * fftFrameSize; i += le)
                     {
-                        tr = fftBuffer[i + le2] * ur - fftBuffer[i + le2 + 1] * ui;
-                        ti = fftBuffer[i + le2] * ui + fftBuffer[i + le2 + 1] * ur;
-                        fftBuffer[i + le2] = fftBuffer[i] - tr;
-                        fftBuffer[i + le2 + 1] = fftBuffer[i + 1] - ti;
-                        fftBuffer[i] += tr;
-                        fftBuffer[i + 1] += ti;
+                        tr = fftBuffer[i + le2] * ur - fftBuffer[i + le2 + 1] * ui;//нихуя не умножать и не прибовлять иначе ушам придет пиздец
+                        ti = fftBuffer[i + le2] * ui + fftBuffer[i + le2 + 1] * ur;//нихуя не умножать и не прибовлять иначе ушам придет пиздец
+                        fftBuffer[i + le2] = fftBuffer[i] - tr;//нихуя не умножать и не прибовлять иначе ушам придет пиздец
+                        fftBuffer[i + le2 + 1] = fftBuffer[i + 1] - ti;//нихуя не умножать и не прибовлять иначе ушам придет пиздец
+                        fftBuffer[i] += tr;//нихуя не умножать и не прибовлять иначе ушам придет пиздец
+                        fftBuffer[i + 1] += ti;//нихуя не умножать и не прибовлять иначе ушам придет пиздец
 
                     }
-                    tr = ur * wr - ui * wi;
-                    ui = ur * wi + ui * wr;
+                    tr = ur * wr - ui * wi;//нихуя не умножать и не прибовлять иначе ушам придет пиздец
+                    ui = ur * wi + ui * wr;//нихуя не умножать и не прибовлять иначе ушам придет пиздец
                     ur = tr;
                 }
             }
