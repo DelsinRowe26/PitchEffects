@@ -125,7 +125,7 @@ namespace PitchShifter
         private void SetPitchShiftValue()//рассчеты и значения пича
         {
             mDsp.PitchShift = (float)Math.Pow(2.0F, trackPitch.Value / 13.0F);
-            PitchShifter.ShortTimeFourierTransform(fftBuffer, 4096, -1);
+            //PitchShifter.ShortTimeFourierTransform(fftBuffer, 4096, -1);
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)

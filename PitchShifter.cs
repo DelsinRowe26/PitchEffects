@@ -236,7 +236,7 @@ namespace PitchShifter
         {
             float wr, wi, arg, temp;//temp для замены, arg для вычисления косинусоида, wr для записи косинусоида, wi для записи синусоида
             float tr, ti, ur, ui;//
-            long i, bitm, j, le, le2, k;//le,le2 это длина кажется но не точно. i и j индексы массива. 
+            long i, bitm, j, le, le2, k;//le,le2 это длина кажется но не точно. i и j индексы массива.
 
             for (i = 2; i < 2 * fftFrameSize - 2; i += 2)
             {
