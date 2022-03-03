@@ -783,7 +783,7 @@ namespace PitchShifter
 
                 if (isDataValid(botFreq, topFreq, reverbTime, reverbHFRTR, strings))
                 {
-                    SimpleMixer mixer = new SimpleMixer(2, SampleRate)
+                    SimpleMixer mMixer = new SimpleMixer(2, SampleRate)
                     {
                         FillWithZeros = true,
                         DivideResult = true,
@@ -798,10 +798,10 @@ namespace PitchShifter
                             reverb.HighFrequencyRTRatio = ((float)reverbHFRTR[i]) / 1000;
                             x = reverb.ToSampleSource();
                         }
-                        mixer.AddSource(x);
+                        mMixer.AddSource(x);
                     }
                     mSoundOut.Stop();
-                    mSoundOut.Initialize(mixer.ToWaveSource());
+                    mSoundOut.Initialize(mMixer.ToWaveSource());
                     mSoundOut.Play();
                 }
             }
