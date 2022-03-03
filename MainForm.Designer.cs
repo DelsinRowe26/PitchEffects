@@ -144,6 +144,8 @@
             this.lbPitchValue = new System.Windows.Forms.Label();
             this.lbVolValue = new System.Windows.Forms.Label();
             this.btnStop = new System.Windows.Forms.Button();
+            this.lbSampFreq = new System.Windows.Forms.Label();
+            this.cmbSampFreq = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.trackPitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackGain)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -1308,6 +1310,8 @@
             // 
             // tbSettings
             // 
+            this.tbSettings.Controls.Add(this.cmbSampFreq);
+            this.tbSettings.Controls.Add(this.lbSampFreq);
             this.tbSettings.Controls.Add(this.textBox1);
             this.tbSettings.Controls.Add(this.cmbOutput);
             this.tbSettings.Controls.Add(this.lblSpeaker);
@@ -1379,6 +1383,27 @@
             this.btnStop.Text = "Stop";
             this.btnStop.UseVisualStyleBackColor = true;
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            // 
+            // lbSampFreq
+            // 
+            this.lbSampFreq.AutoSize = true;
+            this.lbSampFreq.Location = new System.Drawing.Point(485, 13);
+            this.lbSampFreq.Name = "lbSampFreq";
+            this.lbSampFreq.Size = new System.Drawing.Size(126, 16);
+            this.lbSampFreq.TabIndex = 12;
+            this.lbSampFreq.Text = "Sampling frequency";
+            // 
+            // cmbSampFreq
+            // 
+            this.cmbSampFreq.FormattingEnabled = true;
+            this.cmbSampFreq.Items.AddRange(new object[] {
+            "44100",
+            "48000"});
+            this.cmbSampFreq.Location = new System.Drawing.Point(617, 10);
+            this.cmbSampFreq.Name = "cmbSampFreq";
+            this.cmbSampFreq.Size = new System.Drawing.Size(163, 24);
+            this.cmbSampFreq.TabIndex = 13;
+            this.cmbSampFreq.SelectedIndexChanged += new System.EventHandler(this.cmbSampFreq_SelectedIndexChanged);
             // 
             // MainForm
             // 
@@ -1538,6 +1563,8 @@
         private System.Windows.Forms.Button btnPitchVol4;
         private System.Windows.Forms.Button btnPitchVol3;
         private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.ComboBox cmbSampFreq;
+        private System.Windows.Forms.Label lbSampFreq;
     }
 }
 

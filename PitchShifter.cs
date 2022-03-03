@@ -112,7 +112,6 @@ namespace PitchShifter
                         gFFTworksp[2 * k + 1] = 0.0F;
                     }
 
-
                     /* ***************** ANALYSIS ******************* */
                     /* do transform */
                     ShortTimeFourierTransform(gFFTworksp, fftFrameSize, -1);

@@ -26,6 +26,7 @@ namespace PitchShifter
         private SampleDSP mDsp;
         private SimpleMixer mMixer;
         private ISampleSource mMp3;
+        private int SampleRate;
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         public MainForm()
         {
@@ -66,17 +67,13 @@ namespace PitchShifter
                 
                 var source = new SoundInSource(mSoundIn) { FillWithZeros = true };
 
-                
-
-                PitchShifter.ShortTimeFourierTransform(fftBuffer, 4096, -1);
-
                 //Init DSP для смещения высоты тона
                 mDsp = new SampleDSP(source.ToSampleSource().ToStereo());
                 mDsp.GainDB = trackGain.Value + 20;
                 SetPitchShiftValue();
 
                 //Инициальный микшер
-                mMixer = new SimpleMixer(2, 48000) //стерео, 44,1 КГц
+                mMixer = new SimpleMixer(2, SampleRate) //стерео, 44,1 КГц
                 {
                     FillWithZeros = false,
                     DivideResult = true, //Для этого установлено значение true, чтобы избежать звуков тиков из-за превышения -1 и 1.
@@ -705,6 +702,18 @@ namespace PitchShifter
                 btnFix.Enabled = false;
                 lbZnachPitch.Visible = false;
                 ZnachVol.Visible = false;
+            }
+        }
+
+        private void cmbSampFreq_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbSampFreq.SelectedIndex == 0)
+            {
+                SampleRate = 44100;
+            }
+            else if (cmbSampFreq.SelectedIndex == 1)
+            {
+                SampleRate = 48000;
             }
         }
 
