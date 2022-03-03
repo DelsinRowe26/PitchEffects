@@ -18,12 +18,15 @@ namespace PitchShifter
     {
         //Глобальные переменныe
         private int strings = 0;
+        private int tabIndex = 0;
         private static float[] fftBuffer = new float[32000];
         int[] Pitch = new int[10];
         int[] Gain = new int[10];
         int[] min = new int[10];
         int[] max = new int[10];
         int plusclick = 0, plus = 0;
+
+
         private MMDeviceCollection mInputDevices;
         private MMDeviceCollection mOutputDevices;
         private WasapiCapture mSoundIn;
@@ -32,11 +35,23 @@ namespace PitchShifter
         private SimpleMixer mMixer;
         private ISampleSource mMp3;
         private readonly IWaveSource primarySource;
-        private const int SampleRate = 44100;
+        private int SampleRate;
+        private int SampleRate1 = 44100;
+
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         public MainForm()
         {
             InitializeComponent();
+
+            //Initialize WasapiCapture for recording
+            mSoundIn = new WasapiCapture(true, AudioClientShareMode.Shared, 0);
+            mSoundIn.Initialize();
+
+            //Initialize soundout
+            primarySource = new SoundInSource(mSoundIn) { FillWithZeros = true }
+                    .ChangeSampleRate(SampleRate1).ToStereo();
+            mSoundOut = new WasapiOut() { Latency = 1 };
+            mSoundOut.Initialize(primarySource);
         }
 
         private void MainForm_Load(object sender, EventArgs e)//загрузка и определение микрофона и колонок
@@ -73,8 +88,6 @@ namespace PitchShifter
                 
                 var source = new SoundInSource(mSoundIn) { FillWithZeros = true };
 
-                
-
                 PitchShifter.ShortTimeFourierTransform(fftBuffer, 4096, -1);
 
                 //Init DSP для смещения высоты тона
@@ -83,7 +96,7 @@ namespace PitchShifter
                 SetPitchShiftValue();
 
                 //Инициальный микшер
-                mMixer = new SimpleMixer(2, 48000) //стерео, 44,1 КГц
+                mMixer = new SimpleMixer(2, SampleRate) //стерео, 44,1 КГц
                 {
                     FillWithZeros = false,
                     DivideResult = true, //Для этого установлено значение true, чтобы избежать звуков тиков из-за превышения -1 и 1.
@@ -122,6 +135,8 @@ namespace PitchShifter
             StopFullDuplex();
             if (StartFullDuplex())
             {
+                mSoundIn.Start();
+                mSoundOut.Play();
                 trackGain.Enabled = true;
                 trackPitch.Enabled = true;
                 chkAddMp3.Enabled = true;
@@ -724,7 +739,7 @@ namespace PitchShifter
             bTnReset.Enabled = false;
         }
 
-        private void btnApply_Click(object sender, EventArgs e)
+        private async void btnApply_Click(object sender, EventArgs e)
         {
             if (strings != 0)
             {
@@ -733,12 +748,12 @@ namespace PitchShifter
                 int[] reverbTime = new int[strings];
                 int[] reverbHFRTR = new int[strings];
                 int j = 0, c = 0;
-                for (int i = 0; i < tbRange.Controls.Count; i++)
+                for (int i = 0; i < tabPage1.Controls.Count; i++)
                 {
-                    if (tbRange.Controls[i] is TextBox)
+                    if (tabPage1.Controls[i] is TextBox)
                     {
                         uint n;
-                        if (uint.TryParse(tbRange.Controls[i].Text, out n))
+                        if (uint.TryParse(tabPage1.Controls[i].Text, out n))
                         {
                             c++;
                             switch (c % 4)
@@ -801,7 +816,7 @@ namespace PitchShifter
 
         public ISampleSource BandPassFilter(WasapiCapture soundIn, int sampleRate, int bottomFreq, int topFreq)
         {
-            var sampleSource = new SoundInSource(soundIn) { FillWithZeros = true }
+            var sampleSource = new SoundInSource(mSoundIn) { FillWithZeros = true }
                     .ChangeSampleRate(sampleRate).ToStereo().ToSampleSource();
 
             var tempFilter = sampleSource.AppendSource(x => new BiQuadFilterSource(x));
@@ -839,6 +854,117 @@ namespace PitchShifter
                 }
             }
             return true;
+        }
+
+        private void PlusBtn_Click(object sender, EventArgs e)
+        {
+            AddString("0", "0", "0", "1");
+        }
+
+        private void MinusBtn_Click(object sender, EventArgs e)
+        {
+            if (strings != 0)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    //tabPage1.Controls[tabPage1.Controls.Count - 1].Dispose();
+                    tabPage1.Controls.RemoveAt(tabPage1.Controls.Count - 1);
+                }
+                strings--;
+                tabIndex -= 8;
+            }
+        }
+
+        private void cmbSampFreq_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cmbSampFreq.SelectedIndex == 0)
+            {
+                SampleRate = 44100;
+            } else if(cmbSampFreq.SelectedIndex == 1)
+            {
+                SampleRate = 48000;
+            }
+        }
+
+        private void AddString(string botFreq, string topFreq, string reverbTime, string reverbHFRTR)
+        {
+            Label lbNumber = new Label();
+            lbNumber.AutoSize = false;
+            lbNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            lbNumber.Location = new System.Drawing.Point(5, 5 + (strings * 25));
+            lbNumber.Name = "lbNumber" + Convert.ToString(strings + 1);
+            lbNumber.Size = new System.Drawing.Size(25, 15);
+            lbNumber.TabIndex = tabIndex++;
+            lbNumber.Text = Convert.ToString(strings + 1) + ".";
+            tabPage1.Controls.Add(lbNumber);
+
+            Label lbFrom = new Label();
+            lbFrom.AutoSize = false;
+            lbFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            lbFrom.Location = new System.Drawing.Point(35, 5 + (strings * 25));
+            lbFrom.Name = "lbFrom" + Convert.ToString(strings + 1);
+            lbFrom.Size = new System.Drawing.Size(40, 15);
+            lbFrom.TabIndex = tabIndex++;
+            lbFrom.Text = "From";
+            tabPage1.Controls.Add(lbFrom);
+
+            TextBox tbBotFreq = new TextBox();
+            tbBotFreq.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            tbBotFreq.Location = new System.Drawing.Point(80, 5 + (strings * 25));
+            tbBotFreq.Name = "tbBotFreq" + Convert.ToString(strings + 1);
+            tbBotFreq.Size = new System.Drawing.Size(45, 15);
+            tbBotFreq.TabIndex = tabIndex++;
+            tbBotFreq.Text = botFreq;
+            tabPage1.Controls.Add(tbBotFreq);
+
+            Label lbTo = new Label();
+            lbTo.AutoSize = false;
+            lbTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            lbTo.Location = new System.Drawing.Point(130, 5 + (strings * 25));
+            lbTo.Name = "lbTo" + Convert.ToString(strings + 1);
+            lbTo.Size = new System.Drawing.Size(25, 15);
+            lbTo.TabIndex = tabIndex++;
+            lbTo.Text = "To";
+            tabPage1.Controls.Add(lbTo);
+
+            TextBox tbTopFreq = new TextBox();
+            tbTopFreq.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            tbTopFreq.Location = new System.Drawing.Point(165, 5 + (strings * 25));
+            tbTopFreq.Name = "tbTopFreq" + Convert.ToString(strings + 1);
+            tbTopFreq.Size = new System.Drawing.Size(45, 15);
+            tbTopFreq.TabIndex = tabIndex++;
+            tbTopFreq.Text = topFreq;
+            tabPage1.Controls.Add(tbTopFreq);
+
+            Label lbReverb = new Label();
+            lbReverb.AutoSize = false;
+            lbReverb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            lbReverb.Location = new System.Drawing.Point(215, 5 + (strings * 25));
+            lbReverb.Name = "lbReverb" + Convert.ToString(strings + 1);
+            lbReverb.Size = new System.Drawing.Size(55, 15);
+            lbReverb.TabIndex = tabIndex++;
+            lbReverb.Text = "Reverb";
+            tabPage1.Controls.Add(lbReverb);
+
+            TextBox tbReverb = new TextBox();
+            tbReverb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            tbReverb.Location = new System.Drawing.Point(275, 5 + (strings * 25));
+            tbReverb.Name = "tbReverb" + Convert.ToString(strings + 1);
+            tbReverb.Size = new System.Drawing.Size(45, 15);
+            tbReverb.TabIndex = tabIndex++;
+            tbReverb.Text = reverbTime;
+            tabPage1.Controls.Add(tbReverb);
+
+            TextBox tbReverbHFRTR = new TextBox();
+            tbReverbHFRTR.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            tbReverbHFRTR.Location = new System.Drawing.Point(335, 5 + (strings * 25));
+            tbReverbHFRTR.Name = "tbReverbHFRTR" + Convert.ToString(strings + 1);
+            tbReverbHFRTR.Size = new System.Drawing.Size(45, 15);
+            tbReverbHFRTR.TabIndex = tabIndex++;
+            tbReverbHFRTR.Text = reverbHFRTR;
+            tabPage1.Controls.Add(tbReverbHFRTR);
+
+            strings++;
         }
     }
 }

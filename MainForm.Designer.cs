@@ -138,6 +138,8 @@
             this.tBxto1 = new System.Windows.Forms.TextBox();
             this.tBxfrom1 = new System.Windows.Forms.TextBox();
             this.tbSettings = new System.Windows.Forms.TabPage();
+            this.lbSampFreq = new System.Windows.Forms.Label();
+            this.cmbSampFreq = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.bTnReset = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -145,18 +147,24 @@
             this.lbVolValue = new System.Windows.Forms.Label();
             this.btnStop = new System.Windows.Forms.Button();
             this.btnApply = new System.Windows.Forms.Button();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.PlusBtn = new System.Windows.Forms.Button();
+            this.MinusBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackPitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackGain)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tbRange.SuspendLayout();
             this.tbSettings.SuspendLayout();
+            this.tabControl2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(867, 173);
+            this.btnStart.Location = new System.Drawing.Point(1156, 213);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(4);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(101, 23);
+            this.btnStart.Size = new System.Drawing.Size(135, 28);
             this.btnStart.TabIndex = 2;
             this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -165,9 +173,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(728, 8);
+            this.label2.Location = new System.Drawing.Point(971, 10);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 13);
+            this.label2.Size = new System.Drawing.Size(36, 16);
             this.label2.TabIndex = 6;
             this.label2.Text = "Pitch";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -176,11 +185,12 @@
             // 
             this.trackPitch.Enabled = false;
             this.trackPitch.LargeChange = 1;
-            this.trackPitch.Location = new System.Drawing.Point(773, 8);
+            this.trackPitch.Location = new System.Drawing.Point(1031, 10);
+            this.trackPitch.Margin = new System.Windows.Forms.Padding(4);
             this.trackPitch.Maximum = 15;
             this.trackPitch.Minimum = -15;
             this.trackPitch.Name = "trackPitch";
-            this.trackPitch.Size = new System.Drawing.Size(300, 45);
+            this.trackPitch.Size = new System.Drawing.Size(400, 56);
             this.trackPitch.TabIndex = 5;
             this.trackPitch.Scroll += new System.EventHandler(this.trackPitch_Scroll);
             this.trackPitch.ValueChanged += new System.EventHandler(this.trackPitch_ValueChanged);
@@ -188,34 +198,38 @@
             // cmbInput
             // 
             this.cmbInput.FormattingEnabled = true;
-            this.cmbInput.Location = new System.Drawing.Point(70, 9);
+            this.cmbInput.Location = new System.Drawing.Point(93, 11);
+            this.cmbInput.Margin = new System.Windows.Forms.Padding(4);
             this.cmbInput.Name = "cmbInput";
-            this.cmbInput.Size = new System.Drawing.Size(290, 21);
+            this.cmbInput.Size = new System.Drawing.Size(385, 24);
             this.cmbInput.TabIndex = 7;
             // 
             // cmbOutput
             // 
             this.cmbOutput.FormattingEnabled = true;
-            this.cmbOutput.Location = new System.Drawing.Point(70, 37);
+            this.cmbOutput.Location = new System.Drawing.Point(93, 46);
+            this.cmbOutput.Margin = new System.Windows.Forms.Padding(4);
             this.cmbOutput.Name = "cmbOutput";
-            this.cmbOutput.Size = new System.Drawing.Size(290, 21);
+            this.cmbOutput.Size = new System.Drawing.Size(385, 24);
             this.cmbOutput.TabIndex = 8;
             // 
             // lblMic
             // 
             this.lblMic.AutoSize = true;
-            this.lblMic.Location = new System.Drawing.Point(3, 11);
+            this.lblMic.Location = new System.Drawing.Point(4, 14);
+            this.lblMic.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMic.Name = "lblMic";
-            this.lblMic.Size = new System.Drawing.Size(63, 13);
+            this.lblMic.Size = new System.Drawing.Size(78, 16);
             this.lblMic.TabIndex = 9;
             this.lblMic.Text = "Microphone";
             // 
             // lblSpeaker
             // 
             this.lblSpeaker.AutoSize = true;
-            this.lblSpeaker.Location = new System.Drawing.Point(3, 42);
+            this.lblSpeaker.Location = new System.Drawing.Point(4, 52);
+            this.lblSpeaker.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSpeaker.Name = "lblSpeaker";
-            this.lblSpeaker.Size = new System.Drawing.Size(47, 13);
+            this.lblSpeaker.Size = new System.Drawing.Size(59, 16);
             this.lblSpeaker.TabIndex = 10;
             this.lblSpeaker.Text = "Speaker";
             // 
@@ -226,9 +240,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(728, 51);
+            this.label1.Location = new System.Drawing.Point(971, 63);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 13);
+            this.label1.Size = new System.Drawing.Size(53, 16);
             this.label1.TabIndex = 12;
             this.label1.Text = "Volume";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -237,11 +252,12 @@
             // 
             this.trackGain.Enabled = false;
             this.trackGain.LargeChange = 1;
-            this.trackGain.Location = new System.Drawing.Point(773, 51);
+            this.trackGain.Location = new System.Drawing.Point(1031, 63);
+            this.trackGain.Margin = new System.Windows.Forms.Padding(4);
             this.trackGain.Maximum = 30;
             this.trackGain.Minimum = -10;
             this.trackGain.Name = "trackGain";
-            this.trackGain.Size = new System.Drawing.Size(300, 45);
+            this.trackGain.Size = new System.Drawing.Size(400, 56);
             this.trackGain.TabIndex = 11;
             this.trackGain.Scroll += new System.EventHandler(this.trackGain_Scroll);
             this.trackGain.ValueChanged += new System.EventHandler(this.trackGain_ValueChanged);
@@ -250,9 +266,10 @@
             // 
             this.chkAddMp3.AutoSize = true;
             this.chkAddMp3.Enabled = false;
-            this.chkAddMp3.Location = new System.Drawing.Point(730, 167);
+            this.chkAddMp3.Location = new System.Drawing.Point(973, 206);
+            this.chkAddMp3.Margin = new System.Windows.Forms.Padding(4);
             this.chkAddMp3.Name = "chkAddMp3";
-            this.chkAddMp3.Size = new System.Drawing.Size(107, 17);
+            this.chkAddMp3.Size = new System.Drawing.Size(133, 20);
             this.chkAddMp3.TabIndex = 13;
             this.chkAddMp3.Text = "Add Sample Mp3";
             this.chkAddMp3.UseVisualStyleBackColor = true;
@@ -260,10 +277,10 @@
             // 
             // bTnPlus
             // 
-            this.bTnPlus.Location = new System.Drawing.Point(698, 141);
-            this.bTnPlus.Margin = new System.Windows.Forms.Padding(2);
+            this.bTnPlus.Location = new System.Drawing.Point(931, 174);
+            this.bTnPlus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bTnPlus.Name = "bTnPlus";
-            this.bTnPlus.Size = new System.Drawing.Size(26, 19);
+            this.bTnPlus.Size = new System.Drawing.Size(35, 23);
             this.bTnPlus.TabIndex = 14;
             this.bTnPlus.Text = "+";
             this.bTnPlus.UseVisualStyleBackColor = true;
@@ -272,10 +289,10 @@
             // bTnMinus
             // 
             this.bTnMinus.Enabled = false;
-            this.bTnMinus.Location = new System.Drawing.Point(698, 162);
-            this.bTnMinus.Margin = new System.Windows.Forms.Padding(2);
+            this.bTnMinus.Location = new System.Drawing.Point(931, 199);
+            this.bTnMinus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bTnMinus.Name = "bTnMinus";
-            this.bTnMinus.Size = new System.Drawing.Size(26, 19);
+            this.bTnMinus.Size = new System.Drawing.Size(35, 23);
             this.bTnMinus.TabIndex = 15;
             this.bTnMinus.Text = "-";
             this.bTnMinus.UseVisualStyleBackColor = true;
@@ -284,10 +301,10 @@
             // btnFix
             // 
             this.btnFix.Enabled = false;
-            this.btnFix.Location = new System.Drawing.Point(867, 116);
-            this.btnFix.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFix.Location = new System.Drawing.Point(1156, 143);
+            this.btnFix.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnFix.Name = "btnFix";
-            this.btnFix.Size = new System.Drawing.Size(101, 24);
+            this.btnFix.Size = new System.Drawing.Size(135, 30);
             this.btnFix.TabIndex = 16;
             this.btnFix.Text = "Fix";
             this.btnFix.UseVisualStyleBackColor = true;
@@ -297,11 +314,11 @@
             // 
             this.tabControl1.Controls.Add(this.tbRange);
             this.tabControl1.Controls.Add(this.tbSettings);
-            this.tabControl1.Location = new System.Drawing.Point(9, 10);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
+            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(685, 179);
+            this.tabControl1.Size = new System.Drawing.Size(913, 220);
             this.tabControl1.TabIndex = 17;
             // 
             // tbRange
@@ -399,21 +416,21 @@
             this.tbRange.Controls.Add(this.tBxfrom2);
             this.tbRange.Controls.Add(this.tBxto1);
             this.tbRange.Controls.Add(this.tBxfrom1);
-            this.tbRange.Location = new System.Drawing.Point(4, 22);
-            this.tbRange.Margin = new System.Windows.Forms.Padding(2);
+            this.tbRange.Location = new System.Drawing.Point(4, 25);
+            this.tbRange.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbRange.Name = "tbRange";
-            this.tbRange.Padding = new System.Windows.Forms.Padding(2);
-            this.tbRange.Size = new System.Drawing.Size(677, 153);
+            this.tbRange.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbRange.Size = new System.Drawing.Size(905, 191);
             this.tbRange.TabIndex = 0;
             this.tbRange.Text = "Range";
             this.tbRange.UseVisualStyleBackColor = true;
             // 
             // btnPitchVol10
             // 
-            this.btnPitchVol10.Location = new System.Drawing.Point(592, 203);
-            this.btnPitchVol10.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPitchVol10.Location = new System.Drawing.Point(789, 250);
+            this.btnPitchVol10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPitchVol10.Name = "btnPitchVol10";
-            this.btnPitchVol10.Size = new System.Drawing.Size(70, 19);
+            this.btnPitchVol10.Size = new System.Drawing.Size(93, 23);
             this.btnPitchVol10.TabIndex = 108;
             this.btnPitchVol10.Text = "Put a value";
             this.btnPitchVol10.UseVisualStyleBackColor = true;
@@ -422,10 +439,10 @@
             // 
             // btnPitchVol9
             // 
-            this.btnPitchVol9.Location = new System.Drawing.Point(592, 183);
-            this.btnPitchVol9.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPitchVol9.Location = new System.Drawing.Point(789, 225);
+            this.btnPitchVol9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPitchVol9.Name = "btnPitchVol9";
-            this.btnPitchVol9.Size = new System.Drawing.Size(70, 19);
+            this.btnPitchVol9.Size = new System.Drawing.Size(93, 23);
             this.btnPitchVol9.TabIndex = 107;
             this.btnPitchVol9.Text = "Put a value";
             this.btnPitchVol9.UseVisualStyleBackColor = true;
@@ -434,10 +451,10 @@
             // 
             // btnPitchVol8
             // 
-            this.btnPitchVol8.Location = new System.Drawing.Point(592, 162);
-            this.btnPitchVol8.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPitchVol8.Location = new System.Drawing.Point(789, 199);
+            this.btnPitchVol8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPitchVol8.Name = "btnPitchVol8";
-            this.btnPitchVol8.Size = new System.Drawing.Size(70, 19);
+            this.btnPitchVol8.Size = new System.Drawing.Size(93, 23);
             this.btnPitchVol8.TabIndex = 106;
             this.btnPitchVol8.Text = "Put a value";
             this.btnPitchVol8.UseVisualStyleBackColor = true;
@@ -446,10 +463,10 @@
             // 
             // btnPitchVol7
             // 
-            this.btnPitchVol7.Location = new System.Drawing.Point(592, 141);
-            this.btnPitchVol7.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPitchVol7.Location = new System.Drawing.Point(789, 174);
+            this.btnPitchVol7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPitchVol7.Name = "btnPitchVol7";
-            this.btnPitchVol7.Size = new System.Drawing.Size(70, 19);
+            this.btnPitchVol7.Size = new System.Drawing.Size(93, 23);
             this.btnPitchVol7.TabIndex = 105;
             this.btnPitchVol7.Text = "Put a value";
             this.btnPitchVol7.UseVisualStyleBackColor = true;
@@ -458,10 +475,10 @@
             // 
             // btnPitchVol6
             // 
-            this.btnPitchVol6.Location = new System.Drawing.Point(592, 116);
-            this.btnPitchVol6.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPitchVol6.Location = new System.Drawing.Point(789, 143);
+            this.btnPitchVol6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPitchVol6.Name = "btnPitchVol6";
-            this.btnPitchVol6.Size = new System.Drawing.Size(70, 19);
+            this.btnPitchVol6.Size = new System.Drawing.Size(93, 23);
             this.btnPitchVol6.TabIndex = 104;
             this.btnPitchVol6.Text = "Put a value";
             this.btnPitchVol6.UseVisualStyleBackColor = true;
@@ -470,10 +487,10 @@
             // 
             // btnPitchVol5
             // 
-            this.btnPitchVol5.Location = new System.Drawing.Point(592, 95);
-            this.btnPitchVol5.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPitchVol5.Location = new System.Drawing.Point(789, 117);
+            this.btnPitchVol5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPitchVol5.Name = "btnPitchVol5";
-            this.btnPitchVol5.Size = new System.Drawing.Size(70, 19);
+            this.btnPitchVol5.Size = new System.Drawing.Size(93, 23);
             this.btnPitchVol5.TabIndex = 102;
             this.btnPitchVol5.Text = "Put a value";
             this.btnPitchVol5.UseVisualStyleBackColor = true;
@@ -482,10 +499,10 @@
             // 
             // btnPitchVol4
             // 
-            this.btnPitchVol4.Location = new System.Drawing.Point(592, 72);
-            this.btnPitchVol4.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPitchVol4.Location = new System.Drawing.Point(789, 89);
+            this.btnPitchVol4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPitchVol4.Name = "btnPitchVol4";
-            this.btnPitchVol4.Size = new System.Drawing.Size(70, 19);
+            this.btnPitchVol4.Size = new System.Drawing.Size(93, 23);
             this.btnPitchVol4.TabIndex = 101;
             this.btnPitchVol4.Text = "Put a value";
             this.btnPitchVol4.UseVisualStyleBackColor = true;
@@ -494,10 +511,10 @@
             // 
             // btnPitchVol3
             // 
-            this.btnPitchVol3.Location = new System.Drawing.Point(592, 50);
-            this.btnPitchVol3.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPitchVol3.Location = new System.Drawing.Point(789, 62);
+            this.btnPitchVol3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPitchVol3.Name = "btnPitchVol3";
-            this.btnPitchVol3.Size = new System.Drawing.Size(70, 19);
+            this.btnPitchVol3.Size = new System.Drawing.Size(93, 23);
             this.btnPitchVol3.TabIndex = 100;
             this.btnPitchVol3.Text = "Put a value";
             this.btnPitchVol3.UseVisualStyleBackColor = true;
@@ -506,10 +523,10 @@
             // 
             // btnPitchVol2
             // 
-            this.btnPitchVol2.Location = new System.Drawing.Point(592, 26);
-            this.btnPitchVol2.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPitchVol2.Location = new System.Drawing.Point(789, 32);
+            this.btnPitchVol2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPitchVol2.Name = "btnPitchVol2";
-            this.btnPitchVol2.Size = new System.Drawing.Size(70, 19);
+            this.btnPitchVol2.Size = new System.Drawing.Size(93, 23);
             this.btnPitchVol2.TabIndex = 99;
             this.btnPitchVol2.Text = "Put a value";
             this.btnPitchVol2.UseVisualStyleBackColor = true;
@@ -518,10 +535,10 @@
             // 
             // btnPitchVol1
             // 
-            this.btnPitchVol1.Location = new System.Drawing.Point(592, 6);
-            this.btnPitchVol1.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPitchVol1.Location = new System.Drawing.Point(789, 7);
+            this.btnPitchVol1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPitchVol1.Name = "btnPitchVol1";
-            this.btnPitchVol1.Size = new System.Drawing.Size(70, 19);
+            this.btnPitchVol1.Size = new System.Drawing.Size(93, 23);
             this.btnPitchVol1.TabIndex = 98;
             this.btnPitchVol1.Text = "Put a value";
             this.btnPitchVol1.UseVisualStyleBackColor = true;
@@ -531,20 +548,18 @@
             // ZnachVol
             // 
             this.ZnachVol.BackColor = System.Drawing.Color.Transparent;
-            this.ZnachVol.Location = new System.Drawing.Point(421, 7);
-            this.ZnachVol.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ZnachVol.Location = new System.Drawing.Point(561, 9);
             this.ZnachVol.Name = "ZnachVol";
-            this.ZnachVol.Size = new System.Drawing.Size(50, 80);
+            this.ZnachVol.Size = new System.Drawing.Size(67, 98);
             this.ZnachVol.TabIndex = 97;
             this.ZnachVol.Text = "Sound value from -10 to 30";
             this.ZnachVol.Visible = false;
             // 
             // lbZnachPitch
             // 
-            this.lbZnachPitch.Location = new System.Drawing.Point(260, 6);
-            this.lbZnachPitch.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbZnachPitch.Location = new System.Drawing.Point(347, 7);
             this.lbZnachPitch.Name = "lbZnachPitch";
-            this.lbZnachPitch.Size = new System.Drawing.Size(47, 55);
+            this.lbZnachPitch.Size = new System.Drawing.Size(63, 68);
             this.lbZnachPitch.TabIndex = 96;
             this.lbZnachPitch.Text = "Peach value from -15 to 15";
             this.lbZnachPitch.Visible = false;
@@ -552,10 +567,9 @@
             // lbGain10
             // 
             this.lbGain10.AutoSize = true;
-            this.lbGain10.Location = new System.Drawing.Point(470, 206);
-            this.lbGain10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbGain10.Location = new System.Drawing.Point(627, 254);
             this.lbGain10.Name = "lbGain10";
-            this.lbGain10.Size = new System.Drawing.Size(42, 13);
+            this.lbGain10.Size = new System.Drawing.Size(53, 16);
             this.lbGain10.TabIndex = 95;
             this.lbGain10.Text = "Volume";
             this.lbGain10.Visible = false;
@@ -563,10 +577,9 @@
             // lbGain9
             // 
             this.lbGain9.AutoSize = true;
-            this.lbGain9.Location = new System.Drawing.Point(470, 184);
-            this.lbGain9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbGain9.Location = new System.Drawing.Point(627, 226);
             this.lbGain9.Name = "lbGain9";
-            this.lbGain9.Size = new System.Drawing.Size(42, 13);
+            this.lbGain9.Size = new System.Drawing.Size(53, 16);
             this.lbGain9.TabIndex = 94;
             this.lbGain9.Text = "Volume";
             this.lbGain9.Visible = false;
@@ -574,10 +587,9 @@
             // lbGain8
             // 
             this.lbGain8.AutoSize = true;
-            this.lbGain8.Location = new System.Drawing.Point(470, 164);
-            this.lbGain8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbGain8.Location = new System.Drawing.Point(627, 202);
             this.lbGain8.Name = "lbGain8";
-            this.lbGain8.Size = new System.Drawing.Size(42, 13);
+            this.lbGain8.Size = new System.Drawing.Size(53, 16);
             this.lbGain8.TabIndex = 93;
             this.lbGain8.Text = "Volume";
             this.lbGain8.Visible = false;
@@ -585,10 +597,9 @@
             // lbGain7
             // 
             this.lbGain7.AutoSize = true;
-            this.lbGain7.Location = new System.Drawing.Point(470, 144);
-            this.lbGain7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbGain7.Location = new System.Drawing.Point(627, 177);
             this.lbGain7.Name = "lbGain7";
-            this.lbGain7.Size = new System.Drawing.Size(42, 13);
+            this.lbGain7.Size = new System.Drawing.Size(53, 16);
             this.lbGain7.TabIndex = 92;
             this.lbGain7.Text = "Volume";
             this.lbGain7.Visible = false;
@@ -596,10 +607,9 @@
             // lbGain6
             // 
             this.lbGain6.AutoSize = true;
-            this.lbGain6.Location = new System.Drawing.Point(470, 123);
-            this.lbGain6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbGain6.Location = new System.Drawing.Point(627, 151);
             this.lbGain6.Name = "lbGain6";
-            this.lbGain6.Size = new System.Drawing.Size(42, 13);
+            this.lbGain6.Size = new System.Drawing.Size(53, 16);
             this.lbGain6.TabIndex = 91;
             this.lbGain6.Text = "Volume";
             this.lbGain6.Visible = false;
@@ -607,10 +617,9 @@
             // lbGain5
             // 
             this.lbGain5.AutoSize = true;
-            this.lbGain5.Location = new System.Drawing.Point(470, 98);
-            this.lbGain5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbGain5.Location = new System.Drawing.Point(627, 121);
             this.lbGain5.Name = "lbGain5";
-            this.lbGain5.Size = new System.Drawing.Size(42, 13);
+            this.lbGain5.Size = new System.Drawing.Size(53, 16);
             this.lbGain5.TabIndex = 90;
             this.lbGain5.Text = "Volume";
             this.lbGain5.Visible = false;
@@ -618,10 +627,9 @@
             // lbGain4
             // 
             this.lbGain4.AutoSize = true;
-            this.lbGain4.Location = new System.Drawing.Point(470, 74);
-            this.lbGain4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbGain4.Location = new System.Drawing.Point(627, 91);
             this.lbGain4.Name = "lbGain4";
-            this.lbGain4.Size = new System.Drawing.Size(42, 13);
+            this.lbGain4.Size = new System.Drawing.Size(53, 16);
             this.lbGain4.TabIndex = 89;
             this.lbGain4.Text = "Volume";
             this.lbGain4.Visible = false;
@@ -629,10 +637,9 @@
             // lbGain3
             // 
             this.lbGain3.AutoSize = true;
-            this.lbGain3.Location = new System.Drawing.Point(470, 50);
-            this.lbGain3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbGain3.Location = new System.Drawing.Point(627, 62);
             this.lbGain3.Name = "lbGain3";
-            this.lbGain3.Size = new System.Drawing.Size(42, 13);
+            this.lbGain3.Size = new System.Drawing.Size(53, 16);
             this.lbGain3.TabIndex = 88;
             this.lbGain3.Text = "Volume";
             this.lbGain3.Visible = false;
@@ -640,10 +647,9 @@
             // lbGain2
             // 
             this.lbGain2.AutoSize = true;
-            this.lbGain2.Location = new System.Drawing.Point(470, 28);
-            this.lbGain2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbGain2.Location = new System.Drawing.Point(627, 34);
             this.lbGain2.Name = "lbGain2";
-            this.lbGain2.Size = new System.Drawing.Size(42, 13);
+            this.lbGain2.Size = new System.Drawing.Size(53, 16);
             this.lbGain2.TabIndex = 87;
             this.lbGain2.Text = "Volume";
             this.lbGain2.Visible = false;
@@ -651,10 +657,9 @@
             // lbGain1
             // 
             this.lbGain1.AutoSize = true;
-            this.lbGain1.Location = new System.Drawing.Point(470, 8);
-            this.lbGain1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbGain1.Location = new System.Drawing.Point(627, 10);
             this.lbGain1.Name = "lbGain1";
-            this.lbGain1.Size = new System.Drawing.Size(42, 13);
+            this.lbGain1.Size = new System.Drawing.Size(53, 16);
             this.lbGain1.TabIndex = 86;
             this.lbGain1.Text = "Volume";
             this.lbGain1.Visible = false;
@@ -662,10 +667,9 @@
             // lbPitch10
             // 
             this.lbPitch10.AutoSize = true;
-            this.lbPitch10.Location = new System.Drawing.Point(308, 211);
-            this.lbPitch10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbPitch10.Location = new System.Drawing.Point(411, 260);
             this.lbPitch10.Name = "lbPitch10";
-            this.lbPitch10.Size = new System.Drawing.Size(31, 13);
+            this.lbPitch10.Size = new System.Drawing.Size(36, 16);
             this.lbPitch10.TabIndex = 85;
             this.lbPitch10.Text = "Pitch";
             this.lbPitch10.Visible = false;
@@ -673,10 +677,9 @@
             // lbPitch9
             // 
             this.lbPitch9.AutoSize = true;
-            this.lbPitch9.Location = new System.Drawing.Point(308, 188);
-            this.lbPitch9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbPitch9.Location = new System.Drawing.Point(411, 231);
             this.lbPitch9.Name = "lbPitch9";
-            this.lbPitch9.Size = new System.Drawing.Size(31, 13);
+            this.lbPitch9.Size = new System.Drawing.Size(36, 16);
             this.lbPitch9.TabIndex = 84;
             this.lbPitch9.Text = "Pitch";
             this.lbPitch9.Visible = false;
@@ -684,10 +687,9 @@
             // lbPitch8
             // 
             this.lbPitch8.AutoSize = true;
-            this.lbPitch8.Location = new System.Drawing.Point(308, 166);
-            this.lbPitch8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbPitch8.Location = new System.Drawing.Point(411, 204);
             this.lbPitch8.Name = "lbPitch8";
-            this.lbPitch8.Size = new System.Drawing.Size(31, 13);
+            this.lbPitch8.Size = new System.Drawing.Size(36, 16);
             this.lbPitch8.TabIndex = 83;
             this.lbPitch8.Text = "Pitch";
             this.lbPitch8.Visible = false;
@@ -695,10 +697,9 @@
             // lbPitch7
             // 
             this.lbPitch7.AutoSize = true;
-            this.lbPitch7.Location = new System.Drawing.Point(308, 143);
-            this.lbPitch7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbPitch7.Location = new System.Drawing.Point(411, 176);
             this.lbPitch7.Name = "lbPitch7";
-            this.lbPitch7.Size = new System.Drawing.Size(31, 13);
+            this.lbPitch7.Size = new System.Drawing.Size(36, 16);
             this.lbPitch7.TabIndex = 82;
             this.lbPitch7.Text = "Pitch";
             this.lbPitch7.Visible = false;
@@ -706,10 +707,9 @@
             // lbPitch6
             // 
             this.lbPitch6.AutoSize = true;
-            this.lbPitch6.Location = new System.Drawing.Point(308, 120);
-            this.lbPitch6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbPitch6.Location = new System.Drawing.Point(411, 148);
             this.lbPitch6.Name = "lbPitch6";
-            this.lbPitch6.Size = new System.Drawing.Size(31, 13);
+            this.lbPitch6.Size = new System.Drawing.Size(36, 16);
             this.lbPitch6.TabIndex = 81;
             this.lbPitch6.Text = "Pitch";
             this.lbPitch6.Visible = false;
@@ -717,10 +717,9 @@
             // lbPitch5
             // 
             this.lbPitch5.AutoSize = true;
-            this.lbPitch5.Location = new System.Drawing.Point(308, 98);
-            this.lbPitch5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbPitch5.Location = new System.Drawing.Point(411, 121);
             this.lbPitch5.Name = "lbPitch5";
-            this.lbPitch5.Size = new System.Drawing.Size(31, 13);
+            this.lbPitch5.Size = new System.Drawing.Size(36, 16);
             this.lbPitch5.TabIndex = 80;
             this.lbPitch5.Text = "Pitch";
             this.lbPitch5.Visible = false;
@@ -728,10 +727,9 @@
             // lbPitch4
             // 
             this.lbPitch4.AutoSize = true;
-            this.lbPitch4.Location = new System.Drawing.Point(308, 75);
-            this.lbPitch4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbPitch4.Location = new System.Drawing.Point(411, 92);
             this.lbPitch4.Name = "lbPitch4";
-            this.lbPitch4.Size = new System.Drawing.Size(31, 13);
+            this.lbPitch4.Size = new System.Drawing.Size(36, 16);
             this.lbPitch4.TabIndex = 79;
             this.lbPitch4.Text = "Pitch";
             this.lbPitch4.Visible = false;
@@ -739,10 +737,9 @@
             // lbPitch3
             // 
             this.lbPitch3.AutoSize = true;
-            this.lbPitch3.Location = new System.Drawing.Point(308, 50);
-            this.lbPitch3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbPitch3.Location = new System.Drawing.Point(411, 62);
             this.lbPitch3.Name = "lbPitch3";
-            this.lbPitch3.Size = new System.Drawing.Size(31, 13);
+            this.lbPitch3.Size = new System.Drawing.Size(36, 16);
             this.lbPitch3.TabIndex = 78;
             this.lbPitch3.Text = "Pitch";
             this.lbPitch3.Visible = false;
@@ -750,10 +747,9 @@
             // lbPitch2
             // 
             this.lbPitch2.AutoSize = true;
-            this.lbPitch2.Location = new System.Drawing.Point(308, 28);
-            this.lbPitch2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbPitch2.Location = new System.Drawing.Point(411, 34);
             this.lbPitch2.Name = "lbPitch2";
-            this.lbPitch2.Size = new System.Drawing.Size(31, 13);
+            this.lbPitch2.Size = new System.Drawing.Size(36, 16);
             this.lbPitch2.TabIndex = 77;
             this.lbPitch2.Text = "Pitch";
             this.lbPitch2.Visible = false;
@@ -761,201 +757,199 @@
             // lbPitch1
             // 
             this.lbPitch1.AutoSize = true;
-            this.lbPitch1.Location = new System.Drawing.Point(308, 7);
-            this.lbPitch1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbPitch1.Location = new System.Drawing.Point(411, 9);
             this.lbPitch1.Name = "lbPitch1";
-            this.lbPitch1.Size = new System.Drawing.Size(31, 13);
+            this.lbPitch1.Size = new System.Drawing.Size(36, 16);
             this.lbPitch1.TabIndex = 76;
             this.lbPitch1.Text = "Pitch";
             this.lbPitch1.Visible = false;
             // 
             // tbGain10
             // 
-            this.tbGain10.Location = new System.Drawing.Point(512, 206);
-            this.tbGain10.Margin = new System.Windows.Forms.Padding(2);
+            this.tbGain10.Location = new System.Drawing.Point(683, 254);
+            this.tbGain10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGain10.Name = "tbGain10";
-            this.tbGain10.Size = new System.Drawing.Size(76, 20);
+            this.tbGain10.Size = new System.Drawing.Size(100, 22);
             this.tbGain10.TabIndex = 75;
             this.tbGain10.Visible = false;
             // 
             // tbPitch10
             // 
-            this.tbPitch10.Location = new System.Drawing.Point(341, 209);
-            this.tbPitch10.Margin = new System.Windows.Forms.Padding(2);
+            this.tbPitch10.Location = new System.Drawing.Point(455, 257);
+            this.tbPitch10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPitch10.Name = "tbPitch10";
-            this.tbPitch10.Size = new System.Drawing.Size(76, 20);
+            this.tbPitch10.Size = new System.Drawing.Size(100, 22);
             this.tbPitch10.TabIndex = 74;
             this.tbPitch10.Visible = false;
             // 
             // tbGain9
             // 
-            this.tbGain9.Location = new System.Drawing.Point(512, 183);
-            this.tbGain9.Margin = new System.Windows.Forms.Padding(2);
+            this.tbGain9.Location = new System.Drawing.Point(683, 225);
+            this.tbGain9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGain9.Name = "tbGain9";
-            this.tbGain9.Size = new System.Drawing.Size(76, 20);
+            this.tbGain9.Size = new System.Drawing.Size(100, 22);
             this.tbGain9.TabIndex = 73;
             this.tbGain9.Visible = false;
             // 
             // tbPitch9
             // 
-            this.tbPitch9.Location = new System.Drawing.Point(341, 186);
-            this.tbPitch9.Margin = new System.Windows.Forms.Padding(2);
+            this.tbPitch9.Location = new System.Drawing.Point(455, 229);
+            this.tbPitch9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPitch9.Name = "tbPitch9";
-            this.tbPitch9.Size = new System.Drawing.Size(76, 20);
+            this.tbPitch9.Size = new System.Drawing.Size(100, 22);
             this.tbPitch9.TabIndex = 72;
             this.tbPitch9.Visible = false;
             // 
             // tbGain8
             // 
-            this.tbGain8.Location = new System.Drawing.Point(512, 160);
-            this.tbGain8.Margin = new System.Windows.Forms.Padding(2);
+            this.tbGain8.Location = new System.Drawing.Point(683, 197);
+            this.tbGain8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGain8.Name = "tbGain8";
-            this.tbGain8.Size = new System.Drawing.Size(76, 20);
+            this.tbGain8.Size = new System.Drawing.Size(100, 22);
             this.tbGain8.TabIndex = 71;
             this.tbGain8.Visible = false;
             // 
             // tbPitch8
             // 
-            this.tbPitch8.Location = new System.Drawing.Point(341, 163);
-            this.tbPitch8.Margin = new System.Windows.Forms.Padding(2);
+            this.tbPitch8.Location = new System.Drawing.Point(455, 201);
+            this.tbPitch8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPitch8.Name = "tbPitch8";
-            this.tbPitch8.Size = new System.Drawing.Size(76, 20);
+            this.tbPitch8.Size = new System.Drawing.Size(100, 22);
             this.tbPitch8.TabIndex = 70;
             this.tbPitch8.Visible = false;
             // 
             // tbGain7
             // 
-            this.tbGain7.Location = new System.Drawing.Point(512, 140);
-            this.tbGain7.Margin = new System.Windows.Forms.Padding(2);
+            this.tbGain7.Location = new System.Drawing.Point(683, 172);
+            this.tbGain7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGain7.Name = "tbGain7";
-            this.tbGain7.Size = new System.Drawing.Size(76, 20);
+            this.tbGain7.Size = new System.Drawing.Size(100, 22);
             this.tbGain7.TabIndex = 69;
             this.tbGain7.Visible = false;
             // 
             // tbPitch7
             // 
-            this.tbPitch7.Location = new System.Drawing.Point(341, 141);
-            this.tbPitch7.Margin = new System.Windows.Forms.Padding(2);
+            this.tbPitch7.Location = new System.Drawing.Point(455, 174);
+            this.tbPitch7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPitch7.Name = "tbPitch7";
-            this.tbPitch7.Size = new System.Drawing.Size(76, 20);
+            this.tbPitch7.Size = new System.Drawing.Size(100, 22);
             this.tbPitch7.TabIndex = 68;
             this.tbPitch7.Visible = false;
             // 
             // tbGain6
             // 
-            this.tbGain6.Location = new System.Drawing.Point(512, 118);
-            this.tbGain6.Margin = new System.Windows.Forms.Padding(2);
+            this.tbGain6.Location = new System.Drawing.Point(683, 145);
+            this.tbGain6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGain6.Name = "tbGain6";
-            this.tbGain6.Size = new System.Drawing.Size(76, 20);
+            this.tbGain6.Size = new System.Drawing.Size(100, 22);
             this.tbGain6.TabIndex = 67;
             this.tbGain6.Visible = false;
             // 
             // tbPitch6
             // 
-            this.tbPitch6.Location = new System.Drawing.Point(341, 118);
-            this.tbPitch6.Margin = new System.Windows.Forms.Padding(2);
+            this.tbPitch6.Location = new System.Drawing.Point(455, 145);
+            this.tbPitch6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPitch6.Name = "tbPitch6";
-            this.tbPitch6.Size = new System.Drawing.Size(76, 20);
+            this.tbPitch6.Size = new System.Drawing.Size(100, 22);
             this.tbPitch6.TabIndex = 66;
             this.tbPitch6.Visible = false;
             // 
             // tbGain5
             // 
-            this.tbGain5.Location = new System.Drawing.Point(512, 95);
-            this.tbGain5.Margin = new System.Windows.Forms.Padding(2);
+            this.tbGain5.Location = new System.Drawing.Point(683, 117);
+            this.tbGain5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGain5.Name = "tbGain5";
-            this.tbGain5.Size = new System.Drawing.Size(76, 20);
+            this.tbGain5.Size = new System.Drawing.Size(100, 22);
             this.tbGain5.TabIndex = 65;
             this.tbGain5.Visible = false;
             // 
             // tbPitch5
             // 
-            this.tbPitch5.Location = new System.Drawing.Point(341, 95);
-            this.tbPitch5.Margin = new System.Windows.Forms.Padding(2);
+            this.tbPitch5.Location = new System.Drawing.Point(455, 117);
+            this.tbPitch5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPitch5.Name = "tbPitch5";
-            this.tbPitch5.Size = new System.Drawing.Size(76, 20);
+            this.tbPitch5.Size = new System.Drawing.Size(100, 22);
             this.tbPitch5.TabIndex = 64;
             this.tbPitch5.Visible = false;
             // 
             // tbGain4
             // 
-            this.tbGain4.Location = new System.Drawing.Point(512, 72);
-            this.tbGain4.Margin = new System.Windows.Forms.Padding(2);
+            this.tbGain4.Location = new System.Drawing.Point(683, 89);
+            this.tbGain4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGain4.Name = "tbGain4";
-            this.tbGain4.Size = new System.Drawing.Size(76, 20);
+            this.tbGain4.Size = new System.Drawing.Size(100, 22);
             this.tbGain4.TabIndex = 63;
             this.tbGain4.Visible = false;
             // 
             // tbPitch4
             // 
-            this.tbPitch4.Location = new System.Drawing.Point(341, 72);
-            this.tbPitch4.Margin = new System.Windows.Forms.Padding(2);
+            this.tbPitch4.Location = new System.Drawing.Point(455, 89);
+            this.tbPitch4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPitch4.Name = "tbPitch4";
-            this.tbPitch4.Size = new System.Drawing.Size(76, 20);
+            this.tbPitch4.Size = new System.Drawing.Size(100, 22);
             this.tbPitch4.TabIndex = 62;
             this.tbPitch4.Visible = false;
             // 
             // tbGain3
             // 
-            this.tbGain3.Location = new System.Drawing.Point(512, 49);
-            this.tbGain3.Margin = new System.Windows.Forms.Padding(2);
+            this.tbGain3.Location = new System.Drawing.Point(683, 60);
+            this.tbGain3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGain3.Name = "tbGain3";
-            this.tbGain3.Size = new System.Drawing.Size(76, 20);
+            this.tbGain3.Size = new System.Drawing.Size(100, 22);
             this.tbGain3.TabIndex = 61;
             this.tbGain3.Visible = false;
             // 
             // tbPitch3
             // 
-            this.tbPitch3.Location = new System.Drawing.Point(341, 50);
-            this.tbPitch3.Margin = new System.Windows.Forms.Padding(2);
+            this.tbPitch3.Location = new System.Drawing.Point(455, 62);
+            this.tbPitch3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPitch3.Name = "tbPitch3";
-            this.tbPitch3.Size = new System.Drawing.Size(76, 20);
+            this.tbPitch3.Size = new System.Drawing.Size(100, 22);
             this.tbPitch3.TabIndex = 60;
             this.tbPitch3.Visible = false;
             // 
             // tbGain2
             // 
-            this.tbGain2.Location = new System.Drawing.Point(512, 26);
-            this.tbGain2.Margin = new System.Windows.Forms.Padding(2);
+            this.tbGain2.Location = new System.Drawing.Point(683, 32);
+            this.tbGain2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGain2.Name = "tbGain2";
-            this.tbGain2.Size = new System.Drawing.Size(76, 20);
+            this.tbGain2.Size = new System.Drawing.Size(100, 22);
             this.tbGain2.TabIndex = 59;
             this.tbGain2.Visible = false;
             // 
             // tbPitch2
             // 
-            this.tbPitch2.Location = new System.Drawing.Point(341, 27);
-            this.tbPitch2.Margin = new System.Windows.Forms.Padding(2);
+            this.tbPitch2.Location = new System.Drawing.Point(455, 33);
+            this.tbPitch2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPitch2.Name = "tbPitch2";
-            this.tbPitch2.Size = new System.Drawing.Size(76, 20);
+            this.tbPitch2.Size = new System.Drawing.Size(100, 22);
             this.tbPitch2.TabIndex = 58;
             this.tbPitch2.Visible = false;
             // 
             // tbGain1
             // 
-            this.tbGain1.Location = new System.Drawing.Point(512, 5);
-            this.tbGain1.Margin = new System.Windows.Forms.Padding(2);
+            this.tbGain1.Location = new System.Drawing.Point(683, 6);
+            this.tbGain1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGain1.Name = "tbGain1";
-            this.tbGain1.Size = new System.Drawing.Size(76, 20);
+            this.tbGain1.Size = new System.Drawing.Size(100, 22);
             this.tbGain1.TabIndex = 57;
             this.tbGain1.Visible = false;
             // 
             // tbPitch1
             // 
-            this.tbPitch1.Location = new System.Drawing.Point(341, 5);
-            this.tbPitch1.Margin = new System.Windows.Forms.Padding(2);
+            this.tbPitch1.Location = new System.Drawing.Point(455, 6);
+            this.tbPitch1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPitch1.Name = "tbPitch1";
-            this.tbPitch1.Size = new System.Drawing.Size(76, 20);
+            this.tbPitch1.Size = new System.Drawing.Size(100, 22);
             this.tbPitch1.TabIndex = 56;
             this.tbPitch1.Visible = false;
             // 
             // lbTo10
             // 
             this.lbTo10.AutoSize = true;
-            this.lbTo10.Location = new System.Drawing.Point(149, 213);
-            this.lbTo10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbTo10.Location = new System.Drawing.Point(199, 262);
             this.lbTo10.Name = "lbTo10";
-            this.lbTo10.Size = new System.Drawing.Size(16, 13);
+            this.lbTo10.Size = new System.Drawing.Size(18, 16);
             this.lbTo10.TabIndex = 55;
             this.lbTo10.Text = "to";
             this.lbTo10.Visible = false;
@@ -963,10 +957,9 @@
             // lbTo9
             // 
             this.lbTo9.AutoSize = true;
-            this.lbTo9.Location = new System.Drawing.Point(149, 190);
-            this.lbTo9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbTo9.Location = new System.Drawing.Point(199, 234);
             this.lbTo9.Name = "lbTo9";
-            this.lbTo9.Size = new System.Drawing.Size(16, 13);
+            this.lbTo9.Size = new System.Drawing.Size(18, 16);
             this.lbTo9.TabIndex = 54;
             this.lbTo9.Text = "to";
             this.lbTo9.Visible = false;
@@ -974,10 +967,9 @@
             // lbTo8
             // 
             this.lbTo8.AutoSize = true;
-            this.lbTo8.Location = new System.Drawing.Point(149, 167);
-            this.lbTo8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbTo8.Location = new System.Drawing.Point(199, 206);
             this.lbTo8.Name = "lbTo8";
-            this.lbTo8.Size = new System.Drawing.Size(16, 13);
+            this.lbTo8.Size = new System.Drawing.Size(18, 16);
             this.lbTo8.TabIndex = 53;
             this.lbTo8.Text = "to";
             this.lbTo8.Visible = false;
@@ -985,10 +977,9 @@
             // lbTo7
             // 
             this.lbTo7.AutoSize = true;
-            this.lbTo7.Location = new System.Drawing.Point(149, 145);
-            this.lbTo7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbTo7.Location = new System.Drawing.Point(199, 178);
             this.lbTo7.Name = "lbTo7";
-            this.lbTo7.Size = new System.Drawing.Size(16, 13);
+            this.lbTo7.Size = new System.Drawing.Size(18, 16);
             this.lbTo7.TabIndex = 52;
             this.lbTo7.Text = "to";
             this.lbTo7.Visible = false;
@@ -996,10 +987,9 @@
             // lbTo6
             // 
             this.lbTo6.AutoSize = true;
-            this.lbTo6.Location = new System.Drawing.Point(149, 122);
-            this.lbTo6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbTo6.Location = new System.Drawing.Point(199, 150);
             this.lbTo6.Name = "lbTo6";
-            this.lbTo6.Size = new System.Drawing.Size(16, 13);
+            this.lbTo6.Size = new System.Drawing.Size(18, 16);
             this.lbTo6.TabIndex = 51;
             this.lbTo6.Text = "to";
             this.lbTo6.Visible = false;
@@ -1007,10 +997,9 @@
             // lbTo5
             // 
             this.lbTo5.AutoSize = true;
-            this.lbTo5.Location = new System.Drawing.Point(149, 99);
-            this.lbTo5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbTo5.Location = new System.Drawing.Point(199, 122);
             this.lbTo5.Name = "lbTo5";
-            this.lbTo5.Size = new System.Drawing.Size(16, 13);
+            this.lbTo5.Size = new System.Drawing.Size(18, 16);
             this.lbTo5.TabIndex = 50;
             this.lbTo5.Text = "to";
             this.lbTo5.Visible = false;
@@ -1018,10 +1007,9 @@
             // lbTo4
             // 
             this.lbTo4.AutoSize = true;
-            this.lbTo4.Location = new System.Drawing.Point(149, 76);
-            this.lbTo4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbTo4.Location = new System.Drawing.Point(199, 94);
             this.lbTo4.Name = "lbTo4";
-            this.lbTo4.Size = new System.Drawing.Size(16, 13);
+            this.lbTo4.Size = new System.Drawing.Size(18, 16);
             this.lbTo4.TabIndex = 49;
             this.lbTo4.Text = "to";
             this.lbTo4.Visible = false;
@@ -1029,10 +1017,9 @@
             // lbTo3
             // 
             this.lbTo3.AutoSize = true;
-            this.lbTo3.Location = new System.Drawing.Point(149, 54);
-            this.lbTo3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbTo3.Location = new System.Drawing.Point(199, 66);
             this.lbTo3.Name = "lbTo3";
-            this.lbTo3.Size = new System.Drawing.Size(16, 13);
+            this.lbTo3.Size = new System.Drawing.Size(18, 16);
             this.lbTo3.TabIndex = 48;
             this.lbTo3.Text = "to";
             this.lbTo3.Visible = false;
@@ -1040,10 +1027,9 @@
             // lbTo2
             // 
             this.lbTo2.AutoSize = true;
-            this.lbTo2.Location = new System.Drawing.Point(149, 31);
-            this.lbTo2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbTo2.Location = new System.Drawing.Point(199, 38);
             this.lbTo2.Name = "lbTo2";
-            this.lbTo2.Size = new System.Drawing.Size(16, 13);
+            this.lbTo2.Size = new System.Drawing.Size(18, 16);
             this.lbTo2.TabIndex = 47;
             this.lbTo2.Text = "to";
             this.lbTo2.Visible = false;
@@ -1051,10 +1037,9 @@
             // lbTo1
             // 
             this.lbTo1.AutoSize = true;
-            this.lbTo1.Location = new System.Drawing.Point(149, 9);
-            this.lbTo1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbTo1.Location = new System.Drawing.Point(199, 11);
             this.lbTo1.Name = "lbTo1";
-            this.lbTo1.Size = new System.Drawing.Size(16, 13);
+            this.lbTo1.Size = new System.Drawing.Size(18, 16);
             this.lbTo1.TabIndex = 46;
             this.lbTo1.Text = "to";
             this.lbTo1.Visible = false;
@@ -1062,10 +1047,9 @@
             // lbFrom10
             // 
             this.lbFrom10.AutoSize = true;
-            this.lbFrom10.Location = new System.Drawing.Point(13, 213);
-            this.lbFrom10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbFrom10.Location = new System.Drawing.Point(17, 262);
             this.lbFrom10.Name = "lbFrom10";
-            this.lbFrom10.Size = new System.Drawing.Size(48, 13);
+            this.lbFrom10.Size = new System.Drawing.Size(58, 16);
             this.lbFrom10.TabIndex = 45;
             this.lbFrom10.Text = "10. From";
             this.lbFrom10.Visible = false;
@@ -1073,10 +1057,9 @@
             // lbFrom9
             // 
             this.lbFrom9.AutoSize = true;
-            this.lbFrom9.Location = new System.Drawing.Point(13, 190);
-            this.lbFrom9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbFrom9.Location = new System.Drawing.Point(17, 234);
             this.lbFrom9.Name = "lbFrom9";
-            this.lbFrom9.Size = new System.Drawing.Size(42, 13);
+            this.lbFrom9.Size = new System.Drawing.Size(51, 16);
             this.lbFrom9.TabIndex = 44;
             this.lbFrom9.Text = "9. From";
             this.lbFrom9.Visible = false;
@@ -1084,10 +1067,9 @@
             // lbFrom8
             // 
             this.lbFrom8.AutoSize = true;
-            this.lbFrom8.Location = new System.Drawing.Point(13, 167);
-            this.lbFrom8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbFrom8.Location = new System.Drawing.Point(17, 206);
             this.lbFrom8.Name = "lbFrom8";
-            this.lbFrom8.Size = new System.Drawing.Size(42, 13);
+            this.lbFrom8.Size = new System.Drawing.Size(51, 16);
             this.lbFrom8.TabIndex = 43;
             this.lbFrom8.Text = "8. From";
             this.lbFrom8.Visible = false;
@@ -1095,10 +1077,9 @@
             // lbFrom7
             // 
             this.lbFrom7.AutoSize = true;
-            this.lbFrom7.Location = new System.Drawing.Point(13, 145);
-            this.lbFrom7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbFrom7.Location = new System.Drawing.Point(17, 178);
             this.lbFrom7.Name = "lbFrom7";
-            this.lbFrom7.Size = new System.Drawing.Size(42, 13);
+            this.lbFrom7.Size = new System.Drawing.Size(51, 16);
             this.lbFrom7.TabIndex = 42;
             this.lbFrom7.Text = "7. From";
             this.lbFrom7.Visible = false;
@@ -1106,10 +1087,9 @@
             // lbFrom6
             // 
             this.lbFrom6.AutoSize = true;
-            this.lbFrom6.Location = new System.Drawing.Point(13, 122);
-            this.lbFrom6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbFrom6.Location = new System.Drawing.Point(17, 150);
             this.lbFrom6.Name = "lbFrom6";
-            this.lbFrom6.Size = new System.Drawing.Size(42, 13);
+            this.lbFrom6.Size = new System.Drawing.Size(51, 16);
             this.lbFrom6.TabIndex = 41;
             this.lbFrom6.Text = "6. From";
             this.lbFrom6.Visible = false;
@@ -1117,10 +1097,9 @@
             // lbFrom5
             // 
             this.lbFrom5.AutoSize = true;
-            this.lbFrom5.Location = new System.Drawing.Point(13, 99);
-            this.lbFrom5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbFrom5.Location = new System.Drawing.Point(17, 122);
             this.lbFrom5.Name = "lbFrom5";
-            this.lbFrom5.Size = new System.Drawing.Size(42, 13);
+            this.lbFrom5.Size = new System.Drawing.Size(51, 16);
             this.lbFrom5.TabIndex = 40;
             this.lbFrom5.Text = "5. From";
             this.lbFrom5.Visible = false;
@@ -1128,10 +1107,9 @@
             // lbFrom4
             // 
             this.lbFrom4.AutoSize = true;
-            this.lbFrom4.Location = new System.Drawing.Point(13, 76);
-            this.lbFrom4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbFrom4.Location = new System.Drawing.Point(17, 94);
             this.lbFrom4.Name = "lbFrom4";
-            this.lbFrom4.Size = new System.Drawing.Size(42, 13);
+            this.lbFrom4.Size = new System.Drawing.Size(51, 16);
             this.lbFrom4.TabIndex = 39;
             this.lbFrom4.Text = "4. From";
             this.lbFrom4.Visible = false;
@@ -1139,10 +1117,9 @@
             // lbFrom3
             // 
             this.lbFrom3.AutoSize = true;
-            this.lbFrom3.Location = new System.Drawing.Point(13, 54);
-            this.lbFrom3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbFrom3.Location = new System.Drawing.Point(17, 66);
             this.lbFrom3.Name = "lbFrom3";
-            this.lbFrom3.Size = new System.Drawing.Size(42, 13);
+            this.lbFrom3.Size = new System.Drawing.Size(51, 16);
             this.lbFrom3.TabIndex = 38;
             this.lbFrom3.Text = "3. From";
             this.lbFrom3.Visible = false;
@@ -1150,10 +1127,9 @@
             // lbFrom2
             // 
             this.lbFrom2.AutoSize = true;
-            this.lbFrom2.Location = new System.Drawing.Point(13, 30);
-            this.lbFrom2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbFrom2.Location = new System.Drawing.Point(17, 37);
             this.lbFrom2.Name = "lbFrom2";
-            this.lbFrom2.Size = new System.Drawing.Size(42, 13);
+            this.lbFrom2.Size = new System.Drawing.Size(51, 16);
             this.lbFrom2.TabIndex = 37;
             this.lbFrom2.Text = "2. From";
             this.lbFrom2.Visible = false;
@@ -1161,227 +1137,249 @@
             // lbFrom1
             // 
             this.lbFrom1.AutoSize = true;
-            this.lbFrom1.Location = new System.Drawing.Point(13, 9);
-            this.lbFrom1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbFrom1.Location = new System.Drawing.Point(17, 11);
             this.lbFrom1.Name = "lbFrom1";
-            this.lbFrom1.Size = new System.Drawing.Size(42, 13);
+            this.lbFrom1.Size = new System.Drawing.Size(51, 16);
             this.lbFrom1.TabIndex = 36;
             this.lbFrom1.Text = "1. From";
             this.lbFrom1.Visible = false;
             // 
             // tBxto10
             // 
-            this.tBxto10.Location = new System.Drawing.Point(181, 210);
-            this.tBxto10.Margin = new System.Windows.Forms.Padding(2);
+            this.tBxto10.Location = new System.Drawing.Point(241, 258);
+            this.tBxto10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxto10.Name = "tBxto10";
-            this.tBxto10.Size = new System.Drawing.Size(76, 20);
+            this.tBxto10.Size = new System.Drawing.Size(100, 22);
             this.tBxto10.TabIndex = 35;
             this.tBxto10.Visible = false;
             // 
             // tBxfrom10
             // 
-            this.tBxfrom10.Location = new System.Drawing.Point(59, 210);
-            this.tBxfrom10.Margin = new System.Windows.Forms.Padding(2);
+            this.tBxfrom10.Location = new System.Drawing.Point(79, 258);
+            this.tBxfrom10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxfrom10.Name = "tBxfrom10";
-            this.tBxfrom10.Size = new System.Drawing.Size(76, 20);
+            this.tBxfrom10.Size = new System.Drawing.Size(100, 22);
             this.tBxfrom10.TabIndex = 34;
             this.tBxfrom10.Visible = false;
             // 
             // tBxto9
             // 
-            this.tBxto9.Location = new System.Drawing.Point(181, 188);
-            this.tBxto9.Margin = new System.Windows.Forms.Padding(2);
+            this.tBxto9.Location = new System.Drawing.Point(241, 231);
+            this.tBxto9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxto9.Name = "tBxto9";
-            this.tBxto9.Size = new System.Drawing.Size(76, 20);
+            this.tBxto9.Size = new System.Drawing.Size(100, 22);
             this.tBxto9.TabIndex = 33;
             this.tBxto9.Visible = false;
             // 
             // tBxfrom9
             // 
-            this.tBxfrom9.Location = new System.Drawing.Point(59, 188);
-            this.tBxfrom9.Margin = new System.Windows.Forms.Padding(2);
+            this.tBxfrom9.Location = new System.Drawing.Point(79, 231);
+            this.tBxfrom9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxfrom9.Name = "tBxfrom9";
-            this.tBxfrom9.Size = new System.Drawing.Size(76, 20);
+            this.tBxfrom9.Size = new System.Drawing.Size(100, 22);
             this.tBxfrom9.TabIndex = 32;
             this.tBxfrom9.Visible = false;
             // 
             // tBxto8
             // 
-            this.tBxto8.Location = new System.Drawing.Point(181, 165);
-            this.tBxto8.Margin = new System.Windows.Forms.Padding(2);
+            this.tBxto8.Location = new System.Drawing.Point(241, 203);
+            this.tBxto8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxto8.Name = "tBxto8";
-            this.tBxto8.Size = new System.Drawing.Size(76, 20);
+            this.tBxto8.Size = new System.Drawing.Size(100, 22);
             this.tBxto8.TabIndex = 31;
             this.tBxto8.Visible = false;
             // 
             // tBxfrom8
             // 
-            this.tBxfrom8.Location = new System.Drawing.Point(59, 165);
-            this.tBxfrom8.Margin = new System.Windows.Forms.Padding(2);
+            this.tBxfrom8.Location = new System.Drawing.Point(79, 203);
+            this.tBxfrom8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxfrom8.Name = "tBxfrom8";
-            this.tBxfrom8.Size = new System.Drawing.Size(76, 20);
+            this.tBxfrom8.Size = new System.Drawing.Size(100, 22);
             this.tBxfrom8.TabIndex = 30;
             this.tBxfrom8.Visible = false;
             // 
             // tBxto7
             // 
-            this.tBxto7.Location = new System.Drawing.Point(181, 142);
-            this.tBxto7.Margin = new System.Windows.Forms.Padding(2);
+            this.tBxto7.Location = new System.Drawing.Point(241, 175);
+            this.tBxto7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxto7.Name = "tBxto7";
-            this.tBxto7.Size = new System.Drawing.Size(76, 20);
+            this.tBxto7.Size = new System.Drawing.Size(100, 22);
             this.tBxto7.TabIndex = 29;
             this.tBxto7.Visible = false;
             // 
             // tBxfrom7
             // 
-            this.tBxfrom7.Location = new System.Drawing.Point(59, 142);
-            this.tBxfrom7.Margin = new System.Windows.Forms.Padding(2);
+            this.tBxfrom7.Location = new System.Drawing.Point(79, 175);
+            this.tBxfrom7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxfrom7.Name = "tBxfrom7";
-            this.tBxfrom7.Size = new System.Drawing.Size(76, 20);
+            this.tBxfrom7.Size = new System.Drawing.Size(100, 22);
             this.tBxfrom7.TabIndex = 28;
             this.tBxfrom7.Visible = false;
             // 
             // tBxto6
             // 
-            this.tBxto6.Location = new System.Drawing.Point(181, 119);
-            this.tBxto6.Margin = new System.Windows.Forms.Padding(2);
+            this.tBxto6.Location = new System.Drawing.Point(241, 146);
+            this.tBxto6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxto6.Name = "tBxto6";
-            this.tBxto6.Size = new System.Drawing.Size(76, 20);
+            this.tBxto6.Size = new System.Drawing.Size(100, 22);
             this.tBxto6.TabIndex = 27;
             this.tBxto6.Visible = false;
             // 
             // tBxfrom6
             // 
-            this.tBxfrom6.Location = new System.Drawing.Point(59, 119);
-            this.tBxfrom6.Margin = new System.Windows.Forms.Padding(2);
+            this.tBxfrom6.Location = new System.Drawing.Point(79, 146);
+            this.tBxfrom6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxfrom6.Name = "tBxfrom6";
-            this.tBxfrom6.Size = new System.Drawing.Size(76, 20);
+            this.tBxfrom6.Size = new System.Drawing.Size(100, 22);
             this.tBxfrom6.TabIndex = 26;
             this.tBxfrom6.Visible = false;
             // 
             // tBxto5
             // 
-            this.tBxto5.Location = new System.Drawing.Point(181, 97);
-            this.tBxto5.Margin = new System.Windows.Forms.Padding(2);
+            this.tBxto5.Location = new System.Drawing.Point(241, 119);
+            this.tBxto5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxto5.Name = "tBxto5";
-            this.tBxto5.Size = new System.Drawing.Size(76, 20);
+            this.tBxto5.Size = new System.Drawing.Size(100, 22);
             this.tBxto5.TabIndex = 25;
             this.tBxto5.Visible = false;
             // 
             // tBxfrom5
             // 
-            this.tBxfrom5.Location = new System.Drawing.Point(59, 97);
-            this.tBxfrom5.Margin = new System.Windows.Forms.Padding(2);
+            this.tBxfrom5.Location = new System.Drawing.Point(79, 119);
+            this.tBxfrom5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxfrom5.Name = "tBxfrom5";
-            this.tBxfrom5.Size = new System.Drawing.Size(76, 20);
+            this.tBxfrom5.Size = new System.Drawing.Size(100, 22);
             this.tBxfrom5.TabIndex = 24;
             this.tBxfrom5.Visible = false;
             // 
             // tBxto4
             // 
-            this.tBxto4.Location = new System.Drawing.Point(181, 74);
-            this.tBxto4.Margin = new System.Windows.Forms.Padding(2);
+            this.tBxto4.Location = new System.Drawing.Point(241, 91);
+            this.tBxto4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxto4.Name = "tBxto4";
-            this.tBxto4.Size = new System.Drawing.Size(76, 20);
+            this.tBxto4.Size = new System.Drawing.Size(100, 22);
             this.tBxto4.TabIndex = 23;
             this.tBxto4.Visible = false;
             // 
             // tBxto3
             // 
-            this.tBxto3.Location = new System.Drawing.Point(181, 51);
-            this.tBxto3.Margin = new System.Windows.Forms.Padding(2);
+            this.tBxto3.Location = new System.Drawing.Point(241, 63);
+            this.tBxto3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxto3.Name = "tBxto3";
-            this.tBxto3.Size = new System.Drawing.Size(76, 20);
+            this.tBxto3.Size = new System.Drawing.Size(100, 22);
             this.tBxto3.TabIndex = 22;
             this.tBxto3.Visible = false;
             // 
             // tBxto2
             // 
-            this.tBxto2.Location = new System.Drawing.Point(181, 28);
-            this.tBxto2.Margin = new System.Windows.Forms.Padding(2);
+            this.tBxto2.Location = new System.Drawing.Point(241, 34);
+            this.tBxto2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxto2.Name = "tBxto2";
-            this.tBxto2.Size = new System.Drawing.Size(76, 20);
+            this.tBxto2.Size = new System.Drawing.Size(100, 22);
             this.tBxto2.TabIndex = 21;
             this.tBxto2.Visible = false;
             // 
             // tBxfrom4
             // 
-            this.tBxfrom4.Location = new System.Drawing.Point(59, 74);
-            this.tBxfrom4.Margin = new System.Windows.Forms.Padding(2);
+            this.tBxfrom4.Location = new System.Drawing.Point(79, 91);
+            this.tBxfrom4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxfrom4.Name = "tBxfrom4";
-            this.tBxfrom4.Size = new System.Drawing.Size(76, 20);
+            this.tBxfrom4.Size = new System.Drawing.Size(100, 22);
             this.tBxfrom4.TabIndex = 20;
             this.tBxfrom4.Visible = false;
             // 
             // tBxfrom3
             // 
-            this.tBxfrom3.Location = new System.Drawing.Point(59, 51);
-            this.tBxfrom3.Margin = new System.Windows.Forms.Padding(2);
+            this.tBxfrom3.Location = new System.Drawing.Point(79, 63);
+            this.tBxfrom3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxfrom3.Name = "tBxfrom3";
-            this.tBxfrom3.Size = new System.Drawing.Size(76, 20);
+            this.tBxfrom3.Size = new System.Drawing.Size(100, 22);
             this.tBxfrom3.TabIndex = 19;
             this.tBxfrom3.Visible = false;
             // 
             // tBxfrom2
             // 
-            this.tBxfrom2.Location = new System.Drawing.Point(59, 28);
-            this.tBxfrom2.Margin = new System.Windows.Forms.Padding(2);
+            this.tBxfrom2.Location = new System.Drawing.Point(79, 34);
+            this.tBxfrom2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxfrom2.Name = "tBxfrom2";
-            this.tBxfrom2.Size = new System.Drawing.Size(76, 20);
+            this.tBxfrom2.Size = new System.Drawing.Size(100, 22);
             this.tBxfrom2.TabIndex = 18;
             this.tBxfrom2.Visible = false;
             // 
             // tBxto1
             // 
-            this.tBxto1.Location = new System.Drawing.Point(181, 5);
-            this.tBxto1.Margin = new System.Windows.Forms.Padding(2);
+            this.tBxto1.Location = new System.Drawing.Point(241, 6);
+            this.tBxto1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxto1.Name = "tBxto1";
-            this.tBxto1.Size = new System.Drawing.Size(76, 20);
+            this.tBxto1.Size = new System.Drawing.Size(100, 22);
             this.tBxto1.TabIndex = 17;
             this.tBxto1.Visible = false;
             // 
             // tBxfrom1
             // 
-            this.tBxfrom1.Location = new System.Drawing.Point(59, 6);
-            this.tBxfrom1.Margin = new System.Windows.Forms.Padding(2);
+            this.tBxfrom1.Location = new System.Drawing.Point(79, 7);
+            this.tBxfrom1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxfrom1.Name = "tBxfrom1";
-            this.tBxfrom1.Size = new System.Drawing.Size(76, 20);
+            this.tBxfrom1.Size = new System.Drawing.Size(100, 22);
             this.tBxfrom1.TabIndex = 16;
             this.tBxfrom1.Visible = false;
             // 
             // tbSettings
             // 
+            this.tbSettings.Controls.Add(this.lbSampFreq);
+            this.tbSettings.Controls.Add(this.cmbSampFreq);
             this.tbSettings.Controls.Add(this.textBox1);
             this.tbSettings.Controls.Add(this.cmbOutput);
             this.tbSettings.Controls.Add(this.lblSpeaker);
             this.tbSettings.Controls.Add(this.lblMic);
             this.tbSettings.Controls.Add(this.cmbInput);
-            this.tbSettings.Location = new System.Drawing.Point(4, 22);
-            this.tbSettings.Margin = new System.Windows.Forms.Padding(2);
+            this.tbSettings.Location = new System.Drawing.Point(4, 25);
+            this.tbSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbSettings.Name = "tbSettings";
-            this.tbSettings.Padding = new System.Windows.Forms.Padding(2);
-            this.tbSettings.Size = new System.Drawing.Size(677, 153);
+            this.tbSettings.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbSettings.Size = new System.Drawing.Size(905, 191);
             this.tbSettings.TabIndex = 1;
             this.tbSettings.Text = "Settings";
             this.tbSettings.UseVisualStyleBackColor = true;
             // 
+            // lbSampFreq
+            // 
+            this.lbSampFreq.AutoSize = true;
+            this.lbSampFreq.Location = new System.Drawing.Point(492, 14);
+            this.lbSampFreq.Name = "lbSampFreq";
+            this.lbSampFreq.Size = new System.Drawing.Size(126, 16);
+            this.lbSampFreq.TabIndex = 13;
+            this.lbSampFreq.Text = "Sampling frequency";
+            // 
+            // cmbSampFreq
+            // 
+            this.cmbSampFreq.FormattingEnabled = true;
+            this.cmbSampFreq.Items.AddRange(new object[] {
+            "44100",
+            "48000"});
+            this.cmbSampFreq.Location = new System.Drawing.Point(628, 11);
+            this.cmbSampFreq.Name = "cmbSampFreq";
+            this.cmbSampFreq.Size = new System.Drawing.Size(201, 24);
+            this.cmbSampFreq.TabIndex = 12;
+            this.cmbSampFreq.SelectedIndexChanged += new System.EventHandler(this.cmbSampFreq_SelectedIndexChanged);
+            // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(70, 75);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox1.Location = new System.Drawing.Point(93, 92);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(516, 77);
+            this.textBox1.Size = new System.Drawing.Size(687, 94);
             this.textBox1.TabIndex = 11;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // bTnReset
             // 
             this.bTnReset.Enabled = false;
-            this.bTnReset.Location = new System.Drawing.Point(867, 91);
-            this.bTnReset.Margin = new System.Windows.Forms.Padding(2);
+            this.bTnReset.Location = new System.Drawing.Point(1156, 112);
+            this.bTnReset.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bTnReset.Name = "bTnReset";
-            this.bTnReset.Size = new System.Drawing.Size(101, 21);
+            this.bTnReset.Size = new System.Drawing.Size(135, 26);
             this.bTnReset.TabIndex = 18;
             this.bTnReset.Text = "Reset";
             this.bTnReset.UseVisualStyleBackColor = true;
@@ -1389,10 +1387,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(730, 96);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Location = new System.Drawing.Point(973, 118);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(99, 65);
+            this.button1.Size = new System.Drawing.Size(132, 80);
             this.button1.TabIndex = 19;
             this.button1.Text = "Временная кнопка со значениями из первой версии";
             this.button1.UseVisualStyleBackColor = true;
@@ -1401,29 +1399,27 @@
             // lbPitchValue
             // 
             this.lbPitchValue.AutoSize = true;
-            this.lbPitchValue.Location = new System.Drawing.Point(728, 22);
-            this.lbPitchValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbPitchValue.Location = new System.Drawing.Point(971, 27);
             this.lbPitchValue.Name = "lbPitchValue";
-            this.lbPitchValue.Size = new System.Drawing.Size(13, 13);
+            this.lbPitchValue.Size = new System.Drawing.Size(14, 16);
             this.lbPitchValue.TabIndex = 20;
             this.lbPitchValue.Text = "0";
             // 
             // lbVolValue
             // 
             this.lbVolValue.AutoSize = true;
-            this.lbVolValue.Location = new System.Drawing.Point(728, 64);
-            this.lbVolValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbVolValue.Location = new System.Drawing.Point(971, 79);
             this.lbVolValue.Name = "lbVolValue";
-            this.lbVolValue.Size = new System.Drawing.Size(13, 13);
+            this.lbVolValue.Size = new System.Drawing.Size(14, 16);
             this.lbVolValue.TabIndex = 21;
             this.lbVolValue.Text = "0";
             // 
             // btnStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(867, 146);
-            this.btnStop.Margin = new System.Windows.Forms.Padding(2);
+            this.btnStop.Location = new System.Drawing.Point(1156, 180);
+            this.btnStop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(101, 21);
+            this.btnStop.Size = new System.Drawing.Size(135, 26);
             this.btnStop.TabIndex = 22;
             this.btnStop.Text = "Stop";
             this.btnStop.UseVisualStyleBackColor = true;
@@ -1431,20 +1427,63 @@
             // 
             // btnApply
             // 
-            this.btnApply.Location = new System.Drawing.Point(974, 91);
+            this.btnApply.Location = new System.Drawing.Point(1299, 112);
+            this.btnApply.Margin = new System.Windows.Forms.Padding(4);
             this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(97, 21);
+            this.btnApply.Size = new System.Drawing.Size(129, 26);
             this.btnApply.TabIndex = 23;
             this.btnApply.Text = "Apply";
             this.btnApply.UseVisualStyleBackColor = true;
             this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
+            // tabControl2
+            // 
+            this.tabControl2.Controls.Add(this.tabPage1);
+            this.tabControl2.Location = new System.Drawing.Point(16, 243);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(905, 233);
+            this.tabControl2.TabIndex = 24;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(897, 204);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Values";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // PlusBtn
+            // 
+            this.PlusBtn.Location = new System.Drawing.Point(931, 371);
+            this.PlusBtn.Name = "PlusBtn";
+            this.PlusBtn.Size = new System.Drawing.Size(35, 33);
+            this.PlusBtn.TabIndex = 25;
+            this.PlusBtn.Text = "+";
+            this.PlusBtn.UseVisualStyleBackColor = true;
+            this.PlusBtn.Click += new System.EventHandler(this.PlusBtn_Click);
+            // 
+            // MinusBtn
+            // 
+            this.MinusBtn.Location = new System.Drawing.Point(931, 411);
+            this.MinusBtn.Name = "MinusBtn";
+            this.MinusBtn.Size = new System.Drawing.Size(35, 33);
+            this.MinusBtn.TabIndex = 26;
+            this.MinusBtn.Text = "-";
+            this.MinusBtn.UseVisualStyleBackColor = true;
+            this.MinusBtn.Click += new System.EventHandler(this.MinusBtn_Click);
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1083, 205);
+            this.ClientSize = new System.Drawing.Size(1444, 488);
+            this.Controls.Add(this.MinusBtn);
+            this.Controls.Add(this.PlusBtn);
+            this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.lbVolValue);
@@ -1462,6 +1501,7 @@
             this.Controls.Add(this.bTnPlus);
             this.Controls.Add(this.bTnMinus);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1475,6 +1515,7 @@
             this.tbRange.PerformLayout();
             this.tbSettings.ResumeLayout(false);
             this.tbSettings.PerformLayout();
+            this.tabControl2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1598,6 +1639,12 @@
         private System.Windows.Forms.Button btnPitchVol3;
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Button btnApply;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Button PlusBtn;
+        private System.Windows.Forms.Button MinusBtn;
+        private System.Windows.Forms.Label lbSampFreq;
+        private System.Windows.Forms.ComboBox cmbSampFreq;
     }
 }
 

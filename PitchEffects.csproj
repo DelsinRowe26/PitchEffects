@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PitchShifter</RootNamespace>
     <AssemblyName>PitchShifter</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -60,6 +60,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BiQuadFilter.cs" />
+    <Compile Include="HighpassFilter.cs" />
+    <Compile Include="LowpassFilter.cs" />
     <Compile Include="SampleDSP.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
