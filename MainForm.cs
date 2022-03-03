@@ -7,12 +7,14 @@ using CSCore.SoundOut;//Выход звука
 using CSCore.CoreAudioAPI;
 using CSCore.Streams;
 using CSCore.Codecs;
+using CSCore.Streams.Effects;
 
 namespace PitchShifter
 {
     public partial class MainForm : Form
     {
         //Глобальные переменныe
+        private int strings = 0;
         private static float[] fftBuffer = new float[32000];
         int[] Pitch = new int[10];
         int[] Gain = new int[10];
@@ -26,6 +28,8 @@ namespace PitchShifter
         private SampleDSP mDsp;
         private SimpleMixer mMixer;
         private ISampleSource mMp3;
+        private readonly IWaveSource primarySource;
+        private const int SampleRate = 44100;
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         public MainForm()
         {
@@ -715,6 +719,123 @@ namespace PitchShifter
             trackPitch.Enabled = false;
             chkAddMp3.Enabled = false;
             bTnReset.Enabled = false;
+        }
+
+        private void btnApply_Click(object sender, EventArgs e)
+        {
+            if (strings != 0)
+            {
+                int[] botFreq = new int[strings];
+                int[] topFreq = new int[strings];
+                int[] reverbTime = new int[strings];
+                int[] reverbHFRTR = new int[strings];
+                int j = 0, c = 0;
+                for (int i = 0; i < tbRange.Controls.Count; i++)
+                {
+                    if (tbRange.Controls[i] is TextBox)
+                    {
+                        uint n;
+                        if (uint.TryParse(tbRange.Controls[i].Text, out n))
+                        {
+                            c++;
+                            switch (c % 4)
+                            {
+                                case 1:
+                                    botFreq[j] = (int)n;
+                                    break;
+                                case 2:
+                                    topFreq[j] = (int)n;
+                                    break;
+                                case 3:
+                                    reverbTime[j] = (int)n;
+                                    break;
+                                default:
+                                    reverbHFRTR[j] = (int)n;
+                                    j++;
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Неверные данные");
+                            return;
+                        }
+                    }
+                }
+
+                if (isDataValid(botFreq, topFreq, reverbTime, reverbHFRTR, strings))
+                {
+                    SimpleMixer mixer = new SimpleMixer(2, SampleRate)
+                    {
+                        FillWithZeros = true,
+                        DivideResult = true,
+                    };
+                    for (int i = 0; i < strings; i++)
+                    {
+                        var x = BandPassFilter(mSoundIn, SampleRate, botFreq[i], topFreq[i]);
+                        if (reverbTime[i] != 0)
+                        {
+                            var reverb = new DmoWavesReverbEffect(x.ToWaveSource());
+                            reverb.ReverbTime = reverbTime[i];
+                            reverb.HighFrequencyRTRatio = ((float)reverbHFRTR[i]) / 1000;
+                            x = reverb.ToSampleSource();
+                        }
+                        mixer.AddSource(x);
+                    }
+                    mSoundOut.Stop();
+                    mSoundOut.Initialize(mixer.ToWaveSource());
+                    mSoundOut.Play();
+                }
+            }
+            else
+            {
+                mSoundOut.Stop();
+                mSoundOut.Initialize(primarySource);
+                mSoundOut.Play();
+                MessageBox.Show("Параметры не заданы");
+            }
+        }
+
+        public ISampleSource BandPassFilter(WasapiCapture soundIn, int sampleRate, int bottomFreq, int topFreq)
+        {
+            var sampleSource = new SoundInSource(soundIn) { FillWithZeros = true }
+                    .ChangeSampleRate(sampleRate).ToStereo().ToSampleSource();
+
+            var tempFilter = sampleSource.AppendSource(x => new BiQuadFilterSource(x));
+            tempFilter.Filter = new HighpassFilter(sampleRate, bottomFreq);
+            var filteredSource = tempFilter.AppendSource(x => new BiQuadFilterSource(x));
+            filteredSource.Filter = new LowpassFilter(sampleRate, topFreq);
+
+            return filteredSource;
+        }
+
+        public bool isDataValid(int[] botFreq, int[] topFreq, int[] reverbTime, int[] reverbHFRTR, int size)
+        {
+            for (int i = 0; i < size; i++)
+            {
+                if (botFreq[i] > SampleRate / 2 || topFreq[i] > SampleRate / 2)
+                {
+                    MessageBox.Show("Частоты полосового фильтра не могут быть больше половины частоты дискретизации ("
+                        + Convert.ToString(SampleRate / 2) + ")");
+                    return false;
+                }
+                if (reverbTime[i] > 3000)
+                {
+                    MessageBox.Show("Время реверберации не может быть выше 3000мс");
+                    return false;
+                }
+                if (botFreq[i] >= topFreq[i])
+                {
+                    MessageBox.Show("Нижняя частота полосового фильтра должна быть меньше верхней");
+                    return false;
+                }
+                if (reverbHFRTR[i] > 999 || reverbHFRTR[i] < 1)
+                {
+                    MessageBox.Show("Не может быть выше 999 и ниже 1");
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
