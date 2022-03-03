@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.ComponentModel;
+using System.IO;
 using System.Diagnostics;
 using CSCore;
 using CSCore.SoundIn;//Вход звука
@@ -8,6 +10,7 @@ using CSCore.CoreAudioAPI;
 using CSCore.Streams;
 using CSCore.Codecs;
 using CSCore.Streams.Effects;
+using CSCore.DSP;
 
 namespace PitchShifter
 {
