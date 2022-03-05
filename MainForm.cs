@@ -85,34 +85,88 @@ namespace PitchShifter
                 mSoundIn.Device = mInputDevices[cmbInput.SelectedIndex];
                 mSoundIn.Initialize();
                 mSoundIn.Start();
-                
-                var source = new SoundInSource(mSoundIn) { FillWithZeros = true };
 
-                PitchShifter.ShortTimeFourierTransform(fftBuffer, 4096, -1);
+                var source = new SoundInSource(mSoundIn) { FillWithZeros = true };
 
                 //Init DSP для смещения высоты тона
                 mDsp = new SampleDSP(source.ToSampleSource().ToStereo());
                 mDsp.GainDB = trackGain.Value + 20;
                 SetPitchShiftValue();
 
-                //Инициальный микшер
-                mMixer = new SimpleMixer(2, SampleRate) //стерео, 44,1 КГц
+                if (strings != 0)
                 {
-                    FillWithZeros = false,
-                    DivideResult = true, //Для этого установлено значение true, чтобы избежать звуков тиков из-за превышения -1 и 1.
-                };
+                    int[] botFreq = new int[strings];
+                    int[] topFreq = new int[strings];
+                    int[] reverbTime = new int[strings];
+                    int[] reverbHFRTR = new int[strings];
+                    int j = 0, c = 0;
+                    for (int i = 0; i < tabPage1.Controls.Count; i++)
+                    {
+                        if (tabPage1.Controls[i] is TextBox)
+                        {
+                            uint n;
+                            if (uint.TryParse(tabPage1.Controls[i].Text, out n))
+                            {
+                                c++;
+                                switch (c % 4)
+                                {
+                                    case 1:
+                                        botFreq[j] = (int)n;
+                                        break;
+                                    case 2:
+                                        topFreq[j] = (int)n;
+                                        break;
+                                    case 3:
+                                        reverbTime[j] = (int)n;
+                                        break;
+                                    default:
+                                        reverbHFRTR[j] = (int)n;
+                                        j++;
+                                        break;
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Неверные данные");
+                                return true;
+                            }
+                        }
+                    }
+                    if (isDataValid(botFreq, topFreq, reverbTime, reverbHFRTR, strings))
+                    {
+                        //Инициальный микшер
+                        mMixer = new SimpleMixer(2, SampleRate) //стерео, 44,1 КГц
+                        {
+                            FillWithZeros = false,
+                            DivideResult = true, //Для этого установлено значение true, чтобы избежать звуков тиков из-за превышения -1 и 1.
+                        };
+                        mMixer.Dispose();
+                        for (int i = 0; i < strings; i++)
+                        {
+                            var x = BandPassFilter(mSoundIn, SampleRate, botFreq[i], topFreq[i]);
+                            if (reverbTime[i] != 0)
+                            {
+                                var reverb = new DmoWavesReverbEffect(x.ToWaveSource());
+                                reverb.ReverbTime = reverbTime[i];
+                                reverb.HighFrequencyRTRatio = ((float)reverbHFRTR[i]) / 1000;
+                                x = reverb.ToSampleSource();
+                            }
+                            mMixer.AddSource(x);
+                            mMixer.AddSource(mDsp.ChangeSampleRate(mMixer.WaveFormat.SampleRate));
+                        }
 
+                        //Запускает устройство воспроизведения звука с задержкой 1 мс.
+                        mSoundOut = new WasapiOut(false, AudioClientShareMode.Exclusive, 1);
+                        mSoundOut.Device = mOutputDevices[cmbOutput.SelectedIndex];
+                        mSoundOut.Initialize(mMixer.ToWaveSource(16));
+
+                        //Start rolling!
+                        mSoundOut.Play();
+                        return true;
+                    }
+                }
                 //Добавляем наш источник звука в микшер
-                mMixer.AddSource(mDsp.ChangeSampleRate(mMixer.WaveFormat.SampleRate));
-
-                //Запускает устройство воспроизведения звука с задержкой 1 мс.
-                mSoundOut = new WasapiOut(false, AudioClientShareMode.Exclusive, 1);
-                mSoundOut.Device = mOutputDevices[cmbOutput.SelectedIndex];
-                mSoundOut.Initialize(mMixer.ToWaveSource(16));
-
-                //Start rolling!
-                mSoundOut.Play();
-                return true;
+                
             }
             catch (Exception ex)
             {
@@ -739,7 +793,7 @@ namespace PitchShifter
             bTnReset.Enabled = false;
         }
 
-        private async void btnApply_Click(object sender, EventArgs e)
+        private void btnApply_Click(object sender, EventArgs e)
         {
             if (strings != 0)
             {
@@ -800,17 +854,17 @@ namespace PitchShifter
                         }
                         mMixer.AddSource(x);
                     }
-                    mSoundOut.Stop();
+                    /*mSoundOut.Stop();
                     mSoundOut.Initialize(mMixer.ToWaveSource());
-                    mSoundOut.Play();
+                    mSoundOut.Play();*/
                 }
             }
             else
             {
-                mSoundOut.Stop();
+                /*mSoundOut.Stop();
                 mSoundOut.Initialize(primarySource);
                 mSoundOut.Play();
-                MessageBox.Show("Параметры не заданы");
+                MessageBox.Show("Параметры не заданы");*/
             }
         }
 
