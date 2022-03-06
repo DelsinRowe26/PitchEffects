@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.ComponentModel;
 using System.IO;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using CSCore;
 using CSCore.SoundIn;//Вход звука
 using CSCore.SoundOut;//Выход звука
@@ -36,7 +37,7 @@ namespace PitchShifter
         private ISampleSource mMp3;
         private readonly IWaveSource primarySource;
         private int SampleRate;
-        private int SampleRate1 = 44100;
+        private int SampleRate1 = 48000;
 
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         public MainForm()
@@ -92,81 +93,27 @@ namespace PitchShifter
                 mDsp = new SampleDSP(source.ToSampleSource().ToStereo());
                 mDsp.GainDB = trackGain.Value + 20;
                 SetPitchShiftValue();
-
-                if (strings != 0)
-                {
-                    int[] botFreq = new int[strings];
-                    int[] topFreq = new int[strings];
-                    int[] reverbTime = new int[strings];
-                    int[] reverbHFRTR = new int[strings];
-                    int j = 0, c = 0;
-                    for (int i = 0; i < tabPage1.Controls.Count; i++)
-                    {
-                        if (tabPage1.Controls[i] is TextBox)
-                        {
-                            uint n;
-                            if (uint.TryParse(tabPage1.Controls[i].Text, out n))
-                            {
-                                c++;
-                                switch (c % 4)
-                                {
-                                    case 1:
-                                        botFreq[j] = (int)n;
-                                        break;
-                                    case 2:
-                                        topFreq[j] = (int)n;
-                                        break;
-                                    case 3:
-                                        reverbTime[j] = (int)n;
-                                        break;
-                                    default:
-                                        reverbHFRTR[j] = (int)n;
-                                        j++;
-                                        break;
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show("Неверные данные");
-                                return true;
-                            }
-                        }
-                    }
-                    if (isDataValid(botFreq, topFreq, reverbTime, reverbHFRTR, strings))
-                    {
-                        //Инициальный микшер
-                        mMixer = new SimpleMixer(2, SampleRate) //стерео, 44,1 КГц
-                        {
-                            FillWithZeros = false,
-                            DivideResult = true, //Для этого установлено значение true, чтобы избежать звуков тиков из-за превышения -1 и 1.
-                        };
-                        mMixer.Dispose();
-                        for (int i = 0; i < strings; i++)
-                        {
-                            var x = BandPassFilter(mSoundIn, SampleRate, botFreq[i], topFreq[i]);
-                            if (reverbTime[i] != 0)
-                            {
-                                var reverb = new DmoWavesReverbEffect(x.ToWaveSource());
-                                reverb.ReverbTime = reverbTime[i];
-                                reverb.HighFrequencyRTRatio = ((float)reverbHFRTR[i]) / 1000;
-                                x = reverb.ToSampleSource();
-                            }
-                            mMixer.AddSource(x);
-                            mMixer.AddSource(mDsp.ChangeSampleRate(mMixer.WaveFormat.SampleRate));
-                        }
-
-                        //Запускает устройство воспроизведения звука с задержкой 1 мс.
-                        mSoundOut = new WasapiOut(false, AudioClientShareMode.Exclusive, 1);
-                        mSoundOut.Device = mOutputDevices[cmbOutput.SelectedIndex];
-                        mSoundOut.Initialize(mMixer.ToWaveSource(16));
-
-                        //Start rolling!
-                        mSoundOut.Play();
-                        return true;
-                    }
-                }
-                //Добавляем наш источник звука в микшер
                 
+                //Инициальный микшер
+                mMixer = new SimpleMixer(2, SampleRate) //стерео, 44,1 КГц
+                {
+                    FillWithZeros = false,
+                    DivideResult = true, //Для этого установлено значение true, чтобы избежать звуков тиков из-за превышения -1 и 1.
+                };
+
+                Reverb();
+
+                //Добавляем наш источник звука в микшер
+                mMixer.AddSource(mDsp.ChangeSampleRate(mMixer.WaveFormat.SampleRate));
+
+                //Запускает устройство воспроизведения звука с задержкой 1 мс.
+                mSoundOut = new WasapiOut(false, AudioClientShareMode.Exclusive, 1);
+                mSoundOut.Device = mOutputDevices[cmbOutput.SelectedIndex];
+                mSoundOut.Initialize(mMixer.ToWaveSource(16));
+
+                //Start rolling!
+                mSoundOut.Play();
+                return true;
             }
             catch (Exception ex)
             {
@@ -198,10 +145,10 @@ namespace PitchShifter
             }
         }
 
-        private void SetPitchShiftValue()//рассчеты и значения пича
+        private async void SetPitchShiftValue()//рассчеты и значения пича
         {
             mDsp.PitchShift = (float)Math.Pow(2.0F, trackPitch.Value / 13.0F);
-            //PitchShifter.ShortTimeFourierTransform(fftBuffer, 4096, -1);
+            await Task.Run(() => Reverb());
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -795,77 +742,7 @@ namespace PitchShifter
 
         private void btnApply_Click(object sender, EventArgs e)
         {
-            if (strings != 0)
-            {
-                int[] botFreq = new int[strings];
-                int[] topFreq = new int[strings];
-                int[] reverbTime = new int[strings];
-                int[] reverbHFRTR = new int[strings];
-                int j = 0, c = 0;
-                for (int i = 0; i < tabPage1.Controls.Count; i++)
-                {
-                    if (tabPage1.Controls[i] is TextBox)
-                    {
-                        uint n;
-                        if (uint.TryParse(tabPage1.Controls[i].Text, out n))
-                        {
-                            c++;
-                            switch (c % 4)
-                            {
-                                case 1:
-                                    botFreq[j] = (int)n;
-                                    break;
-                                case 2:
-                                    topFreq[j] = (int)n;
-                                    break;
-                                case 3:
-                                    reverbTime[j] = (int)n;
-                                    break;
-                                default:
-                                    reverbHFRTR[j] = (int)n;
-                                    j++;
-                                    break;
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Неверные данные");
-                            return;
-                        }
-                    }
-                }
-
-                if (isDataValid(botFreq, topFreq, reverbTime, reverbHFRTR, strings))
-                {
-                    SimpleMixer mMixer = new SimpleMixer(2, SampleRate)
-                    {
-                        FillWithZeros = true,
-                        DivideResult = true,
-                    };
-                    for (int i = 0; i < strings; i++)
-                    {
-                        var x = BandPassFilter(mSoundIn, SampleRate, botFreq[i], topFreq[i]);
-                        if (reverbTime[i] != 0)
-                        {
-                            var reverb = new DmoWavesReverbEffect(x.ToWaveSource());
-                            reverb.ReverbTime = reverbTime[i];
-                            reverb.HighFrequencyRTRatio = ((float)reverbHFRTR[i]) / 1000;
-                            x = reverb.ToSampleSource();
-                        }
-                        mMixer.AddSource(x);
-                    }
-                    /*mSoundOut.Stop();
-                    mSoundOut.Initialize(mMixer.ToWaveSource());
-                    mSoundOut.Play();*/
-                }
-            }
-            else
-            {
-                /*mSoundOut.Stop();
-                mSoundOut.Initialize(primarySource);
-                mSoundOut.Play();
-                MessageBox.Show("Параметры не заданы");*/
-            }
+            Reverb();
         }
 
         public ISampleSource BandPassFilter(WasapiCapture soundIn, int sampleRate, int bottomFreq, int topFreq)
@@ -1019,6 +896,76 @@ namespace PitchShifter
             tabPage1.Controls.Add(tbReverbHFRTR);
 
             strings++;
+        }
+
+        private void Reverb()
+        {
+            if (strings != 0)
+            {
+                int[] botFreq = new int[strings];
+                int[] topFreq = new int[strings];
+                int[] reverbTime = new int[strings];
+                int[] reverbHFRTR = new int[strings];
+                int j = 0, c = 0;
+                for (int i = 0; i < tabPage1.Controls.Count; i++)
+                {
+                    if (tabPage1.Controls[i] is TextBox)
+                    {
+                        uint n;
+                        if (uint.TryParse(tabPage1.Controls[i].Text, out n))
+                        {
+                            c++;
+                            switch (c % 4)
+                            {
+                                case 1:
+                                    botFreq[j] = (int)n;
+                                    break;
+                                case 2:
+                                    topFreq[j] = (int)n;
+                                    break;
+                                case 3:
+                                    reverbTime[j] = (int)n;
+                                    break;
+                                default:
+                                    reverbHFRTR[j] = (int)n;
+                                    j++;
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Неверные данные");
+                            return;
+                        }
+                    }
+                }
+
+                if (isDataValid(botFreq, topFreq, reverbTime, reverbHFRTR, strings))
+                {
+                    for (int i = 0; i < strings; i++)
+                    {
+                        var x = BandPassFilter(mSoundIn, SampleRate, botFreq[i], topFreq[i]);
+                        if (reverbTime[i] != 0)
+                        {
+                            var reverb = new DmoWavesReverbEffect(x.ToWaveSource());
+                            reverb.ReverbTime = reverbTime[i];
+                            reverb.HighFrequencyRTRatio = ((float)reverbHFRTR[i]) / 1000;
+                            x = reverb.ToSampleSource();
+                        }
+                        mMixer.AddSource(x);
+                    }
+                    /*mSoundOut.Stop();
+                    mSoundOut.Initialize(mMixer.ToWaveSource());
+                    mSoundOut.Play();*/
+                }
+            }
+            else
+            {
+                /*mSoundOut.Stop();
+                mSoundOut.Initialize(primarySource);
+                mSoundOut.Play();
+                MessageBox.Show("Параметры не заданы");*/
+            }
         }
     }
 }
