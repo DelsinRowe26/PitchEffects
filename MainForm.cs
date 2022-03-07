@@ -92,7 +92,16 @@ namespace PitchShifter
                 //Init DSP для смещения высоты тона
                 mDsp = new SampleDSP(source.ToSampleSource().ToStereo());
                 mDsp.GainDB = trackGain.Value + 20;
-                SetPitchShiftValue();
+                //SetPitchShiftValue();
+                //Reverb();
+                if(cmbSelEff.SelectedIndex == 0)
+                {
+                    Reverb();
+                }
+                else if (cmbSelEff.SelectedIndex == 1)
+                {
+                    SetPitchShiftValue();
+                }
                 
                 //Инициальный микшер
                 mMixer = new SimpleMixer(2, SampleRate) //стерео, 44,1 КГц
@@ -101,18 +110,11 @@ namespace PitchShifter
                     DivideResult = true, //Для этого установлено значение true, чтобы избежать звуков тиков из-за превышения -1 и 1.
                 };
 
-                Reverb();
-
                 //Добавляем наш источник звука в микшер
-                mMixer.AddSource(mDsp.ChangeSampleRate(mMixer.WaveFormat.SampleRate));
+                mMixer.AddSource(mDsp.ChangeSampleRate(mMixer.WaveFormat.SampleRate));//основная строка
 
                 //Запускает устройство воспроизведения звука с задержкой 1 мс.
-                mSoundOut = new WasapiOut(false, AudioClientShareMode.Exclusive, 1);
-                mSoundOut.Device = mOutputDevices[cmbOutput.SelectedIndex];
-                mSoundOut.Initialize(mMixer.ToWaveSource(16));
-
-                //Start rolling!
-                mSoundOut.Play();
+                SoundOut();
                 return true;
             }
             catch (Exception ex)
@@ -122,6 +124,16 @@ namespace PitchShifter
                 Debug.WriteLine(msg);
             }
             return false;
+        }
+
+        private void SoundOut()
+        {
+            mSoundOut = new WasapiOut(false, AudioClientShareMode.Exclusive, 1);
+            mSoundOut.Device = mOutputDevices[cmbOutput.SelectedIndex];
+            mSoundOut.Initialize(mMixer.ToWaveSource(16));
+
+            //Start rolling!
+            mSoundOut.Play();
         }
 
         private void StopFullDuplex()//остановка всего
@@ -145,10 +157,10 @@ namespace PitchShifter
             }
         }
 
-        private async void SetPitchShiftValue()//рассчеты и значения пича
+        private void SetPitchShiftValue()//рассчеты и значения пича
         {
             mDsp.PitchShift = (float)Math.Pow(2.0F, trackPitch.Value / 13.0F);
-            await Task.Run(() => Reverb());
+            //await Task.Run(() => Reverb());
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -169,13 +181,19 @@ namespace PitchShifter
 
         private void trackPitch_Scroll(object sender, EventArgs e)
         {
-            SetPitchShiftValue();
+            if (cmbSelEff.SelectedIndex == 1)
+            {
+                SetPitchShiftValue();
+            }
             PitchValue();
         }
 
         private void trackPitch_ValueChanged(object sender, EventArgs e)
         {
-            SetPitchShiftValue();
+            if (cmbSelEff.SelectedIndex == 1)
+            {
+                SetPitchShiftValue();
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -952,19 +970,15 @@ namespace PitchShifter
                             reverb.HighFrequencyRTRatio = ((float)reverbHFRTR[i]) / 1000;
                             x = reverb.ToSampleSource();
                         }
-                        mMixer.AddSource(x);
+                        //mMixer.AddSource(x);
                     }
-                    /*mSoundOut.Stop();
-                    mSoundOut.Initialize(mMixer.ToWaveSource());
-                    mSoundOut.Play();*/
+                    SoundOut();
                 }
             }
             else
             {
-                /*mSoundOut.Stop();
-                mSoundOut.Initialize(primarySource);
-                mSoundOut.Play();
-                MessageBox.Show("Параметры не заданы");*/
+                SoundOut();
+                MessageBox.Show("Параметры не заданы");
             }
         }
     }

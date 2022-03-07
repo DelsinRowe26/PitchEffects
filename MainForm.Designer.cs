@@ -151,6 +151,8 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.PlusBtn = new System.Windows.Forms.Button();
             this.MinusBtn = new System.Windows.Forms.Button();
+            this.cmbSelEff = new System.Windows.Forms.ComboBox();
+            this.lbSelEff = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackPitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackGain)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -1326,6 +1328,8 @@
             // 
             // tbSettings
             // 
+            this.tbSettings.Controls.Add(this.lbSelEff);
+            this.tbSettings.Controls.Add(this.cmbSelEff);
             this.tbSettings.Controls.Add(this.lbSampFreq);
             this.tbSettings.Controls.Add(this.cmbSampFreq);
             this.tbSettings.Controls.Add(this.textBox1);
@@ -1474,6 +1478,26 @@
             this.MinusBtn.Text = "-";
             this.MinusBtn.UseVisualStyleBackColor = true;
             this.MinusBtn.Click += new System.EventHandler(this.MinusBtn_Click);
+            // 
+            // cmbSelEff
+            // 
+            this.cmbSelEff.FormattingEnabled = true;
+            this.cmbSelEff.Items.AddRange(new object[] {
+            "Reverb",
+            "PitchEffects"});
+            this.cmbSelEff.Location = new System.Drawing.Point(628, 45);
+            this.cmbSelEff.Name = "cmbSelEff";
+            this.cmbSelEff.Size = new System.Drawing.Size(201, 24);
+            this.cmbSelEff.TabIndex = 14;
+            // 
+            // lbSelEff
+            // 
+            this.lbSelEff.AutoSize = true;
+            this.lbSelEff.Location = new System.Drawing.Point(495, 51);
+            this.lbSelEff.Name = "lbSelEff";
+            this.lbSelEff.Size = new System.Drawing.Size(109, 16);
+            this.lbSelEff.TabIndex = 15;
+            this.lbSelEff.Text = "Selecting Effects ";
             // 
             // MainForm
             // 
@@ -1645,6 +1669,8 @@
         private System.Windows.Forms.Button MinusBtn;
         private System.Windows.Forms.Label lbSampFreq;
         private System.Windows.Forms.ComboBox cmbSampFreq;
+        private System.Windows.Forms.Label lbSelEff;
+        private System.Windows.Forms.ComboBox cmbSelEff;
     }
 }
 
