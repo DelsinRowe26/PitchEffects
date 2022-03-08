@@ -50,9 +50,10 @@ namespace PitchShifter
 
             //Initialize soundout
             primarySource = new SoundInSource(mSoundIn) { FillWithZeros = true }
-                    .ChangeSampleRate(SampleRate1).ToStereo();
+                        .ChangeSampleRate(SampleRate1).ToStereo();
             mSoundOut = new WasapiOut() { Latency = 1 };
             mSoundOut.Initialize(primarySource);
+            
         }
 
         private void MainForm_Load(object sender, EventArgs e)//загрузка и определение микрофона и колонок
@@ -82,36 +83,44 @@ namespace PitchShifter
             try
             {
                 //Запускает устройство захвата звука с задержкой 1 мс.
-                mSoundIn = new WasapiCapture(false, AudioClientShareMode.Exclusive, 1);
-                mSoundIn.Device = mInputDevices[cmbInput.SelectedIndex];
-                mSoundIn.Initialize();
-                mSoundIn.Start();
+                if (cmbSelEff.SelectedIndex == 1)
+                {
+                    mSoundIn = new WasapiCapture(false, AudioClientShareMode.Exclusive, 1);
+                
+                    mSoundIn.Device = mInputDevices[cmbInput.SelectedIndex];
+                    mSoundIn.Initialize();
+                    mSoundIn.Start();
+                }
 
                 var source = new SoundInSource(mSoundIn) { FillWithZeros = true };
-
-                //Init DSP для смещения высоты тона
-                mDsp = new SampleDSP(source.ToSampleSource().ToStereo());
-                mDsp.GainDB = trackGain.Value + 20;
-                //SetPitchShiftValue();
-                //Reverb();
-                if(cmbSelEff.SelectedIndex == 0)
+                
+                if (cmbSelEff.SelectedIndex == 0)
                 {
                     Reverb();
                 }
                 else if (cmbSelEff.SelectedIndex == 1)
                 {
+                    //Init DSP для смещения высоты тона
+                    mDsp = new SampleDSP(source.ToSampleSource().ToStereo());
+                    mDsp.GainDB = trackGain.Value + 20;
+                    //SetPitchShiftValue();
+                    //Reverb();
                     SetPitchShiftValue();
                 }
-                
-                //Инициальный микшер
-                mMixer = new SimpleMixer(2, SampleRate) //стерео, 44,1 КГц
-                {
-                    FillWithZeros = false,
-                    DivideResult = true, //Для этого установлено значение true, чтобы избежать звуков тиков из-за превышения -1 и 1.
-                };
 
-                //Добавляем наш источник звука в микшер
-                mMixer.AddSource(mDsp.ChangeSampleRate(mMixer.WaveFormat.SampleRate));//основная строка
+                //Инициальный микшер
+                if (cmbSelEff.SelectedIndex == 1)
+                {
+                    mMixer = new SimpleMixer(2, SampleRate) //стерео, 44,1 КГц
+                    {
+                        FillWithZeros = false,
+                        DivideResult = true, //Для этого установлено значение true, чтобы избежать звуков тиков из-за превышения -1 и 1.
+                    };
+
+                    //Добавляем наш источник звука в микшер
+                
+                    mMixer.AddSource(mDsp.ChangeSampleRate(mMixer.WaveFormat.SampleRate));//основная строка
+                }
 
                 //Запускает устройство воспроизведения звука с задержкой 1 мс.
                 SoundOut();
@@ -128,12 +137,23 @@ namespace PitchShifter
 
         private void SoundOut()
         {
-            mSoundOut = new WasapiOut(false, AudioClientShareMode.Exclusive, 1);
-            mSoundOut.Device = mOutputDevices[cmbOutput.SelectedIndex];
-            mSoundOut.Initialize(mMixer.ToWaveSource(16));
+            if (cmbSelEff.SelectedIndex == 0)
+            {
+                mSoundOut = new WasapiOut() { Latency = 50 };
+                mSoundOut.Device = mOutputDevices[cmbOutput.SelectedIndex];
+                mSoundOut.Initialize(mMixer.ToWaveSource());
 
-            //Start rolling!
-            mSoundOut.Play();
+                mSoundOut.Play();
+            }
+            else if (cmbSelEff.SelectedIndex == 1)
+            {
+                mSoundOut = new WasapiOut(false, AudioClientShareMode.Exclusive, 1);
+                mSoundOut.Device = mOutputDevices[cmbOutput.SelectedIndex];
+                mSoundOut.Initialize(mMixer.ToWaveSource(16));
+
+                //Start rolling!
+                mSoundOut.Play();
+            }
         }
 
         private void StopFullDuplex()//остановка всего
@@ -763,7 +783,7 @@ namespace PitchShifter
             Reverb();
         }
 
-        public ISampleSource BandPassFilter(WasapiCapture soundIn, int sampleRate, int bottomFreq, int topFreq)
+        public ISampleSource BandPassFilter(WasapiCapture mSoundIn, int sampleRate, int bottomFreq, int topFreq)
         {
             var sampleSource = new SoundInSource(mSoundIn) { FillWithZeros = true }
                     .ChangeSampleRate(sampleRate).ToStereo().ToSampleSource();
@@ -960,6 +980,12 @@ namespace PitchShifter
 
                 if (isDataValid(botFreq, topFreq, reverbTime, reverbHFRTR, strings))
                 {
+                    mMixer = new SimpleMixer(2, SampleRate) //стерео, 44,1 КГц
+                    {
+                        FillWithZeros = true,
+                        DivideResult = true, //Для этого установлено значение true, чтобы избежать звуков тиков из-за превышения -1 и 1.
+                    };
+                    mMixer.Dispose();
                     for (int i = 0; i < strings; i++)
                     {
                         var x = BandPassFilter(mSoundIn, SampleRate, botFreq[i], topFreq[i]);
@@ -970,7 +996,7 @@ namespace PitchShifter
                             reverb.HighFrequencyRTRatio = ((float)reverbHFRTR[i]) / 1000;
                             x = reverb.ToSampleSource();
                         }
-                        //mMixer.AddSource(x);
+                        mMixer.AddSource(x);
                     }
                     SoundOut();
                 }
