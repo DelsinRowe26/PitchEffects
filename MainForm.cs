@@ -83,25 +83,19 @@ namespace PitchShifter
             try
             {
                 //Запускает устройство захвата звука с задержкой 1 мс.
-                if (cmbSelEff.SelectedIndex == 1)
-                {
-                    mSoundIn = new WasapiCapture(false, AudioClientShareMode.Exclusive, 1);
+                mSoundIn = new WasapiCapture(false, AudioClientShareMode.Exclusive, 1);
+                mSoundIn.Device = mInputDevices[cmbInput.SelectedIndex];
+                mSoundIn.Initialize();
+                mSoundIn.Start();
                 
-                    mSoundIn.Device = mInputDevices[cmbInput.SelectedIndex];
-                    mSoundIn.Initialize();
-                    mSoundIn.Start();
-                }
-
                 var source = new SoundInSource(mSoundIn) { FillWithZeros = true };
+
                 
-                if (cmbSelEff.SelectedIndex == 0)
-                {
-                    Reverb();
-                }
                 else if (cmbSelEff.SelectedIndex == 1)
                 {
                     //Init DSP для смещения высоты тона
                     mDsp = new SampleDSP(source.ToSampleSource().ToStereo());
+                    
                     mDsp.GainDB = trackGain.Value + 20;
                     //SetPitchShiftValue();
                     //Reverb();
@@ -973,7 +967,6 @@ namespace PitchShifter
                         else
                         {
                             MessageBox.Show("Неверные данные");
-                            return;
                         }
                     }
                 }
