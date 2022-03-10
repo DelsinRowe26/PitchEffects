@@ -43,7 +43,7 @@
             this.bTnPlus = new System.Windows.Forms.Button();
             this.bTnMinus = new System.Windows.Forms.Button();
             this.btnFix = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tbCont = new System.Windows.Forms.TabControl();
             this.tbRange = new System.Windows.Forms.TabPage();
             this.btnPitchVol10 = new System.Windows.Forms.Button();
             this.btnPitchVol9 = new System.Windows.Forms.Button();
@@ -144,11 +144,18 @@
             this.lbPitchValue = new System.Windows.Forms.Label();
             this.lbVolValue = new System.Windows.Forms.Label();
             this.btnStop = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.PlusBtn = new System.Windows.Forms.Button();
+            this.MinusBtn = new System.Windows.Forms.Button();
+            this.StartBtn = new System.Windows.Forms.Button();
+            this.ApplyBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackPitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackGain)).BeginInit();
-            this.tabControl1.SuspendLayout();
+            this.tbCont.SuspendLayout();
             this.tbRange.SuspendLayout();
             this.tbSettings.SuspendLayout();
+            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnStart
@@ -302,16 +309,16 @@
             this.btnFix.UseVisualStyleBackColor = true;
             this.btnFix.Click += new System.EventHandler(this.btnFix_Click);
             // 
-            // tabControl1
+            // tbCont
             // 
-            this.tabControl1.Controls.Add(this.tbRange);
-            this.tabControl1.Controls.Add(this.tbSettings);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(913, 220);
-            this.tabControl1.TabIndex = 17;
+            this.tbCont.Controls.Add(this.tbRange);
+            this.tbCont.Controls.Add(this.tbSettings);
+            this.tbCont.Location = new System.Drawing.Point(12, 12);
+            this.tbCont.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbCont.Name = "tbCont";
+            this.tbCont.SelectedIndex = 0;
+            this.tbCont.Size = new System.Drawing.Size(913, 220);
+            this.tbCont.TabIndex = 17;
             // 
             // tbRange
             // 
@@ -1380,18 +1387,82 @@
             this.btnStop.UseVisualStyleBackColor = true;
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Location = new System.Drawing.Point(16, 243);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(905, 228);
+            this.tabControl1.TabIndex = 23;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(897, 199);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Values";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // PlusBtn
+            // 
+            this.PlusBtn.Location = new System.Drawing.Point(931, 346);
+            this.PlusBtn.Name = "PlusBtn";
+            this.PlusBtn.Size = new System.Drawing.Size(53, 34);
+            this.PlusBtn.TabIndex = 24;
+            this.PlusBtn.Text = "+";
+            this.PlusBtn.UseVisualStyleBackColor = true;
+            this.PlusBtn.Click += new System.EventHandler(this.PlusBtn_Click);
+            // 
+            // MinusBtn
+            // 
+            this.MinusBtn.Location = new System.Drawing.Point(931, 408);
+            this.MinusBtn.Name = "MinusBtn";
+            this.MinusBtn.Size = new System.Drawing.Size(53, 38);
+            this.MinusBtn.TabIndex = 25;
+            this.MinusBtn.Text = "-";
+            this.MinusBtn.UseVisualStyleBackColor = true;
+            this.MinusBtn.Click += new System.EventHandler(this.MinusBtn_Click);
+            // 
+            // StartBtn
+            // 
+            this.StartBtn.Location = new System.Drawing.Point(1156, 346);
+            this.StartBtn.Name = "StartBtn";
+            this.StartBtn.Size = new System.Drawing.Size(135, 34);
+            this.StartBtn.TabIndex = 26;
+            this.StartBtn.Text = "Start";
+            this.StartBtn.UseVisualStyleBackColor = true;
+            this.StartBtn.Click += new System.EventHandler(this.StartBtn_Click);
+            // 
+            // ApplyBtn
+            // 
+            this.ApplyBtn.Location = new System.Drawing.Point(1156, 387);
+            this.ApplyBtn.Name = "ApplyBtn";
+            this.ApplyBtn.Size = new System.Drawing.Size(135, 36);
+            this.ApplyBtn.TabIndex = 27;
+            this.ApplyBtn.Text = "Apply";
+            this.ApplyBtn.UseVisualStyleBackColor = true;
+            this.ApplyBtn.Click += new System.EventHandler(this.ApplyBtn_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1444, 251);
+            this.ClientSize = new System.Drawing.Size(1444, 483);
+            this.Controls.Add(this.ApplyBtn);
+            this.Controls.Add(this.StartBtn);
+            this.Controls.Add(this.MinusBtn);
+            this.Controls.Add(this.PlusBtn);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.lbVolValue);
             this.Controls.Add(this.lbPitchValue);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.bTnReset);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tbCont);
             this.Controls.Add(this.btnFix);
             this.Controls.Add(this.chkAddMp3);
             this.Controls.Add(this.label1);
@@ -1411,11 +1482,12 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.trackPitch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackGain)).EndInit();
-            this.tabControl1.ResumeLayout(false);
+            this.tbCont.ResumeLayout(false);
             this.tbRange.ResumeLayout(false);
             this.tbRange.PerformLayout();
             this.tbSettings.ResumeLayout(false);
             this.tbSettings.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1437,7 +1509,7 @@
         private System.Windows.Forms.Button bTnPlus;
         private System.Windows.Forms.Button bTnMinus;
         private System.Windows.Forms.Button btnFix;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tbCont;
         private System.Windows.Forms.TabPage tbRange;
         private System.Windows.Forms.TextBox tBxto1;
         private System.Windows.Forms.TextBox tBxfrom1;
@@ -1538,6 +1610,12 @@
         private System.Windows.Forms.Button btnPitchVol4;
         private System.Windows.Forms.Button btnPitchVol3;
         private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Button PlusBtn;
+        private System.Windows.Forms.Button MinusBtn;
+        private System.Windows.Forms.Button StartBtn;
+        private System.Windows.Forms.Button ApplyBtn;
     }
 }
 

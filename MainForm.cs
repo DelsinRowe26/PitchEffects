@@ -1,18 +1,24 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.IO;
 using CSCore;
 using CSCore.SoundIn;//Вход звука
 using CSCore.SoundOut;//Выход звука
 using CSCore.CoreAudioAPI;
 using CSCore.Streams;
 using CSCore.Codecs;
+using CSCore.Streams.Effects;
+using CSCore.DSP;
 
 namespace PitchShifter
 {
     public partial class MainForm : Form
     {
         //Глобальные переменныe
+        private int strings = 0;
+        private int tabIndex = 0;
         private static float[] fftBuffer = new float[32000];
         int[] Pitch = new int[10];
         int[] Gain = new int[10];
@@ -25,11 +31,25 @@ namespace PitchShifter
         private WasapiOut mSoundOut;
         private SampleDSP mDsp;
         private SimpleMixer mMixer;
+        private IWaveSource primarySource;
         private ISampleSource mMp3;
+        private int SampleRate = 48000;
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        
+
         public MainForm()
         {
             InitializeComponent();
+
+            mSoundIn = new WasapiCapture(true, AudioClientShareMode.Shared, 1);
+            mSoundIn.Initialize();
+
+            //Initialize soundout
+            primarySource = new SoundInSource(mSoundIn) { FillWithZeros = true }
+                    .ChangeSampleRate(SampleRate).ToStereo();
+            mSoundOut = new WasapiOut() { Latency = 1 };
+            mSoundOut.Initialize(primarySource);
         }
 
         private void MainForm_Load(object sender, EventArgs e)//загрузка и определение микрофона и колонок
@@ -715,6 +735,236 @@ namespace PitchShifter
             trackPitch.Enabled = false;
             chkAddMp3.Enabled = false;
             bTnReset.Enabled = false;
+        }
+
+        private void AddString(string botFreq, string topFreq, string reverbTime, string reverbHFRTR)
+        {
+            Label lbNumber = new Label();
+            lbNumber.AutoSize = false;
+            lbNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            lbNumber.Location = new System.Drawing.Point(5, 5 + (strings * 25));
+            lbNumber.Name = "lbNumber" + Convert.ToString(strings + 1);
+            lbNumber.Size = new System.Drawing.Size(25, 15);
+            lbNumber.TabIndex = tabIndex++;
+            lbNumber.Text = Convert.ToString(strings + 1) + ".";
+            tabPage1.Controls.Add(lbNumber);
+
+            Label lbFrom = new Label();
+            lbFrom.AutoSize = false;
+            lbFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            lbFrom.Location = new System.Drawing.Point(35, 5 + (strings * 25));
+            lbFrom.Name = "lbFrom" + Convert.ToString(strings + 1);
+            lbFrom.Size = new System.Drawing.Size(40, 15);
+            lbFrom.TabIndex = tabIndex++;
+            lbFrom.Text = "From";
+            tabPage1.Controls.Add(lbFrom);
+
+            TextBox tbBotFreq = new TextBox();
+            tbBotFreq.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            tbBotFreq.Location = new System.Drawing.Point(80, 5 + (strings * 25));
+            tbBotFreq.Name = "tbBotFreq" + Convert.ToString(strings + 1);
+            tbBotFreq.Size = new System.Drawing.Size(45, 15);
+            tbBotFreq.TabIndex = tabIndex++;
+            tbBotFreq.Text = botFreq;
+            tabPage1.Controls.Add(tbBotFreq);
+
+            Label lbTo = new Label();
+            lbTo.AutoSize = false;
+            lbTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            lbTo.Location = new System.Drawing.Point(130, 5 + (strings * 25));
+            lbTo.Name = "lbTo" + Convert.ToString(strings + 1);
+            lbTo.Size = new System.Drawing.Size(25, 15);
+            lbTo.TabIndex = tabIndex++;
+            lbTo.Text = "To";
+            tabPage1.Controls.Add(lbTo);
+
+            TextBox tbTopFreq = new TextBox();
+            tbTopFreq.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            tbTopFreq.Location = new System.Drawing.Point(165, 5 + (strings * 25));
+            tbTopFreq.Name = "tbTopFreq" + Convert.ToString(strings + 1);
+            tbTopFreq.Size = new System.Drawing.Size(45, 15);
+            tbTopFreq.TabIndex = tabIndex++;
+            tbTopFreq.Text = topFreq;
+            tabPage1.Controls.Add(tbTopFreq);
+
+            Label lbReverb = new Label();
+            lbReverb.AutoSize = false;
+            lbReverb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            lbReverb.Location = new System.Drawing.Point(215, 5 + (strings * 25));
+            lbReverb.Name = "lbReverb" + Convert.ToString(strings + 1);
+            lbReverb.Size = new System.Drawing.Size(55, 15);
+            lbReverb.TabIndex = tabIndex++;
+            lbReverb.Text = "Reverb";
+            tabPage1.Controls.Add(lbReverb);
+
+            TextBox tbReverb = new TextBox();
+            tbReverb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            tbReverb.Location = new System.Drawing.Point(275, 5 + (strings * 25));
+            tbReverb.Name = "tbReverb" + Convert.ToString(strings + 1);
+            tbReverb.Size = new System.Drawing.Size(45, 15);
+            tbReverb.TabIndex = tabIndex++;
+            tbReverb.Text = reverbTime;
+            tabPage1.Controls.Add(tbReverb);
+
+            TextBox tbReverbHFRTR = new TextBox();
+            tbReverbHFRTR.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            tbReverbHFRTR.Location = new System.Drawing.Point(335, 5 + (strings * 25));
+            tbReverbHFRTR.Name = "tbReverbHFRTR" + Convert.ToString(strings + 1);
+            tbReverbHFRTR.Size = new System.Drawing.Size(45, 15);
+            tbReverbHFRTR.TabIndex = tabIndex++;
+            tbReverbHFRTR.Text = reverbHFRTR;
+            tabPage1.Controls.Add(tbReverbHFRTR);
+
+            strings++;
+        }
+
+        private void MinusBtn_Click(object sender, EventArgs e)
+        {
+            if (strings != 0)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    //tabPage1.Controls[tabPage1.Controls.Count - 1].Dispose();
+                    tabPage1.Controls.RemoveAt(tabPage1.Controls.Count - 1);
+                }
+                strings--;
+                tabIndex -= 8;
+            }
+        }
+
+        private void ApplyBtn_Click(object sender, EventArgs e)
+        {
+            if (strings != 0)
+            {
+                int[] botFreq = new int[strings];
+                int[] topFreq = new int[strings];
+                int[] reverbTime = new int[strings];
+                int[] reverbHFRTR = new int[strings];
+                int j = 0, c = 0;
+                for (int i = 0; i < tabPage1.Controls.Count; i++)
+                {
+                    if (tabPage1.Controls[i] is TextBox)
+                    {
+                        uint n;
+                        if (uint.TryParse(tabPage1.Controls[i].Text, out n))
+                        {
+                            c++;
+                            switch (c % 4)
+                            {
+                                case 1:
+                                    botFreq[j] = (int)n;
+                                    break;
+                                case 2:
+                                    topFreq[j] = (int)n;
+                                    break;
+                                case 3:
+                                    reverbTime[j] = (int)n;
+                                    break;
+                                default:
+                                    reverbHFRTR[j] = (int)n;
+                                    j++;
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Неверные данные");
+                            return;
+                        }
+                    }
+                }
+
+                if (isDataValid(botFreq, topFreq, reverbTime, reverbHFRTR, strings))
+                {
+                    SimpleMixer mixer = new SimpleMixer(2, SampleRate)
+                    {
+                        FillWithZeros = true,
+                        DivideResult = true,
+                    };
+                    mixer.Dispose();
+                    for (int i = 0; i < strings; i++)
+                    {
+                        var x = BandPassFilter(mSoundIn, SampleRate, botFreq[i], topFreq[i]);
+                        if (reverbTime[i] != 0)
+                        {
+                            var reverb = new DmoWavesReverbEffect(x.ToWaveSource());
+                            reverb.ReverbTime = reverbTime[i];
+                            reverb.HighFrequencyRTRatio = ((float)reverbHFRTR[i]) / 1000;
+                            x = reverb.ToSampleSource();
+                        }
+                        mixer.AddSource(x);
+                    }
+                    mSoundOut.Stop();
+                    mSoundOut.Dispose();
+                    mSoundOut = new WasapiOut() { Latency = 50 };
+                    mSoundOut.Device = mOutputDevices[cmbOutput.SelectedIndex];
+                    mSoundOut.Initialize(mixer.ToWaveSource());
+                    mSoundOut.Play();
+                }
+            }
+            else
+            {
+                mSoundOut.Stop();
+                mSoundOut.Initialize(primarySource);
+                mSoundOut.Play();
+                MessageBox.Show("Параметры не заданы");
+            }
+        }
+
+        public bool isDataValid(int[] botFreq, int[] topFreq, int[] reverbTime, int[] reverbHFRTR, int size)
+        {
+            for (int i = 0; i < size; i++)
+            {
+                if (botFreq[i] > SampleRate / 2 || topFreq[i] > SampleRate / 2)
+                {
+                    MessageBox.Show("Частоты полосового фильтра не могут быть больше половины частоты дискретизации ("
+                        + Convert.ToString(SampleRate / 2) + ")");
+                    return false;
+                }
+                if (reverbTime[i] > 3000)
+                {
+                    MessageBox.Show("Время реверберации не может быть выше 3000мс");
+                    return false;
+                }
+                if (botFreq[i] >= topFreq[i])
+                {
+                    MessageBox.Show("Нижняя частота полосового фильтра должна быть меньше верхней");
+                    return false;
+                }
+                if (reverbHFRTR[i] > 999 || reverbHFRTR[i] < 1)
+                {
+                    MessageBox.Show("Не может быть выше 999 и ниже 1");
+                    return false;
+                }
+            }
+            return true;
+        }
+        //Bandpass filter for soundIn
+        
+
+        private void StartBtn_Click(object sender, EventArgs e)
+        {
+            mSoundIn.Start();
+            mSoundOut.Play();
+            StartBtn.Enabled = false;
+        }
+
+        private void PlusBtn_Click(object sender, EventArgs e)
+        {
+            AddString("0", "0", "0", "1");
+        }
+
+        public ISampleSource BandPassFilter(WasapiCapture soundIn, int sampleRate, int bottomFreq, int topFreq)
+        {
+            var sampleSource = new SoundInSource(soundIn) { FillWithZeros = true }
+                    .ChangeSampleRate(sampleRate).ToStereo().ToSampleSource();
+
+            var tempFilter = sampleSource.AppendSource(x => new BiQuadFilterSource(x));
+            tempFilter.Filter = new HighpassFilter(sampleRate, bottomFreq);
+            var filteredSource = tempFilter.AppendSource(x => new BiQuadFilterSource(x));
+            filteredSource.Filter = new LowpassFilter(sampleRate, topFreq);
+
+            return filteredSource;
         }
     }
 }
