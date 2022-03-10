@@ -87,11 +87,10 @@ namespace PitchShifter
                 mSoundIn.Device = mInputDevices[cmbInput.SelectedIndex];
                 mSoundIn.Initialize();
                 mSoundIn.Start();
-                
-                var source = new SoundInSource(mSoundIn) { FillWithZeros = true };
 
+                var source = new SoundInSource(mSoundIn) { FillWithZeros = true };
                 
-                else if (cmbSelEff.SelectedIndex == 1)
+                if (cmbSelEff.SelectedIndex == 1)
                 {
                     //Init DSP для смещения высоты тона
                     mDsp = new SampleDSP(source.ToSampleSource().ToStereo());
