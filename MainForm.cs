@@ -993,6 +993,7 @@ namespace PitchShifter
                             reverb.HighFrequencyRTRatio = ((float)reverbHFRTR[i]) / 1000;
                             x = reverb.ToSampleSource();
                         }
+                        mDspr = new SampleDSP(x);
                         mMixer.AddSource(x);
                     }
                     SoundOut();
