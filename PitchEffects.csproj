@@ -35,12 +35,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CSCore, Version=1.1.5851.30948, Culture=neutral, PublicKeyToken=5a08f2b6f4415dea, processorArchitecture=MSIL">
+    <Reference Include="CSCore, Version=1.1.5904.26345, Culture=neutral, PublicKeyToken=5a08f2b6f4415dea, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\CSCore.dll</HintPath>
-    </Reference>
-    <Reference Include="NAudio">
-      <HintPath>.\NAudio.dll</HintPath>
+      <HintPath>E:\programs\Reverb-master\Reverb\bin\Debug\CSCore.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -60,8 +57,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BiQuadFilter.cs" />
-    <Compile Include="HighpassFilter.cs" />
-    <Compile Include="LowpassFilter.cs" />
     <Compile Include="SampleDSP.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

@@ -32,7 +32,7 @@ namespace PitchShifter
         private MMDeviceCollection mOutputDevices;
         private WasapiCapture mSoundIn;
         private WasapiOut mSoundOut;
-        private SampleDSP mDsp;
+        private SampleDSP mDsp, mDspr;
         private SimpleMixer mMixer;
         private ISampleSource mMp3;
         private readonly IWaveSource primarySource;
@@ -99,6 +99,12 @@ namespace PitchShifter
                     //SetPitchShiftValue();
                     //Reverb();
                     SetPitchShiftValue();
+                } else
+                {
+                    mDsp = new SampleDSP(source.ToSampleSource().ToStereo());
+
+                    mDsp.GainDB = trackGain.Value + 20;
+                    Reverb();
                 }
 
                 //Инициальный микшер
@@ -134,7 +140,7 @@ namespace PitchShifter
             {
                 mSoundOut = new WasapiOut() { Latency = 50 };
                 mSoundOut.Device = mOutputDevices[cmbOutput.SelectedIndex];
-                mSoundOut.Initialize(mMixer.ToWaveSource());
+                mSoundOut.Initialize(mMixer.ToWaveSource(16));
 
                 mSoundOut.Play();
             }
@@ -780,7 +786,6 @@ namespace PitchShifter
         {
             var sampleSource = new SoundInSource(mSoundIn) { FillWithZeros = true }
                     .ChangeSampleRate(sampleRate).ToStereo().ToSampleSource();
-
             var tempFilter = sampleSource.AppendSource(x => new BiQuadFilterSource(x));
             tempFilter.Filter = new HighpassFilter(sampleRate, bottomFreq);
             var filteredSource = tempFilter.AppendSource(x => new BiQuadFilterSource(x));
