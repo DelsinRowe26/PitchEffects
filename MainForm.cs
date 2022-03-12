@@ -96,14 +96,10 @@ namespace PitchShifter
                     mDsp = new SampleDSP(source.ToSampleSource().ToStereo());
                     
                     mDsp.GainDB = trackGain.Value + 20;
-                    //SetPitchShiftValue();
-                    //Reverb();
                     SetPitchShiftValue();
-                } else
+                } 
+                else
                 {
-                    mDsp = new SampleDSP(source.ToSampleSource().ToStereo());
-
-                    mDsp.GainDB = trackGain.Value + 20;
                     Reverb();
                 }
 
@@ -112,7 +108,7 @@ namespace PitchShifter
                 {
                     mMixer = new SimpleMixer(2, SampleRate) //стерео, 44,1 КГц
                     {
-                        FillWithZeros = true,
+                        FillWithZeros = false,
                         DivideResult = true, //Для этого установлено значение true, чтобы избежать звуков тиков из-за превышения -1 и 1.
                     };
 
