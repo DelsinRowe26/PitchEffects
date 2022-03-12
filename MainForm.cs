@@ -112,7 +112,7 @@ namespace PitchShifter
                 {
                     mMixer = new SimpleMixer(2, SampleRate) //стерео, 44,1 КГц
                     {
-                        FillWithZeros = false,
+                        FillWithZeros = true,
                         DivideResult = true, //Для этого установлено значение true, чтобы избежать звуков тиков из-за превышения -1 и 1.
                     };
 
@@ -993,8 +993,9 @@ namespace PitchShifter
                             reverb.HighFrequencyRTRatio = ((float)reverbHFRTR[i]) / 1000;
                             x = reverb.ToSampleSource();
                         }
-                        mDspr = new SampleDSP(x);
-                        mMixer.AddSource(x);
+                        mDsp = new SampleDSP(x.ToWaveSource().ToSampleSource().ToStereo());
+                        mDsp.GainDB = trackGain.Value + 20;
+                        mMixer.AddSource(mDsp.ChangeSampleRate(mMixer.WaveFormat.SampleRate));
                     }
                     SoundOut();
                 }

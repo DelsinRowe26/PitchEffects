@@ -126,7 +126,7 @@ namespace PitchShifter
                         imag = gFFTworksp[2 * k + 1];
 
                         /* compute magnitude and phase/вычислить амплитуду и фазу  */
-                        magn = 6.0 * Math.Sqrt(real * real + imag * imag);//амплитуда
+                        magn = 3.0 * Math.Sqrt(real * real + imag * imag);//амплитуда
                         phase = Math.Atan2(imag, real);//фаза
 
                         /* compute phase difference/вычислить разность фаз */
