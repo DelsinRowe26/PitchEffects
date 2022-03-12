@@ -45,7 +45,7 @@ namespace PitchShifter
             InitializeComponent();
 
             //Initialize WasapiCapture for recording
-            mSoundIn = new WasapiCapture(true, AudioClientShareMode.Shared, 0);
+            mSoundIn = new WasapiCapture(/*true, AudioClientShareMode.Shared, 0*/);
             mSoundIn.Initialize();
 
             //Initialize soundout
@@ -134,7 +134,7 @@ namespace PitchShifter
         {
             if (cmbSelEff.SelectedIndex == 0)
             {
-                mSoundOut = new WasapiOut() { Latency = 50 };
+                mSoundOut = new WasapiOut(false, AudioClientShareMode.Exclusive, 1);
                 mSoundOut.Device = mOutputDevices[cmbOutput.SelectedIndex];
                 mSoundOut.Initialize(mMixer.ToWaveSource(16));
 
@@ -175,7 +175,6 @@ namespace PitchShifter
         private void SetPitchShiftValue()//рассчеты и значения пича
         {
             mDsp.PitchShift = (float)Math.Pow(2.0F, trackPitch.Value / 13.0F);
-            //await Task.Run(() => Reverb());
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
