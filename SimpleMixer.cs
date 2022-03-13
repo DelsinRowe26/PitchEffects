@@ -44,7 +44,7 @@ namespace PitchShifter
 
         public void RemoveSource(ISampleSource source)
         {
-            //don't throw null ex here
+            //don't throw null ex here/не бросайте сюда null ex
             lock (mLockObj)
             {
                 if (Contains(source))

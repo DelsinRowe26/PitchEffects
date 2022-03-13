@@ -27,7 +27,7 @@ namespace PitchShifter
 
             if (PitchShift != 1.0f)
             {
-                PitchShifter.PitchShift(PitchShift, offset, count, 2048, 4, mSource.WaveFormat.SampleRate, buffer);
+                PitchShifter.PitchShift(PitchShift, offset, count, 8192, 4, mSource.WaveFormat.SampleRate, buffer);
 
             }
             return samples;

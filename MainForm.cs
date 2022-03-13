@@ -32,7 +32,7 @@ namespace PitchShifter
         private MMDeviceCollection mOutputDevices;
         private WasapiCapture mSoundIn;
         private WasapiOut mSoundOut;
-        private SampleDSP mDsp, mDspr;
+        private SampleDSP mDsp;
         private SimpleMixer mMixer;
         private ISampleSource mMp3;
         private readonly IWaveSource primarySource;
@@ -89,7 +89,7 @@ namespace PitchShifter
                 mSoundIn.Start();
 
                 var source = new SoundInSource(mSoundIn) { FillWithZeros = true };
-                
+
                 if (cmbSelEff.SelectedIndex == 1)
                 {
                     //Init DSP для смещения высоты тона
@@ -134,9 +134,9 @@ namespace PitchShifter
         {
             if (cmbSelEff.SelectedIndex == 0)
             {
-                mSoundOut = new WasapiOut(false, AudioClientShareMode.Exclusive, 1);
+                mSoundOut = new WasapiOut(false, AudioClientShareMode.Shared, 1);
                 mSoundOut.Device = mOutputDevices[cmbOutput.SelectedIndex];
-                mSoundOut.Initialize(mMixer.ToWaveSource(16));
+                mSoundOut.Initialize(mMixer.ToWaveSource());
 
                 mSoundOut.Play();
             }
@@ -974,7 +974,7 @@ namespace PitchShifter
                 {
                     mMixer = new SimpleMixer(2, SampleRate) //стерео, 44,1 КГц
                     {
-                        FillWithZeros = true,
+                        FillWithZeros = false,
                         DivideResult = true, //Для этого установлено значение true, чтобы избежать звуков тиков из-за превышения -1 и 1.
                     };
                     mMixer.Dispose();
@@ -983,7 +983,7 @@ namespace PitchShifter
                         var x = BandPassFilter(mSoundIn, SampleRate, botFreq[i], topFreq[i]);
                         if (reverbTime[i] != 0)
                         {
-                            var reverb = new DmoWavesReverbEffect(x.ToWaveSource());
+                            var reverb = new DmoWavesReverbEffect(x.ToWaveSource(16));
                             reverb.ReverbTime = reverbTime[i];
                             reverb.HighFrequencyRTRatio = ((float)reverbHFRTR[i]) / 1000;
                             x = reverb.ToSampleSource();
