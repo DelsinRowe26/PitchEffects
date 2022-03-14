@@ -26,7 +26,7 @@ namespace PitchShifter
         int[] min = new int[10];
         int[] max = new int[10];
         int plusclick = 0, plus = 0;
-
+        PitchShifter pitch = new PitchShifter();
 
         private MMDeviceCollection mInputDevices;
         private MMDeviceCollection mOutputDevices;
@@ -95,7 +95,7 @@ namespace PitchShifter
                     //Init DSP для смещения высоты тона
                     mDsp = new SampleDSP(source.ToSampleSource().ToStereo());
                     
-                    mDsp.GainDB = trackGain.Value + 20;
+                    mDsp.GainDB = trackGain.Value;
                     SetPitchShiftValue();
                 } 
                 else
@@ -184,13 +184,13 @@ namespace PitchShifter
 
         private void trackGain_Scroll(object sender, EventArgs e)
         {
-            mDsp.GainDB = trackGain.Value + 20;
+            mDsp.GainDB = trackGain.Value;
             VolValue();
         }
 
         private void trackGain_ValueChanged(object sender, EventArgs e)
         {
-            mDsp.GainDB = trackGain.Value + 20;
+            mDsp.GainDB = trackGain.Value;
         }
 
         private void trackPitch_Scroll(object sender, EventArgs e)
@@ -437,13 +437,18 @@ namespace PitchShifter
         {
             for (int i = 0; i < min.Length; i++)
             {
+                
                 switch (plusclick)
                 {
                     case 1:
-                        min[0] = int.Parse(tBxfrom1.Text);
-                        max[0] = int.Parse(tBxto1.Text);
-                        Pitch[0] = int.Parse(tbPitch1.Text);
-                        Gain[0] = int.Parse(tbGain1.Text);
+                        //min[0] = int.Parse(tBxfrom1.Text);
+                        //max[0] = int.Parse(tBxto1.Text);
+                        //Pitch[0] = int.Parse(tbPitch1.Text);
+                        //Gain[0] = int.Parse(tbGain1.Text);
+                        //pitch.min[0] = int.Parse(tBxfrom1.Text);
+                        //pitch.max[0] = int.Parse(tBxto1.Text);
+                        //pitch.Pitch[0] = int.Parse(tbPitch1.Text);
+                        //pitch.Vol[0] = int.Parse(tbGain1.Text);
                         break;
                     case 2:
                         min[1] = int.Parse(tBxfrom2.Text);
@@ -842,9 +847,11 @@ namespace PitchShifter
             if(cmbSampFreq.SelectedIndex == 0)
             {
                 SampleRate = 44100;
+                 //pitch.SampleRate = 44100;
             } else if(cmbSampFreq.SelectedIndex == 1)
             {
                 SampleRate = 48000;
+                //pitch.SampleRate = 48000;
             }
         }
 
