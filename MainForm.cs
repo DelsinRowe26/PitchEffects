@@ -69,7 +69,7 @@ namespace PitchShifter
 
                 //Init DSP для смещения высоты тона
                 mDsp = new SampleDSP(source.ToSampleSource().ToStereo());
-                mDsp.GainDB = trackGain.Value + 20;
+                mDsp.GainDB = trackGain.Value;
                 SetPitchShiftValue();
 
                 //Инициальный микшер
@@ -132,13 +132,13 @@ namespace PitchShifter
 
         private void trackGain_Scroll(object sender, EventArgs e)
         {
-            mDsp.GainDB = trackGain.Value + 20;
+            mDsp.GainDB = trackGain.Value;
             VolValue();
         }
 
         private void trackGain_ValueChanged(object sender, EventArgs e)
         {
-            mDsp.GainDB = trackGain.Value + 20;
+            mDsp.GainDB = trackGain.Value;
         }
 
         private void trackPitch_Scroll(object sender, EventArgs e)

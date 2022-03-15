@@ -153,10 +153,49 @@ namespace PitchShifter
 
                     }
 
-                    /* ***************** PROCESSING ******************* */
-                    /* this does the actual pitch shifting/это делает фактическое изменение высоты тона */
+                    for (k = 0; k <= fftFrameSize2; k++)
+                    {
+                        double magn1;
+                        if (k >= (60 * fftFrameSize2) / 24000 && k <= (779 * fftFrameSize2) / 24000)
+                        {
+                            magn1 = gAnaMagn[k];
+                            magn1 = magn1 * 10;
+                            gAnaMagn[k] = (float)magn1;
+                            //Thread.Sleep(100);
+                        }
+                        else if (k >= (780 * fftFrameSize2) / 24000 && k <= (1589 * fftFrameSize2) / 24000)
+                        {
+                            magn1 = gAnaMagn[k];
+                            magn1 *= 20;
+                            gAnaMagn[k] = (float)magn1;
+                            //Thread.Sleep(100);
+                        }
+                        else if (k >= (1590 * fftFrameSize2) / 24000 && k <= (3989 * fftFrameSize2) / 24000)
+                        {
+                            magn1 = gAnaMagn[k];
+                            magn1 *= 30;
+                            gAnaMagn[k] = (float)magn1;
+                            //Thread.Sleep(100);
+                        }
+                        else if (k >= (3990 * fftFrameSize2) / 24000 && k <= (7289 * fftFrameSize2) / 24000)
+                        {
+                            magn1 = gAnaMagn[k];
+                            magn1 *= 40f;
+                            gAnaMagn[k] = (float)magn1;
+                            //Thread.Sleep(100);
+                        }
+                        else if (k >= (7290 * fftFrameSize2) / 24000 && k <= (7949 * fftFrameSize2) / 24000)
+                        {
+                            magn1 = gAnaMagn[k];
+                            magn1 *= 50f;
+                            gAnaMagn[k] = (float)magn1;
+                            //Thread.Sleep(100);
+                        }
+                    }
+                        /* ***************** PROCESSING ******************* */
+                        /* this does the actual pitch shifting/это делает фактическое изменение высоты тона */
 
-                    for (int zero = 0; zero < fftFrameSize; zero++)
+                        for (int zero = 0; zero < fftFrameSize; zero++)
                     {
                         gSynMagn[zero] = 0;
                         gSynFreq[zero] = 0;
