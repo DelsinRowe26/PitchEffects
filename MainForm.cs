@@ -449,63 +449,93 @@ namespace PitchShifter
                         //pitch.max[0] = int.Parse(tBxto1.Text);
                         //pitch.Pitch[0] = int.Parse(tbPitch1.Text);
                         //pitch.Vol[0] = int.Parse(tbGain1.Text);
+                        PitchShifter.min[0] = int.Parse(tBxfrom1.Text);
+                        PitchShifter.max[0] = int.Parse(tBxto1.Text);
+                        PitchShifter.Vol[0] = int.Parse(tbGain1.Text);
                         break;
                     case 2:
-                        min[1] = int.Parse(tBxfrom2.Text);
+                        /*min[1] = int.Parse(tBxfrom2.Text);
                         max[1] = int.Parse(tBxto2.Text);
                         Pitch[1] = int.Parse(tbPitch2.Text);
-                        Gain[1] = int.Parse(tbGain2.Text);
+                        Gain[1] = int.Parse(tbGain2.Text);*/
+                        PitchShifter.min[1] = int.Parse(tBxfrom2.Text);
+                        PitchShifter.max[1] = int.Parse(tBxto2.Text);
+                        PitchShifter.Vol[1] = int.Parse(tbGain2.Text);
                         break;
                     case 3:
-                        min[2] = int.Parse(tBxfrom3.Text);
+                        /*min[2] = int.Parse(tBxfrom3.Text);
                         max[2] = int.Parse(tBxto3.Text);
                         Pitch[2] = int.Parse(tbPitch3.Text);
-                        Gain[2] = int.Parse(tbGain3.Text);
+                        Gain[2] = int.Parse(tbGain3.Text);*/
+                        PitchShifter.min[2] = int.Parse(tBxfrom3.Text);
+                        PitchShifter.max[2] = int.Parse(tBxto3.Text);
+                        PitchShifter.Vol[2] = int.Parse(tbGain3.Text);
                         break;
                     case 4:
-                        min[3] = int.Parse(tBxfrom4.Text);
+                        /*min[3] = int.Parse(tBxfrom4.Text);
                         max[3] = int.Parse(tBxto4.Text);
                         Pitch[3] = int.Parse(tbPitch4.Text);
-                        Gain[3] = int.Parse(tbGain4.Text);
+                        Gain[3] = int.Parse(tbGain4.Text);*/
+                        PitchShifter.min[3] = int.Parse(tBxfrom4.Text);
+                        PitchShifter.max[3] = int.Parse(tBxto4.Text);
+                        PitchShifter.Vol[3] = int.Parse(tbGain4.Text);
                         break;
                     case 5:
-                        min[4] = int.Parse(tBxfrom5.Text);
+                        /*min[4] = int.Parse(tBxfrom5.Text);
                         max[4] = int.Parse(tBxto5.Text);
                         Pitch[4] = int.Parse(tbPitch5.Text);
-                        Gain[4] = int.Parse(tbGain5.Text);
+                        Gain[4] = int.Parse(tbGain5.Text);*/
+                        PitchShifter.min[4] = int.Parse(tBxfrom5.Text);
+                        PitchShifter.max[4] = int.Parse(tBxto5.Text);
+                        PitchShifter.Vol[4] = int.Parse(tbGain5.Text);
                         break;
                     case 6:
-                        min[5] = int.Parse(tBxfrom6.Text);
+                        /*min[5] = int.Parse(tBxfrom6.Text);
                         max[5] = int.Parse(tBxto6.Text);
                         Pitch[5] = int.Parse(tbPitch6.Text);
-                        Gain[5] = int.Parse(tbGain6.Text);
+                        Gain[5] = int.Parse(tbGain6.Text);*/
+                        PitchShifter.min[5] = int.Parse(tBxfrom6.Text);
+                        PitchShifter.max[5] = int.Parse(tBxto6.Text);
+                        PitchShifter.Vol[5] = int.Parse(tbGain6.Text);
                         break;
                     case 7:
-                        min[6] = int.Parse(tBxfrom7.Text);
+                        /*min[6] = int.Parse(tBxfrom7.Text);
                         max[6] = int.Parse(tBxto7.Text);
                         Pitch[6] = int.Parse(tbPitch7.Text);
-                        Gain[6] = int.Parse(tbGain7.Text);
+                        Gain[6] = int.Parse(tbGain7.Text);*/
+                        PitchShifter.min[6] = int.Parse(tBxfrom7.Text);
+                        PitchShifter.max[6] = int.Parse(tBxto7.Text);
+                        PitchShifter.Vol[6] = int.Parse(tbGain7.Text);
                         break;
                     case 8:
-                        min[7] = int.Parse(tBxfrom8.Text);
+                        /*min[7] = int.Parse(tBxfrom8.Text);
                         max[7] = int.Parse(tBxto8.Text);
                         Pitch[7] = int.Parse(tbPitch8.Text);
-                        Gain[7] = int.Parse(tbGain8.Text);
+                        Gain[7] = int.Parse(tbGain8.Text);*/
+                        PitchShifter.min[7] = int.Parse(tBxfrom8.Text);
+                        PitchShifter.max[7] = int.Parse(tBxto8.Text);
+                        PitchShifter.Vol[7] = int.Parse(tbGain8.Text);
                         break;
                     case 9 when plus == 0:
-                        min[8] = int.Parse(tBxfrom9.Text);
+                        /*min[8] = int.Parse(tBxfrom9.Text);
                         max[8] = int.Parse(tBxto9.Text);
                         Pitch[8] = int.Parse(tbPitch9.Text);
-                        Gain[8] = int.Parse(tbGain9.Text);
+                        Gain[8] = int.Parse(tbGain9.Text);*/
+                        PitchShifter.min[8] = int.Parse(tBxfrom9.Text);
+                        PitchShifter.max[8] = int.Parse(tBxto9.Text);
+                        PitchShifter.Vol[8] = int.Parse(tbGain9.Text);
                         plus++;
                         break;
                     default:
                         if (plus == 1)
                         {
-                            min[9] = int.Parse(tBxfrom10.Text);
+                            /*min[9] = int.Parse(tBxfrom10.Text);
                             max[9] = int.Parse(tBxto10.Text);
                             Pitch[9] = int.Parse(tbPitch10.Text);
-                            Gain[9] = int.Parse(tbGain10.Text);
+                            Gain[9] = int.Parse(tbGain10.Text);*/
+                            PitchShifter.min[9] = int.Parse(tBxfrom10.Text);
+                            PitchShifter.max[9] = int.Parse(tBxto10.Text);
+                            PitchShifter.Vol[9] = int.Parse(tbGain10.Text);
                             plus--;
                         }
 
@@ -847,10 +877,12 @@ namespace PitchShifter
             if(cmbSampFreq.SelectedIndex == 0)
             {
                 SampleRate = 44100;
+                PitchShifter.SampleRate2 = 22050;
                  //pitch.SampleRate = 44100;
             } else if(cmbSampFreq.SelectedIndex == 1)
             {
                 SampleRate = 48000;
+                PitchShifter.SampleRate2 = 24000;
                 //pitch.SampleRate = 48000;
             }
         }

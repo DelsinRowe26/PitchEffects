@@ -55,6 +55,10 @@ namespace PitchShifter
     {
 
         #region Private Static Memebers
+        public static int[] min = new int[10];
+        public static int[] max = new int[10];
+        public static int[] Vol = new int[10];
+        public static int SampleRate2;
         private static int MAX_FRAME_LENGTH = 16000;
         private static float[] gInFIFO = new float[MAX_FRAME_LENGTH];
         private static float[] gOutFIFO = new float[MAX_FRAME_LENGTH];
@@ -77,7 +81,6 @@ namespace PitchShifter
         public static void PitchShift(float pitchShift, long offset, long sampleCount, long fftFrameSize,
             long osamp, float sampleRate, float[] indata)
         {
-            
             double magn, phase, tmp, window, real, imag;
             double freqPerBin, expct;
             long i, k, qpd, index, inFifoLatency, stepSize, fftFrameSize2;
@@ -161,41 +164,46 @@ namespace PitchShifter
                     for (k = 0; k <= fftFrameSize2; k++)
                     {
                         double magn1;
-                        if (k >= (60 * fftFrameSize2) / 24000 && k <= (779 * fftFrameSize2) / 24000)
-                        {
-                            magn1 = gAnaMagn[k];
-                            magn1 = magn1 * 10;
-                            gAnaMagn[k] = (float)magn1;
-                            //Thread.Sleep(100);
-                        } 
-                        else if (k >= (780 * fftFrameSize2)/24000 && k <= (1589 * fftFrameSize2)/24000)
-                        {
-                            magn1 = gAnaMagn[k];
-                            magn1 *= 20;
-                            gAnaMagn[k] = (float)magn1;
-                            //Thread.Sleep(100);
-                        }
-                        else if (k >= (1590 * fftFrameSize2)/24000 && k <= (3989 * fftFrameSize2) / 24000)
-                        {
-                            magn1 = gAnaMagn[k];
-                            magn1 *= 30;
-                            gAnaMagn[k] = (float)magn1;
-                            //Thread.Sleep(100);
-                        }
-                        else if (k >= (3990 * fftFrameSize2)/24000 && k <= (7289 * fftFrameSize2) / 24000)
-                        {
-                            magn1 = gAnaMagn[k];
-                            magn1 *= 40f;
-                            gAnaMagn[k] = (float)magn1;
-                            //Thread.Sleep(100);
-                        }
-                        else if (k >= (7290 * fftFrameSize2)/24000 && k <= (7949 * fftFrameSize2) / 24000)
-                        {
-                            magn1 = gAnaMagn[k];
-                            magn1 *= 50f;
-                            gAnaMagn[k] = (float)magn1;
-                            //Thread.Sleep(100);
-                        }
+                            if (k >= (min[0] * fftFrameSize2) / SampleRate2 && k <= (max[0] * fftFrameSize2) / SampleRate2)
+                            {
+                                magn1 = gAnaMagn[k];
+                                magn1 = magn1 * Vol[0];
+                                gAnaMagn[k] = (float)magn1;
+                                //Thread.Sleep(100);
+                            }
+                            else if (min[1] >= (780 * fftFrameSize2) / SampleRate2 && k <= (max[1] * fftFrameSize2) / SampleRate2 && min[1] != 0)
+                            {
+                                magn1 = gAnaMagn[k];
+                                magn1 *= Vol[1];
+                                gAnaMagn[k] = (float)magn1;
+                                //Thread.Sleep(100);
+                            }
+                            else if (k >= (min[2] * fftFrameSize2) / SampleRate2 && k <= (max[2] * fftFrameSize2) / SampleRate2 && min[2] != 0)
+                            {
+                                magn1 = gAnaMagn[k];
+                                magn1 *= Vol[2];
+                                gAnaMagn[k] = (float)magn1;
+                                //Thread.Sleep(100);
+                            }
+                            else if (k >= (min[3] * fftFrameSize2) / SampleRate2 && k <= (max[3] * fftFrameSize2) / SampleRate2 && min[3] != 0)
+                            {
+                                magn1 = gAnaMagn[k];
+                                magn1 *= Vol[3];
+                                gAnaMagn[k] = (float)magn1;
+                                //Thread.Sleep(100);
+                            }
+                            else if (k >= (min[4] * fftFrameSize2) / SampleRate2 && k <= (max[4] * fftFrameSize2) / SampleRate2 && min[4] != 0)
+                            {
+                                magn1 = gAnaMagn[k];
+                                magn1 *= Vol[4];
+                                gAnaMagn[k] = (float)magn1;
+                                //Thread.Sleep(100);
+                            }
+                            else
+                            {
+                                magn1 = gAnaMagn[k];
+                                gAnaMagn[k] = (float)magn1;
+                            }
                     }
                     /* ***************** PROCESSING ******************* */
                     /* this does the actual pitch shifting/это делает фактическое изменение высоты тона */
