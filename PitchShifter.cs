@@ -45,7 +45,7 @@
 *****************************************************************************/
 
 using System;
-using System.IO;
+using System.Threading;
 using System.Collections.Generic;
 using System.Text;
 
@@ -77,6 +77,7 @@ namespace PitchShifter
         public static void PitchShift(float pitchShift, long offset, long sampleCount, long fftFrameSize,
             long osamp, float sampleRate, float[] indata)
         {
+            
             double magn, phase, tmp, window, real, imag;
             double freqPerBin, expct;
             long i, k, qpd, index, inFifoLatency, stepSize, fftFrameSize2;
@@ -127,7 +128,7 @@ namespace PitchShifter
                         imag = gFFTworksp[2 * k + 1];
 
                         /* compute magnitude and phase/вычислить амплитуду и фазу  */
-                        magn = 50.0 * Math.Sqrt(real * real+ imag * imag);//амплитуда
+                        magn = 3.0 * Math.Sqrt(real * real+ imag * imag);//амплитуда
                         phase = Math.Atan2(imag, real);//фаза
 
                         /* compute phase difference/вычислить разность фаз */
@@ -151,10 +152,51 @@ namespace PitchShifter
 
                         /* store magnitude and true frequency in analysis arrays/хранить величину и истинную частоту в массивах анализа */
                         gAnaMagn[k] = (float)magn;
+                        //File.AppendAllText("magn.txt", gAnaMagn[k].ToString() + "\n");
                         gAnaFreq[k] = (float)tmp;
+                        //File.AppendAllText("tmp.txt", gAnaFreq[k].ToString() + "\n");
 
                     }
 
+                    for (k = 0; k <= fftFrameSize2; k++)
+                    {
+                        double magn1;
+                        if (k >= (60 * fftFrameSize2) / 24000 && k <= (779 * fftFrameSize2) / 24000)
+                        {
+                            magn1 = gAnaMagn[k];
+                            magn1 = magn1 * 10;
+                            gAnaMagn[k] = (float)magn1;
+                            //Thread.Sleep(100);
+                        } 
+                        else if (k >= (780 * fftFrameSize2)/24000 && k <= (1589 * fftFrameSize2)/24000)
+                        {
+                            magn1 = gAnaMagn[k];
+                            magn1 *= 20;
+                            gAnaMagn[k] = (float)magn1;
+                            //Thread.Sleep(100);
+                        }
+                        else if (k >= (1590 * fftFrameSize2)/24000 && k <= (3989 * fftFrameSize2) / 24000)
+                        {
+                            magn1 = gAnaMagn[k];
+                            magn1 *= 30;
+                            gAnaMagn[k] = (float)magn1;
+                            //Thread.Sleep(100);
+                        }
+                        else if (k >= (3990 * fftFrameSize2)/24000 && k <= (7289 * fftFrameSize2) / 24000)
+                        {
+                            magn1 = gAnaMagn[k];
+                            magn1 *= 40f;
+                            gAnaMagn[k] = (float)magn1;
+                            //Thread.Sleep(100);
+                        }
+                        else if (k >= (7290 * fftFrameSize2)/24000 && k <= (7949 * fftFrameSize2) / 24000)
+                        {
+                            magn1 = gAnaMagn[k];
+                            magn1 *= 50f;
+                            gAnaMagn[k] = (float)magn1;
+                            //Thread.Sleep(100);
+                        }
+                    }
                     /* ***************** PROCESSING ******************* */
                     /* this does the actual pitch shifting/это делает фактическое изменение высоты тона */
 
