@@ -42,7 +42,7 @@ namespace PitchShifter
             }
         }
 
-        public void RemoveSource(ISampleSource source)
+        public void RemoveSource(ISampleSource source)//Удалить источник
         {
             //don't throw null ex here/не бросайте сюда null ex
             lock (mLockObj)
@@ -52,7 +52,7 @@ namespace PitchShifter
             }
         }
 
-        public bool Contains(ISampleSource source)
+        public bool Contains(ISampleSource source)//Содержит
         {
             if (source == null)
                 return false;
@@ -87,16 +87,16 @@ namespace PitchShifter
                             numberOfReadSamples.Add(read);
                         else
                         {
-                            //raise event here
-                            RemoveSource(sampleSource); //remove the input to make sure that the event gets only raised once.
+                            //raise event here/поднять событие здесь
+                            RemoveSource(sampleSource); //remove the input to make sure that the event gets only raised once./удалите ввод, чтобы убедиться, что событие возникает только один раз.
                         }
                     }
 
                     if (DivideResult)
                     {
-                        numberOfReadSamples.Sort();
-                        int currentOffset = offset;
-                        int remainingSources = numberOfReadSamples.Count;
+                        numberOfReadSamples.Sort();//количество прочитанных образцов
+                        int currentOffset = offset;//текущее смещение 
+                        int remainingSources = numberOfReadSamples.Count;//остальные источники 
 
                         foreach (var readSamples in numberOfReadSamples)
                         {

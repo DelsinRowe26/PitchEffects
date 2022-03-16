@@ -15,8 +15,8 @@ namespace PitchShifter
         }
         public int Read(float[] buffer, int offset, int count)
         {
-            float gainAmplification = (float)(Math.Pow(10.0, GainDB / 20.0));
-            int samples = mSource.Read(buffer, offset, count);
+            float gainAmplification = (float)(Math.Pow(10.0, GainDB / 20.0));//получить Усиление
+            int samples = mSource.Read(buffer, offset, count);//образцы 
             if (gainAmplification != 1.0f) 
             {
                 for (int i = offset; i < offset + samples; i++)

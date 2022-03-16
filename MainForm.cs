@@ -108,7 +108,7 @@ namespace PitchShifter
                 {
                     mMixer = new SimpleMixer(2, SampleRate) //стерео, 44,1 КГц
                     {
-                        FillWithZeros = false,
+                        FillWithZeros = true,
                         DivideResult = true, //Для этого установлено значение true, чтобы избежать звуков тиков из-за превышения -1 и 1.
                     };
 
@@ -116,7 +116,7 @@ namespace PitchShifter
                 
                     mMixer.AddSource(mDsp.ChangeSampleRate(mMixer.WaveFormat.SampleRate));//основная строка
                 }
-
+                
                 //Запускает устройство воспроизведения звука с задержкой 1 мс.
                 SoundOut();
                 return true;
@@ -1013,7 +1013,7 @@ namespace PitchShifter
                 {
                     mMixer = new SimpleMixer(2, SampleRate) //стерео, 44,1 КГц
                     {
-                        FillWithZeros = false,
+                        FillWithZeros = true,
                         DivideResult = true, //Для этого установлено значение true, чтобы избежать звуков тиков из-за превышения -1 и 1.
                     };
                     mMixer.Dispose();
