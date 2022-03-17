@@ -60,7 +60,7 @@ namespace PitchShifter
             try
             {
                 //Запускает устройство захвата звука с задержкой 1 мс.
-                mSoundIn = new WasapiCapture(false, AudioClientShareMode.Exclusive, 1);
+                mSoundIn = new WasapiCapture(/*false, AudioClientShareMode.Exclusive, 1*/);
                 mSoundIn.Device = mInputDevices[cmbInput.SelectedIndex];
                 mSoundIn.Initialize();
                 mSoundIn.Start();
