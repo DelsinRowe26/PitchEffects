@@ -45,7 +45,7 @@ namespace PitchShifter
             InitializeComponent();
 
             //Initialize WasapiCapture for recording
-            mSoundIn = new WasapiCapture(/*true, AudioClientShareMode.Shared, 0*/);
+            mSoundIn = new WasapiCapture(true, AudioClientShareMode.Shared, 0);
             mSoundIn.Initialize();
 
             //Initialize soundout
@@ -106,12 +106,12 @@ namespace PitchShifter
                 //Инициальный микшер
                 if (cmbSelEff.SelectedIndex == 1)
                 {
-                    mMixer = new SimpleMixer(2, SampleRate) //стерео, 44,1 КГц
+                    /*mMixer = new SimpleMixer(2, SampleRate) //стерео, 44,1 КГц
                     {
                         FillWithZeros = true,
                         DivideResult = true, //Для этого установлено значение true, чтобы избежать звуков тиков из-за превышения -1 и 1.
-                    };
-
+                    };*/
+                    Mixer();
                     //Добавляем наш источник звука в микшер
                 
                     mMixer.AddSource(mDsp.ChangeSampleRate(mMixer.WaveFormat.SampleRate));//основная строка
@@ -134,7 +134,7 @@ namespace PitchShifter
         {
             if (cmbSelEff.SelectedIndex == 0)
             {
-                mSoundOut = new WasapiOut(false, AudioClientShareMode.Shared, 1);
+                mSoundOut = new WasapiOut() { Latency = 50 };
                 mSoundOut.Device = mOutputDevices[cmbOutput.SelectedIndex];
                 mSoundOut.Initialize(mMixer.ToWaveSource());
 
@@ -149,6 +149,15 @@ namespace PitchShifter
                 //Start rolling!
                 mSoundOut.Play();
             }
+        }
+
+        private void Mixer()
+        {
+            mMixer = new SimpleMixer(2, SampleRate) //стерео, 44,1 КГц
+            {
+                FillWithZeros = true,
+                DivideResult = true, //Для этого установлено значение true, чтобы избежать звуков тиков из-за превышения -1 и 1.
+            };
         }
 
         private void StopFullDuplex()//остановка всего
@@ -1011,18 +1020,19 @@ namespace PitchShifter
 
                 if (isDataValid(botFreq, topFreq, reverbTime, reverbHFRTR, strings))
                 {
-                    mMixer = new SimpleMixer(2, SampleRate) //стерео, 44,1 КГц
+                    /*mMixer = new SimpleMixer(2, SampleRate) //стерео, 44,1 КГц
                     {
                         FillWithZeros = true,
                         DivideResult = true, //Для этого установлено значение true, чтобы избежать звуков тиков из-за превышения -1 и 1.
                     };
-                    mMixer.Dispose();
+                    mMixer.Dispose(); */
+                    Mixer();
                     for (int i = 0; i < strings; i++)
                     {
                         var x = BandPassFilter(mSoundIn, SampleRate, botFreq[i], topFreq[i]);
                         if (reverbTime[i] != 0)
                         {
-                            var reverb = new DmoWavesReverbEffect(x.ToWaveSource(16));
+                            var reverb = new DmoWavesReverbEffect(x.ToWaveSource());
                             reverb.ReverbTime = reverbTime[i];
                             reverb.HighFrequencyRTRatio = ((float)reverbHFRTR[i]) / 1000;
                             x = reverb.ToSampleSource();

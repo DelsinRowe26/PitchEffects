@@ -48,6 +48,7 @@ using System;
 using System.Threading;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 
 namespace PitchShifter
 {
@@ -252,13 +253,16 @@ namespace PitchShifter
                         /* get real and imag part and re-interleave/получить реальную часть и часть изображения и повторно чередовать */
                         gFFTworksp[2 * k] = (float)(magn * Math.Cos(phase));
                         gFFTworksp[2 * k + 1] = (float)(magn * Math.Sin(phase));
+                        File.AppendAllText("AfterSTFT.txt", gFFTworksp[2 *k].ToString() + "\n");
+                        File.AppendAllText("AfterSTFT.txt", gFFTworksp[2 * k + 1].ToString() + "\n");
                     }
 
                     /* zero negative frequencies/ноль отрицательных частот */
-                    for (k = fftFrameSize + 2; k < 2 * fftFrameSize; k++) gFFTworksp[k] = 0.0F;
+                    for (k = fftFrameSize + 2; k < 2 * fftFrameSize; k++) { gFFTworksp[k] = 0.0F; File.AppendAllText("AfterSTFT.txt", gFFTworksp[k].ToString() + "\n"); }
 
                     /* do inverse transform/сделать обратное преобразование */
                     ShortTimeFourierTransform(gFFTworksp, fftFrameSize, 1);
+                    
 
                     /* do windowing and add to output accumulator/делать окна и добавлять в выходной аккумулятор */
                     for (k = 0; k < fftFrameSize; k++)
