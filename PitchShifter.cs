@@ -165,6 +165,8 @@ namespace PitchShifter
                     for (k = 0; k <= fftFrameSize2; k++)
                     {
                         double magn1;
+                        if (min[0] != 0)
+                        {
                             if (k >= (min[0] * fftFrameSize2) / SampleRate2 && k <= (max[0] * fftFrameSize2) / SampleRate2)
                             {
                                 magn1 = gAnaMagn[k];
@@ -205,6 +207,8 @@ namespace PitchShifter
                                 magn1 = gAnaMagn[k];
                                 gAnaMagn[k] = (float)magn1;
                             }
+                        }
+                        else { break; }
                     }
                     /* ***************** PROCESSING ******************* */
                     /* this does the actual pitch shifting/это делает фактическое изменение высоты тона */
@@ -253,12 +257,12 @@ namespace PitchShifter
                         /* get real and imag part and re-interleave/получить реальную часть и часть изображения и повторно чередовать */
                         gFFTworksp[2 * k] = (float)(magn * Math.Cos(phase));
                         gFFTworksp[2 * k + 1] = (float)(magn * Math.Sin(phase));
-                        File.AppendAllText("AfterSTFT.txt", gFFTworksp[2 *k].ToString() + "\n");
-                        File.AppendAllText("AfterSTFT.txt", gFFTworksp[2 * k + 1].ToString() + "\n");
+                        //File.AppendAllText("AfterSTFT.txt", gFFTworksp[2 *k].ToString() + "\n");
+                        //File.AppendAllText("AfterSTFT.txt", gFFTworksp[2 * k + 1].ToString() + "\n");
                     }
 
                     /* zero negative frequencies/ноль отрицательных частот */
-                    for (k = fftFrameSize + 2; k < 2 * fftFrameSize; k++) { gFFTworksp[k] = 0.0F; File.AppendAllText("AfterSTFT.txt", gFFTworksp[k].ToString() + "\n"); }
+                    for (k = fftFrameSize + 2; k < 2 * fftFrameSize; k++) { gFFTworksp[k] = 0.0F; /*File.AppendAllText("AfterSTFT.txt", gFFTworksp[k].ToString() + "\n");*/ }
 
                     /* do inverse transform/сделать обратное преобразование */
                     ShortTimeFourierTransform(gFFTworksp, fftFrameSize, 1);

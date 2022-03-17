@@ -1038,7 +1038,7 @@ namespace PitchShifter
                             x = reverb.ToSampleSource();
                         }
                         mDsp = new SampleDSP(x.ToWaveSource().ToSampleSource().ToStereo());
-                        mDsp.GainDB = trackGain.Value + 20;
+                        mDsp.GainDB = trackGain.Value;
                         mMixer.AddSource(mDsp.ChangeSampleRate(mMixer.WaveFormat.SampleRate));
                     }
                     SoundOut();
