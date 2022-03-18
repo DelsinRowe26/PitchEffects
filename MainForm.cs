@@ -45,14 +45,14 @@ namespace PitchShifter
             InitializeComponent();
 
             //Initialize WasapiCapture for recording
-            mSoundIn = new WasapiCapture(true, AudioClientShareMode.Shared, 0);
-            mSoundIn.Initialize();
+            /*mSoundIn = new WasapiCapture(true, AudioClientShareMode.Shared, 0);
+            mSoundIn.Initialize();*/
 
             //Initialize soundout
-            primarySource = new SoundInSource(mSoundIn) { FillWithZeros = true }
+            /*primarySource = new SoundInSource(mSoundIn) { FillWithZeros = true }
                         .ChangeSampleRate(SampleRate1).ToStereo();
             mSoundOut = new WasapiOut() { Latency = 1 };
-            mSoundOut.Initialize(primarySource);
+            mSoundOut.Initialize(primarySource);*/
             
         }
 
