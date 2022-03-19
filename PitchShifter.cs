@@ -169,7 +169,7 @@ namespace PitchShifter
                                 gAnaMagn[k] = (float)magn1;
                                 //Thread.Sleep(100);
                             }
-                            else if (min[1] >= (780 * fftFrameSize2) / SampleRate2 && k <= (max[1] * fftFrameSize2) / SampleRate2 && min[1] != 0)
+                            else if (k >= (min[1] * fftFrameSize2) / SampleRate2 && k <= (max[1] * fftFrameSize2) / SampleRate2 && min[1] != 0)
                             {
                                 magn1 = gAnaMagn[k];
                                 magn1 *= Vol[1];

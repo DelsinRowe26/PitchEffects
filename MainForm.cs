@@ -7,13 +7,15 @@ using CSCore.SoundOut;//Выход звука
 using CSCore.CoreAudioAPI;
 using CSCore.Streams;
 using CSCore.Codecs;
+using WinformsVisualization.Visualization;
+using System.Drawing;
+using CSCore.DSP;
 
 namespace PitchShifter
 {
     public partial class MainForm : Form
     {
         //Глобальные переменныe
-        private static float[] fftBuffer = new float[32000];
         int[] Pitch = new int[10];
         int[] Gain = new int[10];
         int[] min = new int[10];
@@ -26,6 +28,12 @@ namespace PitchShifter
         private SampleDSP mDsp;
         private SimpleMixer mMixer;
         private ISampleSource mMp3;
+        private IWaveSource mSource;
+        private LineSpectrum mLineSpectrum;
+        private VoicePrint3DSpectrum mVoicePrint3DSpectrum;
+
+        private readonly Bitmap mBitmap = new Bitmap(2000, 600);
+        private int mXpos;
         private int SampleRate;
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         public MainForm()
@@ -63,14 +71,19 @@ namespace PitchShifter
                 mSoundIn = new WasapiCapture(/*false, AudioClientShareMode.Exclusive, 1*/);
                 mSoundIn.Device = mInputDevices[cmbInput.SelectedIndex];
                 mSoundIn.Initialize();
-                mSoundIn.Start();
+                
                 
                 var source = new SoundInSource(mSoundIn) { FillWithZeros = true };
+                //ISampleSource source1 = source.ChangeSampleRate(16000).ToSampleSource().AppendSource(x => new CSCore.Streams.Effects.PitchShifter(x), out mPitchShifter);
 
                 //Init DSP для смещения высоты тона
                 mDsp = new SampleDSP(source.ToSampleSource().ToStereo());
                 mDsp.GainDB = trackGain.Value;
                 SetPitchShiftValue();
+
+                SetupSampleSource(mDsp);
+
+                mSoundIn.Start();
 
                 //Инициальный микшер
                 mMixer = new SimpleMixer(2, SampleRate) //стерео, 44,1 КГц
@@ -85,10 +98,16 @@ namespace PitchShifter
                 //Запускает устройство воспроизведения звука с задержкой 1 мс.
                 mSoundOut = new WasapiOut(false, AudioClientShareMode.Exclusive, 1);
                 mSoundOut.Device = mOutputDevices[cmbOutput.SelectedIndex];
-                mSoundOut.Initialize(mMixer.ToWaveSource(16));
+                mSoundOut.Initialize(mSource);
 
                 //Start rolling!
                 mSoundOut.Play();
+
+                timer1.Start();
+
+                propertyGridTop.SelectedObject = mLineSpectrum;
+                propertyGridBottom.SelectedObject = mVoicePrint3DSpectrum;
+
                 return true;
             }
             catch (Exception ex)
@@ -100,8 +119,73 @@ namespace PitchShifter
             return false;
         }
 
+        private void SetupSampleSource(ISampleSource aSmapleSource)
+        {
+            const FftSize fftSize = FftSize.Fft4096;
+            var spectrumProvider = new BasicSpectrumProvider(aSmapleSource.WaveFormat.Channels,
+                aSmapleSource.WaveFormat.SampleRate, fftSize);
+
+            mLineSpectrum = new LineSpectrum(fftSize)
+            {
+                SpectrumProvider = spectrumProvider,
+                UseAverage = true,
+                BarCount = 50,
+                BarSpacing = 2,
+                IsXLogScale = true,
+                ScalingStrategy = ScalingStrategy.Sqrt
+            };
+            mVoicePrint3DSpectrum = new VoicePrint3DSpectrum(fftSize)
+            {
+                SpectrumProvider = spectrumProvider,
+                UseAverage = true,
+                PointCount = 200,
+                IsXLogScale = true,
+                ScalingStrategy = ScalingStrategy.Sqrt
+            };
+
+            var notificationSource = new SingleBlockNotificationStream(aSmapleSource);
+            notificationSource.SingleBlockRead += (s, a) => spectrumProvider.Add(a.Left, a.Right);
+
+            mSource = notificationSource.ToWaveSource(16);
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            GenerateLineSpectrum();
+            GenerateVoice3DPrintSpectrum();
+        }
+
+        private void GenerateLineSpectrum()
+        {
+            Image image = pictureBoxTop.Image;
+            var newImage = mLineSpectrum.CreateSpectrumLine(pictureBoxTop.Size, Color.Green, Color.Red, Color.Black, true);
+            if (newImage != null)
+            {
+                pictureBoxTop.Image = newImage;
+                if(image != null)
+                    image.Dispose();
+            }
+        }
+
+        private void GenerateVoice3DPrintSpectrum()
+        {
+            using(Graphics g = Graphics.FromImage(mBitmap))
+            {
+                pictureBoxBottom.Image = null;
+                if(mVoicePrint3DSpectrum.CreateVoicePrint3D(g, new RectangleF(0, 0, mBitmap.Width, mBitmap.Height),
+                        mXpos, Color.Black, 3))
+                {
+                    mXpos += 3;
+                    if (mXpos >= mBitmap.Width)
+                        mXpos = 0;
+                }
+                pictureBoxBottom.Image = mBitmap;
+            }
+        }
+
         private void StopFullDuplex()//остановка всего
         {
+            timer1.Stop();
             if (mSoundOut != null) mSoundOut.Dispose();
             if (mSoundIn != null) mSoundIn.Dispose();
 

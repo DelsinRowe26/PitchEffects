@@ -138,19 +138,25 @@
             this.tBxto1 = new System.Windows.Forms.TextBox();
             this.tBxfrom1 = new System.Windows.Forms.TextBox();
             this.tbSettings = new System.Windows.Forms.TabPage();
+            this.cmbSampFreq = new System.Windows.Forms.ComboBox();
+            this.lbSampFreq = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.bTnReset = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.lbPitchValue = new System.Windows.Forms.Label();
             this.lbVolValue = new System.Windows.Forms.Label();
             this.btnStop = new System.Windows.Forms.Button();
-            this.lbSampFreq = new System.Windows.Forms.Label();
-            this.cmbSampFreq = new System.Windows.Forms.ComboBox();
+            this.pictureBoxTop = new System.Windows.Forms.PictureBox();
+            this.pictureBoxBottom = new System.Windows.Forms.PictureBox();
+            this.propertyGridTop = new System.Windows.Forms.PropertyGrid();
+            this.propertyGridBottom = new System.Windows.Forms.PropertyGrid();
             ((System.ComponentModel.ISupportInitialize)(this.trackPitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackGain)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tbRange.SuspendLayout();
             this.tbSettings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTop)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBottom)).BeginInit();
             this.SuspendLayout();
             // 
             // btnStart
@@ -230,6 +236,7 @@
             // timer1
             // 
             this.timer1.Interval = 40;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // label1
             // 
@@ -1326,6 +1333,27 @@
             this.tbSettings.Text = "Settings";
             this.tbSettings.UseVisualStyleBackColor = true;
             // 
+            // cmbSampFreq
+            // 
+            this.cmbSampFreq.FormattingEnabled = true;
+            this.cmbSampFreq.Items.AddRange(new object[] {
+            "44100",
+            "48000"});
+            this.cmbSampFreq.Location = new System.Drawing.Point(617, 10);
+            this.cmbSampFreq.Name = "cmbSampFreq";
+            this.cmbSampFreq.Size = new System.Drawing.Size(163, 24);
+            this.cmbSampFreq.TabIndex = 13;
+            this.cmbSampFreq.SelectedIndexChanged += new System.EventHandler(this.cmbSampFreq_SelectedIndexChanged);
+            // 
+            // lbSampFreq
+            // 
+            this.lbSampFreq.AutoSize = true;
+            this.lbSampFreq.Location = new System.Drawing.Point(485, 13);
+            this.lbSampFreq.Name = "lbSampFreq";
+            this.lbSampFreq.Size = new System.Drawing.Size(126, 16);
+            this.lbSampFreq.TabIndex = 12;
+            this.lbSampFreq.Text = "Sampling frequency";
+            // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(93, 92);
@@ -1384,33 +1412,47 @@
             this.btnStop.UseVisualStyleBackColor = true;
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
-            // lbSampFreq
+            // pictureBoxTop
             // 
-            this.lbSampFreq.AutoSize = true;
-            this.lbSampFreq.Location = new System.Drawing.Point(485, 13);
-            this.lbSampFreq.Name = "lbSampFreq";
-            this.lbSampFreq.Size = new System.Drawing.Size(126, 16);
-            this.lbSampFreq.TabIndex = 12;
-            this.lbSampFreq.Text = "Sampling frequency";
+            this.pictureBoxTop.Location = new System.Drawing.Point(12, 259);
+            this.pictureBoxTop.Name = "pictureBoxTop";
+            this.pictureBoxTop.Size = new System.Drawing.Size(1066, 308);
+            this.pictureBoxTop.TabIndex = 23;
+            this.pictureBoxTop.TabStop = false;
             // 
-            // cmbSampFreq
+            // pictureBoxBottom
             // 
-            this.cmbSampFreq.FormattingEnabled = true;
-            this.cmbSampFreq.Items.AddRange(new object[] {
-            "44100",
-            "48000"});
-            this.cmbSampFreq.Location = new System.Drawing.Point(617, 10);
-            this.cmbSampFreq.Name = "cmbSampFreq";
-            this.cmbSampFreq.Size = new System.Drawing.Size(163, 24);
-            this.cmbSampFreq.TabIndex = 13;
-            this.cmbSampFreq.SelectedIndexChanged += new System.EventHandler(this.cmbSampFreq_SelectedIndexChanged);
+            this.pictureBoxBottom.Location = new System.Drawing.Point(12, 574);
+            this.pictureBoxBottom.Name = "pictureBoxBottom";
+            this.pictureBoxBottom.Size = new System.Drawing.Size(1066, 298);
+            this.pictureBoxBottom.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxBottom.TabIndex = 24;
+            this.pictureBoxBottom.TabStop = false;
+            // 
+            // propertyGridTop
+            // 
+            this.propertyGridTop.Location = new System.Drawing.Point(1084, 259);
+            this.propertyGridTop.Name = "propertyGridTop";
+            this.propertyGridTop.Size = new System.Drawing.Size(437, 308);
+            this.propertyGridTop.TabIndex = 0;
+            // 
+            // propertyGridBottom
+            // 
+            this.propertyGridBottom.Location = new System.Drawing.Point(1084, 574);
+            this.propertyGridBottom.Name = "propertyGridBottom";
+            this.propertyGridBottom.Size = new System.Drawing.Size(437, 298);
+            this.propertyGridBottom.TabIndex = 0;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1444, 251);
+            this.ClientSize = new System.Drawing.Size(1532, 923);
+            this.Controls.Add(this.propertyGridBottom);
+            this.Controls.Add(this.propertyGridTop);
+            this.Controls.Add(this.pictureBoxBottom);
+            this.Controls.Add(this.pictureBoxTop);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.lbVolValue);
             this.Controls.Add(this.lbPitchValue);
@@ -1441,6 +1483,8 @@
             this.tbRange.PerformLayout();
             this.tbSettings.ResumeLayout(false);
             this.tbSettings.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTop)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBottom)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1565,6 +1609,10 @@
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.ComboBox cmbSampFreq;
         private System.Windows.Forms.Label lbSampFreq;
+        private System.Windows.Forms.PictureBox pictureBoxTop;
+        private System.Windows.Forms.PictureBox pictureBoxBottom;
+        private System.Windows.Forms.PropertyGrid propertyGridTop;
+        private System.Windows.Forms.PropertyGrid propertyGridBottom;
     }
 }
 
