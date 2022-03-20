@@ -68,11 +68,11 @@ namespace PitchShifter
             try
             {
                 //Запускает устройство захвата звука с задержкой 1 мс.
-                mSoundIn = new WasapiCapture(/*false, AudioClientShareMode.Exclusive, 1*/);
+                mSoundIn = new WasapiCapture(/*false, AudioClientShareMode.Exclusive, 1*/) ;
                 mSoundIn.Device = mInputDevices[cmbInput.SelectedIndex];
                 mSoundIn.Initialize();
-                
-                
+
+
                 var source = new SoundInSource(mSoundIn) { FillWithZeros = true };
                 //ISampleSource source1 = source.ChangeSampleRate(16000).ToSampleSource().AppendSource(x => new CSCore.Streams.Effects.PitchShifter(x), out mPitchShifter);
 

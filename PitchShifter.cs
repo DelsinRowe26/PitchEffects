@@ -67,6 +67,7 @@ namespace PitchShifter
         private static float[] gOutputAccum = new float[2 * MAX_FRAME_LENGTH];
         private static float[] gAnaFreq = new float[MAX_FRAME_LENGTH];
         private static float[] gAnaMagn = new float[MAX_FRAME_LENGTH];
+        private static int[] voluem = new int[MAX_FRAME_LENGTH];
         private static float[] gSynFreq = new float[MAX_FRAME_LENGTH];
         private static float[] gSynMagn = new float[MAX_FRAME_LENGTH];
         private static long gRover, gInit;
@@ -240,6 +241,77 @@ namespace PitchShifter
                         }
                         else { break; }
                     }
+
+                    /*for (k = 0; k <= fftFrameSize2; k++)
+                    {
+                        int per;
+                        if (min[0] != 0)
+                        {
+                            if (k >= (min[0] * 10 * fftFrameSize2) / SampleRate2 && k <= (max[0] * fftFrameSize2) / SampleRate2)
+                            {
+                                per = Vol[0];
+                                voluem[k] = per;
+                            }
+                            else if (k >= (min[1] * 10 * fftFrameSize2) / SampleRate2 && k <= (max[1] * fftFrameSize2) / SampleRate2 && min[1] != 0)
+                            {
+                                per = Vol[1];
+                                voluem[k] = per;
+                            }
+                            else if (k >= (min[2] * 10 * fftFrameSize2) / SampleRate2 && k <= (max[2] * fftFrameSize2) / SampleRate2 && min[2] != 0)
+                            {
+                                per = Vol[2];
+                                voluem[k] = per;
+                            }
+                            else if (k >= (min[3] * 10 * fftFrameSize2) / SampleRate2 && k <= (max[3] * fftFrameSize2) / SampleRate2 && min[3] != 0)
+                            {
+                                per = Vol[3];
+                                voluem[k] = per;
+                            }
+                            else if (k >= (min[4] * 10 * fftFrameSize2) / SampleRate2 && k <= (max[4] * fftFrameSize2) / SampleRate2 && min[4] != 0)
+                            {
+                                per = Vol[4];
+                                voluem[k] = per;
+                            }
+                            else if (k >= (min[5] * 10 * fftFrameSize2) / SampleRate2 && k <= (max[5] * fftFrameSize2) / SampleRate2 && min[4] != 0)
+                            {
+                                per = Vol[5];
+                                voluem[k] = per;
+                            }
+                            else if (k >= (min[6] * 10 * fftFrameSize2) / SampleRate2 && k <= (max[6] * fftFrameSize2) / SampleRate2 && min[4] != 0)
+                            {
+                                per = Vol[6];
+                                voluem[k] = Vol[6];
+                            }
+                            else if (k >= (min[7] * 10 * fftFrameSize2) / SampleRate2 && k <= (max[7] * fftFrameSize2) / SampleRate2 && min[4] != 0)
+                            {
+                                per = Vol[7];
+                                voluem[k] = per;
+                            }
+                            else if (k >= (min[8] * 10 * fftFrameSize2) / SampleRate2 && k <= (max[8] * fftFrameSize2) / SampleRate2 && min[4] != 0)
+                            {
+                                per = Vol[8];
+                                voluem[k] = per;
+                            }
+                            else if (k >= (min[9] * 10 * fftFrameSize2) / SampleRate2 && k <= (max[9] * fftFrameSize2) / SampleRate2 && min[4] != 0)
+                            {
+                                per = Vol[9];
+                                voluem[k] = per;
+                            }
+                            else
+                            {
+                                voluem[k] = 1;
+                            }
+                        }
+                        else { break; }
+                    }
+
+                    for (k = 0; k < fftFrameSize2; k++)
+                    {
+                        if (voluem[k] != 0)
+                        {
+                            gAnaMagn[k] *= voluem[k];
+                        }
+                    }*/
 
                     /* ***************** PROCESSING ******************* */
                     /* this does the actual pitch shifting/это делает фактическое изменение высоты тона */
