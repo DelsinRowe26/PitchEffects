@@ -59,6 +59,8 @@ namespace PitchShifter
         public static int[] Vol = new int[10];
         public static int SampleRate2;
         private static int MAX_FRAME_LENGTH = 16000;
+        //private static float[] mas0 = new float[MAX_FRAME_LENGTH];
+        //private static float[] mas = new float[MAX_FRAME_LENGTH];
         private static float[] gInFIFO = new float[MAX_FRAME_LENGTH];
         private static float[] gOutFIFO = new float[MAX_FRAME_LENGTH];
         private static float[] gFFTworksp = new float[2 * MAX_FRAME_LENGTH];
@@ -67,7 +69,6 @@ namespace PitchShifter
         private static float[] gOutputAccum = new float[2 * MAX_FRAME_LENGTH];
         private static float[] gAnaFreq = new float[MAX_FRAME_LENGTH];
         private static float[] gAnaMagn = new float[MAX_FRAME_LENGTH];
-        private static int[] voluem = new int[MAX_FRAME_LENGTH];
         private static float[] gSynFreq = new float[MAX_FRAME_LENGTH];
         private static float[] gSynMagn = new float[MAX_FRAME_LENGTH];
         private static long gRover, gInit;
