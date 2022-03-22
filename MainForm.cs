@@ -26,7 +26,6 @@ namespace PitchShifter
         int[] min = new int[10];
         int[] max = new int[10];
         int plusclick = 0, plus = 0;
-        PitchShifter pitch = new PitchShifter();
 
         private MMDeviceCollection mInputDevices;
         private MMDeviceCollection mOutputDevices;
@@ -134,9 +133,9 @@ namespace PitchShifter
         {
             if (cmbSelEff.SelectedIndex == 0)
             {
-                mSoundOut = new WasapiOut() { Latency = 50 };
+                mSoundOut = new WasapiOut(false, AudioClientShareMode.Exclusive, 1);
                 mSoundOut.Device = mOutputDevices[cmbOutput.SelectedIndex];
-                mSoundOut.Initialize(mMixer.ToWaveSource());
+                mSoundOut.Initialize(mMixer.ToWaveSource(16));
 
                 mSoundOut.Play();
             }
@@ -559,16 +558,6 @@ namespace PitchShifter
             trackPitch.Value = 0;
             lbVolValue.Text = "0";
             lbPitchValue.Text = "0";
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            //int.Parse(mSoundIn.WaveFormat.SampleRate);
-            //wave = (int)Math.Pow(2.0F, mSoundIn.WaveFormat.SampleRate / 13.0F);
-            //textBox1.Text = audio.GetFrequencyNative(out long source).ToString();
-            //textBox1.Text = mMixer.WaveFormat.ToString();
-            //textBox1.Text = mDsp.Length.ToString();
-            //textBox1.Text = fftBuffer.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -1032,12 +1021,12 @@ namespace PitchShifter
                         var x = BandPassFilter(mSoundIn, SampleRate, botFreq[i], topFreq[i]);
                         if (reverbTime[i] != 0)
                         {
-                            var reverb = new DmoWavesReverbEffect(x.ToWaveSource());
+                            var reverb = new DmoWavesReverbEffect(x.ToWaveSource(16).ToStereo());
                             reverb.ReverbTime = reverbTime[i];
                             reverb.HighFrequencyRTRatio = ((float)reverbHFRTR[i]) / 1000;
                             x = reverb.ToSampleSource();
                         }
-                        mDsp = new SampleDSP(x.ToWaveSource().ToSampleSource().ToStereo());
+                        mDsp = new SampleDSP(x.ToStereo());//.ToWaveSource(16).ToSampleSource()
                         mDsp.GainDB = trackGain.Value;
                         mMixer.AddSource(mDsp.ChangeSampleRate(mMixer.WaveFormat.SampleRate));
                     }

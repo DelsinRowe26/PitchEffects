@@ -138,9 +138,10 @@
             this.tBxto1 = new System.Windows.Forms.TextBox();
             this.tBxfrom1 = new System.Windows.Forms.TextBox();
             this.tbSettings = new System.Windows.Forms.TabPage();
+            this.lbSelEff = new System.Windows.Forms.Label();
+            this.cmbSelEff = new System.Windows.Forms.ComboBox();
             this.lbSampFreq = new System.Windows.Forms.Label();
             this.cmbSampFreq = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.bTnReset = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.lbPitchValue = new System.Windows.Forms.Label();
@@ -151,8 +152,6 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.PlusBtn = new System.Windows.Forms.Button();
             this.MinusBtn = new System.Windows.Forms.Button();
-            this.cmbSelEff = new System.Windows.Forms.ComboBox();
-            this.lbSelEff = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackPitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackGain)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -1332,7 +1331,6 @@
             this.tbSettings.Controls.Add(this.cmbSelEff);
             this.tbSettings.Controls.Add(this.lbSampFreq);
             this.tbSettings.Controls.Add(this.cmbSampFreq);
-            this.tbSettings.Controls.Add(this.textBox1);
             this.tbSettings.Controls.Add(this.cmbOutput);
             this.tbSettings.Controls.Add(this.lblSpeaker);
             this.tbSettings.Controls.Add(this.lblMic);
@@ -1345,6 +1343,26 @@
             this.tbSettings.TabIndex = 1;
             this.tbSettings.Text = "Settings";
             this.tbSettings.UseVisualStyleBackColor = true;
+            // 
+            // lbSelEff
+            // 
+            this.lbSelEff.AutoSize = true;
+            this.lbSelEff.Location = new System.Drawing.Point(495, 51);
+            this.lbSelEff.Name = "lbSelEff";
+            this.lbSelEff.Size = new System.Drawing.Size(109, 16);
+            this.lbSelEff.TabIndex = 15;
+            this.lbSelEff.Text = "Selecting Effects ";
+            // 
+            // cmbSelEff
+            // 
+            this.cmbSelEff.FormattingEnabled = true;
+            this.cmbSelEff.Items.AddRange(new object[] {
+            "Reverb",
+            "PitchEffects"});
+            this.cmbSelEff.Location = new System.Drawing.Point(628, 45);
+            this.cmbSelEff.Name = "cmbSelEff";
+            this.cmbSelEff.Size = new System.Drawing.Size(201, 24);
+            this.cmbSelEff.TabIndex = 14;
             // 
             // lbSampFreq
             // 
@@ -1366,16 +1384,6 @@
             this.cmbSampFreq.Size = new System.Drawing.Size(201, 24);
             this.cmbSampFreq.TabIndex = 12;
             this.cmbSampFreq.SelectedIndexChanged += new System.EventHandler(this.cmbSampFreq_SelectedIndexChanged);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(93, 92);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(687, 94);
-            this.textBox1.TabIndex = 11;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // bTnReset
             // 
@@ -1478,26 +1486,6 @@
             this.MinusBtn.Text = "-";
             this.MinusBtn.UseVisualStyleBackColor = true;
             this.MinusBtn.Click += new System.EventHandler(this.MinusBtn_Click);
-            // 
-            // cmbSelEff
-            // 
-            this.cmbSelEff.FormattingEnabled = true;
-            this.cmbSelEff.Items.AddRange(new object[] {
-            "Reverb",
-            "PitchEffects"});
-            this.cmbSelEff.Location = new System.Drawing.Point(628, 45);
-            this.cmbSelEff.Name = "cmbSelEff";
-            this.cmbSelEff.Size = new System.Drawing.Size(201, 24);
-            this.cmbSelEff.TabIndex = 14;
-            // 
-            // lbSelEff
-            // 
-            this.lbSelEff.AutoSize = true;
-            this.lbSelEff.Location = new System.Drawing.Point(495, 51);
-            this.lbSelEff.Name = "lbSelEff";
-            this.lbSelEff.Size = new System.Drawing.Size(109, 16);
-            this.lbSelEff.TabIndex = 15;
-            this.lbSelEff.Text = "Selecting Effects ";
             // 
             // MainForm
             // 
@@ -1645,7 +1633,6 @@
         private System.Windows.Forms.Label lbPitch2;
         private System.Windows.Forms.Label lbPitch1;
         private System.Windows.Forms.Button bTnReset;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lbPitchValue;
         private System.Windows.Forms.Label lbVolValue;
