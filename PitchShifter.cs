@@ -59,8 +59,8 @@ namespace PitchShifter
         public static int[] Vol = new int[10];
         public static int SampleRate2;
         private static int MAX_FRAME_LENGTH = 16000;
-        //private static float[] mas0 = new float[MAX_FRAME_LENGTH];
-        //private static float[] mas = new float[MAX_FRAME_LENGTH];
+        private static float[] gAnaMagn0 = new float[MAX_FRAME_LENGTH];
+        private static float[] mas = new float[MAX_FRAME_LENGTH];
         private static float[] gInFIFO = new float[MAX_FRAME_LENGTH];
         private static float[] gOutFIFO = new float[MAX_FRAME_LENGTH];
         private static float[] gFFTworksp = new float[2 * MAX_FRAME_LENGTH];
@@ -155,9 +155,12 @@ namespace PitchShifter
 
                         /* store magnitude and true frequency in analysis arrays/хранить величину и истинную частоту в массивах анализа */
                         gAnaMagn[k] = (float)magn;
+                        gAnaMagn0[k] = (float)magn;
                         gAnaFreq[k] = (float)tmp;
 
                     }
+
+                    //gAnaMagn[i] = gAnaMagn[i] + (k * gAnaMagn[i] - 1) * k * gAnaMagn0[k] / N;
 
                     for (k = 0; k <= fftFrameSize2; k++)
                     {
