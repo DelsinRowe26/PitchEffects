@@ -253,56 +253,7 @@ namespace PitchShifter
         {
             tbDiapMinus();
         }
-        /*private void Diap()
-        {
-            Label num = new Label();
-            Label lastnum = nums.LastOrDefault();
-            Label label = new Label();
-            Label label2 = new Label();
-            Label lastLabel = labels.LastOrDefault();
-            Label lastLabel2 = labels.LastOrDefault();
-            TextBox newTextBox = new TextBox();
-            TextBox newTextBox2 = new TextBox();
-            TextBox lastOldTextBox = TextBoxes.LastOrDefault();
-            TextBox lastOldTextBox2 = TextBoxes.LastOrDefault();
-            label.AutoSize = true;
-            label2.AutoSize = true;
-            num.AutoSize = true;
-            if (lastOldTextBox == null && lastOldTextBox2 == null && lastLabel == null && lastLabel2 == null && lastnum == null)
-            {
-                newTextBox.Location = new Point(100, 70);
-                newTextBox2.Location = new Point(250, 70);
-                label.Location = new Point(70, 70);
-                label2.Location = new Point(220, 70);
-                num.Location = new Point(50, 70);
-                num.Text = "1.";
-                label.Text = "from";
-                label2.Text = "to";
-            }
-            else
-            {
-                newTextBox.Location = new Point(lastOldTextBox.Location.X - 150, lastOldTextBox.Location.Y + 30);
-                newTextBox2.Location = new Point(lastOldTextBox2.Location.X, lastOldTextBox2.Location.Y + 30);
-                label.Location = new Point(lastLabel.Location.X - 150, lastLabel.Location.Y + 30);
-                label2.Location = new Point(lastLabel2.Location.X, lastLabel2.Location.Y + 30);
-                label.Text = "from";
-                label2.Text = "to";
-                num.Location = new Point(lastnum.Location.X - 170, lastnum.Location.Y + 30);
-                num.Text = $"{nums.Count}.";
-            }
-            //tbContr.SelectedIndex[0].Add(label);
-            nums.Add(num);
-            this.Controls.Add(num);
-            labels.Add(label);
-            this.Controls.Add(label);
-            labels.Add(label2);
-            this.Controls.Add(label2);
-            TextBoxes.Add(newTextBox);
-            Control.ControlCollection controls = this.Controls;
-            controls.Add(newTextBox);
-            TextBoxes.Add(newTextBox2);
-            controls.Add(newTextBox2);
-        }*/
+
         private void tbDiapPlus()//добавление текст боксов основная процедура
         {
             if (plusclick == 0)
@@ -320,6 +271,9 @@ namespace PitchShifter
                 lbZnachPitch.Visible = true;
                 ZnachVol.Visible = true;
                 btnPitchVol1.Visible = true;
+                tbReverb1.Visible = true;
+                tbReverbHFRTR1.Visible = true;
+                lbReverb.Visible = true;
                 plusclick++;
             }
             else if (plusclick == 1)
@@ -333,6 +287,8 @@ namespace PitchShifter
                 lbGain2.Visible = true;
                 tbGain2.Visible = true;
                 btnPitchVol2.Visible = true;
+                tbReverb2.Visible = true;
+                tbReverbHFRTR2.Visible = true;
                 plusclick++;
             }
             else if (plusclick == 2)
@@ -346,6 +302,8 @@ namespace PitchShifter
                 lbGain3.Visible = true;
                 tbGain3.Visible = true;
                 btnPitchVol3.Visible = true;
+                tbReverb3.Visible = true;
+                tbReverbHFRTR3.Visible = true;
                 plusclick++;
             }
             else if (plusclick == 3)
@@ -359,6 +317,8 @@ namespace PitchShifter
                 lbGain4.Visible = true;
                 tbGain4.Visible = true;
                 btnPitchVol4.Visible = true;
+                tbReverb4.Visible = true;
+                tbReverbHFRTR4.Visible = true;
                 plusclick++;
             }
             else if (plusclick == 4)
