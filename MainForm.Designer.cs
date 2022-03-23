@@ -138,6 +138,8 @@
             this.tBxto1 = new System.Windows.Forms.TextBox();
             this.tBxfrom1 = new System.Windows.Forms.TextBox();
             this.tbSettings = new System.Windows.Forms.TabPage();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.lbSelEff = new System.Windows.Forms.Label();
             this.cmbSelEff = new System.Windows.Forms.ComboBox();
             this.lbSampFreq = new System.Windows.Forms.Label();
@@ -152,8 +154,26 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.PlusBtn = new System.Windows.Forms.Button();
             this.MinusBtn = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbReverb1 = new System.Windows.Forms.TextBox();
+            this.tbReverbHFRTR1 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.textBox19 = new System.Windows.Forms.TextBox();
+            this.textBox20 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.trackPitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackGain)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -317,16 +337,36 @@
             // 
             this.tabControl1.Controls.Add(this.tbRange);
             this.tabControl1.Controls.Add(this.tbSettings);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Location = new System.Drawing.Point(12, 289);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(913, 220);
+            this.tabControl1.Size = new System.Drawing.Size(1239, 220);
             this.tabControl1.TabIndex = 17;
             // 
             // tbRange
             // 
             this.tbRange.AutoScroll = true;
+            this.tbRange.Controls.Add(this.textBox19);
+            this.tbRange.Controls.Add(this.textBox20);
+            this.tbRange.Controls.Add(this.textBox17);
+            this.tbRange.Controls.Add(this.textBox18);
+            this.tbRange.Controls.Add(this.textBox15);
+            this.tbRange.Controls.Add(this.textBox16);
+            this.tbRange.Controls.Add(this.textBox13);
+            this.tbRange.Controls.Add(this.textBox14);
+            this.tbRange.Controls.Add(this.textBox11);
+            this.tbRange.Controls.Add(this.textBox12);
+            this.tbRange.Controls.Add(this.textBox9);
+            this.tbRange.Controls.Add(this.textBox10);
+            this.tbRange.Controls.Add(this.textBox7);
+            this.tbRange.Controls.Add(this.textBox8);
+            this.tbRange.Controls.Add(this.textBox5);
+            this.tbRange.Controls.Add(this.textBox6);
+            this.tbRange.Controls.Add(this.textBox3);
+            this.tbRange.Controls.Add(this.textBox4);
+            this.tbRange.Controls.Add(this.tbReverbHFRTR1);
+            this.tbRange.Controls.Add(this.tbReverb1);
             this.tbRange.Controls.Add(this.btnPitchVol10);
             this.tbRange.Controls.Add(this.btnPitchVol9);
             this.tbRange.Controls.Add(this.btnPitchVol8);
@@ -423,14 +463,14 @@
             this.tbRange.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbRange.Name = "tbRange";
             this.tbRange.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbRange.Size = new System.Drawing.Size(905, 191);
+            this.tbRange.Size = new System.Drawing.Size(1231, 191);
             this.tbRange.TabIndex = 0;
             this.tbRange.Text = "Range";
             this.tbRange.UseVisualStyleBackColor = true;
             // 
             // btnPitchVol10
             // 
-            this.btnPitchVol10.Location = new System.Drawing.Point(789, 250);
+            this.btnPitchVol10.Location = new System.Drawing.Point(789, 169);
             this.btnPitchVol10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPitchVol10.Name = "btnPitchVol10";
             this.btnPitchVol10.Size = new System.Drawing.Size(93, 23);
@@ -442,7 +482,7 @@
             // 
             // btnPitchVol9
             // 
-            this.btnPitchVol9.Location = new System.Drawing.Point(789, 225);
+            this.btnPitchVol9.Location = new System.Drawing.Point(789, 143);
             this.btnPitchVol9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPitchVol9.Name = "btnPitchVol9";
             this.btnPitchVol9.Size = new System.Drawing.Size(93, 23);
@@ -454,7 +494,7 @@
             // 
             // btnPitchVol8
             // 
-            this.btnPitchVol8.Location = new System.Drawing.Point(789, 199);
+            this.btnPitchVol8.Location = new System.Drawing.Point(789, 117);
             this.btnPitchVol8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPitchVol8.Name = "btnPitchVol8";
             this.btnPitchVol8.Size = new System.Drawing.Size(93, 23);
@@ -466,7 +506,7 @@
             // 
             // btnPitchVol7
             // 
-            this.btnPitchVol7.Location = new System.Drawing.Point(789, 174);
+            this.btnPitchVol7.Location = new System.Drawing.Point(789, 92);
             this.btnPitchVol7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPitchVol7.Name = "btnPitchVol7";
             this.btnPitchVol7.Size = new System.Drawing.Size(93, 23);
@@ -478,7 +518,7 @@
             // 
             // btnPitchVol6
             // 
-            this.btnPitchVol6.Location = new System.Drawing.Point(789, 143);
+            this.btnPitchVol6.Location = new System.Drawing.Point(789, 61);
             this.btnPitchVol6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPitchVol6.Name = "btnPitchVol6";
             this.btnPitchVol6.Size = new System.Drawing.Size(93, 23);
@@ -490,7 +530,7 @@
             // 
             // btnPitchVol5
             // 
-            this.btnPitchVol5.Location = new System.Drawing.Point(789, 117);
+            this.btnPitchVol5.Location = new System.Drawing.Point(789, 35);
             this.btnPitchVol5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPitchVol5.Name = "btnPitchVol5";
             this.btnPitchVol5.Size = new System.Drawing.Size(93, 23);
@@ -502,7 +542,7 @@
             // 
             // btnPitchVol4
             // 
-            this.btnPitchVol4.Location = new System.Drawing.Point(789, 89);
+            this.btnPitchVol4.Location = new System.Drawing.Point(789, 7);
             this.btnPitchVol4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPitchVol4.Name = "btnPitchVol4";
             this.btnPitchVol4.Size = new System.Drawing.Size(93, 23);
@@ -514,7 +554,7 @@
             // 
             // btnPitchVol3
             // 
-            this.btnPitchVol3.Location = new System.Drawing.Point(789, 62);
+            this.btnPitchVol3.Location = new System.Drawing.Point(789, -20);
             this.btnPitchVol3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPitchVol3.Name = "btnPitchVol3";
             this.btnPitchVol3.Size = new System.Drawing.Size(93, 23);
@@ -526,7 +566,7 @@
             // 
             // btnPitchVol2
             // 
-            this.btnPitchVol2.Location = new System.Drawing.Point(789, 32);
+            this.btnPitchVol2.Location = new System.Drawing.Point(789, -50);
             this.btnPitchVol2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPitchVol2.Name = "btnPitchVol2";
             this.btnPitchVol2.Size = new System.Drawing.Size(93, 23);
@@ -538,7 +578,7 @@
             // 
             // btnPitchVol1
             // 
-            this.btnPitchVol1.Location = new System.Drawing.Point(789, 7);
+            this.btnPitchVol1.Location = new System.Drawing.Point(789, -75);
             this.btnPitchVol1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPitchVol1.Name = "btnPitchVol1";
             this.btnPitchVol1.Size = new System.Drawing.Size(93, 23);
@@ -551,7 +591,7 @@
             // ZnachVol
             // 
             this.ZnachVol.BackColor = System.Drawing.Color.Transparent;
-            this.ZnachVol.Location = new System.Drawing.Point(561, 9);
+            this.ZnachVol.Location = new System.Drawing.Point(561, -73);
             this.ZnachVol.Name = "ZnachVol";
             this.ZnachVol.Size = new System.Drawing.Size(67, 98);
             this.ZnachVol.TabIndex = 97;
@@ -560,7 +600,7 @@
             // 
             // lbZnachPitch
             // 
-            this.lbZnachPitch.Location = new System.Drawing.Point(347, 7);
+            this.lbZnachPitch.Location = new System.Drawing.Point(347, -75);
             this.lbZnachPitch.Name = "lbZnachPitch";
             this.lbZnachPitch.Size = new System.Drawing.Size(63, 68);
             this.lbZnachPitch.TabIndex = 96;
@@ -570,7 +610,7 @@
             // lbGain10
             // 
             this.lbGain10.AutoSize = true;
-            this.lbGain10.Location = new System.Drawing.Point(627, 254);
+            this.lbGain10.Location = new System.Drawing.Point(627, 172);
             this.lbGain10.Name = "lbGain10";
             this.lbGain10.Size = new System.Drawing.Size(53, 16);
             this.lbGain10.TabIndex = 95;
@@ -580,7 +620,7 @@
             // lbGain9
             // 
             this.lbGain9.AutoSize = true;
-            this.lbGain9.Location = new System.Drawing.Point(627, 226);
+            this.lbGain9.Location = new System.Drawing.Point(627, 144);
             this.lbGain9.Name = "lbGain9";
             this.lbGain9.Size = new System.Drawing.Size(53, 16);
             this.lbGain9.TabIndex = 94;
@@ -590,7 +630,7 @@
             // lbGain8
             // 
             this.lbGain8.AutoSize = true;
-            this.lbGain8.Location = new System.Drawing.Point(627, 202);
+            this.lbGain8.Location = new System.Drawing.Point(627, 120);
             this.lbGain8.Name = "lbGain8";
             this.lbGain8.Size = new System.Drawing.Size(53, 16);
             this.lbGain8.TabIndex = 93;
@@ -600,7 +640,7 @@
             // lbGain7
             // 
             this.lbGain7.AutoSize = true;
-            this.lbGain7.Location = new System.Drawing.Point(627, 177);
+            this.lbGain7.Location = new System.Drawing.Point(627, 95);
             this.lbGain7.Name = "lbGain7";
             this.lbGain7.Size = new System.Drawing.Size(53, 16);
             this.lbGain7.TabIndex = 92;
@@ -610,7 +650,7 @@
             // lbGain6
             // 
             this.lbGain6.AutoSize = true;
-            this.lbGain6.Location = new System.Drawing.Point(627, 151);
+            this.lbGain6.Location = new System.Drawing.Point(627, 69);
             this.lbGain6.Name = "lbGain6";
             this.lbGain6.Size = new System.Drawing.Size(53, 16);
             this.lbGain6.TabIndex = 91;
@@ -620,7 +660,7 @@
             // lbGain5
             // 
             this.lbGain5.AutoSize = true;
-            this.lbGain5.Location = new System.Drawing.Point(627, 121);
+            this.lbGain5.Location = new System.Drawing.Point(627, 39);
             this.lbGain5.Name = "lbGain5";
             this.lbGain5.Size = new System.Drawing.Size(53, 16);
             this.lbGain5.TabIndex = 90;
@@ -630,7 +670,7 @@
             // lbGain4
             // 
             this.lbGain4.AutoSize = true;
-            this.lbGain4.Location = new System.Drawing.Point(627, 91);
+            this.lbGain4.Location = new System.Drawing.Point(627, 9);
             this.lbGain4.Name = "lbGain4";
             this.lbGain4.Size = new System.Drawing.Size(53, 16);
             this.lbGain4.TabIndex = 89;
@@ -640,7 +680,7 @@
             // lbGain3
             // 
             this.lbGain3.AutoSize = true;
-            this.lbGain3.Location = new System.Drawing.Point(627, 62);
+            this.lbGain3.Location = new System.Drawing.Point(627, -20);
             this.lbGain3.Name = "lbGain3";
             this.lbGain3.Size = new System.Drawing.Size(53, 16);
             this.lbGain3.TabIndex = 88;
@@ -650,7 +690,7 @@
             // lbGain2
             // 
             this.lbGain2.AutoSize = true;
-            this.lbGain2.Location = new System.Drawing.Point(627, 34);
+            this.lbGain2.Location = new System.Drawing.Point(627, -48);
             this.lbGain2.Name = "lbGain2";
             this.lbGain2.Size = new System.Drawing.Size(53, 16);
             this.lbGain2.TabIndex = 87;
@@ -660,7 +700,7 @@
             // lbGain1
             // 
             this.lbGain1.AutoSize = true;
-            this.lbGain1.Location = new System.Drawing.Point(627, 10);
+            this.lbGain1.Location = new System.Drawing.Point(627, -72);
             this.lbGain1.Name = "lbGain1";
             this.lbGain1.Size = new System.Drawing.Size(53, 16);
             this.lbGain1.TabIndex = 86;
@@ -670,7 +710,7 @@
             // lbPitch10
             // 
             this.lbPitch10.AutoSize = true;
-            this.lbPitch10.Location = new System.Drawing.Point(411, 260);
+            this.lbPitch10.Location = new System.Drawing.Point(411, 175);
             this.lbPitch10.Name = "lbPitch10";
             this.lbPitch10.Size = new System.Drawing.Size(36, 16);
             this.lbPitch10.TabIndex = 85;
@@ -680,7 +720,7 @@
             // lbPitch9
             // 
             this.lbPitch9.AutoSize = true;
-            this.lbPitch9.Location = new System.Drawing.Point(411, 231);
+            this.lbPitch9.Location = new System.Drawing.Point(411, 146);
             this.lbPitch9.Name = "lbPitch9";
             this.lbPitch9.Size = new System.Drawing.Size(36, 16);
             this.lbPitch9.TabIndex = 84;
@@ -690,7 +730,7 @@
             // lbPitch8
             // 
             this.lbPitch8.AutoSize = true;
-            this.lbPitch8.Location = new System.Drawing.Point(411, 204);
+            this.lbPitch8.Location = new System.Drawing.Point(411, 119);
             this.lbPitch8.Name = "lbPitch8";
             this.lbPitch8.Size = new System.Drawing.Size(36, 16);
             this.lbPitch8.TabIndex = 83;
@@ -700,7 +740,7 @@
             // lbPitch7
             // 
             this.lbPitch7.AutoSize = true;
-            this.lbPitch7.Location = new System.Drawing.Point(411, 176);
+            this.lbPitch7.Location = new System.Drawing.Point(411, 91);
             this.lbPitch7.Name = "lbPitch7";
             this.lbPitch7.Size = new System.Drawing.Size(36, 16);
             this.lbPitch7.TabIndex = 82;
@@ -710,7 +750,7 @@
             // lbPitch6
             // 
             this.lbPitch6.AutoSize = true;
-            this.lbPitch6.Location = new System.Drawing.Point(411, 148);
+            this.lbPitch6.Location = new System.Drawing.Point(411, 63);
             this.lbPitch6.Name = "lbPitch6";
             this.lbPitch6.Size = new System.Drawing.Size(36, 16);
             this.lbPitch6.TabIndex = 81;
@@ -720,7 +760,7 @@
             // lbPitch5
             // 
             this.lbPitch5.AutoSize = true;
-            this.lbPitch5.Location = new System.Drawing.Point(411, 121);
+            this.lbPitch5.Location = new System.Drawing.Point(411, 36);
             this.lbPitch5.Name = "lbPitch5";
             this.lbPitch5.Size = new System.Drawing.Size(36, 16);
             this.lbPitch5.TabIndex = 80;
@@ -730,7 +770,7 @@
             // lbPitch4
             // 
             this.lbPitch4.AutoSize = true;
-            this.lbPitch4.Location = new System.Drawing.Point(411, 92);
+            this.lbPitch4.Location = new System.Drawing.Point(411, 7);
             this.lbPitch4.Name = "lbPitch4";
             this.lbPitch4.Size = new System.Drawing.Size(36, 16);
             this.lbPitch4.TabIndex = 79;
@@ -740,7 +780,7 @@
             // lbPitch3
             // 
             this.lbPitch3.AutoSize = true;
-            this.lbPitch3.Location = new System.Drawing.Point(411, 62);
+            this.lbPitch3.Location = new System.Drawing.Point(411, -23);
             this.lbPitch3.Name = "lbPitch3";
             this.lbPitch3.Size = new System.Drawing.Size(36, 16);
             this.lbPitch3.TabIndex = 78;
@@ -750,7 +790,7 @@
             // lbPitch2
             // 
             this.lbPitch2.AutoSize = true;
-            this.lbPitch2.Location = new System.Drawing.Point(411, 34);
+            this.lbPitch2.Location = new System.Drawing.Point(411, -51);
             this.lbPitch2.Name = "lbPitch2";
             this.lbPitch2.Size = new System.Drawing.Size(36, 16);
             this.lbPitch2.TabIndex = 77;
@@ -760,7 +800,7 @@
             // lbPitch1
             // 
             this.lbPitch1.AutoSize = true;
-            this.lbPitch1.Location = new System.Drawing.Point(411, 9);
+            this.lbPitch1.Location = new System.Drawing.Point(411, -76);
             this.lbPitch1.Name = "lbPitch1";
             this.lbPitch1.Size = new System.Drawing.Size(36, 16);
             this.lbPitch1.TabIndex = 76;
@@ -769,7 +809,7 @@
             // 
             // tbGain10
             // 
-            this.tbGain10.Location = new System.Drawing.Point(683, 254);
+            this.tbGain10.Location = new System.Drawing.Point(683, 169);
             this.tbGain10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGain10.Name = "tbGain10";
             this.tbGain10.Size = new System.Drawing.Size(100, 22);
@@ -778,7 +818,7 @@
             // 
             // tbPitch10
             // 
-            this.tbPitch10.Location = new System.Drawing.Point(455, 257);
+            this.tbPitch10.Location = new System.Drawing.Point(455, 169);
             this.tbPitch10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPitch10.Name = "tbPitch10";
             this.tbPitch10.Size = new System.Drawing.Size(100, 22);
@@ -787,7 +827,7 @@
             // 
             // tbGain9
             // 
-            this.tbGain9.Location = new System.Drawing.Point(683, 225);
+            this.tbGain9.Location = new System.Drawing.Point(683, 137);
             this.tbGain9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGain9.Name = "tbGain9";
             this.tbGain9.Size = new System.Drawing.Size(100, 22);
@@ -796,7 +836,7 @@
             // 
             // tbPitch9
             // 
-            this.tbPitch9.Location = new System.Drawing.Point(455, 229);
+            this.tbPitch9.Location = new System.Drawing.Point(455, 141);
             this.tbPitch9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPitch9.Name = "tbPitch9";
             this.tbPitch9.Size = new System.Drawing.Size(100, 22);
@@ -805,7 +845,7 @@
             // 
             // tbGain8
             // 
-            this.tbGain8.Location = new System.Drawing.Point(683, 197);
+            this.tbGain8.Location = new System.Drawing.Point(683, 109);
             this.tbGain8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGain8.Name = "tbGain8";
             this.tbGain8.Size = new System.Drawing.Size(100, 22);
@@ -814,7 +854,7 @@
             // 
             // tbPitch8
             // 
-            this.tbPitch8.Location = new System.Drawing.Point(455, 201);
+            this.tbPitch8.Location = new System.Drawing.Point(455, 113);
             this.tbPitch8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPitch8.Name = "tbPitch8";
             this.tbPitch8.Size = new System.Drawing.Size(100, 22);
@@ -823,7 +863,7 @@
             // 
             // tbGain7
             // 
-            this.tbGain7.Location = new System.Drawing.Point(683, 172);
+            this.tbGain7.Location = new System.Drawing.Point(683, 84);
             this.tbGain7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGain7.Name = "tbGain7";
             this.tbGain7.Size = new System.Drawing.Size(100, 22);
@@ -832,7 +872,7 @@
             // 
             // tbPitch7
             // 
-            this.tbPitch7.Location = new System.Drawing.Point(455, 174);
+            this.tbPitch7.Location = new System.Drawing.Point(455, 86);
             this.tbPitch7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPitch7.Name = "tbPitch7";
             this.tbPitch7.Size = new System.Drawing.Size(100, 22);
@@ -841,7 +881,7 @@
             // 
             // tbGain6
             // 
-            this.tbGain6.Location = new System.Drawing.Point(683, 145);
+            this.tbGain6.Location = new System.Drawing.Point(683, 57);
             this.tbGain6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGain6.Name = "tbGain6";
             this.tbGain6.Size = new System.Drawing.Size(100, 22);
@@ -850,7 +890,7 @@
             // 
             // tbPitch6
             // 
-            this.tbPitch6.Location = new System.Drawing.Point(455, 145);
+            this.tbPitch6.Location = new System.Drawing.Point(455, 57);
             this.tbPitch6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPitch6.Name = "tbPitch6";
             this.tbPitch6.Size = new System.Drawing.Size(100, 22);
@@ -859,7 +899,7 @@
             // 
             // tbGain5
             // 
-            this.tbGain5.Location = new System.Drawing.Point(683, 117);
+            this.tbGain5.Location = new System.Drawing.Point(683, 29);
             this.tbGain5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGain5.Name = "tbGain5";
             this.tbGain5.Size = new System.Drawing.Size(100, 22);
@@ -868,7 +908,7 @@
             // 
             // tbPitch5
             // 
-            this.tbPitch5.Location = new System.Drawing.Point(455, 117);
+            this.tbPitch5.Location = new System.Drawing.Point(455, 29);
             this.tbPitch5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPitch5.Name = "tbPitch5";
             this.tbPitch5.Size = new System.Drawing.Size(100, 22);
@@ -877,7 +917,7 @@
             // 
             // tbGain4
             // 
-            this.tbGain4.Location = new System.Drawing.Point(683, 89);
+            this.tbGain4.Location = new System.Drawing.Point(683, 1);
             this.tbGain4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGain4.Name = "tbGain4";
             this.tbGain4.Size = new System.Drawing.Size(100, 22);
@@ -886,7 +926,7 @@
             // 
             // tbPitch4
             // 
-            this.tbPitch4.Location = new System.Drawing.Point(455, 89);
+            this.tbPitch4.Location = new System.Drawing.Point(455, 1);
             this.tbPitch4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPitch4.Name = "tbPitch4";
             this.tbPitch4.Size = new System.Drawing.Size(100, 22);
@@ -895,7 +935,7 @@
             // 
             // tbGain3
             // 
-            this.tbGain3.Location = new System.Drawing.Point(683, 60);
+            this.tbGain3.Location = new System.Drawing.Point(683, -28);
             this.tbGain3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGain3.Name = "tbGain3";
             this.tbGain3.Size = new System.Drawing.Size(100, 22);
@@ -904,7 +944,7 @@
             // 
             // tbPitch3
             // 
-            this.tbPitch3.Location = new System.Drawing.Point(455, 62);
+            this.tbPitch3.Location = new System.Drawing.Point(455, -26);
             this.tbPitch3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPitch3.Name = "tbPitch3";
             this.tbPitch3.Size = new System.Drawing.Size(100, 22);
@@ -913,7 +953,7 @@
             // 
             // tbGain2
             // 
-            this.tbGain2.Location = new System.Drawing.Point(683, 32);
+            this.tbGain2.Location = new System.Drawing.Point(683, -56);
             this.tbGain2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGain2.Name = "tbGain2";
             this.tbGain2.Size = new System.Drawing.Size(100, 22);
@@ -922,7 +962,7 @@
             // 
             // tbPitch2
             // 
-            this.tbPitch2.Location = new System.Drawing.Point(455, 33);
+            this.tbPitch2.Location = new System.Drawing.Point(455, -55);
             this.tbPitch2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPitch2.Name = "tbPitch2";
             this.tbPitch2.Size = new System.Drawing.Size(100, 22);
@@ -931,7 +971,7 @@
             // 
             // tbGain1
             // 
-            this.tbGain1.Location = new System.Drawing.Point(683, 6);
+            this.tbGain1.Location = new System.Drawing.Point(683, -82);
             this.tbGain1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGain1.Name = "tbGain1";
             this.tbGain1.Size = new System.Drawing.Size(100, 22);
@@ -940,7 +980,7 @@
             // 
             // tbPitch1
             // 
-            this.tbPitch1.Location = new System.Drawing.Point(455, 6);
+            this.tbPitch1.Location = new System.Drawing.Point(455, -82);
             this.tbPitch1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPitch1.Name = "tbPitch1";
             this.tbPitch1.Size = new System.Drawing.Size(100, 22);
@@ -950,7 +990,7 @@
             // lbTo10
             // 
             this.lbTo10.AutoSize = true;
-            this.lbTo10.Location = new System.Drawing.Point(199, 262);
+            this.lbTo10.Location = new System.Drawing.Point(199, 174);
             this.lbTo10.Name = "lbTo10";
             this.lbTo10.Size = new System.Drawing.Size(18, 16);
             this.lbTo10.TabIndex = 55;
@@ -960,7 +1000,7 @@
             // lbTo9
             // 
             this.lbTo9.AutoSize = true;
-            this.lbTo9.Location = new System.Drawing.Point(199, 234);
+            this.lbTo9.Location = new System.Drawing.Point(199, 146);
             this.lbTo9.Name = "lbTo9";
             this.lbTo9.Size = new System.Drawing.Size(18, 16);
             this.lbTo9.TabIndex = 54;
@@ -970,7 +1010,7 @@
             // lbTo8
             // 
             this.lbTo8.AutoSize = true;
-            this.lbTo8.Location = new System.Drawing.Point(199, 206);
+            this.lbTo8.Location = new System.Drawing.Point(199, 118);
             this.lbTo8.Name = "lbTo8";
             this.lbTo8.Size = new System.Drawing.Size(18, 16);
             this.lbTo8.TabIndex = 53;
@@ -980,7 +1020,7 @@
             // lbTo7
             // 
             this.lbTo7.AutoSize = true;
-            this.lbTo7.Location = new System.Drawing.Point(199, 178);
+            this.lbTo7.Location = new System.Drawing.Point(199, 90);
             this.lbTo7.Name = "lbTo7";
             this.lbTo7.Size = new System.Drawing.Size(18, 16);
             this.lbTo7.TabIndex = 52;
@@ -990,7 +1030,7 @@
             // lbTo6
             // 
             this.lbTo6.AutoSize = true;
-            this.lbTo6.Location = new System.Drawing.Point(199, 150);
+            this.lbTo6.Location = new System.Drawing.Point(199, 62);
             this.lbTo6.Name = "lbTo6";
             this.lbTo6.Size = new System.Drawing.Size(18, 16);
             this.lbTo6.TabIndex = 51;
@@ -1000,7 +1040,7 @@
             // lbTo5
             // 
             this.lbTo5.AutoSize = true;
-            this.lbTo5.Location = new System.Drawing.Point(199, 122);
+            this.lbTo5.Location = new System.Drawing.Point(199, 34);
             this.lbTo5.Name = "lbTo5";
             this.lbTo5.Size = new System.Drawing.Size(18, 16);
             this.lbTo5.TabIndex = 50;
@@ -1010,7 +1050,7 @@
             // lbTo4
             // 
             this.lbTo4.AutoSize = true;
-            this.lbTo4.Location = new System.Drawing.Point(199, 94);
+            this.lbTo4.Location = new System.Drawing.Point(199, 6);
             this.lbTo4.Name = "lbTo4";
             this.lbTo4.Size = new System.Drawing.Size(18, 16);
             this.lbTo4.TabIndex = 49;
@@ -1020,7 +1060,7 @@
             // lbTo3
             // 
             this.lbTo3.AutoSize = true;
-            this.lbTo3.Location = new System.Drawing.Point(199, 66);
+            this.lbTo3.Location = new System.Drawing.Point(199, -22);
             this.lbTo3.Name = "lbTo3";
             this.lbTo3.Size = new System.Drawing.Size(18, 16);
             this.lbTo3.TabIndex = 48;
@@ -1030,7 +1070,7 @@
             // lbTo2
             // 
             this.lbTo2.AutoSize = true;
-            this.lbTo2.Location = new System.Drawing.Point(199, 38);
+            this.lbTo2.Location = new System.Drawing.Point(199, -50);
             this.lbTo2.Name = "lbTo2";
             this.lbTo2.Size = new System.Drawing.Size(18, 16);
             this.lbTo2.TabIndex = 47;
@@ -1040,7 +1080,7 @@
             // lbTo1
             // 
             this.lbTo1.AutoSize = true;
-            this.lbTo1.Location = new System.Drawing.Point(199, 11);
+            this.lbTo1.Location = new System.Drawing.Point(199, -77);
             this.lbTo1.Name = "lbTo1";
             this.lbTo1.Size = new System.Drawing.Size(18, 16);
             this.lbTo1.TabIndex = 46;
@@ -1050,7 +1090,7 @@
             // lbFrom10
             // 
             this.lbFrom10.AutoSize = true;
-            this.lbFrom10.Location = new System.Drawing.Point(17, 262);
+            this.lbFrom10.Location = new System.Drawing.Point(17, 174);
             this.lbFrom10.Name = "lbFrom10";
             this.lbFrom10.Size = new System.Drawing.Size(58, 16);
             this.lbFrom10.TabIndex = 45;
@@ -1060,7 +1100,7 @@
             // lbFrom9
             // 
             this.lbFrom9.AutoSize = true;
-            this.lbFrom9.Location = new System.Drawing.Point(17, 234);
+            this.lbFrom9.Location = new System.Drawing.Point(17, 146);
             this.lbFrom9.Name = "lbFrom9";
             this.lbFrom9.Size = new System.Drawing.Size(51, 16);
             this.lbFrom9.TabIndex = 44;
@@ -1070,7 +1110,7 @@
             // lbFrom8
             // 
             this.lbFrom8.AutoSize = true;
-            this.lbFrom8.Location = new System.Drawing.Point(17, 206);
+            this.lbFrom8.Location = new System.Drawing.Point(17, 118);
             this.lbFrom8.Name = "lbFrom8";
             this.lbFrom8.Size = new System.Drawing.Size(51, 16);
             this.lbFrom8.TabIndex = 43;
@@ -1080,7 +1120,7 @@
             // lbFrom7
             // 
             this.lbFrom7.AutoSize = true;
-            this.lbFrom7.Location = new System.Drawing.Point(17, 178);
+            this.lbFrom7.Location = new System.Drawing.Point(17, 90);
             this.lbFrom7.Name = "lbFrom7";
             this.lbFrom7.Size = new System.Drawing.Size(51, 16);
             this.lbFrom7.TabIndex = 42;
@@ -1090,7 +1130,7 @@
             // lbFrom6
             // 
             this.lbFrom6.AutoSize = true;
-            this.lbFrom6.Location = new System.Drawing.Point(17, 150);
+            this.lbFrom6.Location = new System.Drawing.Point(17, 62);
             this.lbFrom6.Name = "lbFrom6";
             this.lbFrom6.Size = new System.Drawing.Size(51, 16);
             this.lbFrom6.TabIndex = 41;
@@ -1100,7 +1140,7 @@
             // lbFrom5
             // 
             this.lbFrom5.AutoSize = true;
-            this.lbFrom5.Location = new System.Drawing.Point(17, 122);
+            this.lbFrom5.Location = new System.Drawing.Point(17, 34);
             this.lbFrom5.Name = "lbFrom5";
             this.lbFrom5.Size = new System.Drawing.Size(51, 16);
             this.lbFrom5.TabIndex = 40;
@@ -1110,7 +1150,7 @@
             // lbFrom4
             // 
             this.lbFrom4.AutoSize = true;
-            this.lbFrom4.Location = new System.Drawing.Point(17, 94);
+            this.lbFrom4.Location = new System.Drawing.Point(17, 6);
             this.lbFrom4.Name = "lbFrom4";
             this.lbFrom4.Size = new System.Drawing.Size(51, 16);
             this.lbFrom4.TabIndex = 39;
@@ -1120,7 +1160,7 @@
             // lbFrom3
             // 
             this.lbFrom3.AutoSize = true;
-            this.lbFrom3.Location = new System.Drawing.Point(17, 66);
+            this.lbFrom3.Location = new System.Drawing.Point(17, -22);
             this.lbFrom3.Name = "lbFrom3";
             this.lbFrom3.Size = new System.Drawing.Size(51, 16);
             this.lbFrom3.TabIndex = 38;
@@ -1130,7 +1170,7 @@
             // lbFrom2
             // 
             this.lbFrom2.AutoSize = true;
-            this.lbFrom2.Location = new System.Drawing.Point(17, 37);
+            this.lbFrom2.Location = new System.Drawing.Point(17, -51);
             this.lbFrom2.Name = "lbFrom2";
             this.lbFrom2.Size = new System.Drawing.Size(51, 16);
             this.lbFrom2.TabIndex = 37;
@@ -1140,7 +1180,7 @@
             // lbFrom1
             // 
             this.lbFrom1.AutoSize = true;
-            this.lbFrom1.Location = new System.Drawing.Point(17, 11);
+            this.lbFrom1.Location = new System.Drawing.Point(17, -77);
             this.lbFrom1.Name = "lbFrom1";
             this.lbFrom1.Size = new System.Drawing.Size(51, 16);
             this.lbFrom1.TabIndex = 36;
@@ -1149,7 +1189,7 @@
             // 
             // tBxto10
             // 
-            this.tBxto10.Location = new System.Drawing.Point(241, 258);
+            this.tBxto10.Location = new System.Drawing.Point(241, 169);
             this.tBxto10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxto10.Name = "tBxto10";
             this.tBxto10.Size = new System.Drawing.Size(100, 22);
@@ -1158,7 +1198,7 @@
             // 
             // tBxfrom10
             // 
-            this.tBxfrom10.Location = new System.Drawing.Point(79, 258);
+            this.tBxfrom10.Location = new System.Drawing.Point(79, 169);
             this.tBxfrom10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxfrom10.Name = "tBxfrom10";
             this.tBxfrom10.Size = new System.Drawing.Size(100, 22);
@@ -1167,7 +1207,7 @@
             // 
             // tBxto9
             // 
-            this.tBxto9.Location = new System.Drawing.Point(241, 231);
+            this.tBxto9.Location = new System.Drawing.Point(241, 142);
             this.tBxto9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxto9.Name = "tBxto9";
             this.tBxto9.Size = new System.Drawing.Size(100, 22);
@@ -1176,7 +1216,7 @@
             // 
             // tBxfrom9
             // 
-            this.tBxfrom9.Location = new System.Drawing.Point(79, 231);
+            this.tBxfrom9.Location = new System.Drawing.Point(79, 142);
             this.tBxfrom9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxfrom9.Name = "tBxfrom9";
             this.tBxfrom9.Size = new System.Drawing.Size(100, 22);
@@ -1185,7 +1225,7 @@
             // 
             // tBxto8
             // 
-            this.tBxto8.Location = new System.Drawing.Point(241, 203);
+            this.tBxto8.Location = new System.Drawing.Point(241, 114);
             this.tBxto8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxto8.Name = "tBxto8";
             this.tBxto8.Size = new System.Drawing.Size(100, 22);
@@ -1194,7 +1234,7 @@
             // 
             // tBxfrom8
             // 
-            this.tBxfrom8.Location = new System.Drawing.Point(79, 203);
+            this.tBxfrom8.Location = new System.Drawing.Point(79, 114);
             this.tBxfrom8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxfrom8.Name = "tBxfrom8";
             this.tBxfrom8.Size = new System.Drawing.Size(100, 22);
@@ -1203,7 +1243,7 @@
             // 
             // tBxto7
             // 
-            this.tBxto7.Location = new System.Drawing.Point(241, 175);
+            this.tBxto7.Location = new System.Drawing.Point(241, 86);
             this.tBxto7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxto7.Name = "tBxto7";
             this.tBxto7.Size = new System.Drawing.Size(100, 22);
@@ -1212,7 +1252,7 @@
             // 
             // tBxfrom7
             // 
-            this.tBxfrom7.Location = new System.Drawing.Point(79, 175);
+            this.tBxfrom7.Location = new System.Drawing.Point(79, 86);
             this.tBxfrom7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxfrom7.Name = "tBxfrom7";
             this.tBxfrom7.Size = new System.Drawing.Size(100, 22);
@@ -1221,7 +1261,7 @@
             // 
             // tBxto6
             // 
-            this.tBxto6.Location = new System.Drawing.Point(241, 146);
+            this.tBxto6.Location = new System.Drawing.Point(241, 57);
             this.tBxto6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxto6.Name = "tBxto6";
             this.tBxto6.Size = new System.Drawing.Size(100, 22);
@@ -1230,7 +1270,7 @@
             // 
             // tBxfrom6
             // 
-            this.tBxfrom6.Location = new System.Drawing.Point(79, 146);
+            this.tBxfrom6.Location = new System.Drawing.Point(79, 57);
             this.tBxfrom6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxfrom6.Name = "tBxfrom6";
             this.tBxfrom6.Size = new System.Drawing.Size(100, 22);
@@ -1239,7 +1279,7 @@
             // 
             // tBxto5
             // 
-            this.tBxto5.Location = new System.Drawing.Point(241, 119);
+            this.tBxto5.Location = new System.Drawing.Point(241, 30);
             this.tBxto5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxto5.Name = "tBxto5";
             this.tBxto5.Size = new System.Drawing.Size(100, 22);
@@ -1248,7 +1288,7 @@
             // 
             // tBxfrom5
             // 
-            this.tBxfrom5.Location = new System.Drawing.Point(79, 119);
+            this.tBxfrom5.Location = new System.Drawing.Point(79, 30);
             this.tBxfrom5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxfrom5.Name = "tBxfrom5";
             this.tBxfrom5.Size = new System.Drawing.Size(100, 22);
@@ -1257,7 +1297,7 @@
             // 
             // tBxto4
             // 
-            this.tBxto4.Location = new System.Drawing.Point(241, 91);
+            this.tBxto4.Location = new System.Drawing.Point(241, 2);
             this.tBxto4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxto4.Name = "tBxto4";
             this.tBxto4.Size = new System.Drawing.Size(100, 22);
@@ -1266,7 +1306,7 @@
             // 
             // tBxto3
             // 
-            this.tBxto3.Location = new System.Drawing.Point(241, 63);
+            this.tBxto3.Location = new System.Drawing.Point(241, -26);
             this.tBxto3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxto3.Name = "tBxto3";
             this.tBxto3.Size = new System.Drawing.Size(100, 22);
@@ -1275,7 +1315,7 @@
             // 
             // tBxto2
             // 
-            this.tBxto2.Location = new System.Drawing.Point(241, 34);
+            this.tBxto2.Location = new System.Drawing.Point(241, -55);
             this.tBxto2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxto2.Name = "tBxto2";
             this.tBxto2.Size = new System.Drawing.Size(100, 22);
@@ -1284,7 +1324,7 @@
             // 
             // tBxfrom4
             // 
-            this.tBxfrom4.Location = new System.Drawing.Point(79, 91);
+            this.tBxfrom4.Location = new System.Drawing.Point(79, 2);
             this.tBxfrom4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxfrom4.Name = "tBxfrom4";
             this.tBxfrom4.Size = new System.Drawing.Size(100, 22);
@@ -1293,7 +1333,7 @@
             // 
             // tBxfrom3
             // 
-            this.tBxfrom3.Location = new System.Drawing.Point(79, 63);
+            this.tBxfrom3.Location = new System.Drawing.Point(79, -26);
             this.tBxfrom3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxfrom3.Name = "tBxfrom3";
             this.tBxfrom3.Size = new System.Drawing.Size(100, 22);
@@ -1302,7 +1342,7 @@
             // 
             // tBxfrom2
             // 
-            this.tBxfrom2.Location = new System.Drawing.Point(79, 34);
+            this.tBxfrom2.Location = new System.Drawing.Point(79, -55);
             this.tBxfrom2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxfrom2.Name = "tBxfrom2";
             this.tBxfrom2.Size = new System.Drawing.Size(100, 22);
@@ -1311,7 +1351,7 @@
             // 
             // tBxto1
             // 
-            this.tBxto1.Location = new System.Drawing.Point(241, 6);
+            this.tBxto1.Location = new System.Drawing.Point(241, -83);
             this.tBxto1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxto1.Name = "tBxto1";
             this.tBxto1.Size = new System.Drawing.Size(100, 22);
@@ -1320,7 +1360,7 @@
             // 
             // tBxfrom1
             // 
-            this.tBxfrom1.Location = new System.Drawing.Point(79, 7);
+            this.tBxfrom1.Location = new System.Drawing.Point(79, -82);
             this.tBxfrom1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxfrom1.Name = "tBxfrom1";
             this.tBxfrom1.Size = new System.Drawing.Size(100, 22);
@@ -1343,10 +1383,26 @@
             this.tbSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbSettings.Name = "tbSettings";
             this.tbSettings.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbSettings.Size = new System.Drawing.Size(905, 191);
+            this.tbSettings.Size = new System.Drawing.Size(1129, 191);
             this.tbSettings.TabIndex = 1;
             this.tbSettings.Text = "Settings";
             this.tbSettings.UseVisualStyleBackColor = true;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(354, 81);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(264, 79);
+            this.textBox2.TabIndex = 17;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(93, 81);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(254, 79);
+            this.textBox1.TabIndex = 16;
             // 
             // lbSelEff
             // 
@@ -1455,11 +1511,12 @@
             // tabControl2
             // 
             this.tabControl2.Controls.Add(this.tabPage1);
-            this.tabControl2.Location = new System.Drawing.Point(16, 243);
+            this.tabControl2.Location = new System.Drawing.Point(12, 523);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
             this.tabControl2.Size = new System.Drawing.Size(905, 233);
             this.tabControl2.TabIndex = 24;
+            this.tabControl2.Visible = false;
             // 
             // tabPage1
             // 
@@ -1473,46 +1530,182 @@
             // 
             // PlusBtn
             // 
-            this.PlusBtn.Location = new System.Drawing.Point(931, 371);
+            this.PlusBtn.Location = new System.Drawing.Point(923, 679);
             this.PlusBtn.Name = "PlusBtn";
             this.PlusBtn.Size = new System.Drawing.Size(35, 33);
             this.PlusBtn.TabIndex = 25;
             this.PlusBtn.Text = "+";
             this.PlusBtn.UseVisualStyleBackColor = true;
+            this.PlusBtn.Visible = false;
             this.PlusBtn.Click += new System.EventHandler(this.PlusBtn_Click);
             // 
             // MinusBtn
             // 
-            this.MinusBtn.Location = new System.Drawing.Point(931, 411);
+            this.MinusBtn.Location = new System.Drawing.Point(923, 719);
             this.MinusBtn.Name = "MinusBtn";
             this.MinusBtn.Size = new System.Drawing.Size(35, 33);
             this.MinusBtn.TabIndex = 26;
             this.MinusBtn.Text = "-";
             this.MinusBtn.UseVisualStyleBackColor = true;
+            this.MinusBtn.Visible = false;
             this.MinusBtn.Click += new System.EventHandler(this.MinusBtn_Click);
             // 
-            // textBox1
+            // tbReverb1
             // 
-            this.textBox1.Location = new System.Drawing.Point(93, 81);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(254, 79);
-            this.textBox1.TabIndex = 16;
+            this.tbReverb1.Location = new System.Drawing.Point(958, -51);
+            this.tbReverb1.Name = "tbReverb1";
+            this.tbReverb1.Size = new System.Drawing.Size(100, 22);
+            this.tbReverb1.TabIndex = 109;
             // 
-            // textBox2
+            // tbReverbHFRTR1
             // 
-            this.textBox2.Location = new System.Drawing.Point(354, 81);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(264, 79);
-            this.textBox2.TabIndex = 17;
+            this.tbReverbHFRTR1.Location = new System.Drawing.Point(1079, -51);
+            this.tbReverbHFRTR1.Name = "tbReverbHFRTR1";
+            this.tbReverbHFRTR1.Size = new System.Drawing.Size(100, 22);
+            this.tbReverbHFRTR1.TabIndex = 110;
+            this.tbReverbHFRTR1.Text = "1";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(1079, -22);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 22);
+            this.textBox3.TabIndex = 112;
+            this.textBox3.Text = "1";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(958, -22);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(100, 22);
+            this.textBox4.TabIndex = 111;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(1079, 6);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(100, 22);
+            this.textBox5.TabIndex = 114;
+            this.textBox5.Text = "1";
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(958, 6);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(100, 22);
+            this.textBox6.TabIndex = 113;
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(1079, 34);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(100, 22);
+            this.textBox7.TabIndex = 116;
+            this.textBox7.Text = "1";
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(958, 34);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(100, 22);
+            this.textBox8.TabIndex = 115;
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(1079, 62);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(100, 22);
+            this.textBox9.TabIndex = 118;
+            this.textBox9.Text = "1";
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(958, 62);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(100, 22);
+            this.textBox10.TabIndex = 117;
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(1079, 89);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(100, 22);
+            this.textBox11.TabIndex = 120;
+            this.textBox11.Text = "1";
+            // 
+            // textBox12
+            // 
+            this.textBox12.Location = new System.Drawing.Point(958, 89);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(100, 22);
+            this.textBox12.TabIndex = 119;
+            // 
+            // textBox13
+            // 
+            this.textBox13.Location = new System.Drawing.Point(1079, 115);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(100, 22);
+            this.textBox13.TabIndex = 112;
+            this.textBox13.Text = "1";
+            // 
+            // textBox14
+            // 
+            this.textBox14.Location = new System.Drawing.Point(958, 115);
+            this.textBox14.Name = "textBox14";
+            this.textBox14.Size = new System.Drawing.Size(100, 22);
+            this.textBox14.TabIndex = 111;
+            // 
+            // textBox15
+            // 
+            this.textBox15.Location = new System.Drawing.Point(1079, 141);
+            this.textBox15.Name = "textBox15";
+            this.textBox15.Size = new System.Drawing.Size(100, 22);
+            this.textBox15.TabIndex = 122;
+            this.textBox15.Text = "1";
+            // 
+            // textBox16
+            // 
+            this.textBox16.Location = new System.Drawing.Point(958, 141);
+            this.textBox16.Name = "textBox16";
+            this.textBox16.Size = new System.Drawing.Size(100, 22);
+            this.textBox16.TabIndex = 121;
+            // 
+            // textBox17
+            // 
+            this.textBox17.Location = new System.Drawing.Point(1079, 169);
+            this.textBox17.Name = "textBox17";
+            this.textBox17.Size = new System.Drawing.Size(100, 22);
+            this.textBox17.TabIndex = 124;
+            this.textBox17.Text = "1";
+            // 
+            // textBox18
+            // 
+            this.textBox18.Location = new System.Drawing.Point(958, 169);
+            this.textBox18.Name = "textBox18";
+            this.textBox18.Size = new System.Drawing.Size(100, 22);
+            this.textBox18.TabIndex = 123;
+            // 
+            // textBox19
+            // 
+            this.textBox19.Location = new System.Drawing.Point(649, 33);
+            this.textBox19.Name = "textBox19";
+            this.textBox19.Size = new System.Drawing.Size(100, 22);
+            this.textBox19.TabIndex = 126;
+            this.textBox19.Text = "1";
+            // 
+            // textBox20
+            // 
+            this.textBox20.Location = new System.Drawing.Point(495, 173);
+            this.textBox20.Name = "textBox20";
+            this.textBox20.Size = new System.Drawing.Size(100, 22);
+            this.textBox20.TabIndex = 125;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1444, 488);
+            this.ClientSize = new System.Drawing.Size(1444, 768);
             this.Controls.Add(this.MinusBtn);
             this.Controls.Add(this.PlusBtn);
             this.Controls.Add(this.tabControl2);
@@ -1680,6 +1873,26 @@
         private System.Windows.Forms.ComboBox cmbSelEff;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox19;
+        private System.Windows.Forms.TextBox textBox20;
+        private System.Windows.Forms.TextBox textBox17;
+        private System.Windows.Forms.TextBox textBox18;
+        private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tbReverbHFRTR1;
+        private System.Windows.Forms.TextBox tbReverb1;
     }
 }
 
