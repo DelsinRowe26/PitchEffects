@@ -34,25 +34,13 @@ namespace PitchShifter
         private SampleDSP mDsp;
         private SimpleMixer mMixer;
         private ISampleSource mMp3;
-        private readonly IWaveSource primarySource;
+        //private readonly IWaveSource primarySource;
         private int SampleRate;
-        private int SampleRate1 = 48000;
 
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         public MainForm()
         {
             InitializeComponent();
-
-            //Initialize WasapiCapture for recording
-            /*mSoundIn = new WasapiCapture(true, AudioClientShareMode.Shared, 0);
-            mSoundIn.Initialize();*/
-
-            //Initialize soundout
-            /*primarySource = new SoundInSource(mSoundIn) { FillWithZeros = true }
-                        .ChangeSampleRate(SampleRate1).ToStereo();
-            mSoundOut = new WasapiOut() { Latency = 1 };
-            mSoundOut.Initialize(primarySource);*/
-            
         }
 
         private void MainForm_Load(object sender, EventArgs e)//загрузка и определение микрофона и колонок
@@ -75,7 +63,7 @@ namespace PitchShifter
                 cmbOutput.Items.Add(device.FriendlyName);
                 if (device.DeviceID == activeDevice.DeviceID) cmbOutput.SelectedIndex = cmbOutput.Items.Count - 1;
             }
-
+            
         }
         private bool StartFullDuplex()//запуск пича и громкости
         {
@@ -101,15 +89,10 @@ namespace PitchShifter
                 {
                     Reverb();
                 }
-
+                
                 //Инициальный микшер
                 if (cmbSelEff.SelectedIndex == 1)
                 {
-                    /*mMixer = new SimpleMixer(2, SampleRate) //стерео, 44,1 КГц
-                    {
-                        FillWithZeros = true,
-                        DivideResult = true, //Для этого установлено значение true, чтобы избежать звуков тиков из-за превышения -1 и 1.
-                    };*/
                     Mixer();
                     //Добавляем наш источник звука в микшер
                 
@@ -253,56 +236,7 @@ namespace PitchShifter
         {
             tbDiapMinus();
         }
-        /*private void Diap()
-        {
-            Label num = new Label();
-            Label lastnum = nums.LastOrDefault();
-            Label label = new Label();
-            Label label2 = new Label();
-            Label lastLabel = labels.LastOrDefault();
-            Label lastLabel2 = labels.LastOrDefault();
-            TextBox newTextBox = new TextBox();
-            TextBox newTextBox2 = new TextBox();
-            TextBox lastOldTextBox = TextBoxes.LastOrDefault();
-            TextBox lastOldTextBox2 = TextBoxes.LastOrDefault();
-            label.AutoSize = true;
-            label2.AutoSize = true;
-            num.AutoSize = true;
-            if (lastOldTextBox == null && lastOldTextBox2 == null && lastLabel == null && lastLabel2 == null && lastnum == null)
-            {
-                newTextBox.Location = new Point(100, 70);
-                newTextBox2.Location = new Point(250, 70);
-                label.Location = new Point(70, 70);
-                label2.Location = new Point(220, 70);
-                num.Location = new Point(50, 70);
-                num.Text = "1.";
-                label.Text = "from";
-                label2.Text = "to";
-            }
-            else
-            {
-                newTextBox.Location = new Point(lastOldTextBox.Location.X - 150, lastOldTextBox.Location.Y + 30);
-                newTextBox2.Location = new Point(lastOldTextBox2.Location.X, lastOldTextBox2.Location.Y + 30);
-                label.Location = new Point(lastLabel.Location.X - 150, lastLabel.Location.Y + 30);
-                label2.Location = new Point(lastLabel2.Location.X, lastLabel2.Location.Y + 30);
-                label.Text = "from";
-                label2.Text = "to";
-                num.Location = new Point(lastnum.Location.X - 170, lastnum.Location.Y + 30);
-                num.Text = $"{nums.Count}.";
-            }
-            //tbContr.SelectedIndex[0].Add(label);
-            nums.Add(num);
-            this.Controls.Add(num);
-            labels.Add(label);
-            this.Controls.Add(label);
-            labels.Add(label2);
-            this.Controls.Add(label2);
-            TextBoxes.Add(newTextBox);
-            Control.ControlCollection controls = this.Controls;
-            controls.Add(newTextBox);
-            TextBoxes.Add(newTextBox2);
-            controls.Add(newTextBox2);
-        }*/
+
         private void tbDiapPlus()//добавление текст боксов основная процедура
         {
             if (plusclick == 0)

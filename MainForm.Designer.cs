@@ -152,6 +152,8 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.PlusBtn = new System.Windows.Forms.Button();
             this.MinusBtn = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.trackPitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackGain)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -1327,6 +1329,8 @@
             // 
             // tbSettings
             // 
+            this.tbSettings.Controls.Add(this.textBox2);
+            this.tbSettings.Controls.Add(this.textBox1);
             this.tbSettings.Controls.Add(this.lbSelEff);
             this.tbSettings.Controls.Add(this.cmbSelEff);
             this.tbSettings.Controls.Add(this.lbSampFreq);
@@ -1486,6 +1490,22 @@
             this.MinusBtn.Text = "-";
             this.MinusBtn.UseVisualStyleBackColor = true;
             this.MinusBtn.Click += new System.EventHandler(this.MinusBtn_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(93, 81);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(254, 79);
+            this.textBox1.TabIndex = 16;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(354, 81);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(264, 79);
+            this.textBox2.TabIndex = 17;
             // 
             // MainForm
             // 
@@ -1658,6 +1678,8 @@
         private System.Windows.Forms.ComboBox cmbSampFreq;
         private System.Windows.Forms.Label lbSelEff;
         private System.Windows.Forms.ComboBox cmbSelEff;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }
 
