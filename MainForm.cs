@@ -403,41 +403,73 @@ namespace PitchShifter
                         PitchShifter.Vol[0] = int.Parse(tbGain1.Text);
                         break;
                     case 2:
+                        reverbTime[1] = int.Parse(tbReverb2.Text);
+                        reverbHFRTR[1] = int.Parse(tbReverbHFRTR2.Text);
+                        min[1] = int.Parse(tBxfrom2.Text);
+                        max[1] = int.Parse(tBxto2.Text);
                         PitchShifter.min[1] = int.Parse(tBxfrom2.Text);
                         PitchShifter.max[1] = int.Parse(tBxto2.Text);
                         PitchShifter.Vol[1] = int.Parse(tbGain2.Text);
                         break;
                     case 3:
+                        reverbTime[2] = int.Parse(tbReverb3.Text);
+                        reverbHFRTR[2] = int.Parse(tbReverbHFRTR3.Text);
+                        min[2] = int.Parse(tBxfrom3.Text);
+                        max[2] = int.Parse(tBxto3.Text);
                         PitchShifter.min[2] = int.Parse(tBxfrom3.Text);
                         PitchShifter.max[2] = int.Parse(tBxto3.Text);
                         PitchShifter.Vol[2] = int.Parse(tbGain3.Text);
                         break;
                     case 4:
+                        reverbTime[3] = int.Parse(tbReverb4.Text);
+                        reverbHFRTR[3] = int.Parse(tbReverbHFRTR4.Text);
+                        min[3] = int.Parse(tBxfrom4.Text);
+                        max[3] = int.Parse(tBxto4.Text);
                         PitchShifter.min[3] = int.Parse(tBxfrom4.Text);
                         PitchShifter.max[3] = int.Parse(tBxto4.Text);
                         PitchShifter.Vol[3] = int.Parse(tbGain4.Text);
                         break;
                     case 5:
+                        reverbTime[4] = int.Parse(tbReverb5.Text);
+                        reverbHFRTR[4] = int.Parse(tbReverbHFRTR5.Text);
+                        min[4] = int.Parse(tBxfrom5.Text);
+                        max[4] = int.Parse(tBxto5.Text);
                         PitchShifter.min[4] = int.Parse(tBxfrom5.Text);
                         PitchShifter.max[4] = int.Parse(tBxto5.Text);
                         PitchShifter.Vol[4] = int.Parse(tbGain5.Text);
                         break;
                     case 6:
+                        reverbTime[5] = int.Parse(tbReverb6.Text);
+                        reverbHFRTR[5] = int.Parse(tbReverbHFRTR6.Text);
+                        min[1] = int.Parse(tBxfrom6.Text);
+                        max[1] = int.Parse(tBxto6.Text);
                         PitchShifter.min[5] = int.Parse(tBxfrom6.Text);
                         PitchShifter.max[5] = int.Parse(tBxto6.Text);
                         PitchShifter.Vol[5] = int.Parse(tbGain6.Text);
                         break;
                     case 7:
+                        reverbTime[6] = int.Parse(tbReverb7.Text);
+                        reverbHFRTR[6] = int.Parse(tbReverbHFRTR7.Text);
+                        min[6] = int.Parse(tBxfrom7.Text);
+                        max[6] = int.Parse(tBxto7.Text);
                         PitchShifter.min[6] = int.Parse(tBxfrom7.Text);
                         PitchShifter.max[6] = int.Parse(tBxto7.Text);
                         PitchShifter.Vol[6] = int.Parse(tbGain7.Text);
                         break;
                     case 8:
+                        reverbTime[7] = int.Parse(tbReverb8.Text);
+                        reverbHFRTR[7] = int.Parse(tbReverbHFRTR8.Text);
+                        min[7] = int.Parse(tBxfrom8.Text);
+                        max[7] = int.Parse(tBxto8.Text);
                         PitchShifter.min[7] = int.Parse(tBxfrom8.Text);
                         PitchShifter.max[7] = int.Parse(tBxto8.Text);
                         PitchShifter.Vol[7] = int.Parse(tbGain8.Text);
                         break;
                     case 9 when plus == 0:
+                        reverbTime[8] = int.Parse(tbReverb9.Text);
+                        reverbHFRTR[8] = int.Parse(tbReverbHFRTR9.Text);
+                        min[8] = int.Parse(tBxfrom9.Text);
+                        max[8] = int.Parse(tBxto9.Text);
                         PitchShifter.min[8] = int.Parse(tBxfrom9.Text);
                         PitchShifter.max[8] = int.Parse(tBxto9.Text);
                         PitchShifter.Vol[8] = int.Parse(tbGain9.Text);
@@ -446,6 +478,10 @@ namespace PitchShifter
                     default:
                         if (plus == 1)
                         {
+                            reverbTime[9] = int.Parse(tbReverb10.Text);
+                            reverbHFRTR[9] = int.Parse(tbReverbHFRTR10.Text);
+                            min[9] = int.Parse(tBxfrom10.Text);
+                            max[9] = int.Parse(tBxto10.Text);
                             PitchShifter.min[9] = int.Parse(tBxfrom10.Text);
                             PitchShifter.max[9] = int.Parse(tBxto10.Text);
                             PitchShifter.Vol[9] = int.Parse(tbGain10.Text);
@@ -895,7 +931,7 @@ namespace PitchShifter
         {
             if (strings != 0)
             {
-                int[] botFreq = new int[strings];
+                /*int[] botFreq = new int[strings];
                 int[] topFreq = new int[strings];
                 int[] reverbTime = new int[strings];
                 int[] reverbHFRTR = new int[strings];
@@ -930,9 +966,9 @@ namespace PitchShifter
                             MessageBox.Show("Неверные данные");
                         }
                     }
-                }
+                }*/
 
-                if (isDataValid(botFreq, topFreq, reverbTime, reverbHFRTR, strings))
+                if (isDataValid(min, max, reverbTime, reverbHFRTR, strings))
                 {
                     /*mMixer = new SimpleMixer(2, SampleRate) //стерео, 44,1 КГц
                     {
@@ -943,7 +979,7 @@ namespace PitchShifter
                     Mixer();
                     for (int i = 0; i < strings; i++)
                     {
-                        var x = BandPassFilter(mSoundIn, SampleRate, botFreq[i], topFreq[i]);
+                        var x = BandPassFilter(mSoundIn, SampleRate, min[i], max[i]);
                         if (reverbTime[i] != 0)
                         {
                             var reverb = new DmoWavesReverbEffect(x.ToWaveSource(16).ToStereo());
