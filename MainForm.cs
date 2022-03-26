@@ -968,36 +968,31 @@ namespace PitchShifter
                     }
                 }*/
 
-                if (isDataValid(min, max, reverbTime, reverbHFRTR, strings))
-                {
-                    /*mMixer = new SimpleMixer(2, SampleRate) //стерео, 44,1 КГц
-                    {
-                        FillWithZeros = true,
-                        DivideResult = true, //Для этого установлено значение true, чтобы избежать звуков тиков из-за превышения -1 и 1.
-                    };
-                    mMixer.Dispose(); */
-                    Mixer();
-                    for (int i = 0; i < strings; i++)
-                    {
-                        var x = BandPassFilter(mSoundIn, SampleRate, min[i], max[i]);
-                        if (reverbTime[i] != 0)
-                        {
-                            var reverb = new DmoWavesReverbEffect(x.ToWaveSource(16).ToStereo());
-                            reverb.ReverbTime = reverbTime[i];
-                            reverb.HighFrequencyRTRatio = ((float)reverbHFRTR[i]) / 1000;
-                            x = reverb.ToSampleSource();
-                        }
-                        mDsp = new SampleDSP(x.ToStereo());//.ToWaveSource(16).ToSampleSource()
-                        mDsp.GainDB = trackGain.Value;
-                        mMixer.AddSource(mDsp.ChangeSampleRate(mMixer.WaveFormat.SampleRate));
-                    }
-                    SoundOut();
-                }
+                
             }
             else
             {
                 SoundOut();
                 MessageBox.Show("Параметры не заданы");
+            }
+            if (isDataValid(min, max, reverbTime, reverbHFRTR, strings))
+            {
+                Mixer();
+                for (int i = 0; i < strings; i++)
+                {
+                    var x = BandPassFilter(mSoundIn, SampleRate, min[i], max[i]);
+                    if (reverbTime[i] != 0)
+                    {
+                        var reverb = new DmoWavesReverbEffect(x.ToWaveSource(16).ToStereo());
+                        reverb.ReverbTime = reverbTime[i];
+                        reverb.HighFrequencyRTRatio = ((float)reverbHFRTR[i]) / 1000;
+                        x = reverb.ToSampleSource();
+                    }
+                    mDsp = new SampleDSP(x.ToStereo());//.ToWaveSource(16).ToSampleSource()
+                    mDsp.GainDB = trackGain.Value;
+                    mMixer.AddSource(mDsp.ChangeSampleRate(mMixer.WaveFormat.SampleRate));
+                }
+                SoundOut();
             }
         }
     }
