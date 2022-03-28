@@ -74,20 +74,40 @@ namespace PitchShifter
                 mSoundIn.Device = mInputDevices[cmbInput.SelectedIndex];
                 mSoundIn.Initialize();
                 mSoundIn.Start();
-
-                var source = new SoundInSource(mSoundIn) { FillWithZeros = true };
+                
+                
 
                 if (cmbSelEff.SelectedIndex == 1)
                 {
                     //Init DSP для смещения высоты тона
+                    var source = new SoundInSource(mSoundIn) { FillWithZeros = true };
                     mDsp = new SampleDSP(source.ToSampleSource().ToStereo());
                     
                     mDsp.GainDB = trackGain.Value;
                     SetPitchShiftValue();
                 } 
-                else
+                else if (cmbSelEff.SelectedIndex == 0)
                 {
-                    Reverb();
+                    if (isDataValid(min, max, reverbTime, reverbHFRTR, plusclick))
+                    {
+                        for (int i = 0; i < 1; i++)
+                        {
+                            var xsource = BandPassFilter(mSoundIn, SampleRate1, min[i], max[i]);
+                            if(reverbTime[i] != 0)
+                            {
+                                var reverb = new DmoWavesReverbEffect(xsource.ToWaveSource());
+                                reverb.ReverbTime = reverbTime[i];
+                                reverb.HighFrequencyRTRatio = ((float)reverbHFRTR[i]) / 1000;
+                                xsource = reverb.ToSampleSource();
+                            }
+                            mDsp = new SampleDSP(xsource.ToStereo());
+                            mDsp.GainDB = trackGain.Value;
+                            SetPitchShiftValue();
+                            Mixer();
+                            mMixer.AddSource(xsource.ToStereo());
+                        }
+                        SoundOut();
+                    }
                 }
 
                 //Инициальный микшер
@@ -97,10 +117,11 @@ namespace PitchShifter
                     //Добавляем наш источник звука в микшер
                 
                     mMixer.AddSource(mDsp.ChangeSampleRate(mMixer.WaveFormat.SampleRate));//основная строка
+                    SoundOut();
                 }
                 
                 //Запускает устройство воспроизведения звука с задержкой 1 мс.
-                SoundOut();
+                
                 return true;
             }
             catch (Exception ex)
@@ -116,7 +137,7 @@ namespace PitchShifter
         {
             if (cmbSelEff.SelectedIndex == 0)
             {
-                mSoundOut = new WasapiOut(false, AudioClientShareMode.Exclusive, 1);
+                mSoundOut = new WasapiOut(/*false, AudioClientShareMode.Exclusive, 1*/);
                 mSoundOut.Device = mOutputDevices[cmbOutput.SelectedIndex];
                 mSoundOut.Initialize(mMixer.ToWaveSource(16));
 
@@ -812,7 +833,7 @@ namespace PitchShifter
             return true;
         }
 
-        private void PlusBtn_Click(object sender, EventArgs e)
+        /*private void PlusBtn_Click(object sender, EventArgs e)
         {
             AddString("0", "0", "0", "1");
         }
@@ -829,7 +850,7 @@ namespace PitchShifter
                 strings--;
                 tabIndex -= 8;
             }
-        }
+        }*/
 
         private void cmbSampFreq_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -846,7 +867,7 @@ namespace PitchShifter
             }
         }
 
-        private void AddString(string botFreq, string topFreq, string reverbTime, string reverbHFRTR)
+        /*private void AddString(string botFreq, string topFreq, string reverbTime, string reverbHFRTR)
         {
             Label lbNumber = new Label();
             lbNumber.AutoSize = false;
@@ -925,11 +946,11 @@ namespace PitchShifter
             tabPage1.Controls.Add(tbReverbHFRTR);
 
             strings++;
-        }
+        }*/
 
         private void Reverb()
         {
-            if (strings != 0)
+            if (plusclick != 0)
             {
                 /*int[] botFreq = new int[strings];
                 int[] topFreq = new int[strings];
@@ -975,7 +996,7 @@ namespace PitchShifter
                 SoundOut();
                 MessageBox.Show("Параметры не заданы");
             }
-            if (isDataValid(min, max, reverbTime, reverbHFRTR, strings))
+            if (isDataValid(min, max, reverbTime, reverbHFRTR, plusclick))
             {
                 Mixer();
                 for (int i = 0; i < strings; i++)

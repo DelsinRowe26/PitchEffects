@@ -45,6 +45,27 @@
             this.btnFix = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tbRange = new System.Windows.Forms.TabPage();
+            this.lbReverb = new System.Windows.Forms.Label();
+            this.tbReverbHFRTR10 = new System.Windows.Forms.TextBox();
+            this.tbReverb10 = new System.Windows.Forms.TextBox();
+            this.tbReverbHFRTR9 = new System.Windows.Forms.TextBox();
+            this.tbReverb9 = new System.Windows.Forms.TextBox();
+            this.tbReverbHFRTR8 = new System.Windows.Forms.TextBox();
+            this.tbReverb8 = new System.Windows.Forms.TextBox();
+            this.tbReverbHFRTR7 = new System.Windows.Forms.TextBox();
+            this.tbReverb7 = new System.Windows.Forms.TextBox();
+            this.tbReverbHFRTR6 = new System.Windows.Forms.TextBox();
+            this.tbReverb6 = new System.Windows.Forms.TextBox();
+            this.tbReverbHFRTR5 = new System.Windows.Forms.TextBox();
+            this.tbReverb5 = new System.Windows.Forms.TextBox();
+            this.tbReverbHFRTR4 = new System.Windows.Forms.TextBox();
+            this.tbReverb4 = new System.Windows.Forms.TextBox();
+            this.tbReverbHFRTR3 = new System.Windows.Forms.TextBox();
+            this.tbReverb3 = new System.Windows.Forms.TextBox();
+            this.tbReverbHFRTR2 = new System.Windows.Forms.TextBox();
+            this.tbReverb2 = new System.Windows.Forms.TextBox();
+            this.tbReverbHFRTR1 = new System.Windows.Forms.TextBox();
+            this.tbReverb1 = new System.Windows.Forms.TextBox();
             this.btnPitchVol10 = new System.Windows.Forms.Button();
             this.btnPitchVol9 = new System.Windows.Forms.Button();
             this.btnPitchVol8 = new System.Windows.Forms.Button();
@@ -148,37 +169,11 @@
             this.lbVolValue = new System.Windows.Forms.Label();
             this.btnStop = new System.Windows.Forms.Button();
             this.btnApply = new System.Windows.Forms.Button();
-            this.tabControl2 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.PlusBtn = new System.Windows.Forms.Button();
-            this.MinusBtn = new System.Windows.Forms.Button();
-            this.tbReverb1 = new System.Windows.Forms.TextBox();
-            this.tbReverbHFRTR1 = new System.Windows.Forms.TextBox();
-            this.tbReverbHFRTR2 = new System.Windows.Forms.TextBox();
-            this.tbReverb2 = new System.Windows.Forms.TextBox();
-            this.tbReverbHFRTR3 = new System.Windows.Forms.TextBox();
-            this.tbReverb3 = new System.Windows.Forms.TextBox();
-            this.tbReverbHFRTR4 = new System.Windows.Forms.TextBox();
-            this.tbReverb4 = new System.Windows.Forms.TextBox();
-            this.tbReverbHFRTR5 = new System.Windows.Forms.TextBox();
-            this.tbReverb5 = new System.Windows.Forms.TextBox();
-            this.tbReverbHFRTR6 = new System.Windows.Forms.TextBox();
-            this.tbReverb6 = new System.Windows.Forms.TextBox();
-            this.tbReverbHFRTR7 = new System.Windows.Forms.TextBox();
-            this.tbReverb7 = new System.Windows.Forms.TextBox();
-            this.tbReverbHFRTR8 = new System.Windows.Forms.TextBox();
-            this.tbReverb8 = new System.Windows.Forms.TextBox();
-            this.tbReverbHFRTR9 = new System.Windows.Forms.TextBox();
-            this.tbReverb9 = new System.Windows.Forms.TextBox();
-            this.tbReverbHFRTR10 = new System.Windows.Forms.TextBox();
-            this.tbReverb10 = new System.Windows.Forms.TextBox();
-            this.lbReverb = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackPitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackGain)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tbRange.SuspendLayout();
             this.tbSettings.SuspendLayout();
-            this.tabControl2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnStart
@@ -299,7 +294,7 @@
             // 
             // bTnPlus
             // 
-            this.bTnPlus.Location = new System.Drawing.Point(931, 174);
+            this.bTnPlus.Location = new System.Drawing.Point(1340, 451);
             this.bTnPlus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bTnPlus.Name = "bTnPlus";
             this.bTnPlus.Size = new System.Drawing.Size(35, 23);
@@ -311,7 +306,7 @@
             // bTnMinus
             // 
             this.bTnMinus.Enabled = false;
-            this.bTnMinus.Location = new System.Drawing.Point(931, 199);
+            this.bTnMinus.Location = new System.Drawing.Point(1340, 476);
             this.bTnMinus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bTnMinus.Name = "bTnMinus";
             this.bTnMinus.Size = new System.Drawing.Size(35, 23);
@@ -467,6 +462,186 @@
             this.tbRange.TabIndex = 0;
             this.tbRange.Text = "Range";
             this.tbRange.UseVisualStyleBackColor = true;
+            // 
+            // lbReverb
+            // 
+            this.lbReverb.AutoSize = true;
+            this.lbReverb.Location = new System.Drawing.Point(916, 11);
+            this.lbReverb.Name = "lbReverb";
+            this.lbReverb.Size = new System.Drawing.Size(52, 16);
+            this.lbReverb.TabIndex = 127;
+            this.lbReverb.Text = "Reverb";
+            this.lbReverb.Visible = false;
+            // 
+            // tbReverbHFRTR10
+            // 
+            this.tbReverbHFRTR10.Location = new System.Drawing.Point(1094, 258);
+            this.tbReverbHFRTR10.Name = "tbReverbHFRTR10";
+            this.tbReverbHFRTR10.Size = new System.Drawing.Size(100, 22);
+            this.tbReverbHFRTR10.TabIndex = 126;
+            this.tbReverbHFRTR10.Text = "1";
+            this.tbReverbHFRTR10.Visible = false;
+            // 
+            // tbReverb10
+            // 
+            this.tbReverb10.Location = new System.Drawing.Point(974, 257);
+            this.tbReverb10.Name = "tbReverb10";
+            this.tbReverb10.Size = new System.Drawing.Size(100, 22);
+            this.tbReverb10.TabIndex = 125;
+            this.tbReverb10.Visible = false;
+            // 
+            // tbReverbHFRTR9
+            // 
+            this.tbReverbHFRTR9.Location = new System.Drawing.Point(1094, 231);
+            this.tbReverbHFRTR9.Name = "tbReverbHFRTR9";
+            this.tbReverbHFRTR9.Size = new System.Drawing.Size(100, 22);
+            this.tbReverbHFRTR9.TabIndex = 124;
+            this.tbReverbHFRTR9.Text = "1";
+            this.tbReverbHFRTR9.Visible = false;
+            // 
+            // tbReverb9
+            // 
+            this.tbReverb9.Location = new System.Drawing.Point(974, 230);
+            this.tbReverb9.Name = "tbReverb9";
+            this.tbReverb9.Size = new System.Drawing.Size(100, 22);
+            this.tbReverb9.TabIndex = 123;
+            this.tbReverb9.Visible = false;
+            // 
+            // tbReverbHFRTR8
+            // 
+            this.tbReverbHFRTR8.Location = new System.Drawing.Point(1094, 201);
+            this.tbReverbHFRTR8.Name = "tbReverbHFRTR8";
+            this.tbReverbHFRTR8.Size = new System.Drawing.Size(100, 22);
+            this.tbReverbHFRTR8.TabIndex = 122;
+            this.tbReverbHFRTR8.Text = "1";
+            this.tbReverbHFRTR8.Visible = false;
+            // 
+            // tbReverb8
+            // 
+            this.tbReverb8.Location = new System.Drawing.Point(974, 200);
+            this.tbReverb8.Name = "tbReverb8";
+            this.tbReverb8.Size = new System.Drawing.Size(100, 22);
+            this.tbReverb8.TabIndex = 121;
+            this.tbReverb8.Visible = false;
+            // 
+            // tbReverbHFRTR7
+            // 
+            this.tbReverbHFRTR7.Location = new System.Drawing.Point(1094, 175);
+            this.tbReverbHFRTR7.Name = "tbReverbHFRTR7";
+            this.tbReverbHFRTR7.Size = new System.Drawing.Size(100, 22);
+            this.tbReverbHFRTR7.TabIndex = 120;
+            this.tbReverbHFRTR7.Text = "1";
+            this.tbReverbHFRTR7.Visible = false;
+            // 
+            // tbReverb7
+            // 
+            this.tbReverb7.Location = new System.Drawing.Point(974, 174);
+            this.tbReverb7.Name = "tbReverb7";
+            this.tbReverb7.Size = new System.Drawing.Size(100, 22);
+            this.tbReverb7.TabIndex = 119;
+            this.tbReverb7.Visible = false;
+            // 
+            // tbReverbHFRTR6
+            // 
+            this.tbReverbHFRTR6.Location = new System.Drawing.Point(1094, 148);
+            this.tbReverbHFRTR6.Name = "tbReverbHFRTR6";
+            this.tbReverbHFRTR6.Size = new System.Drawing.Size(100, 22);
+            this.tbReverbHFRTR6.TabIndex = 112;
+            this.tbReverbHFRTR6.Text = "1";
+            this.tbReverbHFRTR6.Visible = false;
+            // 
+            // tbReverb6
+            // 
+            this.tbReverb6.Location = new System.Drawing.Point(974, 147);
+            this.tbReverb6.Name = "tbReverb6";
+            this.tbReverb6.Size = new System.Drawing.Size(100, 22);
+            this.tbReverb6.TabIndex = 111;
+            this.tbReverb6.Visible = false;
+            // 
+            // tbReverbHFRTR5
+            // 
+            this.tbReverbHFRTR5.Location = new System.Drawing.Point(1094, 119);
+            this.tbReverbHFRTR5.Name = "tbReverbHFRTR5";
+            this.tbReverbHFRTR5.Size = new System.Drawing.Size(100, 22);
+            this.tbReverbHFRTR5.TabIndex = 118;
+            this.tbReverbHFRTR5.Text = "1";
+            this.tbReverbHFRTR5.Visible = false;
+            // 
+            // tbReverb5
+            // 
+            this.tbReverb5.Location = new System.Drawing.Point(974, 118);
+            this.tbReverb5.Name = "tbReverb5";
+            this.tbReverb5.Size = new System.Drawing.Size(100, 22);
+            this.tbReverb5.TabIndex = 117;
+            this.tbReverb5.Visible = false;
+            // 
+            // tbReverbHFRTR4
+            // 
+            this.tbReverbHFRTR4.Location = new System.Drawing.Point(1094, 91);
+            this.tbReverbHFRTR4.Name = "tbReverbHFRTR4";
+            this.tbReverbHFRTR4.Size = new System.Drawing.Size(100, 22);
+            this.tbReverbHFRTR4.TabIndex = 116;
+            this.tbReverbHFRTR4.Text = "1";
+            this.tbReverbHFRTR4.Visible = false;
+            // 
+            // tbReverb4
+            // 
+            this.tbReverb4.Location = new System.Drawing.Point(974, 90);
+            this.tbReverb4.Name = "tbReverb4";
+            this.tbReverb4.Size = new System.Drawing.Size(100, 22);
+            this.tbReverb4.TabIndex = 115;
+            this.tbReverb4.Visible = false;
+            // 
+            // tbReverbHFRTR3
+            // 
+            this.tbReverbHFRTR3.Location = new System.Drawing.Point(1094, 63);
+            this.tbReverbHFRTR3.Name = "tbReverbHFRTR3";
+            this.tbReverbHFRTR3.Size = new System.Drawing.Size(100, 22);
+            this.tbReverbHFRTR3.TabIndex = 114;
+            this.tbReverbHFRTR3.Text = "1";
+            this.tbReverbHFRTR3.Visible = false;
+            // 
+            // tbReverb3
+            // 
+            this.tbReverb3.Location = new System.Drawing.Point(974, 62);
+            this.tbReverb3.Name = "tbReverb3";
+            this.tbReverb3.Size = new System.Drawing.Size(100, 22);
+            this.tbReverb3.TabIndex = 113;
+            this.tbReverb3.Visible = false;
+            // 
+            // tbReverbHFRTR2
+            // 
+            this.tbReverbHFRTR2.Location = new System.Drawing.Point(1094, 35);
+            this.tbReverbHFRTR2.Name = "tbReverbHFRTR2";
+            this.tbReverbHFRTR2.Size = new System.Drawing.Size(100, 22);
+            this.tbReverbHFRTR2.TabIndex = 112;
+            this.tbReverbHFRTR2.Text = "1";
+            this.tbReverbHFRTR2.Visible = false;
+            // 
+            // tbReverb2
+            // 
+            this.tbReverb2.Location = new System.Drawing.Point(974, 34);
+            this.tbReverb2.Name = "tbReverb2";
+            this.tbReverb2.Size = new System.Drawing.Size(100, 22);
+            this.tbReverb2.TabIndex = 111;
+            this.tbReverb2.Visible = false;
+            // 
+            // tbReverbHFRTR1
+            // 
+            this.tbReverbHFRTR1.Location = new System.Drawing.Point(1094, 8);
+            this.tbReverbHFRTR1.Name = "tbReverbHFRTR1";
+            this.tbReverbHFRTR1.Size = new System.Drawing.Size(100, 22);
+            this.tbReverbHFRTR1.TabIndex = 110;
+            this.tbReverbHFRTR1.Text = "1";
+            this.tbReverbHFRTR1.Visible = false;
+            // 
+            // tbReverb1
+            // 
+            this.tbReverb1.Location = new System.Drawing.Point(974, 7);
+            this.tbReverb1.Name = "tbReverb1";
+            this.tbReverb1.Size = new System.Drawing.Size(100, 22);
+            this.tbReverb1.TabIndex = 109;
+            this.tbReverb1.Visible = false;
             // 
             // btnPitchVol10
             // 
@@ -814,6 +989,7 @@
             this.tbGain10.Name = "tbGain10";
             this.tbGain10.Size = new System.Drawing.Size(100, 22);
             this.tbGain10.TabIndex = 75;
+            this.tbGain10.Text = "1";
             this.tbGain10.Visible = false;
             // 
             // tbPitch10
@@ -832,6 +1008,7 @@
             this.tbGain9.Name = "tbGain9";
             this.tbGain9.Size = new System.Drawing.Size(100, 22);
             this.tbGain9.TabIndex = 73;
+            this.tbGain9.Text = "1";
             this.tbGain9.Visible = false;
             // 
             // tbPitch9
@@ -850,6 +1027,7 @@
             this.tbGain8.Name = "tbGain8";
             this.tbGain8.Size = new System.Drawing.Size(100, 22);
             this.tbGain8.TabIndex = 71;
+            this.tbGain8.Text = "1";
             this.tbGain8.Visible = false;
             // 
             // tbPitch8
@@ -868,6 +1046,7 @@
             this.tbGain7.Name = "tbGain7";
             this.tbGain7.Size = new System.Drawing.Size(100, 22);
             this.tbGain7.TabIndex = 69;
+            this.tbGain7.Text = "1";
             this.tbGain7.Visible = false;
             // 
             // tbPitch7
@@ -886,6 +1065,7 @@
             this.tbGain6.Name = "tbGain6";
             this.tbGain6.Size = new System.Drawing.Size(100, 22);
             this.tbGain6.TabIndex = 67;
+            this.tbGain6.Text = "1";
             this.tbGain6.Visible = false;
             // 
             // tbPitch6
@@ -904,6 +1084,7 @@
             this.tbGain5.Name = "tbGain5";
             this.tbGain5.Size = new System.Drawing.Size(100, 22);
             this.tbGain5.TabIndex = 65;
+            this.tbGain5.Text = "1";
             this.tbGain5.Visible = false;
             // 
             // tbPitch5
@@ -922,6 +1103,7 @@
             this.tbGain4.Name = "tbGain4";
             this.tbGain4.Size = new System.Drawing.Size(100, 22);
             this.tbGain4.TabIndex = 63;
+            this.tbGain4.Text = "1";
             this.tbGain4.Visible = false;
             // 
             // tbPitch4
@@ -940,6 +1122,7 @@
             this.tbGain3.Name = "tbGain3";
             this.tbGain3.Size = new System.Drawing.Size(100, 22);
             this.tbGain3.TabIndex = 61;
+            this.tbGain3.Text = "1";
             this.tbGain3.Visible = false;
             // 
             // tbPitch3
@@ -958,6 +1141,7 @@
             this.tbGain2.Name = "tbGain2";
             this.tbGain2.Size = new System.Drawing.Size(100, 22);
             this.tbGain2.TabIndex = 59;
+            this.tbGain2.Text = "1";
             this.tbGain2.Visible = false;
             // 
             // tbPitch2
@@ -976,6 +1160,7 @@
             this.tbGain1.Name = "tbGain1";
             this.tbGain1.Size = new System.Drawing.Size(100, 22);
             this.tbGain1.TabIndex = 57;
+            this.tbGain1.Text = "1";
             this.tbGain1.Visible = false;
             // 
             // tbPitch1
@@ -1381,7 +1566,7 @@
             this.tbSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbSettings.Name = "tbSettings";
             this.tbSettings.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbSettings.Size = new System.Drawing.Size(905, 191);
+            this.tbSettings.Size = new System.Drawing.Size(1297, 191);
             this.tbSettings.TabIndex = 1;
             this.tbSettings.Text = "Settings";
             this.tbSettings.UseVisualStyleBackColor = true;
@@ -1488,236 +1673,15 @@
             this.btnApply.TabIndex = 23;
             this.btnApply.Text = "Apply";
             this.btnApply.UseVisualStyleBackColor = true;
+            this.btnApply.Visible = false;
             this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
-            // 
-            // tabControl2
-            // 
-            this.tabControl2.Controls.Add(this.tabPage1);
-            this.tabControl2.Location = new System.Drawing.Point(12, 539);
-            this.tabControl2.Name = "tabControl2";
-            this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(905, 233);
-            this.tabControl2.TabIndex = 24;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(897, 204);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Values";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // PlusBtn
-            // 
-            this.PlusBtn.Location = new System.Drawing.Point(927, 667);
-            this.PlusBtn.Name = "PlusBtn";
-            this.PlusBtn.Size = new System.Drawing.Size(35, 33);
-            this.PlusBtn.TabIndex = 25;
-            this.PlusBtn.Text = "+";
-            this.PlusBtn.UseVisualStyleBackColor = true;
-            this.PlusBtn.Click += new System.EventHandler(this.PlusBtn_Click);
-            // 
-            // MinusBtn
-            // 
-            this.MinusBtn.Location = new System.Drawing.Point(927, 707);
-            this.MinusBtn.Name = "MinusBtn";
-            this.MinusBtn.Size = new System.Drawing.Size(35, 33);
-            this.MinusBtn.TabIndex = 26;
-            this.MinusBtn.Text = "-";
-            this.MinusBtn.UseVisualStyleBackColor = true;
-            this.MinusBtn.Click += new System.EventHandler(this.MinusBtn_Click);
-            // 
-            // tbReverb1
-            // 
-            this.tbReverb1.Location = new System.Drawing.Point(974, 7);
-            this.tbReverb1.Name = "tbReverb1";
-            this.tbReverb1.Size = new System.Drawing.Size(100, 22);
-            this.tbReverb1.TabIndex = 109;
-            this.tbReverb1.Visible = false;
-            // 
-            // tbReverbHFRTR1
-            // 
-            this.tbReverbHFRTR1.Location = new System.Drawing.Point(1094, 8);
-            this.tbReverbHFRTR1.Name = "tbReverbHFRTR1";
-            this.tbReverbHFRTR1.Size = new System.Drawing.Size(100, 22);
-            this.tbReverbHFRTR1.TabIndex = 110;
-            this.tbReverbHFRTR1.Text = "1";
-            this.tbReverbHFRTR1.Visible = false;
-            // 
-            // tbReverbHFRTR2
-            // 
-            this.tbReverbHFRTR2.Location = new System.Drawing.Point(1094, 35);
-            this.tbReverbHFRTR2.Name = "tbReverbHFRTR2";
-            this.tbReverbHFRTR2.Size = new System.Drawing.Size(100, 22);
-            this.tbReverbHFRTR2.TabIndex = 112;
-            this.tbReverbHFRTR2.Text = "1";
-            this.tbReverbHFRTR2.Visible = false;
-            // 
-            // tbReverb2
-            // 
-            this.tbReverb2.Location = new System.Drawing.Point(974, 34);
-            this.tbReverb2.Name = "tbReverb2";
-            this.tbReverb2.Size = new System.Drawing.Size(100, 22);
-            this.tbReverb2.TabIndex = 111;
-            this.tbReverb2.Visible = false;
-            // 
-            // tbReverbHFRTR3
-            // 
-            this.tbReverbHFRTR3.Location = new System.Drawing.Point(1094, 63);
-            this.tbReverbHFRTR3.Name = "tbReverbHFRTR3";
-            this.tbReverbHFRTR3.Size = new System.Drawing.Size(100, 22);
-            this.tbReverbHFRTR3.TabIndex = 114;
-            this.tbReverbHFRTR3.Text = "1";
-            this.tbReverbHFRTR3.Visible = false;
-            // 
-            // tbReverb3
-            // 
-            this.tbReverb3.Location = new System.Drawing.Point(974, 62);
-            this.tbReverb3.Name = "tbReverb3";
-            this.tbReverb3.Size = new System.Drawing.Size(100, 22);
-            this.tbReverb3.TabIndex = 113;
-            this.tbReverb3.Visible = false;
-            // 
-            // tbReverbHFRTR4
-            // 
-            this.tbReverbHFRTR4.Location = new System.Drawing.Point(1094, 91);
-            this.tbReverbHFRTR4.Name = "tbReverbHFRTR4";
-            this.tbReverbHFRTR4.Size = new System.Drawing.Size(100, 22);
-            this.tbReverbHFRTR4.TabIndex = 116;
-            this.tbReverbHFRTR4.Text = "1";
-            this.tbReverbHFRTR4.Visible = false;
-            // 
-            // tbReverb4
-            // 
-            this.tbReverb4.Location = new System.Drawing.Point(974, 90);
-            this.tbReverb4.Name = "tbReverb4";
-            this.tbReverb4.Size = new System.Drawing.Size(100, 22);
-            this.tbReverb4.TabIndex = 115;
-            this.tbReverb4.Visible = false;
-            // 
-            // tbReverbHFRTR5
-            // 
-            this.tbReverbHFRTR5.Location = new System.Drawing.Point(1094, 119);
-            this.tbReverbHFRTR5.Name = "tbReverbHFRTR5";
-            this.tbReverbHFRTR5.Size = new System.Drawing.Size(100, 22);
-            this.tbReverbHFRTR5.TabIndex = 118;
-            this.tbReverbHFRTR5.Text = "1";
-            this.tbReverbHFRTR5.Visible = false;
-            // 
-            // tbReverb5
-            // 
-            this.tbReverb5.Location = new System.Drawing.Point(974, 118);
-            this.tbReverb5.Name = "tbReverb5";
-            this.tbReverb5.Size = new System.Drawing.Size(100, 22);
-            this.tbReverb5.TabIndex = 117;
-            this.tbReverb5.Visible = false;
-            // 
-            // tbReverbHFRTR6
-            // 
-            this.tbReverbHFRTR6.Location = new System.Drawing.Point(1094, 148);
-            this.tbReverbHFRTR6.Name = "tbReverbHFRTR6";
-            this.tbReverbHFRTR6.Size = new System.Drawing.Size(100, 22);
-            this.tbReverbHFRTR6.TabIndex = 112;
-            this.tbReverbHFRTR6.Text = "1";
-            this.tbReverbHFRTR6.Visible = false;
-            // 
-            // tbReverb6
-            // 
-            this.tbReverb6.Location = new System.Drawing.Point(974, 147);
-            this.tbReverb6.Name = "tbReverb6";
-            this.tbReverb6.Size = new System.Drawing.Size(100, 22);
-            this.tbReverb6.TabIndex = 111;
-            this.tbReverb6.Visible = false;
-            // 
-            // tbReverbHFRTR7
-            // 
-            this.tbReverbHFRTR7.Location = new System.Drawing.Point(1094, 175);
-            this.tbReverbHFRTR7.Name = "tbReverbHFRTR7";
-            this.tbReverbHFRTR7.Size = new System.Drawing.Size(100, 22);
-            this.tbReverbHFRTR7.TabIndex = 120;
-            this.tbReverbHFRTR7.Text = "1";
-            this.tbReverbHFRTR7.Visible = false;
-            // 
-            // tbReverb7
-            // 
-            this.tbReverb7.Location = new System.Drawing.Point(974, 174);
-            this.tbReverb7.Name = "tbReverb7";
-            this.tbReverb7.Size = new System.Drawing.Size(100, 22);
-            this.tbReverb7.TabIndex = 119;
-            this.tbReverb7.Visible = false;
-            // 
-            // tbReverbHFRTR8
-            // 
-            this.tbReverbHFRTR8.Location = new System.Drawing.Point(1094, 201);
-            this.tbReverbHFRTR8.Name = "tbReverbHFRTR8";
-            this.tbReverbHFRTR8.Size = new System.Drawing.Size(100, 22);
-            this.tbReverbHFRTR8.TabIndex = 122;
-            this.tbReverbHFRTR8.Text = "1";
-            this.tbReverbHFRTR8.Visible = false;
-            // 
-            // tbReverb8
-            // 
-            this.tbReverb8.Location = new System.Drawing.Point(974, 200);
-            this.tbReverb8.Name = "tbReverb8";
-            this.tbReverb8.Size = new System.Drawing.Size(100, 22);
-            this.tbReverb8.TabIndex = 121;
-            this.tbReverb8.Visible = false;
-            // 
-            // tbReverbHFRTR9
-            // 
-            this.tbReverbHFRTR9.Location = new System.Drawing.Point(1094, 231);
-            this.tbReverbHFRTR9.Name = "tbReverbHFRTR9";
-            this.tbReverbHFRTR9.Size = new System.Drawing.Size(100, 22);
-            this.tbReverbHFRTR9.TabIndex = 124;
-            this.tbReverbHFRTR9.Text = "1";
-            this.tbReverbHFRTR9.Visible = false;
-            // 
-            // tbReverb9
-            // 
-            this.tbReverb9.Location = new System.Drawing.Point(974, 230);
-            this.tbReverb9.Name = "tbReverb9";
-            this.tbReverb9.Size = new System.Drawing.Size(100, 22);
-            this.tbReverb9.TabIndex = 123;
-            this.tbReverb9.Visible = false;
-            // 
-            // tbReverbHFRTR10
-            // 
-            this.tbReverbHFRTR10.Location = new System.Drawing.Point(1094, 258);
-            this.tbReverbHFRTR10.Name = "tbReverbHFRTR10";
-            this.tbReverbHFRTR10.Size = new System.Drawing.Size(100, 22);
-            this.tbReverbHFRTR10.TabIndex = 126;
-            this.tbReverbHFRTR10.Text = "1";
-            this.tbReverbHFRTR10.Visible = false;
-            // 
-            // tbReverb10
-            // 
-            this.tbReverb10.Location = new System.Drawing.Point(974, 257);
-            this.tbReverb10.Name = "tbReverb10";
-            this.tbReverb10.Size = new System.Drawing.Size(100, 22);
-            this.tbReverb10.TabIndex = 125;
-            this.tbReverb10.Visible = false;
-            // 
-            // lbReverb
-            // 
-            this.lbReverb.AutoSize = true;
-            this.lbReverb.Location = new System.Drawing.Point(916, 11);
-            this.lbReverb.Name = "lbReverb";
-            this.lbReverb.Size = new System.Drawing.Size(52, 16);
-            this.lbReverb.TabIndex = 127;
-            this.lbReverb.Text = "Reverb";
-            this.lbReverb.Visible = false;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1444, 784);
-            this.Controls.Add(this.MinusBtn);
-            this.Controls.Add(this.PlusBtn);
-            this.Controls.Add(this.tabControl2);
+            this.ClientSize = new System.Drawing.Size(1444, 554);
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.lbVolValue);
@@ -1749,7 +1713,6 @@
             this.tbRange.PerformLayout();
             this.tbSettings.ResumeLayout(false);
             this.tbSettings.PerformLayout();
-            this.tabControl2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1872,10 +1835,6 @@
         private System.Windows.Forms.Button btnPitchVol3;
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Button btnApply;
-        private System.Windows.Forms.TabControl tabControl2;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Button PlusBtn;
-        private System.Windows.Forms.Button MinusBtn;
         private System.Windows.Forms.Label lbSampFreq;
         private System.Windows.Forms.ComboBox cmbSampFreq;
         private System.Windows.Forms.Label lbSelEff;
