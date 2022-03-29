@@ -1179,7 +1179,7 @@
             // lbTo10
             // 
             this.lbTo10.AutoSize = true;
-            this.lbTo10.Location = new System.Drawing.Point(199, 262);
+            this.lbTo10.Location = new System.Drawing.Point(185, 263);
             this.lbTo10.Name = "lbTo10";
             this.lbTo10.Size = new System.Drawing.Size(18, 16);
             this.lbTo10.TabIndex = 55;
@@ -1189,7 +1189,7 @@
             // lbTo9
             // 
             this.lbTo9.AutoSize = true;
-            this.lbTo9.Location = new System.Drawing.Point(199, 234);
+            this.lbTo9.Location = new System.Drawing.Point(185, 235);
             this.lbTo9.Name = "lbTo9";
             this.lbTo9.Size = new System.Drawing.Size(18, 16);
             this.lbTo9.TabIndex = 54;
@@ -1199,7 +1199,7 @@
             // lbTo8
             // 
             this.lbTo8.AutoSize = true;
-            this.lbTo8.Location = new System.Drawing.Point(199, 206);
+            this.lbTo8.Location = new System.Drawing.Point(185, 207);
             this.lbTo8.Name = "lbTo8";
             this.lbTo8.Size = new System.Drawing.Size(18, 16);
             this.lbTo8.TabIndex = 53;
@@ -1209,7 +1209,7 @@
             // lbTo7
             // 
             this.lbTo7.AutoSize = true;
-            this.lbTo7.Location = new System.Drawing.Point(199, 178);
+            this.lbTo7.Location = new System.Drawing.Point(185, 179);
             this.lbTo7.Name = "lbTo7";
             this.lbTo7.Size = new System.Drawing.Size(18, 16);
             this.lbTo7.TabIndex = 52;
@@ -1219,7 +1219,7 @@
             // lbTo6
             // 
             this.lbTo6.AutoSize = true;
-            this.lbTo6.Location = new System.Drawing.Point(199, 150);
+            this.lbTo6.Location = new System.Drawing.Point(185, 150);
             this.lbTo6.Name = "lbTo6";
             this.lbTo6.Size = new System.Drawing.Size(18, 16);
             this.lbTo6.TabIndex = 51;
@@ -1229,7 +1229,7 @@
             // lbTo5
             // 
             this.lbTo5.AutoSize = true;
-            this.lbTo5.Location = new System.Drawing.Point(199, 122);
+            this.lbTo5.Location = new System.Drawing.Point(185, 122);
             this.lbTo5.Name = "lbTo5";
             this.lbTo5.Size = new System.Drawing.Size(18, 16);
             this.lbTo5.TabIndex = 50;
@@ -1239,7 +1239,7 @@
             // lbTo4
             // 
             this.lbTo4.AutoSize = true;
-            this.lbTo4.Location = new System.Drawing.Point(199, 94);
+            this.lbTo4.Location = new System.Drawing.Point(185, 94);
             this.lbTo4.Name = "lbTo4";
             this.lbTo4.Size = new System.Drawing.Size(18, 16);
             this.lbTo4.TabIndex = 49;
@@ -1249,7 +1249,7 @@
             // lbTo3
             // 
             this.lbTo3.AutoSize = true;
-            this.lbTo3.Location = new System.Drawing.Point(199, 66);
+            this.lbTo3.Location = new System.Drawing.Point(185, 66);
             this.lbTo3.Name = "lbTo3";
             this.lbTo3.Size = new System.Drawing.Size(18, 16);
             this.lbTo3.TabIndex = 48;
@@ -1259,7 +1259,7 @@
             // lbTo2
             // 
             this.lbTo2.AutoSize = true;
-            this.lbTo2.Location = new System.Drawing.Point(199, 38);
+            this.lbTo2.Location = new System.Drawing.Point(185, 38);
             this.lbTo2.Name = "lbTo2";
             this.lbTo2.Size = new System.Drawing.Size(18, 16);
             this.lbTo2.TabIndex = 47;
@@ -1269,7 +1269,7 @@
             // lbTo1
             // 
             this.lbTo1.AutoSize = true;
-            this.lbTo1.Location = new System.Drawing.Point(199, 11);
+            this.lbTo1.Location = new System.Drawing.Point(185, 10);
             this.lbTo1.Name = "lbTo1";
             this.lbTo1.Size = new System.Drawing.Size(18, 16);
             this.lbTo1.TabIndex = 46;
@@ -1378,7 +1378,7 @@
             // 
             // tBxto10
             // 
-            this.tBxto10.Location = new System.Drawing.Point(241, 258);
+            this.tBxto10.Location = new System.Drawing.Point(209, 258);
             this.tBxto10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxto10.Name = "tBxto10";
             this.tBxto10.Size = new System.Drawing.Size(100, 22);
@@ -1396,7 +1396,7 @@
             // 
             // tBxto9
             // 
-            this.tBxto9.Location = new System.Drawing.Point(241, 231);
+            this.tBxto9.Location = new System.Drawing.Point(209, 231);
             this.tBxto9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxto9.Name = "tBxto9";
             this.tBxto9.Size = new System.Drawing.Size(100, 22);
@@ -1414,7 +1414,7 @@
             // 
             // tBxto8
             // 
-            this.tBxto8.Location = new System.Drawing.Point(241, 203);
+            this.tBxto8.Location = new System.Drawing.Point(209, 203);
             this.tBxto8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxto8.Name = "tBxto8";
             this.tBxto8.Size = new System.Drawing.Size(100, 22);
@@ -1432,7 +1432,7 @@
             // 
             // tBxto7
             // 
-            this.tBxto7.Location = new System.Drawing.Point(241, 175);
+            this.tBxto7.Location = new System.Drawing.Point(209, 175);
             this.tBxto7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxto7.Name = "tBxto7";
             this.tBxto7.Size = new System.Drawing.Size(100, 22);
@@ -1450,7 +1450,7 @@
             // 
             // tBxto6
             // 
-            this.tBxto6.Location = new System.Drawing.Point(241, 146);
+            this.tBxto6.Location = new System.Drawing.Point(209, 146);
             this.tBxto6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxto6.Name = "tBxto6";
             this.tBxto6.Size = new System.Drawing.Size(100, 22);
@@ -1468,7 +1468,7 @@
             // 
             // tBxto5
             // 
-            this.tBxto5.Location = new System.Drawing.Point(241, 119);
+            this.tBxto5.Location = new System.Drawing.Point(209, 119);
             this.tBxto5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxto5.Name = "tBxto5";
             this.tBxto5.Size = new System.Drawing.Size(100, 22);
@@ -1486,7 +1486,7 @@
             // 
             // tBxto4
             // 
-            this.tBxto4.Location = new System.Drawing.Point(241, 91);
+            this.tBxto4.Location = new System.Drawing.Point(209, 91);
             this.tBxto4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxto4.Name = "tBxto4";
             this.tBxto4.Size = new System.Drawing.Size(100, 22);
@@ -1495,7 +1495,7 @@
             // 
             // tBxto3
             // 
-            this.tBxto3.Location = new System.Drawing.Point(241, 63);
+            this.tBxto3.Location = new System.Drawing.Point(209, 63);
             this.tBxto3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxto3.Name = "tBxto3";
             this.tBxto3.Size = new System.Drawing.Size(100, 22);
@@ -1504,7 +1504,7 @@
             // 
             // tBxto2
             // 
-            this.tBxto2.Location = new System.Drawing.Point(241, 34);
+            this.tBxto2.Location = new System.Drawing.Point(209, 34);
             this.tBxto2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxto2.Name = "tBxto2";
             this.tBxto2.Size = new System.Drawing.Size(100, 22);
@@ -1540,7 +1540,7 @@
             // 
             // tBxto1
             // 
-            this.tBxto1.Location = new System.Drawing.Point(241, 6);
+            this.tBxto1.Location = new System.Drawing.Point(209, 6);
             this.tBxto1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tBxto1.Name = "tBxto1";
             this.tBxto1.Size = new System.Drawing.Size(100, 22);
@@ -1682,16 +1682,16 @@
             // 
             // propertyGridBottom
             // 
-            this.propertyGridBottom.Location = new System.Drawing.Point(613, 10);
+            this.propertyGridBottom.Location = new System.Drawing.Point(699, 10);
             this.propertyGridBottom.Name = "propertyGridBottom";
-            this.propertyGridBottom.Size = new System.Drawing.Size(338, 268);
+            this.propertyGridBottom.Size = new System.Drawing.Size(252, 268);
             this.propertyGridBottom.TabIndex = 24;
             // 
             // pictureBoxBottom
             // 
             this.pictureBoxBottom.Location = new System.Drawing.Point(12, 10);
             this.pictureBoxBottom.Name = "pictureBoxBottom";
-            this.pictureBoxBottom.Size = new System.Drawing.Size(595, 268);
+            this.pictureBoxBottom.Size = new System.Drawing.Size(681, 291);
             this.pictureBoxBottom.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxBottom.TabIndex = 25;
             this.pictureBoxBottom.TabStop = false;

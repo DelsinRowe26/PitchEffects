@@ -80,7 +80,7 @@ namespace PitchShifter
                 mSoundIn = new WasapiCapture(/*false, AudioClientShareMode.Exclusive, 1*/);
                 mSoundIn.Device = mInputDevices[cmbInput.SelectedIndex];
                 mSoundIn.Initialize();
-                mSoundIn.Start();
+                
 
                 if (cmbSelEff.SelectedIndex == 1)
                 {
@@ -89,9 +89,12 @@ namespace PitchShifter
                     mDsp = new SampleDSP(source.ToSampleSource().ToStereo());
                     
                     mDsp.GainDB = trackGain.Value;
-                    SetupSampleSource(mDsp);
+
 
                     SetPitchShiftValue();
+                    SetupSampleSource(mDsp);
+                    mSoundIn.Start();
+
                     Mixer();
                     //Добавляем наш источник звука в микшер
 
@@ -118,8 +121,9 @@ namespace PitchShifter
                             }
                             mDsp = new SampleDSP(xsource.ToStereo());
                             mDsp.GainDB = trackGain.Value;
-                            SetupSampleSource(mDsp);
                             SetPitchShiftValue();
+                            SetupSampleSource(mDsp);
+                            mSoundIn.Start();
                             Mixer();
                             mMixer.AddSource(mDsp.ChangeSampleRate(mMixer.WaveFormat.SampleRate));
                         }
@@ -177,9 +181,10 @@ namespace PitchShifter
 
         private void StopFullDuplex()//остановка всего
         {
+            timer1.Stop();
             if (mSoundOut != null) mSoundOut.Dispose();
             if (mSoundIn != null) mSoundIn.Dispose();
-            timer1.Stop();
+
 
         }
 
