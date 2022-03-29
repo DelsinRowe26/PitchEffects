@@ -169,11 +169,14 @@
             this.lbVolValue = new System.Windows.Forms.Label();
             this.btnStop = new System.Windows.Forms.Button();
             this.btnApply = new System.Windows.Forms.Button();
+            this.propertyGridBottom = new System.Windows.Forms.PropertyGrid();
+            this.pictureBoxBottom = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.trackPitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackGain)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tbRange.SuspendLayout();
             this.tbSettings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBottom)).BeginInit();
             this.SuspendLayout();
             // 
             // btnStart
@@ -253,6 +256,7 @@
             // timer1
             // 
             this.timer1.Interval = 40;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // label1
             // 
@@ -331,7 +335,7 @@
             // 
             this.tabControl1.Controls.Add(this.tbRange);
             this.tabControl1.Controls.Add(this.tbSettings);
-            this.tabControl1.Location = new System.Drawing.Point(12, 283);
+            this.tabControl1.Location = new System.Drawing.Point(12, 306);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -1676,12 +1680,30 @@
             this.btnApply.Visible = false;
             this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
+            // propertyGridBottom
+            // 
+            this.propertyGridBottom.Location = new System.Drawing.Point(613, 10);
+            this.propertyGridBottom.Name = "propertyGridBottom";
+            this.propertyGridBottom.Size = new System.Drawing.Size(338, 268);
+            this.propertyGridBottom.TabIndex = 24;
+            // 
+            // pictureBoxBottom
+            // 
+            this.pictureBoxBottom.Location = new System.Drawing.Point(12, 10);
+            this.pictureBoxBottom.Name = "pictureBoxBottom";
+            this.pictureBoxBottom.Size = new System.Drawing.Size(595, 268);
+            this.pictureBoxBottom.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxBottom.TabIndex = 25;
+            this.pictureBoxBottom.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1444, 554);
+            this.Controls.Add(this.pictureBoxBottom);
+            this.Controls.Add(this.propertyGridBottom);
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.lbVolValue);
@@ -1713,6 +1735,7 @@
             this.tbRange.PerformLayout();
             this.tbSettings.ResumeLayout(false);
             this.tbSettings.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBottom)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1860,6 +1883,8 @@
         private System.Windows.Forms.TextBox tbReverb2;
         private System.Windows.Forms.TextBox tbReverbHFRTR1;
         private System.Windows.Forms.TextBox tbReverb1;
+        private System.Windows.Forms.PropertyGrid propertyGridBottom;
+        private System.Windows.Forms.PictureBox pictureBoxBottom;
     }
 }
 
