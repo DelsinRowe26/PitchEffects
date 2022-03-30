@@ -24,6 +24,8 @@ namespace PitchShifter
         private int tabIndex = 0;
         int[] min = new int[10];
         int[] max = new int[10];
+        int[] minR = new int[10];
+        int[] maxR = new int[10];
         int[] reverbTime = new int[10];
         int[] reverbHFRTR = new int[10];
         int plusclick = 0, plus = 0;
@@ -85,21 +87,25 @@ namespace PitchShifter
                 if (cmbSelEff.SelectedIndex == 1)
                 {
                     //Init DSP для смещения высоты тона
-                    var source = new SoundInSource(mSoundIn) { FillWithZeros = true };
-                    mDsp = new SampleDSP(source.ToSampleSource().ToStereo());
+                    //var source = new SoundInSource(mSoundIn) { FillWithZeros = true };
+                    for (int i = 0; i < plusclick; i++)
+                    {
+                        var source = BandPassFilter(mSoundIn, SampleRate1, min[i], max[i]);
                     
-                    mDsp.GainDB = trackGain.Value;
+                        mDsp = new SampleDSP(source.ToStereo()/*ToSampleSource()*/);
+                    
+                        mDsp.GainDB = trackGain.Value;
 
 
-                    SetPitchShiftValue();
-                    SetupSampleSource(mDsp);
-                    mSoundIn.Start();
+                        SetPitchShiftValue();
+                        SetupSampleSource(mDsp);
+                        mSoundIn.Start();
 
-                    Mixer();
-                    //Добавляем наш источник звука в микшер
+                        Mixer();
+                        //Добавляем наш источник звука в микшер
 
-                    mMixer.AddSource(mDsp.ChangeSampleRate(mMixer.WaveFormat.SampleRate));//основная строка
-
+                        mMixer.AddSource(mDsp.ChangeSampleRate(mMixer.WaveFormat.SampleRate));//основная строка
+                    }
                     SoundOut();
 
                     timer1.Start();
@@ -107,11 +113,11 @@ namespace PitchShifter
                 } 
                 else if (cmbSelEff.SelectedIndex == 0)
                 {
-                    if (isDataValid(min, max, reverbTime, reverbHFRTR, plusclick))
+                    if (isDataValid(minR, maxR, reverbTime, reverbHFRTR, plusclick))
                     {
-                        for (int i = 0; i < 1; i++)
+                        for (int i = 0; i < plusclick; i++)
                         {
-                            var xsource = BandPassFilter(mSoundIn, SampleRate1, min[i], max[i]);
+                            var xsource = BandPassFilter(mSoundIn, SampleRate1, minR[i], maxR[i]);
                             if(reverbTime[i] != 0)
                             {
                                 var reverb = new DmoWavesReverbEffect(xsource.ToWaveSource());
@@ -341,11 +347,14 @@ namespace PitchShifter
                     tbGain1.Visible = true;
                     btnFix.Enabled = true;
                     lbZnachPitch.Visible = true;
-                    ZnachVol.Visible = true;
                     btnPitchVol1.Visible = true;
                     tbReverb1.Visible = true;
                     tbReverbHFRTR1.Visible = true;
-                    lbReverb.Visible = true;
+                    lbReverb1.Visible = true;
+                    tbFromReverb1.Visible =true;
+                    lbFromReverb1.Visible = true;
+                    lbToReverb1.Visible = true;
+                    tbToReverb1.Visible = true;
                     plusclick++;
                     break;
                 case 1:
@@ -360,6 +369,10 @@ namespace PitchShifter
                     btnPitchVol2.Visible = true;
                     tbReverb2.Visible = true;
                     tbReverbHFRTR2.Visible = true;
+                    tbFromReverb2.Visible = true;
+                    lbFromReverb2.Visible = true;
+                    lbToReverb2.Visible = true;
+                    tbToReverb2.Visible = true;
                     plusclick++;
                     break;
                 case 2:
@@ -374,6 +387,10 @@ namespace PitchShifter
                     btnPitchVol3.Visible = true;
                     tbReverb3.Visible = true;
                     tbReverbHFRTR3.Visible = true;
+                    tbFromReverb3.Visible = true;
+                    lbFromReverb3.Visible = true;
+                    lbToReverb3.Visible = true;
+                    tbToReverb3.Visible = true;
                     plusclick++;
                     break;
                 case 3:
@@ -388,6 +405,10 @@ namespace PitchShifter
                     btnPitchVol4.Visible = true;
                     tbReverb4.Visible = true;
                     tbReverbHFRTR4.Visible = true;
+                    tbFromReverb4.Visible = true;
+                    lbFromReverb4.Visible = true;
+                    lbToReverb4.Visible = true;
+                    tbToReverb4.Visible = true;
                     plusclick++;
                     break;
                 case 4:
@@ -402,6 +423,10 @@ namespace PitchShifter
                     btnPitchVol5.Visible = true;
                     tbReverb5.Visible = true;
                     tbReverbHFRTR5.Visible = true;
+                    tbFromReverb5.Visible = true;
+                    lbFromReverb5.Visible = true;
+                    lbToReverb5.Visible = true;
+                    tbToReverb5.Visible = true;
                     plusclick++;
                     break;
                 case 5:
@@ -416,6 +441,10 @@ namespace PitchShifter
                     btnPitchVol6.Visible = true;
                     tbReverb6.Visible = true;
                     tbReverbHFRTR6.Visible = true;
+                    tbFromReverb6.Visible = true;
+                    lbFromReverb6.Visible = true;
+                    lbToReverb6.Visible = true;
+                    tbToReverb6.Visible = true;
                     plusclick++;
                     break;
                 case 6:
@@ -430,6 +459,10 @@ namespace PitchShifter
                     btnPitchVol7.Visible = true;
                     tbReverb7.Visible = true;
                     tbReverbHFRTR7.Visible = true;
+                    tbFromReverb7.Visible = true;
+                    lbFromReverb7.Visible = true;
+                    lbToReverb7.Visible = true;
+                    tbToReverb7.Visible = true;
                     plusclick++;
                     break;
                 case 7:
@@ -444,6 +477,10 @@ namespace PitchShifter
                     btnPitchVol8.Visible = true;
                     tbReverb8.Visible = true;
                     tbReverbHFRTR8.Visible = true;
+                    tbFromReverb8.Visible = true;
+                    lbFromReverb8.Visible = true;
+                    lbToReverb8.Visible = true;
+                    tbToReverb8.Visible = true;
                     plusclick++;
                     break;
                 case 8:
@@ -458,6 +495,10 @@ namespace PitchShifter
                     btnPitchVol9.Visible = true;
                     tbReverb9.Visible = true;
                     tbReverbHFRTR9.Visible = true;
+                    tbFromReverb9.Visible = true;
+                    lbFromReverb9.Visible = true;
+                    lbToReverb9.Visible = true;
+                    tbToReverb9.Visible = true;
                     plusclick++;
                     break;
                 case 9:
@@ -472,6 +513,10 @@ namespace PitchShifter
                     btnPitchVol10.Visible = true;
                     tbReverb10.Visible = true;
                     tbReverbHFRTR10.Visible = true;
+                    tbFromReverb10.Visible = true;
+                    lbFromReverb10.Visible = true;
+                    lbToReverb10.Visible = true;
+                    tbToReverb10.Visible = true;
                     bTnPlus.Enabled = false;
                     break;
             }
@@ -486,6 +531,8 @@ namespace PitchShifter
                         reverbHFRTR[0] = int.Parse(tbReverbHFRTR1.Text);
                         min[0] = int.Parse(tBxfrom1.Text);
                         max[0] = int.Parse(tBxto1.Text);
+                        minR[0] = int.Parse(tbFromReverb1.Text);
+                        maxR[0] = int.Parse(tbToReverb1.Text);
                         PitchShifter.min[0] = int.Parse(tBxfrom1.Text);
                         PitchShifter.max[0] = int.Parse(tBxto1.Text);
                         PitchShifter.Vol[0] = int.Parse(tbGain1.Text);
@@ -495,6 +542,8 @@ namespace PitchShifter
                         reverbHFRTR[1] = int.Parse(tbReverbHFRTR2.Text);
                         min[1] = int.Parse(tBxfrom2.Text);
                         max[1] = int.Parse(tBxto2.Text);
+                        minR[1] = int.Parse(tbFromReverb2.Text);
+                        maxR[1] = int.Parse(tbToReverb2.Text);
                         PitchShifter.min[1] = int.Parse(tBxfrom2.Text);
                         PitchShifter.max[1] = int.Parse(tBxto2.Text);
                         PitchShifter.Vol[1] = int.Parse(tbGain2.Text);
@@ -504,6 +553,8 @@ namespace PitchShifter
                         reverbHFRTR[2] = int.Parse(tbReverbHFRTR3.Text);
                         min[2] = int.Parse(tBxfrom3.Text);
                         max[2] = int.Parse(tBxto3.Text);
+                        minR[2] = int.Parse(tbFromReverb3.Text);
+                        maxR[2] = int.Parse(tbToReverb3.Text);
                         PitchShifter.min[2] = int.Parse(tBxfrom3.Text);
                         PitchShifter.max[2] = int.Parse(tBxto3.Text);
                         PitchShifter.Vol[2] = int.Parse(tbGain3.Text);
@@ -513,6 +564,8 @@ namespace PitchShifter
                         reverbHFRTR[3] = int.Parse(tbReverbHFRTR4.Text);
                         min[3] = int.Parse(tBxfrom4.Text);
                         max[3] = int.Parse(tBxto4.Text);
+                        minR[3] = int.Parse(tbFromReverb4.Text);
+                        maxR[3] = int.Parse(tbToReverb4.Text);
                         PitchShifter.min[3] = int.Parse(tBxfrom4.Text);
                         PitchShifter.max[3] = int.Parse(tBxto4.Text);
                         PitchShifter.Vol[3] = int.Parse(tbGain4.Text);
@@ -522,6 +575,8 @@ namespace PitchShifter
                         reverbHFRTR[4] = int.Parse(tbReverbHFRTR5.Text);
                         min[4] = int.Parse(tBxfrom5.Text);
                         max[4] = int.Parse(tBxto5.Text);
+                        minR[4] = int.Parse(tbFromReverb5.Text);
+                        maxR[4] = int.Parse(tbToReverb5.Text);
                         PitchShifter.min[4] = int.Parse(tBxfrom5.Text);
                         PitchShifter.max[4] = int.Parse(tBxto5.Text);
                         PitchShifter.Vol[4] = int.Parse(tbGain5.Text);
@@ -529,8 +584,10 @@ namespace PitchShifter
                     case 6:
                         reverbTime[5] = int.Parse(tbReverb6.Text);
                         reverbHFRTR[5] = int.Parse(tbReverbHFRTR6.Text);
-                        min[1] = int.Parse(tBxfrom6.Text);
-                        max[1] = int.Parse(tBxto6.Text);
+                        min[5] = int.Parse(tBxfrom6.Text);
+                        max[5] = int.Parse(tBxto6.Text);
+                        minR[5] = int.Parse(tbFromReverb6.Text);
+                        maxR[5] = int.Parse(tbToReverb6.Text);
                         PitchShifter.min[5] = int.Parse(tBxfrom6.Text);
                         PitchShifter.max[5] = int.Parse(tBxto6.Text);
                         PitchShifter.Vol[5] = int.Parse(tbGain6.Text);
@@ -540,6 +597,8 @@ namespace PitchShifter
                         reverbHFRTR[6] = int.Parse(tbReverbHFRTR7.Text);
                         min[6] = int.Parse(tBxfrom7.Text);
                         max[6] = int.Parse(tBxto7.Text);
+                        minR[6] = int.Parse(tbFromReverb7.Text);
+                        maxR[6] = int.Parse(tbToReverb7.Text);
                         PitchShifter.min[6] = int.Parse(tBxfrom7.Text);
                         PitchShifter.max[6] = int.Parse(tBxto7.Text);
                         PitchShifter.Vol[6] = int.Parse(tbGain7.Text);
@@ -549,6 +608,8 @@ namespace PitchShifter
                         reverbHFRTR[7] = int.Parse(tbReverbHFRTR8.Text);
                         min[7] = int.Parse(tBxfrom8.Text);
                         max[7] = int.Parse(tBxto8.Text);
+                        minR[7] = int.Parse(tbFromReverb8.Text);
+                        maxR[7] = int.Parse(tbToReverb8.Text);
                         PitchShifter.min[7] = int.Parse(tBxfrom8.Text);
                         PitchShifter.max[7] = int.Parse(tBxto8.Text);
                         PitchShifter.Vol[7] = int.Parse(tbGain8.Text);
@@ -558,6 +619,8 @@ namespace PitchShifter
                         reverbHFRTR[8] = int.Parse(tbReverbHFRTR9.Text);
                         min[8] = int.Parse(tBxfrom9.Text);
                         max[8] = int.Parse(tBxto9.Text);
+                        minR[8] = int.Parse(tbFromReverb9.Text);
+                        maxR[8] = int.Parse(tbToReverb9.Text);
                         PitchShifter.min[8] = int.Parse(tBxfrom9.Text);
                         PitchShifter.max[8] = int.Parse(tBxto9.Text);
                         PitchShifter.Vol[8] = int.Parse(tbGain9.Text);
@@ -570,6 +633,8 @@ namespace PitchShifter
                             reverbHFRTR[9] = int.Parse(tbReverbHFRTR10.Text);
                             min[9] = int.Parse(tBxfrom10.Text);
                             max[9] = int.Parse(tBxto10.Text);
+                            minR[9] = int.Parse(tbFromReverb10.Text);
+                            maxR[9] = int.Parse(tbToReverb10.Text);
                             PitchShifter.min[9] = int.Parse(tBxfrom10.Text);
                             PitchShifter.max[9] = int.Parse(tBxto10.Text);
                             PitchShifter.Vol[9] = int.Parse(tbGain10.Text);
@@ -702,6 +767,10 @@ namespace PitchShifter
                 btnPitchVol10.Visible = false;
                 tbReverb10.Visible = false;
                 tbReverbHFRTR10.Visible = false;
+                tbFromReverb10.Visible = false;
+                lbFromReverb10.Visible = false;
+                lbToReverb10.Visible = false;
+                tbToReverb10.Visible = false;
                 plusclick--;
             }
             else if(plusclick == 8)
@@ -717,6 +786,10 @@ namespace PitchShifter
                 btnPitchVol9.Visible = false;
                 tbReverb9.Visible = false;
                 tbReverbHFRTR9.Visible = false;
+                tbFromReverb9.Visible = false;
+                lbFromReverb9.Visible = false;
+                lbToReverb9.Visible = false;
+                tbToReverb9.Visible = false;
                 plusclick--;
             }
             else if (plusclick == 7)
@@ -732,6 +805,10 @@ namespace PitchShifter
                 btnPitchVol8.Visible = false;
                 tbReverb8.Visible = false;
                 tbReverbHFRTR8.Visible = false;
+                tbFromReverb8.Visible = false;
+                lbFromReverb8.Visible = false;
+                lbToReverb8.Visible = false;
+                tbToReverb8.Visible = false;
                 plusclick--;
             }
             else if (plusclick == 6)
@@ -747,6 +824,10 @@ namespace PitchShifter
                 btnPitchVol7.Visible = false;
                 tbReverb7.Visible = false;
                 tbReverbHFRTR7.Visible = false;
+                tbFromReverb7.Visible = false;
+                lbFromReverb7.Visible = false;
+                lbToReverb7.Visible = false;
+                tbToReverb7.Visible = false;
                 plusclick--;
             }
             else if (plusclick == 5)
@@ -762,6 +843,10 @@ namespace PitchShifter
                 btnPitchVol6.Visible = false;
                 tbReverb6.Visible = false;
                 tbReverbHFRTR6.Visible = false;
+                tbFromReverb6.Visible = false;
+                lbFromReverb6.Visible = false;
+                lbToReverb6.Visible = false;
+                tbToReverb6.Visible = false;
                 plusclick--;
             }
             else if (plusclick == 4)
@@ -777,6 +862,10 @@ namespace PitchShifter
                 btnPitchVol5.Visible = false;
                 tbReverb5.Visible = false;
                 tbReverbHFRTR5.Visible = false;
+                tbFromReverb5.Visible = false;
+                lbFromReverb5.Visible = false;
+                lbToReverb5.Visible = false;
+                tbToReverb5.Visible = false;
                 plusclick--;
             }
             else if (plusclick == 3)
@@ -792,6 +881,10 @@ namespace PitchShifter
                 btnPitchVol4.Visible = false;
                 tbReverb4.Visible = false;
                 tbReverbHFRTR4.Visible = false;
+                tbFromReverb4.Visible = false;
+                lbFromReverb4.Visible = false;
+                lbToReverb4.Visible = false;
+                tbToReverb4.Visible = false;
                 plusclick--;
             }
             else if (plusclick == 2)
@@ -807,6 +900,10 @@ namespace PitchShifter
                 btnPitchVol3.Visible = false;
                 tbReverb3.Visible = false;
                 tbReverbHFRTR3.Visible = false;
+                tbFromReverb3.Visible = false;
+                lbFromReverb3.Visible = false;
+                lbToReverb3.Visible = false;
+                tbToReverb3.Visible = false;
                 plusclick--;
             }
             else if (plusclick == 1)
@@ -822,6 +919,10 @@ namespace PitchShifter
                 btnPitchVol2.Visible = false;
                 tbReverb2.Visible = false;
                 tbReverbHFRTR2.Visible = false;
+                tbFromReverb2.Visible = false;
+                lbFromReverb2.Visible = false;
+                lbToReverb2.Visible = false;
+                tbToReverb2.Visible = false;
                 plusclick--;
             }
             else if (plusclick == 0)
@@ -837,11 +938,14 @@ namespace PitchShifter
                 btnPitchVol1.Visible = false;
                 tbReverb1.Visible = false;
                 tbReverbHFRTR1.Visible = false;
-                lbReverb.Visible = false;
+                lbReverb1.Visible = false;
+                tbFromReverb1.Visible = false;
+                lbFromReverb1.Visible = false;
+                lbToReverb1.Visible = false;
+                tbToReverb1.Visible = false;
                 bTnMinus.Enabled = false;
                 btnFix.Enabled = false;
                 lbZnachPitch.Visible = false;
-                ZnachVol.Visible = false;
             }
         }
 
@@ -1068,12 +1172,12 @@ namespace PitchShifter
                 SoundOut();
                 MessageBox.Show("Параметры не заданы");
             }
-            if (isDataValid(min, max, reverbTime, reverbHFRTR, plusclick))
+            if (isDataValid(minR, maxR, reverbTime, reverbHFRTR, plusclick))
             {
                 Mixer();
                 for (int i = 0; i < strings; i++)
                 {
-                    var x = BandPassFilter(mSoundIn, SampleRate, min[i], max[i]);
+                    var x = BandPassFilter(mSoundIn, SampleRate, minR[i], maxR[i]);
                     if (reverbTime[i] != 0)
                     {
                         var reverb = new DmoWavesReverbEffect(x.ToWaveSource(16).ToStereo());
