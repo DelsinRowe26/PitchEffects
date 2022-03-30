@@ -184,7 +184,7 @@
             this.lbFromReverb8 = new System.Windows.Forms.Label();
             this.tbToReverb8 = new System.Windows.Forms.TextBox();
             this.tbFromReverb8 = new System.Windows.Forms.TextBox();
-            this.lbRever8 = new System.Windows.Forms.Label();
+            this.lbReverb8 = new System.Windows.Forms.Label();
             this.lbToReverb7 = new System.Windows.Forms.Label();
             this.lbFromReverb7 = new System.Windows.Forms.Label();
             this.tbToReverb7 = new System.Windows.Forms.TextBox();
@@ -427,7 +427,7 @@
             this.tbRange.Controls.Add(this.lbFromReverb7);
             this.tbRange.Controls.Add(this.tbToReverb7);
             this.tbRange.Controls.Add(this.tbFromReverb7);
-            this.tbRange.Controls.Add(this.lbRever8);
+            this.tbRange.Controls.Add(this.lbReverb8);
             this.tbRange.Controls.Add(this.lbToReverb8);
             this.tbRange.Controls.Add(this.lbFromReverb8);
             this.tbRange.Controls.Add(this.tbToReverb8);
@@ -1662,7 +1662,7 @@
             // lbSelEff
             // 
             this.lbSelEff.AutoSize = true;
-            this.lbSelEff.Location = new System.Drawing.Point(912, 351);
+            this.lbSelEff.Location = new System.Drawing.Point(1016, 280);
             this.lbSelEff.Name = "lbSelEff";
             this.lbSelEff.Size = new System.Drawing.Size(109, 16);
             this.lbSelEff.TabIndex = 15;
@@ -1674,7 +1674,7 @@
             this.cmbSelEff.Items.AddRange(new object[] {
             "Reverb",
             "PitchEffects"});
-            this.cmbSelEff.Location = new System.Drawing.Point(1045, 345);
+            this.cmbSelEff.Location = new System.Drawing.Point(1143, 277);
             this.cmbSelEff.Name = "cmbSelEff";
             this.cmbSelEff.Size = new System.Drawing.Size(201, 24);
             this.cmbSelEff.TabIndex = 14;
@@ -1914,15 +1914,15 @@
             this.tbFromReverb8.TabIndex = 138;
             this.tbFromReverb8.Visible = false;
             // 
-            // lbRever8
+            // lbReverb8
             // 
-            this.lbRever8.AutoSize = true;
-            this.lbRever8.Location = new System.Drawing.Point(398, 412);
-            this.lbRever8.Name = "lbRever8";
-            this.lbRever8.Size = new System.Drawing.Size(52, 16);
-            this.lbRever8.TabIndex = 142;
-            this.lbRever8.Text = "Reverb";
-            this.lbRever8.Visible = false;
+            this.lbReverb8.AutoSize = true;
+            this.lbReverb8.Location = new System.Drawing.Point(398, 412);
+            this.lbReverb8.Name = "lbReverb8";
+            this.lbReverb8.Size = new System.Drawing.Size(52, 16);
+            this.lbReverb8.TabIndex = 142;
+            this.lbReverb8.Text = "Reverb";
+            this.lbReverb8.Visible = false;
             // 
             // lbToReverb7
             // 
@@ -2459,7 +2459,7 @@
         private System.Windows.Forms.Label lbFromReverb7;
         private System.Windows.Forms.TextBox tbToReverb7;
         private System.Windows.Forms.TextBox tbFromReverb7;
-        private System.Windows.Forms.Label lbRever8;
+        private System.Windows.Forms.Label lbReverb8;
         private System.Windows.Forms.Label lbToReverb8;
         private System.Windows.Forms.Label lbFromReverb8;
         private System.Windows.Forms.TextBox tbToReverb8;

@@ -355,6 +355,7 @@ namespace PitchShifter
                     lbFromReverb1.Visible = true;
                     lbToReverb1.Visible = true;
                     tbToReverb1.Visible = true;
+                    lbReverb1.Visible = true;
                     plusclick++;
                     break;
                 case 1:
@@ -373,6 +374,7 @@ namespace PitchShifter
                     lbFromReverb2.Visible = true;
                     lbToReverb2.Visible = true;
                     tbToReverb2.Visible = true;
+                    lbReverb2.Visible = true;
                     plusclick++;
                     break;
                 case 2:
@@ -391,6 +393,7 @@ namespace PitchShifter
                     lbFromReverb3.Visible = true;
                     lbToReverb3.Visible = true;
                     tbToReverb3.Visible = true;
+                    lbReverb3.Visible = true;
                     plusclick++;
                     break;
                 case 3:
@@ -409,6 +412,7 @@ namespace PitchShifter
                     lbFromReverb4.Visible = true;
                     lbToReverb4.Visible = true;
                     tbToReverb4.Visible = true;
+                    lbReverb4.Visible = true;
                     plusclick++;
                     break;
                 case 4:
@@ -427,6 +431,7 @@ namespace PitchShifter
                     lbFromReverb5.Visible = true;
                     lbToReverb5.Visible = true;
                     tbToReverb5.Visible = true;
+                    lbReverb5.Visible = true;
                     plusclick++;
                     break;
                 case 5:
@@ -445,6 +450,7 @@ namespace PitchShifter
                     lbFromReverb6.Visible = true;
                     lbToReverb6.Visible = true;
                     tbToReverb6.Visible = true;
+                    lbReverb6.Visible = true;
                     plusclick++;
                     break;
                 case 6:
@@ -463,6 +469,7 @@ namespace PitchShifter
                     lbFromReverb7.Visible = true;
                     lbToReverb7.Visible = true;
                     tbToReverb7.Visible = true;
+                    lbReverb7.Visible = true;
                     plusclick++;
                     break;
                 case 7:
@@ -481,6 +488,7 @@ namespace PitchShifter
                     lbFromReverb8.Visible = true;
                     lbToReverb8.Visible = true;
                     tbToReverb8.Visible = true;
+                    lbReverb8.Visible = true;
                     plusclick++;
                     break;
                 case 8:
@@ -499,6 +507,7 @@ namespace PitchShifter
                     lbFromReverb9.Visible = true;
                     lbToReverb9.Visible = true;
                     tbToReverb9.Visible = true;
+                    lbReverb9.Visible = true;
                     plusclick++;
                     break;
                 case 9:
@@ -517,6 +526,7 @@ namespace PitchShifter
                     lbFromReverb10.Visible = true;
                     lbToReverb10.Visible = true;
                     tbToReverb10.Visible = true;
+                    lbReverb10.Visible = true;
                     bTnPlus.Enabled = false;
                     break;
             }
@@ -771,6 +781,7 @@ namespace PitchShifter
                 lbFromReverb10.Visible = false;
                 lbToReverb10.Visible = false;
                 tbToReverb10.Visible = false;
+                lbReverb10.Visible = false;
                 plusclick--;
             }
             else if(plusclick == 8)
@@ -790,6 +801,7 @@ namespace PitchShifter
                 lbFromReverb9.Visible = false;
                 lbToReverb9.Visible = false;
                 tbToReverb9.Visible = false;
+                lbReverb9.Visible = false;
                 plusclick--;
             }
             else if (plusclick == 7)
@@ -809,6 +821,7 @@ namespace PitchShifter
                 lbFromReverb8.Visible = false;
                 lbToReverb8.Visible = false;
                 tbToReverb8.Visible = false;
+                lbReverb8.Visible = false;
                 plusclick--;
             }
             else if (plusclick == 6)
@@ -828,6 +841,7 @@ namespace PitchShifter
                 lbFromReverb7.Visible = false;
                 lbToReverb7.Visible = false;
                 tbToReverb7.Visible = false;
+                lbReverb7.Visible = false;
                 plusclick--;
             }
             else if (plusclick == 5)
@@ -847,6 +861,7 @@ namespace PitchShifter
                 lbFromReverb6.Visible = false;
                 lbToReverb6.Visible = false;
                 tbToReverb6.Visible = false;
+                lbReverb6.Visible = false;
                 plusclick--;
             }
             else if (plusclick == 4)
@@ -866,6 +881,7 @@ namespace PitchShifter
                 lbFromReverb5.Visible = false;
                 lbToReverb5.Visible = false;
                 tbToReverb5.Visible = false;
+                lbReverb5.Visible = false;
                 plusclick--;
             }
             else if (plusclick == 3)
@@ -885,6 +901,7 @@ namespace PitchShifter
                 lbFromReverb4.Visible = false;
                 lbToReverb4.Visible = false;
                 tbToReverb4.Visible = false;
+                lbReverb4.Visible = false;
                 plusclick--;
             }
             else if (plusclick == 2)
@@ -904,6 +921,7 @@ namespace PitchShifter
                 lbFromReverb3.Visible = false;
                 lbToReverb3.Visible = false;
                 tbToReverb3.Visible = false;
+                lbReverb3.Visible = false;
                 plusclick--;
             }
             else if (plusclick == 1)
@@ -923,6 +941,7 @@ namespace PitchShifter
                 lbFromReverb2.Visible = false;
                 lbToReverb2.Visible = false;
                 tbToReverb2.Visible = false;
+                lbReverb2.Visible = false;
                 plusclick--;
             }
             else if (plusclick == 0)
@@ -943,6 +962,7 @@ namespace PitchShifter
                 lbFromReverb1.Visible = false;
                 lbToReverb1.Visible = false;
                 tbToReverb1.Visible = false;
+                lbReverb1.Visible = false;
                 bTnMinus.Enabled = false;
                 btnFix.Enabled = false;
                 lbZnachPitch.Visible = false;
