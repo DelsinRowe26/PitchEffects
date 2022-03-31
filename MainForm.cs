@@ -34,7 +34,7 @@ namespace PitchShifter
         private MMDeviceCollection mOutputDevices;
         private WasapiCapture mSoundIn;
         private WasapiOut mSoundOut;
-        private SampleDSP mDsp;
+        private SampleDSP mDsp, mDspR;
         private SimpleMixer mMixer;
         private ISampleSource mMp3;
         private IWaveSource mSource;
@@ -91,11 +91,19 @@ namespace PitchShifter
                     for (int i = 0; i < plusclick; i++)
                     {
                         var source = BandPassFilter(mSoundIn, SampleRate1, min[i], max[i]);
-                    
-                        mDsp = new SampleDSP(source.ToStereo()/*ToSampleSource()*/);
-                    
-                        mDsp.GainDB = trackGain.Value;
+                        var xsource = BandPassFilter(mSoundIn, SampleRate1, minR[i], maxR[i]);
+                        if (reverbTime[i] != 0)
+                        {
+                            var reverb = new DmoWavesReverbEffect(xsource.ToWaveSource());
+                            reverb.ReverbTime = reverbTime[i];
+                            reverb.HighFrequencyRTRatio = ((float)reverbHFRTR[i]) / 1000;
+                            xsource = reverb.ToSampleSource();
+                        }
 
+                        mDsp = new SampleDSP(source.ToStereo()/*ToSampleSource()*/);
+                        mDspR = new SampleDSP(xsource.ToStereo());
+                        mDsp.GainDB = trackGain.Value;
+                        mDspR.GainDB = trackGain.Value;
 
                         SetPitchShiftValue();
                         SetupSampleSource(mDsp);
@@ -105,6 +113,7 @@ namespace PitchShifter
                         //Добавляем наш источник звука в микшер
 
                         mMixer.AddSource(mDsp.ChangeSampleRate(mMixer.WaveFormat.SampleRate));//основная строка
+                        mMixer.AddSource(mDspR.ChangeSampleRate(mMixer.WaveFormat.SampleRate));
                     }
                     SoundOut();
 
@@ -138,6 +147,30 @@ namespace PitchShifter
                         timer1.Start();
                         propertyGridBottom.SelectedObject = mVoicePrint;
                     }
+                } 
+                else if (cmbSelEff.SelectedIndex == 2)
+                {
+                    for (int i = 0; i < plusclick; i++)
+                    {
+                        var source = BandPassFilter(mSoundIn, SampleRate1, min[i], max[i]);
+
+                        mDsp = new SampleDSP(source.ToStereo()/*ToSampleSource()*/);
+                        mDsp.GainDB = trackGain.Value;
+                        mDsp.PitchShift = (float)Math.Pow(2.0F, trackPitch.Value / 13.0F);
+
+                        SetPitchShiftValue();
+                        //SetupSampleSource(mDsp);
+                        mSoundIn.Start();
+
+                        Mixer();
+                        //Добавляем наш источник звука в микшер
+
+                        mMixer.AddSource(mDsp.ChangeSampleRate(mMixer.WaveFormat.SampleRate));//основная строка
+                    }
+                    SoundOut();
+
+                    //timer1.Start();
+                    //propertyGridBottom.SelectedObject = mVoicePrint;
                 }
 
                 //Инициальный микшер
@@ -166,6 +199,15 @@ namespace PitchShifter
                 mSoundOut.Play();
             }
             else if (cmbSelEff.SelectedIndex == 1)
+            {
+                mSoundOut = new WasapiOut(false, AudioClientShareMode.Exclusive, 1);
+                mSoundOut.Device = mOutputDevices[cmbOutput.SelectedIndex];
+                mSoundOut.Initialize(mMixer.ToWaveSource(16));
+
+                //Start rolling!
+                mSoundOut.Play();
+            }
+            else if (cmbSelEff.SelectedIndex == 2)
             {
                 mSoundOut = new WasapiOut(false, AudioClientShareMode.Exclusive, 1);
                 mSoundOut.Device = mOutputDevices[cmbOutput.SelectedIndex];
@@ -260,6 +302,7 @@ namespace PitchShifter
         private void SetPitchShiftValue()//рассчеты и значения пича
         {
             mDsp.PitchShift = (float)Math.Pow(2.0F, trackPitch.Value / 13.0F);
+            //mDspR.PitchShift = (float)Math.Pow(2.0F, trackPitch.Value / 13.0F);
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -280,7 +323,7 @@ namespace PitchShifter
 
         private void trackPitch_Scroll(object sender, EventArgs e)
         {
-            if (cmbSelEff.SelectedIndex == 1)
+            if (cmbSelEff.SelectedIndex == 1 || cmbSelEff.SelectedIndex == 2)
             {
                 SetPitchShiftValue();
             }
@@ -289,7 +332,7 @@ namespace PitchShifter
 
         private void trackPitch_ValueChanged(object sender, EventArgs e)
         {
-            if (cmbSelEff.SelectedIndex == 1)
+            if (cmbSelEff.SelectedIndex == 1 || cmbSelEff.SelectedIndex == 2)
             {
                 SetPitchShiftValue();
             }
