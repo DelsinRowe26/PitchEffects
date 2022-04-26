@@ -253,6 +253,11 @@ namespace PitchShifter
                 if (chkAddMp3.Checked)
                 {
                     mMp3 = CodecFactory.Instance.GetCodec("test.mp3").ToStereo().ToSampleSource();
+                    //textBox1.Text = mMp3.Position.ToString();
+                    //textBox1.Text = mMp3.Length.ToString();
+                    //textBox1.Text = mMp3.GetPosition().ToString();
+                    //textBox1.Text = mMp3.GetTime(0).ToString();
+                    
                     mMixer.AddSource(mMp3.ChangeSampleRate(mMixer.WaveFormat.SampleRate));
                 }
                 else
