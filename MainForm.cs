@@ -18,7 +18,7 @@ namespace PitchShifter
         int[] Gain = new int[10];
         int[] min = new int[10];
         int[] max = new int[10];
-        int plusclick = 0, plus = 0;
+        int plusclick = 0, plus = 0, click = 0;
         private MMDeviceCollection mInputDevices;
         private MMDeviceCollection mOutputDevices;
         private WasapiCapture mSoundIn;
@@ -116,6 +116,7 @@ namespace PitchShifter
                 trackPitch.Enabled = true;
                 chkAddMp3.Enabled = true;
                 bTnReset.Enabled = true;
+                click++;
             }
         }
 
@@ -168,8 +169,11 @@ namespace PitchShifter
             {
                 if (chkAddMp3.Checked)
                 {
-                    mMp3 = CodecFactory.Instance.GetCodec(@"E:\music\пробник.mp3").ToStereo().ToSampleSource();
-                    mMixer.AddSource(mMp3.ChangeSampleRate(mMixer.WaveFormat.SampleRate));
+                    while (click != 0)
+                    {
+                        mMp3 = CodecFactory.Instance.GetCodec(@"E:\music\пробник.mp3").ToStereo().ToSampleSource();
+                        mMixer.AddSource(mMp3.ChangeSampleRate(mMixer.WaveFormat.SampleRate));
+                    }
                 }
                 else
                 {
@@ -756,6 +760,7 @@ namespace PitchShifter
             trackPitch.Enabled = false;
             chkAddMp3.Enabled = false;
             bTnReset.Enabled = false;
+            click--;
         }
     }
 }
