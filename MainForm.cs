@@ -13,7 +13,6 @@ namespace PitchShifter
     public partial class MainForm : Form
     {
         //Глобальные переменныe
-        private static float[] fftBuffer = new float[32000];
         int[] Pitch = new int[10];
         int[] Gain = new int[10];
         int[] min = new int[10];
